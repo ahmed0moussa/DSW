@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Activité 3.5 - Animaux, Maths et Vidéo</title>
+  <script src="main.js"></script>
+</head>
+<body>
+
+  <h1>Découvrons les animaux et les nombres !</h1>
+  <p>Cette activité combine plusieurs éléments HTML : tableau de calcul, images, liste et vidéo.</p>
+
+  <!-- Section 1 : Introduction -->
+  <h2>Présentation</h2>
+  <p>Salut ! Je m'appelle <strong>Leila</strong>. J'adore les animaux et apprendre de nouvelles choses.</p>
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2RlNm9zejNwcjkzMHNvd2k1ZmdwcWx6Y3B4ZW5nc3ZqM21xNzQwZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WXB88TeARFVvi/giphy.gif" 
+       alt="Chat animé mignon" width="300">
+  <!-- Section 2 : Mes sites et vidéos préférés -->
+  <h2>Mes sites et vidéos préférés</h2>
+  <ul>
+    <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
+    <li><a href="https://www.wikipedia.org" target="_blank">Wikipédia</a></li>
+    <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+  </ul>
+
+  <!-- Section 3 : Tableau de calcul -->
+  <h2>Bulletin Leila</h2>
+<p>Voici le bulletin avec les notes par matière et le total :</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Matière</th>
+      <th>Note</th>
+      <th>Coefficient</th>
+      <th>Points Pondérés</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Maths</td>
+      <td>15</td>
+      <td>4</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>Français</td>
+      <td>14</td>
+      <td>3</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>Physique</td>
+      <td>13</td>
+      <td>3</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>Histoire</td>
+      <td>12</td>
+      <td>2</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>Anglais</td>
+      <td>16</td>
+      <td>2</td>
+      <td>32</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"><strong>Total des points pondérés</strong></td>
+      <td><strong>197</strong></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Moyenne générale</strong></td>
+      <td><strong>13,08</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+  <!-- Section 4 : Formulaire simple -->
+  <h2>Découvre tes préférences</h2>
+  <form>
+    <label for="prenom">Ton prénom :</label><br>
+    <input type="text" id="prenom" name="prenom" placeholder="Ex: Leila"><br><br>
+
+    <label for="age">Ton âge :</label><br>
+    <input type="number" id="age" name="age" min="8" max="17"><br><br>
+
+    <label>Ton animal préféré :</label><br>
+    <input type="radio" id="chat" name="animal" value="chat">
+    <label for="chat">Chat</label><br>
+    <input type="radio" id="chien" name="animal" value="chien">
+    <label for="chien">Chien</label><br>
+    <input type="radio" id="lapin" name="animal" value="lapin">
+    <label for="lapin">Lapin</label><br><br>
+
+    <label>Quelles sont tes activités préférées ?</label><br>
+    <input type="checkbox" id="dessin" name="activites" value="dessin">
+    <label for="dessin">Dessiner</label><br>
+    <input type="checkbox" id="sport" name="activites" value="sport">
+    <label for="sport">Sport</label><br>
+    <input type="checkbox" id="jeux" name="activites" value="jeux">
+    <label for="jeux">Jeux vidéo</label><br><br>
+
+    <label for="message">Écris quelque chose sur toi :</label><br>
+    <textarea id="message" name="message" rows="4" cols="50" placeholder="Par exemple : J’aime les animaux et les maths."></textarea><br><br>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <!-- Section 5 : Liste avec images -->
+  <h2>Mes animaux préférés</h2>
+  <ul>
+    <li>Chat <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg" alt="Chat" width="50"></li>
+    <li>Chien <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg" alt="Chien" width="50"></li>
+    <li>Lapin <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/White_rabbit.jpg" alt="Lapin" width="50"></li>
+  </ul>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #1e90ff;
+  margin-bottom: 40px;
+}
+
+.boite {
+  width: 400px;             /* largeur de la boîte */
+  padding: 20px;            /* espace intérieur */
+  border: 5px solid #ff6600; /* bordure */
+  margin: 20px auto;        /* centrer horizontalement */
+  background-color: #fff;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  text-align: center;
+  border-radius: 10px;
+  box-sizing: border-box;   /* inclure padding et border dans la largeur */
+}
+
+.boite img {
+  width: 300px;             /* largeur de l'image */
+  height: 200px;            /* hauteur de l'image */
+  padding: 10px;            /* espace autour de l'image */
+  border: 3px solid #333;   /* bordure autour de l'image */
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Variations pour chaque boîte */
+.boite.rouge {
+  border: 8px solid red;
+  padding: 30px;
+}
+
+.boite.verte {
+  border: 2px solid green;
+  padding: 15px;
+  width: 350px;
+}

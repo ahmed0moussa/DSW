@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page interactive</title>
+    <link rel="stylesheet" href="act5.css">
+    <script src="main.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Ma page interactive</h1>
+  </header>
+
+  <nav>
+    <a href="#presentation">Présentation</a>
+    <a href="#media">Médias</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="content" id="presentation">
+    <p>Bonjour ! Je m'appelle <span style="color:red; font-weight:bold;">Sami</span> et j'adore créer des pages web.</p>
+    <div style="border:1px solid black; padding:10px;">
+      <p>Voici un petit bloc de texte dans un div stylisé.</p>
+    </div>
+  </div>
+
+  <div class="content" id="media">
+    <h2>Médias</h2>
+    <p>Écoute cette musique :</p>
+    <audio controls>
+      <source src="musique.mp3" type="audio/mpeg">
+      Ton navigateur ne supporte pas la balise audio.
+    </audio>
+
+    <p>Regarde cette vidéo :</p>
+    <video width="320" height="240" controls>
+      <source src="video.mp4" type="video/mp4">
+      Ton navigateur ne supporte pas la balise vidéo.
+    </video>
+  </div>
+
+  <div class="content" id="contact">
+    <h2>Contact</h2>
+    <form>
+      <label for="prenom">Ton prénom :</label>
+      <input type="text" id="prenom" name="prenom" placeholder="Ex: Sami" required maxlength="10">
+
+      <label for="age">Ton âge :</label>
+      <input type="number" id="age" name="age" min="1" max="18" required>
+
+      <label for="couleur">Ta couleur préférée :</label>
+      <select id="couleur" name="couleur" required>
+        <option value="">-- Choisis une couleur --</option>
+        <option value="rouge">Rouge</option>
+        <option value="bleu">Bleu</option>
+        <option value="vert">Vert</option>
+      </select>
+
+      <label for="message">Écris quelque chose sur toi :</label>
+      <textarea id="message" name="message" placeholder="Ex: J’aime les chats et je joue à Minecraft." required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sami | <a href="https://www.google.com" target="_blank">Mon site préféré</a></p>
+  </footer>
+
+</body>
+</html>

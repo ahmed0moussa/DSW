@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html  lang="fr">
+  <head>
+      <meta charset="UTF-8">
+    <title>Mon Super Formulaire !</title>
+    <script src="main.js"></script>
+  </head>
+  <body>
+
+    <h1>Bienvenue ! </h1>
+    <p>Remplis ce formulaire pour qu'on apprenne à te connaître !</p>
+
+    <form>
+
+      <!-- Nom -->
+      <label for="nom"><strong>Ton prénom :</strong></label><br>
+      <input type="text" id="nom" name="nom" placeholder="Ex: Sami"><br><br>
+
+      <!-- Âge -->
+      <label for="age"><strong>Ton âge :</strong></label><br>
+      <input type="number" id="age" name="age" min="1" max="18"><br><br>
+
+      <!-- Couleur préférée -->
+      <label for="couleur"><strong>Ta couleur préférée :</strong></label><br>
+      <select id="couleur" name="couleur">
+        <option value="" >-- Choisis une couleur --</option>
+        <option value="rouge"> Rouge</option>
+        <option value="bleu"> Bleu</option>
+        <option value="vert"> Vert</option>
+        <option value="jaune"> Jaune</option>
+        <option value="violet"> Violet</option>
+      </select><br><br>
+
+      <!-- Animal préféré (radio) -->
+      <label><strong>Quel est ton animal préféré ?</strong></label><br>
+      <input type="radio" id="chat" name="animal" value="chat">
+      <label for="chat"> Chat</label><br>
+
+      <input type="radio" id="chien" name="animal" value="chien">
+      <label for="chien"> Chien</label><br>
+
+      <input type="radio" id="lapin" name="animal" value="lapin">
+      <label for="lapin"> Lapin</label><br><br>
+
+      <!-- Activités préférées (checkbox) -->
+      <label><strong>Quelles sont tes activités préférées ?</strong></label><br>
+      <input type="checkbox" id="dessin" name="activite" value="dessin">
+      <label for="dessin"> Dessiner</label><br>
+
+      <input type="checkbox" id="jeux" name="activite" value="jeux">
+      <label for="jeux"> Jeux vidéo</label><br>
+
+      <input type="checkbox" id="sport" name="activite" value="sport">
+      <label for="sport"> Sport</label><br><br>
+
+      <!-- Parle-nous de toi (textarea) -->
+      <label for="description"><strong>Écris quelque chose sur toi  :</strong></label><br>
+      <textarea id="description" name="description" rows="4" cols="40" placeholder="Par exemple : J’aime les chats et je joue à Minecraft."></textarea><br><br>
+
+      <!-- Bouton envoyer -->
+      <button type="submit">Envoyer </button>
+
+    </form>
+
+    <p>Merci pour ta participation ! </p>
+
+  </body>
+</html>
