@@ -1,68 +1,71 @@
 <!DOCTYPE html>
-<html  lang="fr">
+<html lang="fr">
   <head>
-      <meta charset="UTF-8">
-    <title>Mon Super Formulaire !</title>
+    <meta charset="UTF-8">
+    <title>Activité 3</title>
     <script src="main.js"></script>
   </head>
   <body>
 
-    <h1>Bienvenue ! </h1>
-    <p>Remplis ce formulaire pour qu'on apprenne à te connaître !</p>
+    <h1 >Bienvenue sur ma page !</h1>
 
-    <form>
+    <!-- Tableau 1 : Emploi du temps -->
+    <h2 >Mon emploi du temps</h2>
+    <table border="1" >
+      <tr >
+        <th>Jour</th>
+        <th>08h - 09h</th>
+        <th>09h - 10h</th>
+        <th>10h - 11h</th>
+      </tr>
+      <tr>
+        <td>Lundi</td>
+        <td>Maths</td>
+        <td>Français</td>
+        <td>Sciences</td>
+      </tr>
+      <tr >
+        <td>Mardi</td>
+        <td>Histoire</td>
+        <td>Maths</td>
+        <td>Sport</td>
+      </tr>
+      <tr>
+        <td>Mercredi</td>
+        <td>Informatique</td>
+        <td>Français</td>
+        <td>Arts</td>
+      </tr>
+    </table>
 
-      <!-- Nom -->
-      <label for="nom"><strong>Ton prénom :</strong></label><br>
-      <input type="text" id="nom" name="nom" placeholder="Ex: Sami"><br><br>
+    <br><br>
 
-      <!-- Âge -->
-      <label for="age"><strong>Ton âge :</strong></label><br>
-      <input type="number" id="age" name="age" min="1" max="18"><br><br>
+    <!-- Tableau 2 : Jeux préférés -->
+    <h2 >Mes jeux préférés</h2>
+    <table border="1" >
+      <tr >
+        <th>Nom du jeu</th>
+        <th>Type</th>
+        <th>Image</th>
+      </tr>
+      <tr>
+        <td>minecraft</td>
+        <td>Électronique</td>
+        <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Minecraft_2024_cover_art.png/250px-Minecraft_2024_cover_art.png" width="100"></td>
+      </tr>
+      <tr >
+        <td>roblox</td>
+        <td>Électronique</td>
+        <td><img src="https://m.media-amazon.com/images/I/8142--n1fAL._UF1000,1000_QL80_.jpg" width="100"></td>
+      </tr>
+      <tr>
+        <td>GTA V</td>
+        <td>Électronique</td>
+        <td><img src="https://products.eneba.games/resized-products/s29Db6ZBVLneuD0t66qnYRamvGDP3p8chLz-3IomxcU_350x200_1x-0.jpeg" width="100"></td>
+      </tr>
+    </table>
 
-      <!-- Couleur préférée -->
-      <label for="couleur"><strong>Ta couleur préférée :</strong></label><br>
-      <select id="couleur" name="couleur">
-        <option value="" >-- Choisis une couleur --</option>
-        <option value="rouge"> Rouge</option>
-        <option value="bleu"> Bleu</option>
-        <option value="vert"> Vert</option>
-        <option value="jaune"> Jaune</option>
-        <option value="violet"> Violet</option>
-      </select><br><br>
-
-      <!-- Animal préféré (radio) -->
-      <label><strong>Quel est ton animal préféré ?</strong></label><br>
-      <input type="radio" id="chat" name="animal" value="chat">
-      <label for="chat"> Chat</label><br>
-
-      <input type="radio" id="chien" name="animal" value="chien">
-      <label for="chien"> Chien</label><br>
-
-      <input type="radio" id="lapin" name="animal" value="lapin">
-      <label for="lapin"> Lapin</label><br><br>
-
-      <!-- Activités préférées (checkbox) -->
-      <label><strong>Quelles sont tes activités préférées ?</strong></label><br>
-      <input type="checkbox" id="dessin" name="activite" value="dessin">
-      <label for="dessin"> Dessiner</label><br>
-
-      <input type="checkbox" id="jeux" name="activite" value="jeux">
-      <label for="jeux"> Jeux vidéo</label><br>
-
-      <input type="checkbox" id="sport" name="activite" value="sport">
-      <label for="sport"> Sport</label><br><br>
-
-      <!-- Parle-nous de toi (textarea) -->
-      <label for="description"><strong>Écris quelque chose sur toi  :</strong></label><br>
-      <textarea id="description" name="description" rows="4" cols="40" placeholder="Par exemple : J’aime les chats et je joue à Minecraft."></textarea><br><br>
-
-      <!-- Bouton envoyer -->
-      <button type="submit">Envoyer </button>
-
-    </form>
-
-    <p>Merci pour ta participation ! </p>
+    <p >Merci d’avoir visité ma page !</p>
 
   </body>
 </html>

@@ -2,76 +2,71 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Activité 6 - CSS Texte, Fonts, Liens et Listes</title>
-
-  <!-- Importer Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="act7.css">
-  <script src="main.js"></script>
+  <title>Activité 7</title>
+    <!-- <link rel="stylesheet" href="act4.css"> -->
+     <script src="main.js"></script>
 </head>
 <body>
 
-  <h1>Bienvenue dans l'Activité 6 🎉</h1>
-  <p class="intro">Aujourd'hui, on va apprendre à décorer du texte, utiliser différentes polices, styliser des liens et rendre nos listes plus jolies !</p>
+  <header>
+    <h1>Ma page interactive</h1>
+  </header>
 
-  <!-- CSS TEXT -->
-  <h2>1. Le Texte</h2>
-  <p class="texte-color">Ce texte est rouge avec une ombre.</p>
-  <p class="texte-center">Ce texte est centré et plus grand.</p>
-  <p class="texte-espace">Ce texte a plus d'espace entre les lettres et les mots.</p>
-  <p class="texte-indent">Ce paragraphe commence avec une indentation (petit retrait au début de la ligne).</p>
+  <nav>
+    <a href="#presentation">Présentation</a>
+    <a href="#media">Médias</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- CSS FONTS -->
-  <h2>2. Les Polices (Fonts)</h2>
-  <p class="font1">Ceci est écrit avec la police "Comic Neue" (drôle et amusante).</p>
-  <p class="font2">Ceci est écrit avec "Roboto" (claire et moderne).</p>
-  <p class="font3">Ceci est écrit avec "Pacifico" (comme de l'écriture manuscrite).</p>
+  <div class="content" id="presentation">
+    <p>Bonjour ! Je m'appelle <span style="color:red; font-weight:bold;">Sami</span> et j'adore créer des pages web.</p>
+    <div style="border:1px solid black; padding:10px;">
+      <p>Voici un petit bloc de texte dans un div stylisé.</p>
+    </div>
+  </div>
 
-  <!-- CSS LINKS -->
-  <h2>3. Les Liens</h2>
-  <p>
-    <a href="https://www.google.com" target="_blank">Aller sur Google</a><br>
-    <a href="https://www.wikipedia.org" target="_blank">Visiter Wikipédia</a>
-  </p>
-  <p class="note">Survole les liens avec ta souris (hover), clique dessus (active), puis reviens pour voir l'effet "visited".</p>
+  <div class="content" id="media">
+    <h2>Médias</h2>
+    <p>Écoute cette musique :</p>
+    <audio controls>
+      <source src="musique.mp3" type="audio/mpeg">
+      Ton navigateur ne supporte pas la balise audio.
+    </audio>
 
-  <!-- CSS LISTS -->
-  <h2>4. Les Listes</h2>
+    <p>Regarde cette vidéo :</p>
+    <video width="320" height="240" controls>
+      <source src="video.mp4" type="video/mp4">
+      Ton navigateur ne supporte pas la balise vidéo.
+    </video>
+  </div>
 
-  <h3>Liste simple (ul)</h3>
-  <ul class="liste-simple">
-    <li>Pomme</li>
-    <li>Banane</li>
-    <li>Orange</li>
-  </ul>
+  <div class="content" id="contact">
+    <h2>Contact</h2>
+    <form>
+      <label for="prenom">Ton prénom :</label>
+      <input type="text" id="prenom" name="prenom" placeholder="Ex: Sami" required maxlength="10">
 
-  <h3>Liste carrée</h3>
-  <ul class="liste-carree">
-    <li>Maths</li>
-    <li>Français</li>
-    <li>Sciences</li>
-  </ul>
+      <label for="age">Ton âge :</label>
+      <input type="number" id="age" name="age" min="1" max="18" required>
 
-  <h3>Liste numérotée (ol)</h3>
-  <ol class="liste-num">
-    <li>Se réveiller</li>
-    <li>Prendre le petit-déjeuner</li>
-    <li>Aller à l’école</li>
-  </ol>
-    <h3>Liste alphabétique (a, b, c...)</h3>
-  <ol class="liste-alpha">
-    <li>Premier choix</li>
-    <li>Deuxième choix</li>
-    <li>Troisième choix</li>
-  </ol>
+      <label for="couleur">Ta couleur préférée :</label>
+      <select id="couleur" name="couleur" required>
+        <option value="">-- Choisis une couleur --</option>
+        <option value="rouge">Rouge</option>
+        <option value="bleu">Bleu</option>
+        <option value="vert">Vert</option>
+      </select>
 
-  <h3>Liste stylisée (couleur + spacing)</h3>
-  <ul class="liste-stylisee">
-    <li>Lundi</li>
-    <li>Mardi</li>
-    <li>Mercredi</li>
-  </ul>
+      <label for="message">Écris quelque chose sur toi :</label>
+      <textarea id="message" name="message" placeholder="Ex: J’aime les chats et je joue à Minecraft." required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sami | <a href="https://www.google.com" target="_blank">Mon site préféré</a></p>
+  </footer>
 
 </body>
 </html>

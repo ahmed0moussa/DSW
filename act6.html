@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Activité 5 - Box Model Étendu</title>
-  <link rel="stylesheet" href="act6.css">
-  <script src="main.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Activité 6</title>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header style="border: 2px solid red; margin:2px">
+      <h1>Activité 4</h1>
+      <p>Bienvenue dans ma nouvelle activité</p>
+    </header>
 
-  <h1>Explorons le Box Model</h1>
+    <nav style="border: 2px solid yellow; margin:2px;">
+      <a href="#">Accueil</a> |
+      <a href="#">À propos</a> |
+      <a href="#">Contact</a>
+    </nav>
 
-  <!-- Boîte 1 -->
-  <div class="boite">
-    <h2>Chat joueur</h2>
-    <img src="https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg" alt="Chat mignon">
-    <p>Ce chat adore courir et sauter partout. On voit ici comment le padding et la border créent de l'espace autour du texte et de l'image.</p>
-  </div>
+    <main style="border: 2px solid blue; margin:2px;">
+      <aside style="border: 2px solid black; margin:2px;">
+        <h3>Menu</h3>
+        <ul>
+          <li>Option A</li>
+          <li>Option B</li>
+          <li>Option C</li>
+        </ul>
+      </aside>
 
-  <!-- Boîte 2 -->
-  <div class="boite rouge">
-    <h2>Chat endormi</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg" alt="Chat endormi">
-    <p>Cette boîte montre une bordure rouge épaisse et un padding plus grand pour mieux séparer le contenu du bord.</p>
-  </div>
+      <section>
+        <h2>Contenu principal</h2>
+        <p>Voici un petit texte pour illustrer l’activité.</p>
 
-  <!-- Boîte 3 -->
-  <div class="boite verte">
-    <h2>Chat curieux</h2>
-    <img src="https://static.vecteezy.com/ti/photos-gratuite/p1/16281181-un-chat-curieux-marche-prudemment-sous-la-chaise-et-regarde-avec-enthousiasme-avec-ses-yeux-verts-photo.jpg" alt="Chat curieux">
-    <p>La largeur est différente ici et la border plus fine. Essayez de comparer avec les autres boîtes pour comprendre l'effet du box model.</p>
-  </div>
+        <h3>Liste de choses à faire</h3>
+        <ul>
+          <li>Apprendre HTML</li>
+          <li>Créer une page web</li>
+          <li>Ajouter des images et des tableaux</li>
+        </ul>
 
-</body>
+        <h3>Petit tableau</h3>
+        <table border="1">
+          <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Ville</th>
+          </tr>
+          <tr>
+            <td>Sami</td>
+            <td>20</td>
+            <td>Tunis</td>
+          </tr>
+          <tr>
+            <td>Ali</td>
+            <td>22</td>
+            <td>Sfax</td>
+          </tr>
+        </table>
+
+        <h3>Image exemple</h3>
+        <img src="https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg" alt="Chat mignon" width="300">
+      </section>
+    </main>
+
+    <footer style="border: 2px solid green; margin:2px;">
+      <p>© 2025 - Activité 4</p>
+    </footer>
+  </body>
 </html>

@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://plus.unsplash.com/premium_photo-1723867356920-8e05009f3499?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHJvcGljYWwlMjBiZWFjaHxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000') no-repeat center center fixed;
+    background-size: cover;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+.center-block { display: block; margin: 20px auto; }
+.shadow { box-shadow: 5px 5px 15px rgba(0,0,0,0.5); }
+.rounded { border-radius: 8px; }
+.circle { border-radius: 50%; }
+.thumbnail { border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px; }
+.thumbnail:hover { box-shadow: 0 0 2px 1px rgba(0,140,186,0.5); }
+.responsive { max-width: 100%; height: auto; }
+.polaroid { width: 80%; background-color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19); margin: 20px auto; }
+.polaroid img { width: 100%; }
+.polaroid .caption { text-align: center; padding: 10px; }
+.opacity50 { opacity: 0.5; }
+.opacity20 { opacity: 0.2; }
+.flex-center { display: flex; justify-content: center; align-items: center; height: 300px; border: 1px solid #333; }
+.blur { filter: blur(4px); }
+.brightness { filter: brightness(150%); }
+.contrast { filter: contrast(50%); }
+.drop-shadow { filter: drop-shadow(5px 5px 5px gray); }
+.grayscale { filter: grayscale(80%); }
+.hue { filter: hue-rotate(90deg); }
+.invert { filter: invert(100%); }
+.saturate { filter: saturate(200%); }
+.sepia { filter: sepia(1); }
+.clip-circle { clip-path: circle(50%); }
+.clip-circle-right { clip-path: circle(50% at right); }
+.clip-ellipse { clip-path: ellipse(50% 35%); }
+.clip-ellipse-right { clip-path: ellipse(50% 35% at right); }
+.clip-polygon { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+.hint { font-size: 0.9em; color: #555; margin-bottom: 5px; }

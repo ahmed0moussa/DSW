@@ -1,0 +1,151 @@
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: rgba(255,255,255,0.95);
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Hint style */
+.hint {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Nav Dropdown */
+nav {
+    background-color:#333; 
+    padding:10px; 
+    border-radius:5px; 
+    margin-bottom:20px;
+}
+nav ul {
+    list-style:none; 
+    margin:0; 
+    padding:0; 
+    display:flex;
+}
+nav ul li {
+    position:relative; 
+    margin-right:20px;
+}
+nav ul li a {
+    color:white; 
+    text-decoration:none; 
+    padding:8px 12px; 
+    display:block;
+}
+nav ul li ul {
+    display:none; 
+    position:absolute; 
+    top:100%; 
+    left:0; 
+    background-color:#f9f9f9; 
+    padding:10px 0; 
+    min-width:150px; 
+    box-shadow:0 8px 16px rgba(0,0,0,0.2); 
+    list-style:none;
+}
+nav ul li:hover > ul {
+    display:block;
+}
+nav ul li ul li a {
+    color:black; 
+    padding:8px 12px; 
+    display:block; 
+    text-decoration:none;
+}
+nav ul li ul li:hover {
+    background-color: #ddd;
+}
+nav ul li ul li a:hover {
+    color:#333;
+}
+
+/* 2D Transforms */
+.transform-box {
+    width: 100px;
+    height: 100px;
+    background-color: #ff6347;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Transitions */
+.transition-box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 20px auto;
+    transition: width 2s;
+}
+.transition-box:hover {
+    width: 300px;
+}
+
+/* Buttons */
+.button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+.button1 { background-color: #04AA6D; }
+.button2 { background-color: #008CBA; }
+.button3 { background-color: #f44336; }
+.button4 { background-color: #e7e7e7; color: black; }
+.button5 { background-color: #555555; }
+.button1:hover { background-color: #039f5b; }
+.button2:hover { background-color: #007bb5; }
+.button3:hover { background-color: #d7372e; }
+.button4:hover { background-color: #dcdcdc; }
+.button5:hover { background-color: #444444; }
+
+/* Button groups */
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+.btn-group.vertical {
+    flex-direction: column;
+}
+.btn-group .button:not(:last-child) {
+    border-right: none;
+}
+.disabledbtn {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Images */
+.img-example {
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+    border-radius: 8px;
+}
+
+/* Hover effect pour image */
+.hover-img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.hover-img:hover {
+    transform: scale(1.2);
+    filter: brightness(120%);
+}
