@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.12);
+}
+
+.resource-box {
+    background-color: #ffdddd;
+    border-left: 6px solid #ff9500;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hint {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.grid-container {
+    display: grid;
+    gap: 12px;
+    background: #288b8b;
+    padding: 12px;
+    margin: 20px 0 35px;
+    border-radius: 8px;
+}
+
+.item {
+    background: #f1f1f1;
+    padding: 15px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.item img {
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.grid-3-columns {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-card-layout {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-areas {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "menu content aside"
+        "footer footer footer";
+}
+
+.header { grid-area: header; background: #ffe082; }
+.menu { grid-area: menu; background: #b2dfdb; }
+.content { grid-area: content; background: #c5cae9; }
+.aside { grid-area: aside; background: #ffcdd2; }
+.footer { grid-area: footer; background: #dcedc8; }
+
+.span-two {
+    grid-column: span 2;
+    background: #c8e6c9;
+}
+
+.span-row {
+    grid-row: span 2;
+    background: #ffecb3;
+}
+
+@media (max-width: 700px) {
+    .grid-3-columns,
+    .grid-card-layout,
+    .grid-areas {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-areas {
+        grid-template-areas:
+            "header"
+            "menu"
+            "content"
+            "aside"
+            "footer";
+    }
+
+    .span-two,
+    .span-row {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}

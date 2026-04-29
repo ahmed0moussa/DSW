@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activité 15</title>
+<link rel="stylesheet" href="act15.css">
+<script src="main.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Responsive Design Activity</h1>
+
+    <div class="resource-box">
+        utilisez <a href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank">W3Schools</a>
+    </div>
+
+    <h2>Media Queries</h2>
+    <p class="hint">Hint : @media permet de changer le design selon la largeur de l'ecran.</p>
+    <div class="size-box">
+        <span class="mobile-text">Mobile</span>
+        <span class="tablet-text">Tablette</span>
+        <span class="desktop-text">Desktop</span>
+    </div>
+
+    <div class="demo-section">
+        <h2>Navbar responsive</h2>
+        <p class="hint">Hint : sur mobile, flex-direction: column place les liens l'un sous l'autre.</p>
+        <nav class="navbar">
+            <div class="logo">Mon Site</div>
+            <div class="links">
+                <a href="#">Accueil</a>
+                <a href="#">Cours</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="demo-section">
+        <h2>Image et texte responsive</h2>
+        <p class="hint">Hint : une carte peut passer de row a column sur les petits ecrans.</p>
+        <div class="responsive-card">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Ordinateur">
+            <p>
+                Ce bloc montre comment adapter un contenu. Sur desktop, l'image et le texte sont cote a cote.
+                Sur mobile, ils deviennent l'un sous l'autre pour rester faciles a lire.
+            </p>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Cards responsive avec Grid</h2>
+        <p class="hint">Hint : changez grid-template-columns dans @media pour afficher 3, 2 ou 1 colonne.</p>
+        <div class="cards">
+            <div class="card">HTML</div>
+            <div class="card">CSS</div>
+            <div class="card">JavaScript</div>
+            <div class="card">Flexbox</div>
+            <div class="card">Grid</div>
+            <div class="card">Responsive</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Image responsive</h2>
+        <p class="hint">Hint : width: 100% et max-width gardent l'image lisible sans depasser son parent.</p>
+        <img class="responsive-image" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Classe">
+    </div>
+</div>
+
+</body>
+</html>

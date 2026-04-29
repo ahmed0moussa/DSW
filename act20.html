@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activité 20</title>
+<link rel="stylesheet" href="act20.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Mini Project : FAQ Accordion</h1>
+
+    <div class="resource-box">
+        utilisez <a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank">W3Schools</a>
+    </div>
+
+    <p class="hint">Objectif : creer une page FAQ interactive avec HTML et CSS seulement, sans JavaScript.</p>
+
+    <div class="faq-page">
+        <div class="intro-card">
+            <h2>Centre d'aide</h2>
+            <p>
+                Cette page aide les visiteurs a trouver des reponses rapidement.
+                Cliquez sur une question pour afficher la reponse.
+            </p>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Aide web">
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <input type="checkbox" id="q1">
+                <label class="accordion-title" for="q1">
+                    Comment creer une page web ?
+                    <span>+</span>
+                </label>
+                <div class="accordion-content">
+                    Commencez avec une structure HTML : header, main, sections et footer. Ensuite ajoutez le style avec CSS.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="q2">
+                <label class="accordion-title" for="q2">
+                    Pourquoi utiliser CSS ?
+                    <span>+</span>
+                </label>
+                <div class="accordion-content">
+                    CSS permet de changer les couleurs, les tailles, les espacements, les images, les animations et le responsive.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="q3">
+                <label class="accordion-title" for="q3">
+                    Comment rendre la page responsive ?
+                    <span>+</span>
+                </label>
+                <div class="accordion-content">
+                    Utilisez width en pourcentage, max-width, grid ou flexbox, puis ajoutez @media pour les petits ecrans.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="q4">
+                <label class="accordion-title" for="q4">
+                    C'est quoi le checkbox trick ?
+                    <span>+</span>
+                </label>
+                <div class="accordion-content">
+                    On cache un input checkbox, puis on utilise input:checked en CSS pour afficher ou cacher un contenu.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-steps">
+        <div class="step">
+            <h3>1. Structure</h3>
+            <p>Creer une intro-card et plusieurs accordion-item avec input, label et content.</p>
+        </div>
+        <div class="step">
+            <h3>2. Style</h3>
+            <p>Ajouter grid, colors, borders, padding, border-radius et transitions.</p>
+        </div>
+        <div class="step">
+            <h3>3. Bonus</h3>
+            <p>Changer les questions, ajouter une image et adapter la page pour mobile.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

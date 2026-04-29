@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f6f9;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.12);
+}
+
+.resource-box {
+    background-color: #ffdddd;
+    border-left: 6px solid #ff9500;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hint {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.project-preview {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #dff3ef, #f8f0d8);
+    border-radius: 8px;
+}
+
+.profile-card {
+    width: 320px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+}
+
+.card-header {
+    background: #288b8b;
+    color: white;
+    padding: 25px 15px 45px;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin-top: -45px;
+    background: white;
+}
+
+.card-body {
+    padding: 15px 20px 25px;
+}
+
+.card-body h2 {
+    margin: 10px 0 5px;
+}
+
+.job {
+    color: #288b8b;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.description {
+    line-height: 1.5;
+    color: #555;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 18px 0;
+}
+
+.skills span {
+    background: #eef3f8;
+    color: #263238;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.contact-button {
+    display: inline-block;
+    background: #263238;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.contact-button:hover {
+    background: #288b8b;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.step {
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #288b8b;
+}
+
+.step h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 700px) {
+    .project-preview {
+        padding: 15px;
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
