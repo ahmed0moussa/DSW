@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - FastDrop</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="../main.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a class="logo" href="index.html">FastDrop</a>
+      <div class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="services.html">Services</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="zones.html">Zones</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div>
+        <p class="tag">Demande de devis</p>
+        <h1>Contactez notre équipe</h1>
+        <p>
+          Remplissez ce formulaire pour demander une livraison, poser une question
+          ou proposer un partenariat avec FastDrop.
+        </p>
+
+        <div class="contact-info">
+          <p><strong>Email:</strong> contact@fastdrop.tn</p>
+          <p><strong>Téléphone:</strong> +216 22 000 000</p>
+          <p><strong>Adresse:</strong> Tunis, Tunisie</p>
+        </div>
+      </div>
+
+      <form>
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" placeholder="Votre nom">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="votre@email.com">
+
+        <label for="service">Service demandé</label>
+        <select id="service">
+          <option>Livraison express</option>
+          <option>Livraison restaurant</option>
+          <option>Livraison boutique</option>
+          <option>Livraison planifiée</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Décrivez votre besoin"></textarea>
+
+        <button type="submit">Envoyer la demande</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>FastDrop Delivery - Projet HTML/CSS multipage</p>
+  </footer>
+</body>
+</html>

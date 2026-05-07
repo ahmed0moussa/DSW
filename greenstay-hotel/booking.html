@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation - GreenStay</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="../main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">GreenStay</a>
+      <div class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="rooms.html">Chambres</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="about.html">À propos</a>
+        <a class="nav-button" href="booking.html">Réserver</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="booking-layout">
+      <div class="booking-text">
+        <p class="eyebrow">Réservation</p>
+        <h1>Préparez votre séjour.</h1>
+        <p>Cette page contient un formulaire complet: informations personnelles, type de chambre, dates et message.</p>
+        <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&w=900&q=80" alt="Hotel reception">
+      </div>
+
+      <form>
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" placeholder="Votre nom">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="votre@email.com">
+
+        <label for="room">Type de chambre</label>
+        <select id="room">
+          <option>Chambre Standard</option>
+          <option>Suite Jardin</option>
+          <option>Chambre Familiale</option>
+        </select>
+
+        <div class="form-row">
+          <div>
+            <label for="arrival">Arrivée</label>
+            <input type="date" id="arrival">
+          </div>
+          <div>
+            <label for="departure">Départ</label>
+            <input type="date" id="departure">
+          </div>
+        </div>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Vos demandes spéciales"></textarea>
+
+        <button type="submit">Envoyer la réservation</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>GreenStay Hotel - Projet HTML/CSS multipage</p>
+  </footer>
+</body>
+</html>
