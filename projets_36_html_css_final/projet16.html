@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet 16 - Site complet</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f9; }
+        header { background-color: #288B8B; color: white; padding: 25px; text-align: center; }
+        nav { background-color: #e0eeee; padding: 12px; text-align: center; }
+        nav a { margin: 10px; color: #155; font-weight: bold; text-decoration: none; }
+        section { padding: 20px; }
+        .galerie img { width: 180px; height: 120px; object-fit: cover; margin: 8px; }
+        footer { background-color: #288B8B; color: white; padding: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Voyage a Tunis</h1>
+        <p>Un mini site complet en HTML</p>
+    </header>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#presentation">Presentation</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="accueil">
+        <h2>Accueil</h2>
+        <p>Bienvenue sur ce site qui presente une destination de voyage.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sidi_Bou_Said%2C_Tunisia.jpg" alt="Sidi Bou Said" width="300">
+    </section>
+
+    <section id="presentation">
+        <h2>Presentation</h2>
+        <p>Tunis est une ville riche en histoire, en culture et en paysages magnifiques.</p>
+        <ul>
+            <li>Visiter la medina</li>
+            <li>Decouvrir Sidi Bou Said</li>
+            <li>Gouter la cuisine tunisienne</li>
+        </ul>
+    </section>
+
+    <section id="galerie" class="galerie">
+        <h2>Galerie</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sidi_Bou_Said%2C_Tunisia.jpg" alt="Sidi Bou Said">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Medina_of_Tunis.jpg" alt="Medina de Tunis">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Carthage_-_Antonine_Baths.jpg" alt="Carthage">
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <label for="nom">Nom :</label><br>
+            <input type="text" id="nom" name="nom"><br><br>
+            <label for="message">Message :</label><br>
+            <textarea id="message" name="message" rows="4" cols="40"></textarea><br><br>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Site de voyage - Projet HTML</p>
+    </footer>
+</body>
+</html>

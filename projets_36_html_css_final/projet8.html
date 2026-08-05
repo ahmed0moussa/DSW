@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet 8 - Formulaire</title>
+</head>
+<body>
+    <h1>Formulaire de presentation</h1>
+
+    <form>
+        <label for="prenom">Ton prenom :</label><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Ex: Sami"><br><br>
+
+        <label for="age">Ton age :</label><br>
+        <input type="number" id="age" name="age" min="1" max="18"><br><br>
+
+        <label for="couleur">Ta couleur preferee :</label><br>
+        <select id="couleur" name="couleur">
+            <option value="">-- Choisis une couleur --</option>
+            <option value="rouge">Rouge</option>
+            <option value="bleu">Bleu</option>
+            <option value="vert">Vert</option>
+        </select><br><br>
+
+        <p>Ton animal prefere :</p>
+        <input type="radio" id="chat" name="animal" value="chat">
+        <label for="chat">Chat</label><br>
+        <input type="radio" id="chien" name="animal" value="chien">
+        <label for="chien">Chien</label><br><br>
+
+        <p>Activites preferees :</p>
+        <input type="checkbox" id="dessin" name="activite" value="dessin">
+        <label for="dessin">Dessin</label><br>
+        <input type="checkbox" id="sport" name="activite" value="sport">
+        <label for="sport">Sport</label><br><br>
+
+        <label for="message">Message :</label><br>
+        <textarea id="message" name="message" rows="4" cols="40"></textarea><br><br>
+
+        <button type="submit">Envoyer</button>
+    </form>
+</body>
+</html>

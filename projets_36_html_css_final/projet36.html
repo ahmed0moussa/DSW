@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 20 - Mini site complet</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f9; color: #222; }
+        .retour { display: inline-block; margin: 18px; color: #288B8B; font-weight: bold; text-decoration: none; }
+        header, footer { background: #288B8B; color: white; text-align: center; padding: 25px; } nav { text-align: center; background: #e0eeee; padding: 12px; } nav a { margin: 10px; color: #155; font-weight: bold; text-decoration: none; } section { max-width: 950px; margin: auto; padding: 25px; } .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; } .cards div { background: white; padding: 20px; border-radius: 8px; } .gallery img { width: 48%; height: 220px; object-fit: cover; border-radius: 8px; } input { padding: 12px; } button { padding: 12px 18px; background: #288B8B; color: white; border: 0; } @media (max-width: 700px) { .cards { grid-template-columns: 1fr; } .gallery img { width: 100%; margin-bottom: 12px; } nav a { display: block; } }
+    </style>
+</head>
+<body>
+    <a class="retour" href="index.html">Retour a l'index</a>
+
+    <header><h1>Academie Web</h1><p>Un mini site complet HTML CSS</p></header>
+    <nav><a href="#accueil">Accueil</a><a href="#cours">Cours</a><a href="#galerie">Galerie</a><a href="#contact">Contact</a></nav>
+    <section id="accueil"><h2>Accueil</h2><p>Bienvenue dans notre academie pour apprendre le web.</p></section>
+    <section id="cours" class="cards"><div><h3>HTML</h3><p>Structure</p></div><div><h3>CSS</h3><p>Design</p></div><div><h3>Responsive</h3><p>Adaptation mobile</p></div></section>
+    <section id="galerie" class="gallery"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80" alt="Code"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80" alt="Ordinateur"></section>
+    <section id="contact"><h2>Contact</h2><input type="email" placeholder="Votre email"><button>Envoyer</button></section>
+    <footer>Academie Web - 2026</footer>
+</body>
+</html>

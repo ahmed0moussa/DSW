@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet 15 - Mini site de club</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f9; }
+        header, footer { background-color: #288B8B; color: white; padding: 20px; text-align: center; }
+        nav { background-color: #e0eeee; padding: 12px; text-align: center; }
+        nav a { margin: 10px; color: #155; text-decoration: none; font-weight: bold; }
+        section { padding: 20px; }
+        .carte { background-color: white; border: 1px solid #ccc; padding: 15px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Club Web Junior</h1>
+        <p>Apprendre, creer et partager</p>
+    </header>
+
+    <nav>
+        <a href="#presentation">Presentation</a>
+        <a href="#activites">Activites</a>
+        <a href="#horaires">Horaires</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="presentation">
+        <h2>Presentation</h2>
+        <p>Le Club Web Junior aide les eleves a decouvrir HTML et la creation de sites web.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Ordinateur" width="160">
+    </section>
+
+    <section id="activites">
+        <h2>Activites</h2>
+        <div class="carte"><h3>HTML</h3><p>Creer des pages web simples.</p></div>
+        <div class="carte"><h3>CSS</h3><p>Ajouter des couleurs et des mises en page.</p></div>
+        <div class="carte"><h3>Projets</h3><p>Realiser un mini site complet.</p></div>
+    </section>
+
+    <section id="horaires">
+        <h2>Horaires</h2>
+        <table border="1">
+            <tr><th>Jour</th><th>Heure</th><th>Activite</th></tr>
+            <tr><td>Lundi</td><td>14h</td><td>HTML</td></tr>
+            <tr><td>Mercredi</td><td>15h</td><td>CSS</td></tr>
+        </table>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Votre nom">
+            <input type="email" placeholder="Votre email">
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Club Web Junior - 2026</p>
+    </footer>
+</body>
+</html>

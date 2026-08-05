@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet 14 - Textes, liens et listes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .texte-color {
+            color: red;
+            text-shadow: 1px 1px 2px gray;
+        }
+
+        .texte-center {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .texte-espace {
+            letter-spacing: 2px;
+            word-spacing: 8px;
+        }
+
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        .liste-carree {
+            list-style-type: square;
+        }
+
+        .liste-alpha {
+            list-style-type: lower-alpha;
+        }
+    </style>
+</head>
+<body>
+    <h1>Styles de texte, liens et listes</h1>
+
+    <h2>Le texte</h2>
+    <p class="texte-color">Ce texte est rouge avec une ombre.</p>
+    <p class="texte-center">Ce texte est centre et plus grand.</p>
+    <p class="texte-espace">Ce texte a plus d'espace entre les mots.</p>
+
+    <h2>Les liens</h2>
+    <p><a href="https://www.google.com" target="_blank">Aller sur Google</a></p>
+    <p><a href="https://www.wikipedia.org" target="_blank">Visiter Wikipedia</a></p>
+
+    <h2>Les listes</h2>
+    <ul class="liste-carree">
+        <li>Maths</li>
+        <li>Francais</li>
+        <li>Sciences</li>
+    </ul>
+
+    <ol class="liste-alpha">
+        <li>Premier choix</li>
+        <li>Deuxieme choix</li>
+        <li>Troisieme choix</li>
+    </ol>
+</body>
+</html>
