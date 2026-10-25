@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 09 · Fonds, dégradés et images — Formation Web 13-18</title>
+  <title>Séance 09 · Le texte, les polices et les unités — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -20,12 +20,12 @@
 
   <div class="hero">
     <span class="module">Module 2 · Bases du CSS</span>
-    <h1><span>Séance 09</span> · Fonds, dégradés et images</h1>
-    <p>Aujourd'hui tu crées une bannière d'événement avec une image de fond, des dégradés de couleurs et des effets sur les images.</p>
+    <h1><span>Séance 09</span> · Le texte, les polices et les unités</h1>
+    <p>Un texte bien choisi rend une page belle et facile à lire. Aujourd'hui tu utilises Google Fonts, tu règles la taille du texte et tu donnes du style aux liens et aux listes.</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
-      <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : VS Code, Live Server, CSS Gradient, Unsplash</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, Google Fonts</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,181 +35,158 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Mettre une image de fond avec <code>background-image</code> et la régler avec <code>background-size</code> et <code>background-position</code>.</li><li>Créer des dégradés avec <code>linear-gradient</code> et <code>radial-gradient</code>.</li><li>Recadrer une image avec <code>object-fit</code> et lui appliquer des effets avec <code>opacity</code> et <code>filter</code>.</li>
+      <li>Changer la police avec <code>font-family</code> et ajouter une police de <strong>Google Fonts</strong>.</li><li>Régler la taille, la graisse, l'alignement et l'espacement du texte, avec les unités <code>px</code>, <code>rem</code> et <code>%</code>.</li><li>Styler les liens selon leur état (<code>:hover</code>…) et changer les puces des listes.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Chaque élément est une boîte : contenu, <code>padding</code>, <code>border</code>, <code>margin</code>. On met <code>box-sizing: border-box</code> partout.</p>
+    <p>Une règle CSS = <code>sélecteur { propriété: valeur; }</code>. On vise par balise <code>p</code>, par classe <code>.nom</code>, par id <code>#nom</code>.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>L'image de fond</h3>
-<ul><li><code>background-image: url("images/fond.jpg");</code> → l'image de fond.</li><li><code>background-size: cover;</code> → l'image couvre toute la boîte (sans se déformer).</li><li><code>background-position: center;</code> → on centre l'image.</li><li><code>background-repeat: no-repeat;</code> → l'image ne se répète pas.</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="banniere"&gt;&lt;h2&gt;Festival de Carthage&lt;/h2&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.banniere {
-  height: 160px;
-  background-image: url("https://picsum.photos/seed/festival/600/300");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 20px;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : L&#x27;image de fond" sandbox="" style="height:200px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.banniere {
-  height: 160px;
-  background-image: url(&quot;https://picsum.photos/seed/festival/600/300&quot;);
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 20px;
-}&lt;/style&gt;&lt;div class=&quot;banniere&quot;&gt;&lt;h2&gt;Festival de Carthage&lt;/h2&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Pour que le texte reste lisible sur une photo, ajoute une couleur sombre transparente par-dessus (voir notion 3).</p>
+<h3><span class="num">1</span>Les propriétés du texte</h3>
+<ul><li><code>font-size</code> : la taille (ex. <code>18px</code>).</li><li><code>font-weight</code> : la graisse (<code>normal</code>, <code>bold</code>, ou <code>100</code> à <code>900</code>).</li><li><code>font-style: italic</code> : l'italique.</li><li><code>text-align</code> : l'alignement (<code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code>).</li><li><code>text-transform: uppercase</code> : TOUT EN MAJUSCULES.</li><li><code>line-height</code> : l'espace entre les lignes (ex. <code>1.6</code>).</li><li><code>letter-spacing</code> : l'espace entre les lettres.</li><li><code>text-decoration: none</code> : enlève le soulignement.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h2&gt;Le match de samedi&lt;/h2&gt;
+&lt;p&gt;L'équipe a gagné 3 à 1 après un match très serré. Les supporters ont chanté jusqu'à la fin.&lt;/p&gt;
+&lt;p class="petit"&gt;Photo : club junior&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+p { font-size: 15px; line-height: 1.8; }
+.petit { font-size: 12px; font-style: italic; color: gray; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les propriétés du texte" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+p { font-size: 15px; line-height: 1.8; }
+.petit { font-size: 12px; font-style: italic; color: gray; }&lt;/style&gt;&lt;h2&gt;Le match de samedi&lt;/h2&gt;
+&lt;p&gt;L&#x27;équipe a gagné 3 à 1 après un match très serré. Les supporters ont chanté jusqu&#x27;à la fin.&lt;/p&gt;
+&lt;p class=&quot;petit&quot;&gt;Photo : club junior&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>Les dégradés</h3>
-<p>Un dégradé est une <strong>image</strong> créée par le CSS : on l'écrit donc dans <code>background-image</code> (ou <code>background</code>).</p>
-<p>Va sur <strong>cssgradient.io</strong> pour créer ton dégradé et copier le code.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="a"&gt;linear-gradient (gauche → droite)&lt;/div&gt;
-&lt;div class="b"&gt;linear-gradient en diagonale, 3 couleurs&lt;/div&gt;
-&lt;div class="c"&gt;radial-gradient (cercle)&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>div { height: 60px; margin: 6px; border-radius: 8px; color: white; padding: 8px; }
-.a { background: linear-gradient(to right, #288b8b, #e67e22); }
-.b { background: linear-gradient(135deg, #8e44ad, #3498db, #1abc9c); }
-.c { background: radial-gradient(circle, #f9d423, #e65c00); }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les dégradés" sandbox="" style="height:240px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;div { height: 60px; margin: 6px; border-radius: 8px; color: white; padding: 8px; }
-.a { background: linear-gradient(to right, #288b8b, #e67e22); }
-.b { background: linear-gradient(135deg, #8e44ad, #3498db, #1abc9c); }
-.c { background: radial-gradient(circle, #f9d423, #e65c00); }&lt;/style&gt;&lt;div class=&quot;a&quot;&gt;linear-gradient (gauche → droite)&lt;/div&gt;
-&lt;div class=&quot;b&quot;&gt;linear-gradient en diagonale, 3 couleurs&lt;/div&gt;
-&lt;div class=&quot;c&quot;&gt;radial-gradient (cercle)&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">2</span>Les polices et Google Fonts</h3>
+<p><code>font-family</code> choisit la police. On donne toujours une police <strong>de secours</strong> à la fin : <code>serif</code>, <code>sans-serif</code> ou <code>monospace</code>.</p>
+<p>Sur <strong>fonts.google.com</strong> : choisis une police → <strong>Get font</strong> → <strong>Get embed code</strong> → copie le <code>&lt;link&gt;</code> dans ton <code>&lt;head&gt;</code> et la ligne <code>font-family</code> dans ton CSS.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;head&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>body {
+  font-family: 'Poppins', sans-serif;
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pas plus de <strong>2 polices</strong> par site : une pour les titres, une pour le texte. Sinon ça devient illisible.</p>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>Image + voile sombre</h3>
-<p>On peut mettre <strong>plusieurs</strong> fonds l'un sur l'autre, séparés par une virgule. Le premier est au-dessus.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="hero"&gt;&lt;h2&gt;Concert ce samedi&lt;/h2&gt;&lt;p&gt;Le texte reste lisible !&lt;/p&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.hero {
-  height: 160px;
-  padding: 20px;
-  color: white;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
-    url("https://picsum.photos/seed/concert/600/300");
-  background-size: cover;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Image + voile sombre" sandbox="" style="height:200px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.hero {
-  height: 160px;
-  padding: 20px;
-  color: white;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
-    url(&quot;https://picsum.photos/seed/concert/600/300&quot;);
-  background-size: cover;
-}&lt;/style&gt;&lt;div class=&quot;hero&quot;&gt;&lt;h2&gt;Concert ce samedi&lt;/h2&gt;&lt;p&gt;Le texte reste lisible !&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">3</span>Les unités : px, rem, %</h3>
+<ul><li><code>px</code> : une taille <strong>fixe</strong> en pixels. Simple pour commencer.</li><li><code>rem</code> : relatif à la taille du texte de la page (16px par défaut). <code>2rem</code> = 32px. Pratique pour que tout s'agrandisse ensemble.</li><li><code>%</code> : un pourcentage de l'élément parent. <code>width: 50%</code> = la moitié du parent.</li><li><code>vw</code> / <code>vh</code> : un pourcentage de la largeur / hauteur de l'<strong>écran</strong>.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p class="a"&gt;16px&lt;/p&gt;
+&lt;p class="b"&gt;1.5rem = 24px&lt;/p&gt;
+&lt;p class="c"&gt;2rem = 32px&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.a { font-size: 16px; }
+.b { font-size: 1.5rem; }
+.c { font-size: 2rem; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les unités : px, rem, %" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.a { font-size: 16px; }
+.b { font-size: 1.5rem; }
+.c { font-size: 2rem; }&lt;/style&gt;&lt;p class=&quot;a&quot;&gt;16px&lt;/p&gt;
+&lt;p class=&quot;b&quot;&gt;1.5rem = 24px&lt;/p&gt;
+&lt;p class=&quot;c&quot;&gt;2rem = 32px&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>object-fit : recadrer sans déformer</h3>
-<p>Si tu donnes une largeur ET une hauteur à une image, elle peut être écrasée. <code>object-fit: cover</code> la <strong>recadre</strong> proprement.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;img src="https://picsum.photos/seed/velo/400/400" alt="Image déformée"&gt;
-&lt;img class="cover" src="https://picsum.photos/seed/velo/400/400" alt="Image recadrée"&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>img { width: 140px; height: 90px; margin: 4px; }
-.cover { object-fit: cover; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : object-fit : recadrer sans déformer" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;img { width: 140px; height: 90px; margin: 4px; }
-.cover { object-fit: cover; }&lt;/style&gt;&lt;img src=&quot;https://picsum.photos/seed/velo/400/400&quot; alt=&quot;Image déformée&quot;&gt;
-&lt;img class=&quot;cover&quot; src=&quot;https://picsum.photos/seed/velo/400/400&quot; alt=&quot;Image recadrée&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> À gauche l'image est écrasée, à droite elle est recadrée avec <code>object-fit: cover</code>.</p>
+<h3><span class="num">4</span>Les liens et leurs états</h3>
+<p>Un lien a plusieurs <strong>états</strong> : <code>:link</code> (pas encore visité), <code>:visited</code> (déjà visité), <code>:hover</code> (la souris est dessus), <code>:active</code> (on clique).</p>
+<p>L'ordre est important ! Retiens <strong>LoVe HAte</strong> : <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:active</code>. Sinon le <code>:hover</code> ne marche pas sur les liens visités.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;&lt;a href="#"&gt;Passe la souris sur moi&lt;/a&gt;&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>a:link { color: #288b8b; }
+a:visited { color: #8e44ad; }
+a:hover { color: #e67e22; text-decoration: none; }
+a:active { color: red; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les liens et leurs états" sandbox="" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;a:link { color: #288b8b; }
+a:visited { color: #8e44ad; }
+a:hover { color: #e67e22; text-decoration: none; }
+a:active { color: red; }&lt;/style&gt;&lt;p&gt;&lt;a href=&quot;#&quot;&gt;Passe la souris sur moi&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">5</span>opacity et filter</h3>
-<ul><li><code>opacity: 0.5;</code> → l'élément devient transparent à 50 %.</li><li><code>filter: grayscale(100%);</code> → noir et blanc.</li><li><code>filter: blur(3px);</code> → flou.</li><li><code>filter: brightness(130%);</code> → plus lumineux. Aussi : <code>sepia()</code>, <code>contrast()</code>, <code>hue-rotate()</code>…</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;img src="https://picsum.photos/seed/parc/300/200" alt="Normal"&gt;
-&lt;img class="gris" src="https://picsum.photos/seed/parc/300/200" alt="Gris"&gt;
-&lt;img class="flou" src="https://picsum.photos/seed/parc/300/200" alt="Flou"&gt;
-&lt;img class="sepia" src="https://picsum.photos/seed/parc/300/200" alt="Sépia"&gt;
-&lt;img class="transparent" src="https://picsum.photos/seed/parc/300/200" alt="Transparent"&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>img { width: 100px; height: 80px; object-fit: cover; margin: 3px; }
-.gris { filter: grayscale(100%); }
-.flou { filter: blur(3px); }
-.sepia { filter: sepia(100%); }
-.transparent { opacity: 0.4; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : opacity et filter" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;img { width: 100px; height: 80px; object-fit: cover; margin: 3px; }
-.gris { filter: grayscale(100%); }
-.flou { filter: blur(3px); }
-.sepia { filter: sepia(100%); }
-.transparent { opacity: 0.4; }&lt;/style&gt;&lt;img src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Normal&quot;&gt;
-&lt;img class=&quot;gris&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Gris&quot;&gt;
-&lt;img class=&quot;flou&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Flou&quot;&gt;
-&lt;img class=&quot;sepia&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Sépia&quot;&gt;
-&lt;img class=&quot;transparent&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Transparent&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">5</span>Styler les listes</h3>
+<p><code>list-style-type</code> change les puces : <code>disc</code>, <code>circle</code>, <code>square</code>, <code>decimal</code>, <code>upper-roman</code>, <code>none</code>…</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul class="carre"&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class="romain"&gt;&lt;li&gt;Un&lt;/li&gt;&lt;li&gt;Deux&lt;/li&gt;&lt;/ol&gt;
+&lt;ul class="aucun"&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;/ul&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.carre { list-style-type: square; color: #288b8b; }
+.romain { list-style-type: upper-roman; }
+.aucun { list-style-type: none; padding-left: 0; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Styler les listes" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.carre { list-style-type: square; color: #288b8b; }
+.romain { list-style-type: upper-roman; }
+.aucun { list-style-type: none; padding-left: 0; }&lt;/style&gt;&lt;ul class=&quot;carre&quot;&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class=&quot;romain&quot;&gt;&lt;li&gt;Un&lt;/li&gt;&lt;li&gt;Deux&lt;/li&gt;&lt;/ol&gt;
+&lt;ul class=&quot;aucun&quot;&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>list-style-type: none</code> est très utilisé pour faire des menus de navigation.</p>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:10</span><span>Échauffement : questions rapides sur le box model (on montre une boîte, ils donnent padding/margin).</span></li>
-<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>background-image</code>, <code>cover</code>, <code>center</code>. Démonstration avec une photo Unsplash.</span></li>
-<li><span class="temps">0:35 – 0:55</span><span>Dégradés avec cssgradient.io, voile sombre, <code>object-fit</code>, <code>filter</code>.</span></li>
-<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page d'un festival.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : la galerie avant / après.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan du module 2 en cours : mini-quiz couleurs / texte / boîte / fonds.</span></li>
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : CSS Diner niveaux 7 à 10, ou correction du défi Coolors.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : propriétés du texte, puis Google Fonts en direct au vidéoprojecteur.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Les unités <code>px</code> / <code>rem</code> / <code>%</code>, les états des liens (LoVe HAte), les listes.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : l'article de magazine.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la page « affiche de concert ».</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan et checklist.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · La bannière<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance09/index.html</code> avec un <code>&lt;header class="banniere"&gt;</code> qui contient le nom d'un festival ou d'un événement.</li>
-<li>Télécharge une photo sur Unsplash dans <code>images/</code> et mets-la en fond de la bannière.</li>
-<li>Règle la hauteur (<code>height: 300px</code>), <code>background-size: cover</code> et <code>background-position: center</code>.</li>
+<div class="exercice"><h3>Exercice 1 · Mon article<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance09/index.html</code> et <code>style.css</code> : un article sur un événement (match, concert, sortie scolaire) avec un titre, un chapeau (<code>class="chapeau"</code>), 3 paragraphes et une liste.</li>
+<li>Règle le <code>body</code> : taille <code>17px</code>, <code>line-height: 1.6</code>.</li>
+<li>Centre le <code>&lt;h1&gt;</code> et mets-le en majuscules avec un espacement de lettres.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Lisibilité et dégradés<span class="niveau moyen">moyen</span></h3><ol>
-<li>Ajoute un voile sombre avec un <code>linear-gradient</code> transparent devant la photo.</li>
-<li>Crée sur cssgradient.io un dégradé pour le fond du <code>&lt;footer&gt;</code>.</li>
-<li>Fais un bouton (un lien <code>&lt;a class="bouton"&gt;</code>) avec un fond en dégradé et des coins arrondis.</li>
+<div class="exercice"><h3>Exercice 2 · Google Fonts<span class="niveau moyen">moyen</span></h3><ol>
+<li>Choisis 2 polices sur Google Fonts : une originale pour les titres, une simple pour le texte.</li>
+<li>Ajoute le <code>&lt;link&gt;</code> dans le <code>&lt;head&gt;</code> (AVANT ton <code>style.css</code>).</li>
+<li>Applique la police des titres à <code>h1, h2</code> et l'autre au <code>body</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Les photos du programme<span class="niveau moyen">moyen</span></h3><ol>
-<li>Ajoute 3 images de la même taille (<code>width: 200px; height: 150px;</code>) avec <code>object-fit: cover</code>.</li>
-<li>Donne un <code>filter</code> différent à chaque image.</li>
-<li>Ajoute <code>opacity: 0.6</code> sur une image « Événement terminé ».</li>
+<div class="exercice"><h3>Exercice 3 · Liens et listes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute 3 liens dans ton article. Style les 4 états dans l'ordre LoVe HAte.</li>
+<li>Enlève le soulignement des liens, et remets-le seulement au <code>:hover</code>.</li>
+<li>Change les puces de ta liste (essaie <code>square</code>, puis <code>none</code> avec un emoji au début de chaque <code>&lt;li&gt;</code>).</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : La galerie avant / après</h2>
-<p>Crée 6 images en noir et blanc (<code>grayscale(100%)</code>). Cherche sur W3Schools comment utiliser <code>:hover</code> pour qu'elles redeviennent en couleur quand la souris passe dessus.</p>
-<p>Bonus : ajoute <code>transition: filter 0.5s;</code> pour que le changement soit doux (on étudiera les transitions à la séance 15).</p>
+<h2>🏆 Défi bonus : L'affiche de concert</h2>
+<p>Crée une affiche de concert en HTML/CSS : nom de l'artiste énorme (<code>5rem</code>), date, lieu, prix, liste des titres chantés.</p>
+<p>Utilise uniquement des propriétés de texte (pas d'image) : polices Google, tailles, majuscules, espacements, couleurs. Fais-la la plus belle possible !</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko"><code>background-image: images/fond.jpg;</code></div><div class="ok">Il faut <code>url("images/fond.jpg")</code></div></div>
-<div class="erreur"><div class="ko">Mon image de fond n'apparaît pas</div><div class="ok">La boîte a besoin d'une hauteur (<code>height</code>) ou d'un contenu</div></div>
-<div class="erreur"><div class="ko">L'image de fond se répète en mosaïque</div><div class="ok"><code>background-size: cover;</code> ou <code>background-repeat: no-repeat;</code></div></div>
-<div class="erreur"><div class="ko">Le chemin de l'image marche dans le HTML mais pas dans le CSS</div><div class="ok">Le chemin dans le CSS part du <strong>fichier CSS</strong> : vérifie s'il faut <code>../images/…</code></div></div>
+<div class="erreur"><div class="ko"><code>font-family: Poppins</code> mais la police ne change pas</div><div class="ok">J'ai oublié le <code>&lt;link&gt;</code> de Google Fonts dans le <code>&lt;head&gt;</code></div></div>
+<div class="erreur"><div class="ko"><code>font-size: 20</code> sans unité</div><div class="ok">Toujours une unité : <code>20px</code> ou <code>1.25rem</code></div></div>
+<div class="erreur"><div class="ko">Mon <code>:hover</code> ne marche pas sur les liens visités</div><div class="ok">Je respecte l'ordre LoVe HAte : link, visited, hover, active</div></div>
+<div class="erreur"><div class="ko">J'utilise 5 polices différentes</div><div class="ok">2 polices maximum par site</div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Arrière-plan (background)</dt><dd>Ce qui est derrière le contenu d'une boîte.</dd></div>
-<div><dt>Dégradé (gradient)</dt><dd>Un passage progressif d'une couleur à une autre.</dd></div>
-<div><dt>cover</dt><dd>L'image remplit toute la zone, quitte à être un peu coupée.</dd></div>
-<div><dt>Opacité</dt><dd>Le niveau de transparence : 0 = invisible, 1 = opaque.</dd></div>
-<div><dt>Filtre</dt><dd>Un effet appliqué à un élément : flou, gris, sépia…</dd></div>
+<div><dt>Police (font)</dt><dd>Le dessin des lettres.</dd></div>
+<div><dt>Graisse</dt><dd>L'épaisseur du texte (<code>font-weight</code>).</dd></div>
+<div><dt>Interligne</dt><dd>L'espace entre les lignes (<code>line-height</code>).</dd></div>
+<div><dt>px</dt><dd>Pixel : un petit point de l'écran. Unité fixe.</dd></div>
+<div><dt>rem</dt><dd>Unité relative à la taille du texte de base (16px).</dd></div>
+<div><dt>Pseudo-classe</dt><dd>Un état d'un élément, comme <code>:hover</code> (survolé).</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/css/css_background.asp" target="_blank"><span class="tag">W3Schools</span><br>Les arrière-plans</a></li>
-<li><a href="https://www.w3schools.com/css/css3_backgrounds.asp" target="_blank"><span class="tag">W3Schools</span><br>Plusieurs fonds et background-size</a></li>
-<li><a href="https://www.w3schools.com/css/css3_gradients.asp" target="_blank"><span class="tag">W3Schools</span><br>Les dégradés</a></li>
-<li><a href="https://www.w3schools.com/css/css3_object-fit.asp" target="_blank"><span class="tag">W3Schools</span><br>object-fit</a></li>
-<li><a href="https://www.w3schools.com/css/css_image_transparency.asp" target="_blank"><span class="tag">W3Schools</span><br>La transparence</a></li>
-<li><a href="https://www.w3schools.com/cssref/css3_pr_filter.php" target="_blank"><span class="tag">W3Schools</span><br>Les filtres CSS</a></li>
-<li><a href="https://cssgradient.io/" target="_blank"><span class="tag outil">Outil</span><br><strong>CSS Gradient</strong> : créer un dégradé et copier le code</a></li>
-<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+<li><a href="https://www.w3schools.com/css/css_text.asp" target="_blank"><span class="tag">W3Schools</span><br>Le texte en CSS</a></li>
+<li><a href="https://www.w3schools.com/css/css_font.asp" target="_blank"><span class="tag">W3Schools</span><br>Les polices</a></li>
+<li><a href="https://www.w3schools.com/css/css_font_google.asp" target="_blank"><span class="tag">W3Schools</span><br>Utiliser Google Fonts</a></li>
+<li><a href="https://www.w3schools.com/css/css_units.asp" target="_blank"><span class="tag">W3Schools</span><br>Les unités CSS</a></li>
+<li><a href="https://www.w3schools.com/css/css_link.asp" target="_blank"><span class="tag">W3Schools</span><br>Styler les liens</a></li>
+<li><a href="https://www.w3schools.com/css/css_list.asp" target="_blank"><span class="tag">W3Schools</span><br>Styler les listes</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais mettre une image de fond qui couvre toute la boîte.</li>
-<li>Je sais créer un dégradé.</li>
-<li>Je sais rendre un texte lisible sur une photo.</li>
-<li>Je sais recadrer une image avec <code>object-fit: cover</code>.</li>
-<li>Je connais au moins 3 filtres CSS.</li>
+<li>Je sais ajouter une police Google Fonts.</li>
+<li>J'utilise au maximum 2 polices.</li>
+<li>Je connais la différence entre <code>px</code> et <code>rem</code>.</li>
+<li>Je sais l'ordre des états des liens (LoVe HAte).</li>
+<li>Je sais enlever ou changer les puces d'une liste.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

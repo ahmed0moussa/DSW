@@ -5,127 +5,115 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  color: #22303c;
   background-color: #f4f6f9;
 }
 
-/* ---------- La navbar ---------- */
-nav {
-  display: flex;
-  justify-content: space-between;  /* logo à gauche, liens à droite */
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px 30px;
-  background-color: #22303c;
-}
-
-.logo {
-  color: #e67e22;
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-nav ul {
-  display: flex;                    /* un flex dans un flex */
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul a {
-  color: white;
-  text-decoration: none;
-}
-
-nav ul a:hover {
-  color: #e67e22;
-}
-
-/* ---------- La bannière ---------- */
-.banniere {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.banniere .texte,
-.banniere img {
-  flex: 1 1 300px;                  /* chacun la moitié, à la ligne si petit écran */
-}
-
-.banniere img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-.banniere h1 {
-  font-size: 2.2rem;
-  color: #288b8b;
-}
-
-.bouton {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: #e67e22;
-  color: white;
-  font-weight: bold;
+header {
+  padding: 30px 20px;
   text-align: center;
+  background-color: #1d6b6b;
+  color: white;
+}
+
+/* Le menu défile puis reste collé en haut */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px;
+  text-align: center;
+  background-color: #288b8b;
+}
+
+/* inline-block : dans la ligne mais avec un padding */
+nav a {
+  display: inline-block;
+  margin: 4px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background-color: white;
+  color: #1d6b6b;
+  font-weight: bold;
   text-decoration: none;
 }
 
-/* ---------- Les cartes ---------- */
-.cartes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto 40px;
-  padding: 0 20px;
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
+section {
+  min-height: 300px;
+}
+
+/* Parent relative… */
 .carte {
-  flex: 1 1 250px;
-  display: flex;
-  flex-direction: column;           /* pour pousser le bouton en bas */
-  padding: 15px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  display: inline-block;
+  width: 260px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  vertical-align: top;
 }
 
 .carte img {
+  display: block;
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
 }
 
-.carte .bouton {
-  margin-top: auto;                 /* tout en bas de la carte */
-}
-
-/* ---------- Le footer ---------- */
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 30px;
-  background-color: #22303c;
+/* …enfant absolute */
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: crimson;
   color: white;
+  font-size: 13px;
+  font-weight: bold;
 }
 
-footer .colonne {
-  flex: 1 1 200px;
+/* Le titre posé sur l'image */
+.titre-photo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-footer a {
-  color: #e67e22;
+.cachee {
+  visibility: hidden;   /* invisible mais garde sa place */
+}
+
+.etiquette {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background-color: #fdf0e3;
+  color: #8a4a12;
+  font-weight: bold;
+}
+
+/* Reste au même endroit de l'écran */
+.retour {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  padding: 12px 16px;
+  border-radius: 30px;
+  background-color: #e67e22;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }

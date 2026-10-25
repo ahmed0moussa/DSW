@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 13 · CSS Grid : la mise en page en grille — Formation Web 13-18</title>
+  <title>Séance 13 · Mini-projet CSS : j&#x27;habille ma page — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 <main class="page">
 
   <div class="hero">
-    <span class="module">Module 3 · Mise en page</span>
-    <h1><span>Séance 13</span> · CSS Grid : la mise en page en grille</h1>
-    <p>Flexbox aligne sur une ligne. CSS Grid organise en <strong>lignes ET colonnes</strong> à la fois. C'est parfait pour une galerie ou la structure d'une page entière. On commence en jardinant 🥕 !</p>
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 13</span> · Mini-projet CSS : j&#x27;habille ma page</h1>
+    <p>Tu reprends ta page « Mon univers » de la séance 7 et tu la transformes avec tout le CSS du module 2 : couleurs, polices, boîtes, fonds, positions. Le HTML ne change presque pas, seul le style change !</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
-      <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : Grid Garden, VS Code, Live Server</li>
+      <li>📶 Niveau : Débutant → Intermédiaire · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12, Coolors, Google Fonts, HTML Color Codes</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,174 +35,131 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Créer une grille avec <code>display: grid</code> et <code>grid-template-columns</code>, en utilisant l'unité <code>fr</code> et <code>repeat()</code>.</li><li>Faire prendre plusieurs cases à un élément avec <code>grid-column: span 2</code> et <code>grid-row</code>.</li><li>Dessiner la mise en page d'une page avec <code>grid-template-areas</code>.</li>
+      <li>Relier un fichier CSS à ma page et organiser ce fichier avec des commentaires.</li><li>Utiliser ensemble couleurs, polices, box model, fonds et positions sur une vraie page.</li><li>Trouver et corriger mes erreurs de CSS avec les outils de développement (F12).</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Flexbox : <code>display: flex</code> sur le parent, <code>justify-content</code>, <code>align-items</code>, <code>flex-wrap</code>, <code>gap</code>, <code>flex: 1 1 250px</code> sur les enfants.</p>
+    <p>Module 2 : sélecteurs (<code>p</code>, <code>.classe</code>, <code>#id</code>), couleurs HEX, Google Fonts, <code>rem</code>, box model (<code>padding</code>, <code>border</code>, <code>margin</code>, <code>box-sizing</code>), <code>background-image</code>, dégradés, <code>object-fit</code>, <code>display</code>, <code>position</code>.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>Créer une grille</h3>
-<p>Comme Flexbox, Grid se met sur le <strong>parent</strong>. On dit combien de colonnes on veut avec <code>grid-template-columns</code>.</p>
-<p>L'unité <code>fr</code> (fraction) partage l'espace libre : <code>1fr 1fr 1fr</code> = 3 colonnes égales. <code>1fr 2fr</code> = la 2e colonne est 2 fois plus large.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="grille"&gt;
-  &lt;div&gt;1fr&lt;/div&gt;&lt;div&gt;2fr&lt;/div&gt;&lt;div&gt;1fr&lt;/div&gt;
-  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.grille {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 8px;
-}
-.grille div { background: #288b8b; color: white; padding: 12px; border-radius: 6px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Créer une grille" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.grille {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 8px;
-}
-.grille div { background: #288b8b; color: white; padding: 12px; border-radius: 6px; }&lt;/style&gt;&lt;div class=&quot;grille&quot;&gt;
-  &lt;div&gt;1fr&lt;/div&gt;&lt;div&gt;2fr&lt;/div&gt;&lt;div&gt;1fr&lt;/div&gt;
-  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
-&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">1</span>Même HTML, nouveau style</h3>
+<p>Le HTML, c'est le <strong>contenu</strong>. Le CSS, c'est l'<strong>apparence</strong>. On peut complètement changer l'apparence d'une page <strong>sans toucher au contenu</strong> : c'est la grande force du CSS.</p>
+<p>Compare l'exemple de la séance 7 et celui d'aujourd'hui : c'est le même HTML, avec une seule ligne en plus dans le <code>&lt;head&gt;</code> !</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;head&gt;
+  …
+  &lt;link href="https://fonts.googleapis.com/css2?family=…" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>repeat() et auto-fit</h3>
-<p><code>repeat(4, 1fr)</code> = <code>1fr 1fr 1fr 1fr</code>.</p>
-<p>La formule magique : <code>repeat(auto-fit, minmax(150px, 1fr))</code> → <strong>autant de colonnes que possible</strong>, chacune d'au moins 150px. La grille devient responsive toute seule !</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="galerie"&gt;
-  &lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
-  &lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;&lt;div&gt;7&lt;/div&gt;&lt;div&gt;8&lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 8px;
-}
-.galerie div { background: #e67e22; color: white; padding: 20px 0; text-align: center; border-radius: 6px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : repeat() et auto-fit" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 8px;
-}
-.galerie div { background: #e67e22; color: white; padding: 20px 0; text-align: center; border-radius: 6px; }&lt;/style&gt;&lt;div class=&quot;galerie&quot;&gt;
-  &lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
-  &lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;&lt;div&gt;7&lt;/div&gt;&lt;div&gt;8&lt;/div&gt;
-&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Réduis la fenêtre de ton navigateur : le nombre de colonnes change automatiquement.</p>
+<h3><span class="num">2</span>Le cahier des charges du style</h3>
+<ul><li>Une <strong>palette</strong> de 4-5 couleurs choisie sur Coolors, écrite en HEX.</li><li>2 polices Google Fonts (titres / texte), tailles en <code>rem</code>, <code>line-height</code> confortable.</li><li><code>* { box-sizing: border-box; }</code> et un contenu centré avec <code>max-width</code> + <code>margin: 0 auto</code>.</li><li>Un <code>&lt;header&gt;</code> avec une <strong>image de fond</strong> + voile sombre (dégradé) pour lire le texte.</li><li>Un menu avec des liens en <code>inline-block</code> (comme des boutons) et <code>position: sticky</code>.</li><li>Les sections comme des <strong>cartes</strong> : fond blanc, <code>padding</code>, <code>border-radius</code>, <code>box-shadow</code>.</li><li>Images arrondies avec <code>object-fit</code>, un tableau stylé, un formulaire lisible.</li><li>Un badge ou une étiquette en <code>position: absolute</code>.</li></ul>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>Prendre plusieurs cases : span</h3>
-<p>Sur un <strong>enfant</strong> : <code>grid-column: span 2</code> → il prend 2 colonnes. <code>grid-row: span 2</code> → il prend 2 lignes.</p>
-<p>On peut aussi donner les lignes de début et de fin : <code>grid-column: 1 / 3</code> (de la ligne 1 à la ligne 3).</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="grille"&gt;
-  &lt;div class="large"&gt;span 2 colonnes&lt;/div&gt;
-  &lt;div class="haut"&gt;span 2 lignes&lt;/div&gt;
-  &lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.grille div { background: #e3f3f3; padding: 12px; border-radius: 6px; }
-.grille .large { grid-column: span 2; background: #fdf0e3; }
-.grille .haut { grid-row: span 2; background: #ede7f6; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Prendre plusieurs cases : span" sandbox="" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.grille div { background: #e3f3f3; padding: 12px; border-radius: 6px; }
-.grille .large { grid-column: span 2; background: #fdf0e3; }
-.grille .haut { grid-row: span 2; background: #ede7f6; }&lt;/style&gt;&lt;div class=&quot;grille&quot;&gt;
-  &lt;div class=&quot;large&quot;&gt;span 2 colonnes&lt;/div&gt;
-  &lt;div class=&quot;haut&quot;&gt;span 2 lignes&lt;/div&gt;
-  &lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
-&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">3</span>L'ordre pour écrire le CSS</h3>
+<p>Écris ton CSS <strong>du plus général au plus précis</strong>, et sépare les parties avec des commentaires :</p>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* 1. Base : toute la page */
+* { box-sizing: border-box; }
+body { … }
+
+/* 2. Texte : titres, paragraphes, liens */
+h1, h2 { … }
+
+/* 3. Les grandes zones */
+header { … }
+nav a { … }
+main section { … }
+
+/* 4. Les détails */
+table { … }
+.badge { … }</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Les commentaires CSS s'écrivent <code>/* … */</code> (pas <code>&lt;!-- --&gt;</code> comme en HTML).</p>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>grid-template-areas : dessiner sa page</h3>
-<p>On donne un <strong>nom</strong> à chaque zone avec <code>grid-area</code>, puis on « dessine » la grille avec des mots. Chaque ligne entre guillemets = une ligne de la grille.</p>
-<div class="code-demo"><div><span class="label">CSS</span><pre><code>.page {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas:
-    "haut  haut"
-    "menu  contenu"
-    "bas   bas";
-  gap: 6px;
-}
-header { grid-area: haut; }
-nav    { grid-area: menu; }
-main   { grid-area: contenu; }
-footer { grid-area: bas; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : grid-template-areas : dessiner sa page" sandbox="" style="height:220px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.page{display:grid;grid-template-columns:1fr 3fr;grid-template-areas:&quot;haut haut&quot; &quot;menu contenu&quot; &quot;bas bas&quot;;gap:6px}.page&gt;*{padding:14px;border-radius:6px;color:white;font-weight:bold}header{grid-area:haut;background:#e67e22}nav{grid-area:menu;background:#8e44ad}main{grid-area:contenu;background:#288b8b;min-height:80px}footer{grid-area:bas;background:#22303c}&lt;/style&gt;&lt;div class=&quot;page&quot;&gt;&lt;header&gt;header&lt;/header&gt;&lt;nav&gt;nav&lt;/nav&gt;&lt;main&gt;main&lt;/main&gt;&lt;footer&gt;footer&lt;/footer&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> <strong>Flexbox ou Grid ?</strong> Flexbox pour aligner sur <strong>une</strong> direction (un menu, une rangée de boutons). Grid pour une mise en page en <strong>2 dimensions</strong> (une galerie, la structure de la page).</p>
+<h3><span class="num">4</span>Déboguer avec F12</h3>
+<ul><li>Clic droit sur l'élément qui ne va pas → <strong>Inspecter</strong>.</li><li>Dans <strong>Styles</strong> : une propriété <strong>barrée</strong> = elle est remplacée par une autre règle plus précise ou écrite plus bas.</li><li>Un petit <strong>triangle jaune ⚠</strong> = la propriété ou la valeur est mal écrite.</li><li>Dans <strong>Computed</strong>, le schéma de la boîte montre les vraies valeurs de margin, border, padding.</li><li>Teste une valeur en direct dans F12, puis <strong>recopie-la</strong> dans ton fichier <code>style.css</code> (F12 ne l'enregistre pas).</li></ul>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:35</span><span><strong>Grid Garden</strong> (cssgridgarden.com/#fr) : niveaux 1 à 15.</span></li>
-<li><span class="temps">0:35 – 0:55</span><span>Synthèse : <code>grid-template-columns</code>, <code>fr</code>, <code>repeat</code>, <code>gap</code>, <code>span</code>, <code>grid-template-areas</code>. Comparaison Flexbox / Grid.</span></li>
-<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page magazine.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : finir Grid Garden ou la galerie « bento ».</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : « Flexbox ou Grid ? » sur 5 exemples de sites.</span></li>
+<li><span class="temps">0:00 – 0:15</span><span>Quiz du module 2 (10 questions) à partir du vocabulaire des séances 8 à 12.</span></li>
+<li><span class="temps">0:15 – 0:25</span><span>Présentation : on ouvre l'exemple de la séance 7 et celui de la séance 13 côte à côte. Même HTML, style différent !</span></li>
+<li><span class="temps">0:25 – 0:40</span><span>Exercice 1 : palette, polices, fichier CSS relié et organisé.</span></li>
+<li><span class="temps">0:40 – 1:35</span><span>Exercice 2 : on habille la page en suivant l'ordre de travail. Démonstration F12 quand un problème revient chez plusieurs élèves.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Exercice 3 : chasse aux erreurs avec F12. Défi pour les rapides.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Galerie : 3 ou 4 élèves montrent l'avant / après de leur page.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Ma première grille<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance13/index.html</code> avec une <code>&lt;div class="grille"&gt;</code> qui contient 9 cases numérotées.</li>
-<li>Mets <code>display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;</code>.</li>
-<li>Change en <code>1fr 2fr 1fr</code>, puis en <code>200px 1fr</code>. Observe.</li>
+<div class="exercice"><h3>Exercice 1 · Je prépare mon style<span class="niveau facile">facile</span></h3><ol>
+<li>Copie ton dossier <code>seance07</code> (page + images) et renomme la copie <code>seance13</code>.</li>
+<li>Choisis une palette sur Coolors et 2 polices sur Google Fonts. Note les codes.</li>
+<li>Crée <code>style.css</code>, relie-le, ajoute le <code>&lt;link&gt;</code> Google Fonts <strong>avant</strong> ton CSS.</li>
+<li>Écris les 4 commentaires de l'ordre de travail (base, texte, zones, détails).</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · La galerie responsive<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée une galerie de 8 photos (sur ton thème préféré) avec <code>object-fit: cover</code> et la même hauteur.</li>
-<li>Utilise <code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</code>.</li>
-<li>Fais prendre 2 colonnes et 2 lignes à la première photo avec <code>span</code>.</li>
+<div class="exercice"><h3>Exercice 2 · J'habille ma page<span class="niveau moyen">moyen</span></h3><ol>
+<li>Base : <code>box-sizing</code>, police et couleurs du <code>body</code>, <code>main</code> centré avec <code>max-width</code>.</li>
+<li>Texte : titres avec ta police de titre, liens avec leurs états (LoVe HAte).</li>
+<li>Header : image de fond <code>cover</code> + voile sombre, texte blanc centré.</li>
+<li>Menu : liens en <code>inline-block</code> avec <code>padding</code> et coins arrondis, menu en <code>position: sticky</code>.</li>
+<li>Sections en cartes : fond, <code>padding</code>, <code>border-radius</code>, <code>box-shadow</code>, <code>margin</code> entre elles.</li>
+<li>Détails : images arrondies, tableau (bordures, <code>padding</code>, en-tête coloré), formulaire, badge en <code>absolute</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · La page magazine<span class="niveau difficile">difficile</span></h3><ol>
-<li>Crée une page avec <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code> et <code>&lt;footer&gt;</code>.</li>
-<li>Dessine sur papier ta mise en page, puis écris-la avec <code>grid-template-areas</code>.</li>
-<li>Donne une couleur de fond différente à chaque zone pour vérifier le placement.</li>
+<div class="exercice"><h3>Exercice 3 · La chasse aux erreurs<span class="niveau moyen">moyen</span></h3><ol>
+<li>Avec F12, trouve une propriété barrée dans ta page et explique pourquoi elle est barrée.</li>
+<li>Change en direct dans F12 le <code>padding</code> de tes cartes jusqu'à ce qu'il te plaise, puis recopie la valeur dans <code>style.css</code>.</li>
+<li>Vérifie que ton menu reste en haut quand tu fais défiler la page.</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : La grille « bento »</h2>
-<p>Les sites modernes utilisent des grilles « bento » (comme une boîte à repas japonaise) : des cases de tailles différentes. Crée une grille de 4 colonnes avec 7 cases, certaines en <code>span 2</code> (largeur ou hauteur).</p>
-<p>Et termine les <strong>28 niveaux</strong> de Grid Garden !</p>
+<h2>🏆 Défi bonus : Deux thèmes, un seul HTML</h2>
+<p>Crée un deuxième fichier <code>style-nuit.css</code> avec un thème sombre (fond foncé, texte clair). Change juste le nom du fichier dans le <code>&lt;link&gt;</code> : toute ta page change d'ambiance !</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">Je mets <code>display: grid</code> sur les cases</div><div class="ok"><code>display: grid</code> va sur le <strong>parent</strong></div></div>
-<div class="erreur"><div class="ko"><code>grid-template-areas</code> ne marche pas</div><div class="ok">Chaque ligne doit avoir <strong>le même nombre</strong> de mots, et chaque zone un <code>grid-area</code></div></div>
-<div class="erreur"><div class="ko">J'écris <code>grid-template-column</code> sans s</div><div class="ok">C'est <code>grid-template-columns</code> (avec un s)</div></div>
-<div class="erreur"><div class="ko">Mes images n'ont pas la même hauteur</div><div class="ok">Je leur donne <code>height</code> + <code>object-fit: cover</code> et <code>width: 100%</code></div></div>
+<div class="erreur"><div class="ko">Mon CSS ne s'applique pas du tout</div><div class="ok">Vérifier le <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> et le nom exact du fichier</div></div>
+<div class="erreur"><div class="ko">Une propriété est barrée dans F12</div><div class="ok">Une autre règle plus précise (ou écrite plus bas) la remplace</div></div>
+<div class="erreur"><div class="ko">Le texte est illisible sur l'image du header</div><div class="ok">Ajouter un voile : <code>linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(…)</code></div></div>
+<div class="erreur"><div class="ko">Je modifie dans F12 et je perds tout en rechargeant</div><div class="ok">F12 sert à tester : je recopie la bonne valeur dans <code>style.css</code></div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Grid</dt><dd>Un système de CSS pour organiser en lignes et en colonnes.</dd></div>
-<div><dt>fr</dt><dd>Fraction de l'espace libre.</dd></div>
-<div><dt>repeat()</dt><dd>Répète une taille de colonne plusieurs fois.</dd></div>
-<div><dt>minmax()</dt><dd>Une taille minimum et une taille maximum.</dd></div>
-<div><dt>span</dt><dd>Faire prendre plusieurs cases à un élément.</dd></div>
-<div><dt>grid-area</dt><dd>Le nom d'une zone de la grille.</dd></div>
+<div><dt>Feuille de style</dt><dd>Le fichier <code>.css</code> qui contient le style du site.</dd></div>
+<div><dt>Palette</dt><dd>Les quelques couleurs choisies pour un site.</dd></div>
+<div><dt>Déboguer</dt><dd>Chercher et corriger les erreurs.</dd></div>
+<div><dt>Propriété barrée</dt><dd>Dans F12, une règle qui est remplacée par une autre.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://cssgridgarden.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Grid Garden</strong> : arrose ton jardin avec CSS Grid (28 niveaux)</a></li>
-<li><a href="https://www.w3schools.com/css/css_grid.asp" target="_blank"><span class="tag">W3Schools</span><br>CSS Grid : introduction</a></li>
-<li><a href="https://www.w3schools.com/css/css_grid_container.asp" target="_blank"><span class="tag">W3Schools</span><br>Le conteneur Grid</a></li>
-<li><a href="https://www.w3schools.com/css/css_grid_item.asp" target="_blank"><span class="tag">W3Schools</span><br>Les éléments Grid (span, grid-area)</a></li>
-<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank"><span class="tag">Guide</span><br><strong>CSS-Tricks</strong> : le guide illustré de CSS Grid (en anglais)</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Grids" target="_blank"><span class="tag">MDN</span><br>Les grilles (en français)</a></li>
+<li><a href="https://www.w3schools.com/css/css_howto.asp" target="_blank"><span class="tag">W3Schools</span><br>Relier un fichier CSS (révision)</a></li>
+<li><a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank"><span class="tag">W3Schools</span><br>La spécificité : quelle règle gagne ?</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/css" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : inspecter et modifier le CSS (en anglais)</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais créer une grille de 3 colonnes égales.</li>
-<li>Je comprends l'unité <code>fr</code>.</li>
-<li>Je sais faire une galerie responsive avec <code>auto-fit</code> et <code>minmax</code>.</li>
-<li>Je sais faire prendre 2 colonnes à un élément.</li>
-<li>Je sais choisir entre Flexbox et Grid.</li>
+<li>Mon CSS est dans un fichier séparé, organisé avec des commentaires.</li>
+<li>J'utilise une palette de couleurs cohérente et 2 polices maximum.</li>
+<li>Mon header a une image de fond lisible et mon menu reste en haut.</li>
+<li>Mes sections ressemblent à des cartes (padding, arrondi, ombre).</li>
+<li>Je sais trouver pourquoi une propriété est barrée dans F12.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

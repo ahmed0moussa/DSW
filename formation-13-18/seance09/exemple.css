@@ -1,75 +1,66 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
   color: #2c3e50;
+  background-color: #fafafa;
 }
 
-/* Image de fond + voile sombre pour lire le texte */
-.banniere {
-  height: 340px;
-  padding: 60px 20px;
+article {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #288b8b;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 3rem;
   text-align: center;
-  color: white;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)),
-    url("https://picsum.photos/seed/festival-scene/1200/600");
-  background-size: cover;
-  background-position: center;
+  text-transform: uppercase;
 }
 
-.banniere h1 {
-  font-size: 2.6rem;
-  margin: 0 0 10px;
+h2 {
+  font-size: 1.8rem;
 }
 
-/* Un bouton avec un dégradé */
-.bouton {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 24px;
-  border-radius: 30px;
-  color: white;
+.chapeau {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #e67e22;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Les états des liens dans l'ordre : LoVe HAte */
+a:link {
+  color: #288b8b;
   text-decoration: none;
   font-weight: bold;
-  background: linear-gradient(to right, #e67e22, #e74c3c);
 }
 
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+a:visited {
+  color: #8e44ad;
 }
 
-figure {
-  display: inline-block;
-  margin: 10px;
+a:hover {
+  color: #e67e22;
+  text-decoration: underline;
 }
 
-/* Même taille pour toutes les photos, sans déformation */
-.photos img {
-  width: 240px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 10px;
+a:active {
+  color: crimson;
 }
 
-.sepia {
-  filter: sepia(80%);
-}
-
-.termine {
-  filter: grayscale(100%);
-  opacity: 0.6;
-}
-
-footer {
-  padding: 20px;
-  text-align: center;
-  color: white;
-  background: linear-gradient(135deg, #288b8b, #1d6b6b);
+.credit {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
+  color: gray;
 }

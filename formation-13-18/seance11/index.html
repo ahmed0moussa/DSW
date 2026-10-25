@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 11 · Flexbox 1 : aligner facilement — Formation Web 13-18</title>
+  <title>Séance 11 · Fonds, dégradés et images — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 <main class="page">
 
   <div class="hero">
-    <span class="module">Module 3 · Mise en page</span>
-    <h1><span>Séance 11</span> · Flexbox 1 : aligner facilement</h1>
-    <p>Flexbox est l'outil le plus utilisé pour placer des éléments côte à côte, les centrer et les espacer. Aujourd'hui tu l'apprends en jouant avec des grenouilles 🐸 !</p>
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 11</span> · Fonds, dégradés et images</h1>
+    <p>Aujourd'hui tu crées une bannière d'événement avec une image de fond, des dégradés de couleurs et des effets sur les images.</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : Flexbox Froggy, VS Code, Live Server</li>
+      <li>🧰 Outils : VS Code, Live Server, CSS Gradient, Unsplash</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,130 +35,181 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Transformer une boîte en conteneur flex avec <code>display: flex</code>.</li><li>Aligner les éléments horizontalement avec <code>justify-content</code> et verticalement avec <code>align-items</code>.</li><li>Changer la direction (<code>flex-direction</code>), passer à la ligne (<code>flex-wrap</code>) et espacer (<code>gap</code>).</li>
+      <li>Mettre une image de fond avec <code>background-image</code> et la régler avec <code>background-size</code> et <code>background-position</code>.</li><li>Créer des dégradés avec <code>linear-gradient</code> et <code>radial-gradient</code>.</li><li>Recadrer une image avec <code>object-fit</code> et lui appliquer des effets avec <code>opacity</code> et <code>filter</code>.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p><code>display: block</code> = l'un sous l'autre, <code>inline-block</code> = côte à côte dans la ligne. <code>position</code> sert à placer un élément précis (badge, menu collant).</p>
+    <p>Chaque élément est une boîte : contenu, <code>padding</code>, <code>border</code>, <code>margin</code>. On met <code>box-sizing: border-box</code> partout.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>Le parent et les enfants</h3>
-<p>Flexbox se met sur le <strong>parent</strong> (le conteneur). Ses <strong>enfants directs</strong> se placent alors automatiquement <strong>en ligne</strong>.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="conteneur"&gt;
-  &lt;div&gt;1&lt;/div&gt;
-  &lt;div&gt;2&lt;/div&gt;
-  &lt;div&gt;3&lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.conteneur {
-  display: flex;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le parent et les enfants" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Les règles Flexbox s'écrivent sur le <strong>parent</strong>, pas sur les enfants. C'est l'erreur n°1 !</p>
+<h3><span class="num">1</span>L'image de fond</h3>
+<ul><li><code>background-image: url("images/fond.jpg");</code> → l'image de fond.</li><li><code>background-size: cover;</code> → l'image couvre toute la boîte (sans se déformer).</li><li><code>background-position: center;</code> → on centre l'image.</li><li><code>background-repeat: no-repeat;</code> → l'image ne se répète pas.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="banniere"&gt;&lt;h2&gt;Festival de Carthage&lt;/h2&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.banniere {
+  height: 160px;
+  background-image: url("https://picsum.photos/seed/festival/600/300");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : L&#x27;image de fond" sandbox="" style="height:200px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.banniere {
+  height: 160px;
+  background-image: url(&quot;https://picsum.photos/seed/festival/600/300&quot;);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px;
+}&lt;/style&gt;&lt;div class=&quot;banniere&quot;&gt;&lt;h2&gt;Festival de Carthage&lt;/h2&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pour que le texte reste lisible sur une photo, ajoute une couleur sombre transparente par-dessus (voir notion 3).</p>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>justify-content : aligner sur l'axe principal</h3>
-<p>Par défaut l'axe principal est <strong>horizontal</strong> (gauche → droite).</p>
-<ul><li><code>flex-start</code> : au début (par défaut).</li><li><code>center</code> : au centre.</li><li><code>flex-end</code> : à la fin.</li><li><code>space-between</code> : le premier au début, le dernier à la fin, de l'espace entre.</li><li><code>space-around</code> / <code>space-evenly</code> : de l'espace autour de chacun.</li></ul>
-<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur { display: flex; justify-content: space-between; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : justify-content : aligner sur l&#x27;axe principal" sandbox="" style="height:330px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}.boite{min-height:0}&lt;/style&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;center&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:center&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;flex-end&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:flex-end&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;space-between&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:space-between&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;space-evenly&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:space-evenly&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">2</span>Les dégradés</h3>
+<p>Un dégradé est une <strong>image</strong> créée par le CSS : on l'écrit donc dans <code>background-image</code> (ou <code>background</code>).</p>
+<p>Va sur <strong>cssgradient.io</strong> pour créer ton dégradé et copier le code.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="a"&gt;linear-gradient (gauche → droite)&lt;/div&gt;
+&lt;div class="b"&gt;linear-gradient en diagonale, 3 couleurs&lt;/div&gt;
+&lt;div class="c"&gt;radial-gradient (cercle)&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>div { height: 60px; margin: 6px; border-radius: 8px; color: white; padding: 8px; }
+.a { background: linear-gradient(to right, #288b8b, #e67e22); }
+.b { background: linear-gradient(135deg, #8e44ad, #3498db, #1abc9c); }
+.c { background: radial-gradient(circle, #f9d423, #e65c00); }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les dégradés" sandbox="" style="height:240px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;div { height: 60px; margin: 6px; border-radius: 8px; color: white; padding: 8px; }
+.a { background: linear-gradient(to right, #288b8b, #e67e22); }
+.b { background: linear-gradient(135deg, #8e44ad, #3498db, #1abc9c); }
+.c { background: radial-gradient(circle, #f9d423, #e65c00); }&lt;/style&gt;&lt;div class=&quot;a&quot;&gt;linear-gradient (gauche → droite)&lt;/div&gt;
+&lt;div class=&quot;b&quot;&gt;linear-gradient en diagonale, 3 couleurs&lt;/div&gt;
+&lt;div class=&quot;c&quot;&gt;radial-gradient (cercle)&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>align-items : aligner sur l'axe secondaire</h3>
-<p>L'axe secondaire est <strong>vertical</strong>. Il faut que le conteneur soit plus haut que les éléments pour voir l'effet.</p>
-<ul><li><code>stretch</code> : les éléments s'étirent (par défaut).</li><li><code>flex-start</code>, <code>center</code>, <code>flex-end</code> : en haut, au centre, en bas.</li></ul>
-<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur {
-  display: flex;
-  justify-content: center;
-  align-items: center;   /* centré parfaitement ! */
-  height: 120px;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : align-items : aligner sur l&#x27;axe secondaire" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:center;align-items:center;height:120px&#x27;&gt;&lt;div&gt;Centré !&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> <code>justify-content: center</code> + <code>align-items: center</code> = la façon la plus simple de centrer quelque chose au milieu d'une boîte.</p>
+<h3><span class="num">3</span>Image + voile sombre</h3>
+<p>On peut mettre <strong>plusieurs</strong> fonds l'un sur l'autre, séparés par une virgule. Le premier est au-dessus.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="hero"&gt;&lt;h2&gt;Concert ce samedi&lt;/h2&gt;&lt;p&gt;Le texte reste lisible !&lt;/p&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.hero {
+  height: 160px;
+  padding: 20px;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
+    url("https://picsum.photos/seed/concert/600/300");
+  background-size: cover;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Image + voile sombre" sandbox="" style="height:200px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.hero {
+  height: 160px;
+  padding: 20px;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
+    url(&quot;https://picsum.photos/seed/concert/600/300&quot;);
+  background-size: cover;
+}&lt;/style&gt;&lt;div class=&quot;hero&quot;&gt;&lt;h2&gt;Concert ce samedi&lt;/h2&gt;&lt;p&gt;Le texte reste lisible !&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>flex-direction, flex-wrap et gap</h3>
-<ul><li><code>flex-direction: row</code> (en ligne, par défaut) ou <code>column</code> (en colonne). Attention : en <code>column</code>, les axes s'inversent !</li><li><code>flex-wrap: wrap</code> : si il n'y a plus de place, les éléments passent à la ligne.</li><li><code>gap: 15px</code> : l'espace entre les éléments (plus simple que des margins).</li></ul>
-<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : flex-direction, flex-wrap et gap" sandbox="" style="height:260px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;flex-wrap:wrap&#x27;&gt;&lt;div&gt;Carte 1&lt;/div&gt;&lt;div&gt;Carte 2&lt;/div&gt;&lt;div&gt;Carte 3&lt;/div&gt;&lt;div&gt;Carte 4&lt;/div&gt;&lt;div&gt;Carte 5&lt;/div&gt;&lt;div&gt;Carte 6&lt;/div&gt;&lt;div&gt;Carte 7&lt;/div&gt;&lt;div&gt;Carte 8&lt;/div&gt;&lt;div&gt;Carte 9&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;font:12px Arial&#x27;&gt;flex-direction: column :&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;flex-direction:column&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">4</span>object-fit : recadrer sans déformer</h3>
+<p>Si tu donnes une largeur ET une hauteur à une image, elle peut être écrasée. <code>object-fit: cover</code> la <strong>recadre</strong> proprement.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;img src="https://picsum.photos/seed/velo/400/400" alt="Image déformée"&gt;
+&lt;img class="cover" src="https://picsum.photos/seed/velo/400/400" alt="Image recadrée"&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>img { width: 140px; height: 90px; margin: 4px; }
+.cover { object-fit: cover; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : object-fit : recadrer sans déformer" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;img { width: 140px; height: 90px; margin: 4px; }
+.cover { object-fit: cover; }&lt;/style&gt;&lt;img src=&quot;https://picsum.photos/seed/velo/400/400&quot; alt=&quot;Image déformée&quot;&gt;
+&lt;img class=&quot;cover&quot; src=&quot;https://picsum.photos/seed/velo/400/400&quot; alt=&quot;Image recadrée&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> À gauche l'image est écrasée, à droite elle est recadrée avec <code>object-fit: cover</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>opacity et filter</h3>
+<ul><li><code>opacity: 0.5;</code> → l'élément devient transparent à 50 %.</li><li><code>filter: grayscale(100%);</code> → noir et blanc.</li><li><code>filter: blur(3px);</code> → flou.</li><li><code>filter: brightness(130%);</code> → plus lumineux. Aussi : <code>sepia()</code>, <code>contrast()</code>, <code>hue-rotate()</code>…</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;img src="https://picsum.photos/seed/parc/300/200" alt="Normal"&gt;
+&lt;img class="gris" src="https://picsum.photos/seed/parc/300/200" alt="Gris"&gt;
+&lt;img class="flou" src="https://picsum.photos/seed/parc/300/200" alt="Flou"&gt;
+&lt;img class="sepia" src="https://picsum.photos/seed/parc/300/200" alt="Sépia"&gt;
+&lt;img class="transparent" src="https://picsum.photos/seed/parc/300/200" alt="Transparent"&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>img { width: 100px; height: 80px; object-fit: cover; margin: 3px; }
+.gris { filter: grayscale(100%); }
+.flou { filter: blur(3px); }
+.sepia { filter: sepia(100%); }
+.transparent { opacity: 0.4; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : opacity et filter" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;img { width: 100px; height: 80px; object-fit: cover; margin: 3px; }
+.gris { filter: grayscale(100%); }
+.flou { filter: blur(3px); }
+.sepia { filter: sepia(100%); }
+.transparent { opacity: 0.4; }&lt;/style&gt;&lt;img src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Normal&quot;&gt;
+&lt;img class=&quot;gris&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Gris&quot;&gt;
+&lt;img class=&quot;flou&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Flou&quot;&gt;
+&lt;img class=&quot;sepia&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Sépia&quot;&gt;
+&lt;img class=&quot;transparent&quot; src=&quot;https://picsum.photos/seed/parc/300/200&quot; alt=&quot;Transparent&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:40</span><span><strong>Flexbox Froggy</strong> (flexboxfroggy.com/#fr) : chacun joue les niveaux 1 à 15. Le formateur circule et note les propriétés au tableau au fur et à mesure.</span></li>
-<li><span class="temps">0:40 – 1:00</span><span>Synthèse : parent / enfants, axe principal / secondaire, <code>justify-content</code>, <code>align-items</code>, <code>flex-direction</code>, <code>flex-wrap</code>, <code>gap</code>. On dessine les axes au tableau.</span></li>
-<li><span class="temps">1:00 – 1:35</span><span>Exercices 1 à 3 dans VS Code.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : finir Froggy (24 niveaux) ou le défi bonus.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : qui a fini Froggy ? Checklist.</span></li>
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : questions rapides sur le box model (on montre une boîte, ils donnent padding/margin).</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>background-image</code>, <code>cover</code>, <code>center</code>. Démonstration avec une photo Unsplash.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Dégradés avec cssgradient.io, voile sombre, <code>object-fit</code>, <code>filter</code>.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page d'un festival.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la galerie avant / après.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan du module 2 en cours : mini-quiz couleurs / texte / boîte / fonds.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Mes 3 boîtes<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance11/index.html</code> avec une <code>&lt;div class="conteneur"&gt;</code> qui contient 3 <code>&lt;div class="case"&gt;</code> (avec un emoji et un mot chacune).</li>
-<li>Donne une couleur, un <code>padding</code> et des coins arrondis aux cases.</li>
-<li>Mets <code>display: flex</code> sur le conteneur. Essaie chaque valeur de <code>justify-content</code> une par une.</li>
+<div class="exercice"><h3>Exercice 1 · La bannière<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance11/index.html</code> avec un <code>&lt;header class="banniere"&gt;</code> qui contient le nom d'un festival ou d'un événement.</li>
+<li>Télécharge une photo sur Unsplash dans <code>images/</code> et mets-la en fond de la bannière.</li>
+<li>Règle la hauteur (<code>height: 300px</code>), <code>background-size: cover</code> et <code>background-position: center</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Le centrage parfait<span class="niveau facile">facile</span></h3><ol>
-<li>Crée une <code>&lt;section class="ecran"&gt;</code> de <code>height: 300px</code> avec un fond coloré et un seul bouton dedans.</li>
-<li>Centre le bouton horizontalement ET verticalement avec Flexbox.</li>
-<li>Change <code>align-items</code> en <code>flex-start</code> puis <code>flex-end</code> pour bien comprendre l'axe vertical.</li>
+<div class="exercice"><h3>Exercice 2 · Lisibilité et dégradés<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un voile sombre avec un <code>linear-gradient</code> transparent devant la photo.</li>
+<li>Crée sur cssgradient.io un dégradé pour le fond du <code>&lt;footer&gt;</code>.</li>
+<li>Fais un bouton (un lien <code>&lt;a class="bouton"&gt;</code>) avec un fond en dégradé et des coins arrondis.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Les vignettes qui passent à la ligne<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée un conteneur avec 8 vignettes (image + titre) de <code>width: 180px</code>.</li>
-<li>Ajoute <code>display: flex</code>, <code>flex-wrap: wrap</code>, <code>gap: 15px</code> et <code>justify-content: center</code>.</li>
-<li>Réduis la fenêtre du navigateur : les vignettes doivent passer à la ligne toutes seules.</li>
+<div class="exercice"><h3>Exercice 3 · Les photos du programme<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute 3 images de la même taille (<code>width: 200px; height: 150px;</code>) avec <code>object-fit: cover</code>.</li>
+<li>Donne un <code>filter</code> différent à chaque image.</li>
+<li>Ajoute <code>opacity: 0.6</code> sur une image « Événement terminé ».</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : Champion de Flexbox</h2>
-<p>Termine les <strong>24 niveaux</strong> de Flexbox Froggy, puis joue à <strong>Flexbox Defense</strong>.</p>
-<p>Bonus : reproduis la barre du bas d'une application de ton téléphone (4 icônes emojis réparties avec <code>space-around</code>, centrées verticalement).</p>
+<h2>🏆 Défi bonus : La galerie avant / après</h2>
+<p>Crée 6 images en noir et blanc (<code>grayscale(100%)</code>). Cherche sur W3Schools comment utiliser <code>:hover</code> pour qu'elles redeviennent en couleur quand la souris passe dessus.</p>
+<p>Bonus : ajoute <code>transition: filter 0.5s;</code> pour que le changement soit doux (on étudiera les transitions à la séance 18).</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">Je mets <code>display: flex</code> sur les enfants</div><div class="ok"><code>display: flex</code> va sur le <strong>parent</strong> (le conteneur)</div></div>
-<div class="erreur"><div class="ko"><code>align-items: center</code> ne fait rien</div><div class="ok">Le conteneur doit avoir une hauteur plus grande que ses enfants</div></div>
-<div class="erreur"><div class="ko">En <code>column</code>, <code>justify-content</code> agit à la verticale</div><div class="ok">Normal : en <code>column</code>, les axes s'inversent</div></div>
-<div class="erreur"><div class="ko">Mes éléments sont tout écrasés</div><div class="ok">J'ajoute <code>flex-wrap: wrap</code> pour qu'ils passent à la ligne</div></div>
+<div class="erreur"><div class="ko"><code>background-image: images/fond.jpg;</code></div><div class="ok">Il faut <code>url("images/fond.jpg")</code></div></div>
+<div class="erreur"><div class="ko">Mon image de fond n'apparaît pas</div><div class="ok">La boîte a besoin d'une hauteur (<code>height</code>) ou d'un contenu</div></div>
+<div class="erreur"><div class="ko">L'image de fond se répète en mosaïque</div><div class="ok"><code>background-size: cover;</code> ou <code>background-repeat: no-repeat;</code></div></div>
+<div class="erreur"><div class="ko">Le chemin de l'image marche dans le HTML mais pas dans le CSS</div><div class="ok">Le chemin dans le CSS part du <strong>fichier CSS</strong> : vérifie s'il faut <code>../images/…</code></div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Flexbox</dt><dd>Un système de CSS pour aligner des éléments sur une ligne ou une colonne.</dd></div>
-<div><dt>Conteneur flex</dt><dd>Le parent qui a <code>display: flex</code>.</dd></div>
-<div><dt>Élément flex</dt><dd>Un enfant direct du conteneur flex.</dd></div>
-<div><dt>Axe principal</dt><dd>La direction des éléments (horizontal en <code>row</code>).</dd></div>
-<div><dt>Axe secondaire</dt><dd>L'axe perpendiculaire (vertical en <code>row</code>).</dd></div>
-<div><dt>gap</dt><dd>L'espace entre les éléments.</dd></div>
+<div><dt>Arrière-plan (background)</dt><dd>Ce qui est derrière le contenu d'une boîte.</dd></div>
+<div><dt>Dégradé (gradient)</dt><dd>Un passage progressif d'une couleur à une autre.</dd></div>
+<div><dt>cover</dt><dd>L'image remplit toute la zone, quitte à être un peu coupée.</dd></div>
+<div><dt>Opacité</dt><dd>Le niveau de transparence : 0 = invisible, 1 = opaque.</dd></div>
+<div><dt>Filtre</dt><dd>Un effet appliqué à un élément : flou, gris, sépia…</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://flexboxfroggy.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Flexbox Froggy</strong> : aide les grenouilles avec Flexbox (24 niveaux)</a></li>
-<li><a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank"><span class="tag">W3Schools</span><br>Flexbox : introduction</a></li>
-<li><a href="https://www.w3schools.com/css/css3_flexbox_container.asp" target="_blank"><span class="tag">W3Schools</span><br>Les propriétés du conteneur</a></li>
-<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank"><span class="tag">Guide</span><br><strong>CSS-Tricks</strong> : le guide illustré de Flexbox (en anglais)</a></li>
-<li><a href="http://www.flexboxdefense.com/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Flexbox Defense</strong> : place les tours avec Flexbox</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank"><span class="tag">MDN</span><br>Flexbox (en français)</a></li>
+<li><a href="https://www.w3schools.com/css/css_background.asp" target="_blank"><span class="tag">W3Schools</span><br>Les arrière-plans</a></li>
+<li><a href="https://www.w3schools.com/css/css3_backgrounds.asp" target="_blank"><span class="tag">W3Schools</span><br>Plusieurs fonds et background-size</a></li>
+<li><a href="https://www.w3schools.com/css/css3_gradients.asp" target="_blank"><span class="tag">W3Schools</span><br>Les dégradés</a></li>
+<li><a href="https://www.w3schools.com/css/css3_object-fit.asp" target="_blank"><span class="tag">W3Schools</span><br>object-fit</a></li>
+<li><a href="https://www.w3schools.com/css/css_image_transparency.asp" target="_blank"><span class="tag">W3Schools</span><br>La transparence</a></li>
+<li><a href="https://www.w3schools.com/cssref/css3_pr_filter.php" target="_blank"><span class="tag">W3Schools</span><br>Les filtres CSS</a></li>
+<li><a href="https://cssgradient.io/" target="_blank"><span class="tag outil">Outil</span><br><strong>CSS Gradient</strong> : créer un dégradé et copier le code</a></li>
+<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais que <code>display: flex</code> se met sur le parent.</li>
-<li>Je sais centrer un élément horizontalement et verticalement.</li>
-<li>Je connais <code>space-between</code> et <code>space-around</code>.</li>
-<li>Je sais faire passer les éléments à la ligne avec <code>flex-wrap</code>.</li>
-<li>J'ai fini au moins 15 niveaux de Flexbox Froggy.</li>
+<li>Je sais mettre une image de fond qui couvre toute la boîte.</li>
+<li>Je sais créer un dégradé.</li>
+<li>Je sais rendre un texte lisible sur une photo.</li>
+<li>Je sais recadrer une image avec <code>object-fit: cover</code>.</li>
+<li>Je connais au moins 3 filtres CSS.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

@@ -3,60 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boutique interactive</title>
+  <title>Club de robotique</title>
   <link rel="stylesheet" href="exemple.css">
 </head>
 <body>
 
   <nav>
-    <a href="#">Accueil</a>
-    <div class="menu">
-      <a href="#">Jeux ▾</a>
-      <div class="sous-menu">
-        <a href="#">Aventure</a>
-        <a href="#">Sport</a>
-        <a href="#">Réflexion</a>
-      </div>
-    </div>
-    <a href="#">Scores</a>
-    <a href="#">Contact</a>
+    <a class="logo" href="#">🤖 RoboClub</a>
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Ateliers</a></li>
+      <li><a href="#">Équipe</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
   </nav>
 
-  <main>
-    <h1>Les boutons</h1>
-    <button class="btn couleur">Couleur</button>
-    <button class="btn arrondi">Arrondi</button>
-    <button class="btn ombre">Ombre</button>
-    <button class="btn contour">Contour</button>
-
-    <h1>Les cartes</h1>
-    <div class="cartes">
-      <div class="carte">
-        <img src="https://picsum.photos/seed/jeu-aventure/400/260" alt="Jeu d'aventure">
-        <h2>Aventure</h2>
-      </div>
-      <div class="carte">
-        <img src="https://picsum.photos/seed/jeu-sport/400/260" alt="Jeu de sport">
-        <h2>Sport</h2>
-      </div>
-      <div class="carte">
-        <img src="https://picsum.photos/seed/jeu-reflexion/400/260" alt="Jeu de réflexion">
-        <h2>Réflexion</h2>
-      </div>
+  <header class="banniere">
+    <div class="texte">
+      <h1>Construis ton premier robot</h1>
+      <p>Chaque samedi, viens apprendre l'électronique, la programmation et la créativité avec nous.</p>
+      <a class="bouton" href="#">Je m'inscris</a>
     </div>
+    <img src="https://picsum.photos/seed/robot/600/400" alt="Un robot sur une table d'atelier">
+  </header>
 
-    <h1>Le tableau des scores</h1>
-    <table>
-      <tr><th>Joueur</th><th>Points</th></tr>
-      <tr><td>Nour</td><td>980</td></tr>
-      <tr><td>Amine</td><td>870</td></tr>
-      <tr><td>Lina</td><td>860</td></tr>
-      <tr><td>Youssef</td><td>720</td></tr>
-    </table>
-
-    <h1>Le champ qui réagit</h1>
-    <input type="text" placeholder="Clique ici pour écrire">
+  <main class="cartes">
+    <article class="carte">
+      <img src="https://picsum.photos/seed/electronique/400/250" alt="Des composants électroniques">
+      <h2>Électronique</h2>
+      <p>Découvre les LED, les moteurs et les capteurs.</p>
+      <a class="bouton" href="#">Voir l'atelier</a>
+    </article>
+    <article class="carte">
+      <img src="https://picsum.photos/seed/programmation/400/250" alt="Un écran avec du code">
+      <h2>Programmation</h2>
+      <p>Apprends à donner des ordres à ton robot : avancer, tourner, éviter les obstacles, suivre une ligne au sol et réagir à la lumière.</p>
+      <a class="bouton" href="#">Voir l'atelier</a>
+    </article>
+    <article class="carte">
+      <img src="https://picsum.photos/seed/competition/400/250" alt="Une compétition de robots">
+      <h2>Compétition</h2>
+      <p>Prépare-toi pour le concours régional.</p>
+      <a class="bouton" href="#">Voir l'atelier</a>
+    </article>
   </main>
+
+  <footer>
+    <div class="colonne">
+      <h3>À propos</h3>
+      <p>Le RoboClub accueille les jeunes de 13 à 18 ans.</p>
+    </div>
+    <div class="colonne">
+      <h3>Liens utiles</h3>
+      <ul>
+        <li><a href="#">Planning</a></li>
+        <li><a href="#">Inscription</a></li>
+      </ul>
+    </div>
+    <div class="colonne">
+      <h3>Suivez-nous</h3>
+      <p>📸 📘 ▶️</p>
+    </div>
+  </footer>
 
 </body>
 </html>

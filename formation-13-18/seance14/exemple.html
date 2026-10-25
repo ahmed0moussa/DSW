@@ -3,40 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page responsive</title>
+  <title>Flexbox : aligner</title>
   <link rel="stylesheet" href="exemple.css">
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="#">🎧 MusicTeen</a>
-    <div class="liens">
-      <a href="#">Accueil</a>
-      <a href="#">Playlists</a>
-      <a href="#">Artistes</a>
-    </div>
+  <h1>Flexbox en action 🐸</h1>
+
+  <h2>1. justify-content: space-between</h2>
+  <div class="conteneur entre">
+    <div class="case">⚽ Sport</div>
+    <div class="case">🎵 Musique</div>
+    <div class="case">🎮 Jeux</div>
+  </div>
+
+  <h2>2. Le centrage parfait</h2>
+  <section class="ecran">
+    <a class="bouton" href="#">Commencer</a>
+  </section>
+
+  <h2>3. Les vignettes qui passent à la ligne</h2>
+  <div class="vignettes">
+    <div class="vignette">🐸<br>Grenouille</div>
+    <div class="vignette">🦊<br>Renard</div>
+    <div class="vignette">🐢<br>Tortue</div>
+    <div class="vignette">🦁<br>Lion</div>
+    <div class="vignette">🐧<br>Pingouin</div>
+    <div class="vignette">🐬<br>Dauphin</div>
+    <div class="vignette">🦉<br>Hibou</div>
+    <div class="vignette">🐝<br>Abeille</div>
+  </div>
+
+  <h2>4. flex-direction: column</h2>
+  <div class="conteneur colonne">
+    <div class="case">Étape 1</div>
+    <div class="case">Étape 2</div>
+    <div class="case">Étape 3</div>
+  </div>
+
+  <h2>5. La barre d'application</h2>
+  <nav class="barre-app">
+    <a href="#">🏠</a>
+    <a href="#">🔍</a>
+    <a href="#">❤️</a>
+    <a href="#">👤</a>
   </nav>
-
-  <p class="ecran">
-    <span class="telephone">📱 Tu es sur un téléphone</span>
-    <span class="tablette">📟 Tu es sur une tablette</span>
-    <span class="ordinateur">💻 Tu es sur un ordinateur</span>
-  </p>
-
-  <main class="conteneur">
-    <h1>Les playlists de la semaine</h1>
-    <div class="cartes">
-      <div class="carte"><img src="https://picsum.photos/seed/pl1/400/300" alt="Playlist Chill"><h2>Chill</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl2/400/300" alt="Playlist Sport"><h2>Sport</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl3/400/300" alt="Playlist Révisions"><h2>Révisions</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl4/400/300" alt="Playlist Fête"><h2>Fête</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl5/400/300" alt="Playlist Rap"><h2>Rap</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl6/400/300" alt="Playlist Pop"><h2>Pop</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl7/400/300" alt="Playlist Malouf"><h2>Malouf</h2></div>
-      <div class="carte"><img src="https://picsum.photos/seed/pl8/400/300" alt="Playlist Gaming"><h2>Gaming</h2></div>
-    </div>
-    <p class="decor">🎶 Ce texte décoratif est caché sur téléphone.</p>
-  </main>
 
 </body>
 </html>

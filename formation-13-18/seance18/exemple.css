@@ -1,153 +1,166 @@
-:root {
-  --principale: #6c5ce7;
-  --accent: #fd79a8;
-  --fond: #f5f3ff;
-  --texte: #2d3436;
-  --arrondi: 14px;
-}
-
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Nunito', Arial, sans-serif;
-  background-color: var(--fond);
-  color: var(--texte);
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #22303c;
 }
 
 main {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 30px 16px;
+  padding: 20px;
 }
 
-/* ---------- Carte profil ---------- */
-.profil {
-  max-width: 340px;
-  margin: 0 auto;
-  padding-bottom: 25px;
-  overflow: hidden;
-  border-radius: var(--arrondi);
+h1 {
+  color: #288b8b;
+}
+
+/* ---------- Navbar + menu déroulant ---------- */
+nav {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+  background-color: #22303c;
+}
+
+nav a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: #288b8b;
+}
+
+.menu {
+  position: relative;
+}
+
+.sous-menu {
+  display: none;              /* caché */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  min-width: 160px;
   background-color: white;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2);
-  transition: transform 0.3s;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-.profil:hover {
-  transform: translateY(-8px);
+.menu:hover .sous-menu,
+.menu:focus-within .sous-menu {
+  display: block;             /* visible au survol */
 }
 
-.profil-haut {
-  height: 110px;
-  background: linear-gradient(135deg, var(--principale), var(--accent));
+.sous-menu a {
+  color: #22303c;
 }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  margin-top: -60px;          /* l'avatar chevauche le bandeau */
-  border: 5px solid white;
-  border-radius: 50%;
-  object-fit: cover;
+.sous-menu a:hover {
+  background-color: #e3f3f3;
 }
 
-.profil h1 {
-  margin: 5px 0 0;
+/* ---------- Les boutons ---------- */
+.btn {
+  margin: 5px;
+  padding: 12px 24px;
+  border: 2px solid #288b8b;
+  border-radius: 8px;
+  background-color: #288b8b;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;       /* sur l'élément normal */
 }
 
-.profil p {
-  padding: 0 20px;
+.btn:active {
+  transform: scale(0.95);
 }
 
-.metier {
-  margin-top: 0;
-  color: var(--principale);
-  font-weight: 800;
-}
+.couleur:hover { background-color: #e67e22; border-color: #e67e22; }
+.arrondi:hover { border-radius: 30px; }
+.ombre:hover { box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3); transform: translateY(-3px); }
+.contour:hover { background-color: white; color: #288b8b; }
 
-.competences {
+/* ---------- Les cartes ---------- */
+.cartes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 20px;
-  list-style: none;
+  gap: 20px;
 }
 
-.competences li {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background-color: var(--fond);
-  color: var(--principale);
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.bouton {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 30px;
-  background-color: var(--principale);
-  color: white;
-  font-weight: 800;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.bouton:hover {
-  background-color: var(--accent);
-}
-
-/* ---------- Galerie ---------- */
-h2 {
-  margin-top: 50px;
+.carte {
+  flex: 1 1 220px;
+  overflow: hidden;           /* l'image zoomée ne déborde pas */
+  border-radius: 12px;
+  background-color: white;
   text-align: center;
-  color: var(--principale);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+.carte:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-figure {
-  position: relative;          /* pour la légende en absolute */
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--arrondi);
-}
-
-figure img {
+.carte img {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
   transition: transform 0.4s;
 }
 
-figcaption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.carte:hover img {
+  transform: scale(1.1);
+}
+
+/* ---------- Le tableau ---------- */
+table {
   width: 100%;
-  padding: 12px;
-  background-color: rgba(45, 52, 54, 0.75);
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #288b8b;
   color: white;
-  font-weight: 800;
-  opacity: 0;                  /* cachée */
-  transform: translateY(100%);
-  transition: opacity 0.3s, transform 0.3s;
 }
 
-figure:hover img {
-  transform: scale(1.08);
+tr:nth-child(even) {
+  background-color: #e3f3f3;  /* une ligne sur deux */
 }
 
-figure:hover figcaption {
-  opacity: 1;                  /* apparaît en glissant */
-  transform: translateY(0);
+tr:hover td {
+  background-color: #fdf0e3;
+}
+
+/* ---------- Le champ ---------- */
+input {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
+  border: 2px solid #dde3ea;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #288b8b;
+  box-shadow: 0 0 0 4px rgba(40, 139, 139, 0.2);
 }

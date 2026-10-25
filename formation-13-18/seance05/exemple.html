@@ -3,55 +3,73 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon blog voyage en Tunisie</title>
+    <title>Inscription au club de robotique</title>
   </head>
   <body>
 
-    <header>
-      <h1>🧭 Mon blog voyage en Tunisie</h1>
-      <nav>
-        <a href="#djerba">Djerba</a> |
-        <a href="#tozeur">Tozeur</a> |
-        <a href="#video">Vidéo</a> |
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <h1>🤖 Inscription au club de robotique</h1>
+    <p>Remplis ce formulaire pour rejoindre le club. Les champs avec * sont obligatoires.</p>
 
-    <main>
-      <article id="djerba">
-        <h2>Un week-end à Djerba</h2>
-        <img src="https://picsum.photos/seed/djerba-plage/320/200" alt="Une plage de sable blanc à Djerba" width="320">
-        <p>Djerba est une île du sud. On y trouve des plages magnifiques, la poterie de
-           <span style="color: #e67e22; font-weight: bold;">Guellala</span> et un excellent couscous au poisson.</p>
-      </article>
+    <form>
+      <fieldset>
+        <legend>Qui es-tu ?</legend>
 
-      <article id="tozeur">
-        <h2>Les oasis de Tozeur</h2>
-        <img src="https://picsum.photos/seed/tozeur-oasis/320/200" alt="Des palmiers dans l'oasis de Tozeur" width="320">
-        <p>À Tozeur, on se promène dans la palmeraie et on découvre le désert et le chott el-Jérid.</p>
-      </article>
+        <label for="prenom">Prénom * :</label><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Ex : Sami" required><br><br>
 
-      <section id="video">
-        <h2>En vidéo</h2>
-        <iframe width="360" height="203"
-                src="https://www.youtube.com/embed/UB1O30fR-EE"
-                title="Vidéo YouTube"
-                allowfullscreen></iframe>
-      </section>
+        <label for="email">Email * :</label><br>
+        <input type="email" id="email" name="email" placeholder="sami@exemple.com" required><br><br>
 
-      <aside>
-        <h3>Mes conseils de voyage</h3>
-        <ul>
-          <li>Prendre une casquette et de l'eau</li>
-          <li>Goûter les spécialités locales</li>
-          <li>Respecter la nature</li>
-        </ul>
-      </aside>
-    </main>
+        <label for="age">Âge :</label><br>
+        <input type="number" id="age" name="age" min="10" max="18" value="14"><br><br>
 
-    <footer id="contact">
-      <p>&copy; 2026 Mon blog voyage · <a href="mailto:contact@exemple.com">Écris-moi</a></p>
-    </footer>
+        <label for="naissance">Date de naissance :</label><br>
+        <input type="date" id="naissance" name="naissance"><br><br>
+
+        <label for="ville">Ville :</label><br>
+        <select id="ville" name="ville">
+          <option value="">-- Choisis ta ville --</option>
+          <option value="tunis">Tunis</option>
+          <option value="sfax">Sfax</option>
+          <option value="sousse">Sousse</option>
+          <option value="bizerte">Bizerte</option>
+          <option value="gabes">Gabès</option>
+        </select>
+      </fieldset>
+
+      <br>
+
+      <fieldset>
+        <legend>Ton niveau et tes envies</legend>
+
+        <p>Ton niveau en informatique :</p>
+        <input type="radio" id="debutant" name="niveau" value="debutant">
+        <label for="debutant">Débutant</label><br>
+        <input type="radio" id="moyen" name="niveau" value="moyen">
+        <label for="moyen">Moyen</label><br>
+        <input type="radio" id="confirme" name="niveau" value="confirme">
+        <label for="confirme">Confirmé</label>
+
+        <p>Les activités qui t'intéressent :</p>
+        <input type="checkbox" id="robots" name="activites" value="robots">
+        <label for="robots">Construire des robots</label><br>
+        <input type="checkbox" id="web" name="activites" value="web">
+        <label for="web">Créer des sites web</label><br>
+        <input type="checkbox" id="jeux" name="activites" value="jeux">
+        <label for="jeux">Créer des jeux</label><br><br>
+
+        <label for="couleur">Ta couleur préférée pour ton robot :</label>
+        <input type="color" id="couleur" name="couleur" value="#288b8b"><br><br>
+
+        <label for="motivation">Pourquoi veux-tu t'inscrire ? * :</label><br>
+        <textarea id="motivation" name="motivation" rows="4" cols="30"
+                  placeholder="J'aimerais apprendre à…" required></textarea>
+      </fieldset>
+
+      <br>
+      <button type="submit">Je m'inscris</button>
+      <button type="reset">Tout effacer</button>
+    </form>
 
   </body>
 </html>

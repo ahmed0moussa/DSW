@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 14 · Le responsive design — Formation Web 13-18</title>
+  <title>Séance 14 · Flexbox 1 : aligner facilement — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -20,12 +20,12 @@
 
   <div class="hero">
     <span class="module">Module 3 · Mise en page</span>
-    <h1><span>Séance 14</span> · Le responsive design</h1>
-    <p>Plus de la moitié des visiteurs regardent les sites sur un téléphone. Un site <strong>responsive</strong> s'adapte à toutes les tailles d'écran : téléphone, tablette, ordinateur.</p>
+    <h1><span>Séance 14</span> · Flexbox 1 : aligner facilement</h1>
+    <p>Flexbox est l'outil le plus utilisé pour placer des éléments côte à côte, les centrer et les espacer. Aujourd'hui tu l'apprends en jouant avec des grenouilles 🐸 !</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : VS Code, Live Server, mode appareil de F12 (Ctrl + Shift + M)</li>
+      <li>🧰 Outils : Flexbox Froggy, VS Code, Live Server</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,144 +35,130 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Ajouter la balise <code>&lt;meta name="viewport"&gt;</code> et tester ma page en mode téléphone avec F12.</li><li>Écrire des media queries <code>@media</code> pour changer le style selon la largeur de l'écran.</li><li>Construire une page « mobile first » avec des images et des grilles qui s'adaptent.</li>
+      <li>Transformer une boîte en conteneur flex avec <code>display: flex</code>.</li><li>Aligner les éléments horizontalement avec <code>justify-content</code> et verticalement avec <code>align-items</code>.</li><li>Changer la direction (<code>flex-direction</code>), passer à la ligne (<code>flex-wrap</code>) et espacer (<code>gap</code>).</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Grid : <code>grid-template-columns: repeat(3, 1fr)</code>, <code>auto-fit</code> + <code>minmax</code>, <code>grid-template-areas</code>. Flexbox : <code>flex-wrap: wrap</code> et <code>flex: 1 1 250px</code>.</p>
+    <p><code>display: block</code> = l'un sous l'autre, <code>inline-block</code> = côte à côte dans la ligne. <code>position</code> sert à placer un élément précis (badge, menu collant).</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>La balise viewport</h3>
-<p>Sans cette ligne dans le <code>&lt;head&gt;</code>, le téléphone affiche la page comme sur un ordinateur, toute petite. Elle est <strong>obligatoire</strong> pour le responsive.</p>
-<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Bonne nouvelle : VS Code l'ajoute automatiquement quand tu tapes <code>!</code> + Entrée.</p>
+<h3><span class="num">1</span>Le parent et les enfants</h3>
+<p>Flexbox se met sur le <strong>parent</strong> (le conteneur). Ses <strong>enfants directs</strong> se placent alors automatiquement <strong>en ligne</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="conteneur"&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.conteneur {
+  display: flex;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le parent et les enfants" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Les règles Flexbox s'écrivent sur le <strong>parent</strong>, pas sur les enfants. C'est l'erreur n°1 !</p>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>Tester en mode téléphone</h3>
-<p>Ouvre F12, puis clique sur l'icône 📱 (ou <strong>Ctrl + Shift + M</strong>). Tu peux choisir un modèle de téléphone (iPhone, Samsung…) ou changer la largeur à la main.</p>
-<ul><li>Téléphone : moins de <strong>600px</strong>.</li><li>Tablette : entre <strong>600px</strong> et <strong>900px</strong>.</li><li>Ordinateur : plus de <strong>900px</strong>.</li></ul>
+<h3><span class="num">2</span>justify-content : aligner sur l'axe principal</h3>
+<p>Par défaut l'axe principal est <strong>horizontal</strong> (gauche → droite).</p>
+<ul><li><code>flex-start</code> : au début (par défaut).</li><li><code>center</code> : au centre.</li><li><code>flex-end</code> : à la fin.</li><li><code>space-between</code> : le premier au début, le dernier à la fin, de l'espace entre.</li><li><code>space-around</code> / <code>space-evenly</code> : de l'espace autour de chacun.</li></ul>
+<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur { display: flex; justify-content: space-between; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : justify-content : aligner sur l&#x27;axe principal" sandbox="" style="height:330px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}.boite{min-height:0}&lt;/style&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;center&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:center&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;flex-end&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:flex-end&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;space-between&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:space-between&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;margin:4px 0;font:12px monospace&#x27;&gt;space-evenly&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:space-evenly&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>Les media queries</h3>
-<p>Une media query, c'est une <strong>condition</strong> : « SI l'écran fait moins de 600px, ALORS applique ces règles ».</p>
-<p>Les règles dans <code>@media</code> remplacent les règles normales quand la condition est vraie. On les écrit <strong>à la fin</strong> du fichier CSS.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="boite"&gt;Réduis la fenêtre : je deviens orange sur téléphone !&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.boite { background: #288b8b; color: white; padding: 20px; }
-
-/* SI l'écran fait 600px ou moins */
-@media (max-width: 600px) {
-  .boite { background: #e67e22; }
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les media queries" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite { background: #288b8b; color: white; padding: 20px; }
-
-/* SI l&#x27;écran fait 600px ou moins */
-@media (max-width: 600px) {
-  .boite { background: #e67e22; }
-}&lt;/style&gt;&lt;div class=&quot;boite&quot;&gt;Réduis la fenêtre : je deviens orange sur téléphone !&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Le cadre du résultat est petit : la boîte est peut-être déjà orange ! Ouvre l'exemple de la séance et change la largeur de la fenêtre.</p>
+<h3><span class="num">3</span>align-items : aligner sur l'axe secondaire</h3>
+<p>L'axe secondaire est <strong>vertical</strong>. Il faut que le conteneur soit plus haut que les éléments pour voir l'effet.</p>
+<ul><li><code>stretch</code> : les éléments s'étirent (par défaut).</li><li><code>flex-start</code>, <code>center</code>, <code>flex-end</code> : en haut, au centre, en bas.</li></ul>
+<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur {
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* centré parfaitement ! */
+  height: 120px;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : align-items : aligner sur l&#x27;axe secondaire" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;justify-content:center;align-items:center;height:120px&#x27;&gt;&lt;div&gt;Centré !&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>justify-content: center</code> + <code>align-items: center</code> = la façon la plus simple de centrer quelque chose au milieu d'une boîte.</p>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>Mobile first</h3>
-<p><strong>Mobile first</strong> = on écrit d'abord le CSS pour le téléphone (une seule colonne), puis on <strong>ajoute</strong> des colonnes pour les grands écrans avec <code>min-width</code>.</p>
-<p>C'est plus simple, car sur téléphone tout est souvent l'un sous l'autre.</p>
-<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* 1. Téléphone : une colonne */
-.cartes { display: grid; grid-template-columns: 1fr; gap: 15px; }
-
-/* 2. Tablette : 2 colonnes */
-@media (min-width: 600px) {
-  .cartes { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* 3. Ordinateur : 4 colonnes */
-@media (min-width: 900px) {
-  .cartes { grid-template-columns: repeat(4, 1fr); }
-}</code></pre></div></div>
-</div>
-<div class="notion">
-<h3><span class="num">5</span>Les images et les textes fluides</h3>
-<ul><li><code>img { max-width: 100%; height: auto; }</code> → une image ne dépasse <strong>jamais</strong> de son parent.</li><li>Utilise des largeurs en <code>%</code> ou <code>max-width</code> au lieu de <code>width</code> fixe en <code>px</code>.</li><li>Sur mobile : on cache ce qui n'est pas important (<code>display: none</code>), on passe les menus en colonne (<code>flex-direction: column</code>).</li></ul>
-<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>img { max-width: 100%; height: auto; }
-.conteneur { width: 90%; max-width: 1100px; margin: 0 auto; }</code></pre></div></div>
+<h3><span class="num">4</span>flex-direction, flex-wrap et gap</h3>
+<ul><li><code>flex-direction: row</code> (en ligne, par défaut) ou <code>column</code> (en colonne). Attention : en <code>column</code>, les axes s'inversent !</li><li><code>flex-wrap: wrap</code> : si il n'y a plus de place, les éléments passent à la ligne.</li><li><code>gap: 15px</code> : l'espace entre les éléments (plus simple que des margins).</li></ul>
+<div class="code-demo"><div><span class="label">CSS</span><pre><code>.conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : flex-direction, flex-wrap et gap" sandbox="" style="height:260px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite{display:flex;gap:8px;background:#e3f3f3;padding:8px;border-radius:8px;min-height:90px;margin-bottom:6px}.boite div{background:#288b8b;color:white;padding:10px 14px;border-radius:6px;font-weight:bold}&lt;/style&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;flex-wrap:wrap&#x27;&gt;&lt;div&gt;Carte 1&lt;/div&gt;&lt;div&gt;Carte 2&lt;/div&gt;&lt;div&gt;Carte 3&lt;/div&gt;&lt;div&gt;Carte 4&lt;/div&gt;&lt;div&gt;Carte 5&lt;/div&gt;&lt;div&gt;Carte 6&lt;/div&gt;&lt;div&gt;Carte 7&lt;/div&gt;&lt;div&gt;Carte 8&lt;/div&gt;&lt;div&gt;Carte 9&lt;/div&gt;&lt;/div&gt;&lt;p style=&#x27;font:12px Arial&#x27;&gt;flex-direction: column :&lt;/p&gt;&lt;div class=&#x27;boite&#x27; style=&#x27;flex-direction:column&#x27;&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:10</span><span>Échauffement : chacun ouvre un site connu sur son téléphone et sur l'ordinateur. Qu'est-ce qui change ?</span></li>
-<li><span class="temps">0:10 – 0:30</span><span>Découverte : viewport, mode appareil de F12, tailles d'écran.</span></li>
-<li><span class="temps">0:30 – 0:55</span><span>Media queries <code>max-width</code> / <code>min-width</code>, mobile first, images fluides. On transforme ensemble une page fixe en page responsive.</span></li>
-<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : rendre responsive la page de la séance 12 ou 13.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : la page qui change de couleur selon l'écran.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : on teste les pages sur de vrais téléphones (Live Server + même Wi-Fi). Fin du module 3.</span></li>
+<li><span class="temps">0:00 – 0:40</span><span><strong>Flexbox Froggy</strong> (flexboxfroggy.com/#fr) : chacun joue les niveaux 1 à 15. Le formateur circule et note les propriétés au tableau au fur et à mesure.</span></li>
+<li><span class="temps">0:40 – 1:00</span><span>Synthèse : parent / enfants, axe principal / secondaire, <code>justify-content</code>, <code>align-items</code>, <code>flex-direction</code>, <code>flex-wrap</code>, <code>gap</code>. On dessine les axes au tableau.</span></li>
+<li><span class="temps">1:00 – 1:35</span><span>Exercices 1 à 3 dans VS Code.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : finir Froggy (24 niveaux) ou le défi bonus.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : qui a fini Froggy ? Checklist.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Le test<span class="niveau facile">facile</span></h3><ol>
-<li>Copie ton travail de la séance 12 (navbar + cartes) dans <code>seance14/</code>.</li>
-<li>Vérifie que la balise <code>&lt;meta name="viewport"&gt;</code> est dans le <code>&lt;head&gt;</code>.</li>
-<li>Ouvre F12 → mode appareil (Ctrl + Shift + M) → choisis un téléphone. Note tout ce qui ne va pas (texte trop petit, élément qui dépasse…).</li>
+<div class="exercice"><h3>Exercice 1 · Mes 3 boîtes<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance14/index.html</code> avec une <code>&lt;div class="conteneur"&gt;</code> qui contient 3 <code>&lt;div class="case"&gt;</code> (avec un emoji et un mot chacune).</li>
+<li>Donne une couleur, un <code>padding</code> et des coins arrondis aux cases.</li>
+<li>Mets <code>display: flex</code> sur le conteneur. Essaie chaque valeur de <code>justify-content</code> une par une.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Les media queries<span class="niveau moyen">moyen</span></h3><ol>
-<li>Ajoute <code>img { max-width: 100%; height: auto; }</code>.</li>
-<li>À la fin du CSS, écris <code>@media (max-width: 600px) { … }</code>.</li>
-<li>Dedans : passe la navbar en colonne (<code>flex-direction: column</code>), réduis la taille du <code>&lt;h1&gt;</code>, réduis les <code>padding</code>.</li>
-<li>Vérifie en mode téléphone qu'il n'y a plus de barre de défilement horizontale.</li>
+<div class="exercice"><h3>Exercice 2 · Le centrage parfait<span class="niveau facile">facile</span></h3><ol>
+<li>Crée une <code>&lt;section class="ecran"&gt;</code> de <code>height: 300px</code> avec un fond coloré et un seul bouton dedans.</li>
+<li>Centre le bouton horizontalement ET verticalement avec Flexbox.</li>
+<li>Change <code>align-items</code> en <code>flex-start</code> puis <code>flex-end</code> pour bien comprendre l'axe vertical.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Une grille qui s'adapte<span class="niveau difficile">difficile</span></h3><ol>
-<li>Crée une grille de 8 cartes en <strong>mobile first</strong> : 1 colonne par défaut.</li>
-<li>Ajoute <code>@media (min-width: 600px)</code> → 2 colonnes, puis <code>@media (min-width: 900px)</code> → 4 colonnes.</li>
-<li>Cache un élément décoratif sur téléphone avec <code>display: none</code>.</li>
+<div class="exercice"><h3>Exercice 3 · Les vignettes qui passent à la ligne<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un conteneur avec 8 vignettes (image + titre) de <code>width: 180px</code>.</li>
+<li>Ajoute <code>display: flex</code>, <code>flex-wrap: wrap</code>, <code>gap: 15px</code> et <code>justify-content: center</code>.</li>
+<li>Réduis la fenêtre du navigateur : les vignettes doivent passer à la ligne toutes seules.</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : L'écran caméléon</h2>
-<p>Crée une page qui affiche en grand « 📱 Téléphone », « 📟 Tablette » ou « 💻 Ordinateur » selon la largeur de l'écran, avec une couleur de fond différente à chaque fois. Utilise <code>display: none</code> dans les media queries.</p>
-<p>Bonus : teste ta page sur ton vrai téléphone (même Wi-Fi que l'ordinateur, adresse IP de Live Server).</p>
+<h2>🏆 Défi bonus : Champion de Flexbox</h2>
+<p>Termine les <strong>24 niveaux</strong> de Flexbox Froggy, puis joue à <strong>Flexbox Defense</strong>.</p>
+<p>Bonus : reproduis la barre du bas d'une application de ton téléphone (4 icônes emojis réparties avec <code>space-around</code>, centrées verticalement).</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">J'ai oublié la balise viewport : tout est minuscule sur téléphone</div><div class="ok"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></div></div>
-<div class="erreur"><div class="ko">Ma media query est au début du CSS et ne marche pas</div><div class="ok">Je mets les media queries <strong>à la fin</strong> du fichier</div></div>
-<div class="erreur"><div class="ko"><code>@media (max-width: 600px) { .menu { … }</code> : il manque une accolade</div><div class="ok">Une <code>}</code> pour la règle ET une <code>}</code> pour la media query</div></div>
-<div class="erreur"><div class="ko">Une image dépasse et crée un défilement horizontal</div><div class="ok"><code>max-width: 100%</code> sur les images, pas de <code>width</code> fixe trop grand</div></div>
+<div class="erreur"><div class="ko">Je mets <code>display: flex</code> sur les enfants</div><div class="ok"><code>display: flex</code> va sur le <strong>parent</strong> (le conteneur)</div></div>
+<div class="erreur"><div class="ko"><code>align-items: center</code> ne fait rien</div><div class="ok">Le conteneur doit avoir une hauteur plus grande que ses enfants</div></div>
+<div class="erreur"><div class="ko">En <code>column</code>, <code>justify-content</code> agit à la verticale</div><div class="ok">Normal : en <code>column</code>, les axes s'inversent</div></div>
+<div class="erreur"><div class="ko">Mes éléments sont tout écrasés</div><div class="ok">J'ajoute <code>flex-wrap: wrap</code> pour qu'ils passent à la ligne</div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Responsive</dt><dd>Qui s'adapte à toutes les tailles d'écran.</dd></div>
-<div><dt>Viewport</dt><dd>La zone visible de la page dans le navigateur.</dd></div>
-<div><dt>Media query</dt><dd>Une condition <code>@media</code> qui applique du CSS selon l'écran.</dd></div>
-<div><dt>Breakpoint</dt><dd>Une largeur où le design change (600px, 900px…).</dd></div>
-<div><dt>Mobile first</dt><dd>Écrire d'abord le CSS du téléphone, puis celui des grands écrans.</dd></div>
+<div><dt>Flexbox</dt><dd>Un système de CSS pour aligner des éléments sur une ligne ou une colonne.</dd></div>
+<div><dt>Conteneur flex</dt><dd>Le parent qui a <code>display: flex</code>.</dd></div>
+<div><dt>Élément flex</dt><dd>Un enfant direct du conteneur flex.</dd></div>
+<div><dt>Axe principal</dt><dd>La direction des éléments (horizontal en <code>row</code>).</dd></div>
+<div><dt>Axe secondaire</dt><dd>L'axe perpendiculaire (vertical en <code>row</code>).</dd></div>
+<div><dt>gap</dt><dd>L'espace entre les éléments.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/css/css_rwd_intro.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au responsive</a></li>
-<li><a href="https://www.w3schools.com/css/css_rwd_viewport.asp" target="_blank"><span class="tag">W3Schools</span><br>La balise viewport</a></li>
-<li><a href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank"><span class="tag">W3Schools</span><br>Les media queries</a></li>
-<li><a href="https://www.w3schools.com/css/css_rwd_images.asp" target="_blank"><span class="tag">W3Schools</span><br>Les images responsive</a></li>
-<li><a href="https://developer.chrome.com/docs/devtools/device-mode" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : simuler un téléphone (en anglais)</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank"><span class="tag">MDN</span><br>Le responsive design (en français)</a></li>
-<li><a href="https://cssgridgarden.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Grid Garden</strong> : arrose ton jardin avec CSS Grid (28 niveaux)</a></li>
+<li><a href="https://flexboxfroggy.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Flexbox Froggy</strong> : aide les grenouilles avec Flexbox (24 niveaux)</a></li>
+<li><a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank"><span class="tag">W3Schools</span><br>Flexbox : introduction</a></li>
+<li><a href="https://www.w3schools.com/css/css3_flexbox_container.asp" target="_blank"><span class="tag">W3Schools</span><br>Les propriétés du conteneur</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank"><span class="tag">Guide</span><br><strong>CSS-Tricks</strong> : le guide illustré de Flexbox (en anglais)</a></li>
+<li><a href="http://www.flexboxdefense.com/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Flexbox Defense</strong> : place les tours avec Flexbox</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank"><span class="tag">MDN</span><br>Flexbox (en français)</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Ma page a la balise viewport.</li>
-<li>Je sais tester ma page en mode téléphone avec F12.</li>
-<li>Je sais écrire une media query.</li>
-<li>Je comprends le principe « mobile first ».</li>
-<li>Ma page n'a pas de défilement horizontal sur téléphone.</li>
+<li>Je sais que <code>display: flex</code> se met sur le parent.</li>
+<li>Je sais centrer un élément horizontalement et verticalement.</li>
+<li>Je connais <code>space-between</code> et <code>space-around</code>.</li>
+<li>Je sais faire passer les éléments à la ligne avec <code>flex-wrap</code>.</li>
+<li>J'ai fini au moins 15 niveaux de Flexbox Froggy.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

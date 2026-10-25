@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 21 · Atelier : carte profil et galerie — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 21</span> · Atelier : carte profil et galerie</h1>
+    <p>Séance atelier ! Tu construis seul(e) deux composants complets en réutilisant tout ce que tu as appris : une carte de profil et une galerie photo responsive. C'est l'entraînement avant le projet final.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, Unsplash, Coolors, Google Fonts</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Réaliser un composant complet à partir d'un modèle, en autonomie.</li><li>Combiner box model, Flexbox, Grid, responsive, transitions et variables dans une même page.</li><li>Chercher seul(e) une solution dans la documentation (W3Schools How To, MDN).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Un site multi-pages : <code>index.html</code>, un seul <code>css/style.css</code>, le même menu partout, des variables CSS dans <code>:root</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Méthode : du modèle au code</h3>
+<p>Avant de coder, on <strong>observe</strong> le modèle et on le découpe en boîtes :</p>
+<ul><li>1. Je dessine les boîtes sur papier (qui est dans qui ?).</li><li>2. J'écris <strong>tout le HTML</strong> d'abord, sans CSS.</li><li>3. J'ajoute le CSS <strong>de l'extérieur vers l'intérieur</strong> : la page, puis la carte, puis les détails.</li><li>4. Je teste en mode téléphone.</li><li>5. J'ajoute les effets (<code>:hover</code>, transitions) à la fin.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Bloqué(e) ? Ouvre F12 sur l'exemple de la séance et inspecte l'élément qui te pose problème. Lire le code des autres, c'est comme ça qu'apprennent les développeurs !</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>La carte profil : la structure</h3>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;article class="profil"&gt;
+  &lt;div class="profil-haut"&gt;&lt;/div&gt;
+  &lt;img class="avatar" src="moi.jpg" alt="Ma photo"&gt;
+  &lt;h2&gt;Sara&lt;/h2&gt;
+  &lt;p class="metier"&gt;Future développeuse web&lt;/p&gt;
+  &lt;p&gt;J'aime créer des pages jolies et utiles.&lt;/p&gt;
+  &lt;ul class="competences"&gt;
+    &lt;li&gt;HTML&lt;/li&gt;&lt;li&gt;CSS&lt;/li&gt;&lt;li&gt;Design&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;a class="bouton" href="#"&gt;Me contacter&lt;/a&gt;
+&lt;/article&gt;</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> L'avatar qui « déborde » sur le bandeau de couleur : une <code>margin-top</code> <strong>négative</strong> (ex. <code>margin-top: -50px</code>).</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>La galerie : la structure</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;section class="galerie"&gt;
+  &lt;figure&gt;
+    &lt;img src="images/photo1.jpg" alt="…"&gt;
+    &lt;figcaption&gt;Légende&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;!-- … 6 figures en tout … --&gt;
+&lt;/section&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>&lt;figure&gt;</code> et <code>&lt;figcaption&gt;</code> sont les balises sémantiques pour une image avec sa légende.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Présentation de l'atelier et du modèle. Rappel de la méthode en 5 étapes.</span></li>
+<li><span class="temps">0:10 – 0:55</span><span>Partie 1 : la carte profil (exercices 1 et 2). Le formateur aide individuellement.</span></li>
+<li><span class="temps">0:55 – 1:05</span><span>Pause active : on montre 3 cartes au vidéoprojecteur, on donne des conseils.</span></li>
+<li><span class="temps">1:05 – 1:45</span><span>Partie 2 : la galerie responsive (exercice 3) puis le défi.</span></li>
+<li><span class="temps">1:45 – 2:00</span><span>Mini-présentation : chacun montre son travail. On annonce le projet final.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · La carte profil : HTML<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée <code>seance21/index.html</code> et <code>style.css</code>. Déclare tes variables (couleurs Coolors, police Google Fonts).</li>
+<li>Écris le HTML de ta carte profil (avec TES informations : photo ou avatar, prénom, passion, 3 compétences, bouton).</li>
+<li>Vérifie le HTML sans CSS : tout le contenu doit être là et dans le bon ordre.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La carte profil : CSS<span class="niveau moyen">moyen</span></h3><ol>
+<li>Centre la carte dans la page (Flexbox sur le <code>body</code> ou <code>margin: 0 auto</code>). Largeur max <code>340px</code>, coins arrondis, ombre.</li>
+<li>Bandeau de couleur en haut, avatar rond avec bordure blanche et <code>margin-top</code> négative.</li>
+<li>Compétences en badges côte à côte (<code>display: flex; flex-wrap: wrap; gap</code>).</li>
+<li>Au <code>:hover</code>, la carte monte légèrement (<code>transform</code> + <code>transition</code>).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La galerie<span class="niveau difficile">difficile</span></h3><ol>
+<li>Sous la carte, crée une galerie de 6 photos avec <code>&lt;figure&gt;</code> et <code>&lt;figcaption&gt;</code>.</li>
+<li>Grille responsive avec <code>auto-fit</code> et <code>minmax</code>. Images de même hauteur avec <code>object-fit: cover</code>.</li>
+<li>Au survol : l'image zoome et la légende change de couleur.</li>
+<li>Teste à 375px, 768px et 1280px de large (F12).</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La légende cachée</h2>
+<p>Dans la galerie, cache la légende (<code>opacity: 0</code>) et place-la <strong>par-dessus</strong> l'image en bas (<code>position: absolute</code>). Au survol de la photo, elle apparaît en glissant (<code>transform</code> + <code>transition</code>).</p>
+<p>Bonus : ajoute une 2e carte profil (un ami, un personnage) et mets les cartes côte à côte sur ordinateur et l'une sous l'autre sur téléphone.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je commence le CSS avant d'avoir fini le HTML</div><div class="ok">HTML complet d'abord, CSS ensuite</div></div>
+<div class="erreur"><div class="ko">Mon avatar est carré et déformé</div><div class="ok"><code>width</code> = <code>height</code> + <code>object-fit: cover</code> + <code>border-radius: 50%</code></div></div>
+<div class="erreur"><div class="ko">La légende <code>absolute</code> part en haut de la page</div><div class="ok">La <code>&lt;figure&gt;</code> doit avoir <code>position: relative</code></div></div>
+<div class="erreur"><div class="ko">Je reste bloqué(e) 20 minutes sans rien dire</div><div class="ok">Je cherche 5 minutes (W3Schools, F12), puis je demande à un voisin ou au formateur</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Composant</dt><dd>Un morceau de page réutilisable (carte, bouton, menu, galerie).</dd></div>
+<div><dt>Maquette / modèle</dt><dd>L'image du résultat à obtenir.</dd></div>
+<div><dt>figure / figcaption</dt><dd>Une image avec sa légende.</dd></div>
+<div><dt>Marge négative</dt><dd>Une <code>margin</code> avec une valeur négative pour faire chevaucher des éléments.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/howto/howto_css_profile_card.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : carte profil</a></li>
+<li><a href="https://www.w3schools.com/css/css_image_gallery.asp" target="_blank"><span class="tag">W3Schools</span><br>La galerie d'images</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_css_image_overlay.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : texte par-dessus une image au survol</a></li>
+<li><a href="https://www.w3schools.com/tags/tag_figcaption.asp" target="_blank"><span class="tag">W3Schools</span><br>Les balises figure et figcaption</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>J'ai découpé le modèle en boîtes avant de coder.</li>
+<li>Ma carte profil est centrée, arrondie, avec une ombre.</li>
+<li>Ma galerie change de nombre de colonnes selon l'écran.</li>
+<li>J'utilise des variables CSS pour mes couleurs.</li>
+<li>J'ai cherché seul(e) au moins une solution sur W3Schools ou avec F12.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance20/index.html">← Séance 20</a>
+<a href="../seance22/index.html">Séance 22 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -3,89 +3,73 @@
 }
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
+  color: #2c3e50;
+}
+
+/* Image de fond + voile sombre pour lire le texte */
+.banniere {
+  height: 340px;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)),
+    url("https://picsum.photos/seed/festival-scene/1200/600");
+  background-size: cover;
+  background-position: center;
+}
+
+.banniere h1 {
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+}
+
+/* Un bouton avec un dégradé */
+.bouton {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, #e67e22, #e74c3c);
+}
+
+main {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f6f9;
-}
-
-h2 {
-  color: #288b8b;
-  font-size: 1.2rem;
-}
-
-.conteneur {
-  display: flex;               /* sur le PARENT */
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #e3f3f3;
-}
-
-.entre {
-  justify-content: space-between;
-}
-
-.colonne {
-  flex-direction: column;
-}
-
-.case {
-  padding: 15px 20px;
-  border-radius: 8px;
-  background-color: #288b8b;
-  color: white;
-  font-weight: bold;
-}
-
-/* Centrer au milieu d'une boîte */
-.ecran {
-  display: flex;
-  justify-content: center;     /* horizontal */
-  align-items: center;         /* vertical */
-  height: 220px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #288b8b, #1d6b6b);
-}
-
-.bouton {
-  padding: 14px 28px;
-  border-radius: 30px;
-  background-color: #e67e22;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* Passer à la ligne automatiquement */
-.vignettes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.vignette {
-  width: 150px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: white;
   text-align: center;
-  font-size: 1.1rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-.barre-app {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 70px;
-  border-radius: 20px;
-  background-color: #22303c;
+figure {
+  display: inline-block;
+  margin: 10px;
 }
 
-.barre-app a {
-  font-size: 1.8rem;
-  text-decoration: none;
+/* Même taille pour toutes les photos, sans déformation */
+.photos img {
+  width: 240px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.sepia {
+  filter: sepia(80%);
+}
+
+.termine {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #288b8b, #1d6b6b);
 }

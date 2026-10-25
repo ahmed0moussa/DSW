@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 06 · Mon premier CSS : sélecteurs et couleurs — Formation Web 13-18</title>
+  <title>Séance 06 · Structure sémantique et médias — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 <main class="page">
 
   <div class="hero">
-    <span class="module">Module 2 · Bases du CSS</span>
-    <h1><span>Séance 06</span> · Mon premier CSS : sélecteurs et couleurs</h1>
-    <p>Le HTML, c'est la structure. Le CSS, c'est le style ! Aujourd'hui tu donnes des couleurs à ta page et tu apprends à viser exactement l'élément que tu veux modifier.</p>
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 06</span> · Structure sémantique et médias</h1>
+    <p>Un vrai site est découpé en zones : en-tête, menu, contenu, pied de page. Aujourd'hui tu apprends à les nommer correctement et à ajouter une vidéo YouTube.</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Débutant</li>
-      <li>🧰 Outils : VS Code, Live Server, HTML Color Codes, CSS Diner</li>
+      <li>🧰 Outils : VS Code, Live Server, YouTube</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,169 +35,145 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Écrire une règle CSS : sélecteur, propriété, valeur.</li><li>Relier un fichier <code>style.css</code> à ma page avec <code>&lt;link&gt;</code>.</li><li>Viser des éléments par balise, par <code>.classe</code> et par <code>#id</code>, et utiliser des couleurs en nom, HEX et RGB.</li>
+      <li>Découper une page en zones avec <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code> et <code>&lt;footer&gt;</code>.</li><li>Comprendre la différence entre <code>&lt;div&gt;</code> (bloc) et <code>&lt;span&gt;</code> (dans une ligne).</li><li>Intégrer une vidéo YouTube avec <code>&lt;iframe&gt;</code> et un son avec <code>&lt;audio&gt;</code>.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Une page bien structurée utilise <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>. <code>&lt;div&gt;</code> et <code>&lt;span&gt;</code> servent à regrouper.</p>
+    <p>Les formulaires : <code>&lt;form&gt;</code>, <code>&lt;label for&gt;</code> + <code>&lt;input id&gt;</code>, les types (<code>email</code>, <code>number</code>, <code>radio</code>…) et <code>required</code>.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>Une règle CSS</h3>
-<p>Une règle CSS dit : « <strong>Qui</strong> je modifie { <strong>quoi</strong> : <strong>comment</strong> ; } ».</p>
-<p>Le <strong>sélecteur</strong> choisit les éléments. La <strong>propriété</strong> dit ce qu'on change. La <strong>valeur</strong> dit comment. Chaque ligne finit par <code>;</code>.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h1&gt;Mon titre stylé&lt;/h1&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>h1 {
-  color: white;
-  background-color: teal;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Une règle CSS" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;h1 {
-  color: white;
-  background-color: teal;
-}&lt;/style&gt;&lt;h1&gt;Mon titre stylé&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">1</span>Les balises sémantiques</h3>
+<p><strong>Sémantique</strong> veut dire « qui a un sens ». Ces balises disent au navigateur (et à Google) <strong>à quoi sert</strong> chaque zone.</p>
+<ul><li><code>&lt;header&gt;</code> : l'en-tête (logo, titre du site).</li><li><code>&lt;nav&gt;</code> : le menu de navigation.</li><li><code>&lt;main&gt;</code> : le contenu principal (un seul par page).</li><li><code>&lt;section&gt;</code> : une partie de la page avec un thème.</li><li><code>&lt;article&gt;</code> : un contenu qui a du sens tout seul (un article de blog, une carte).</li><li><code>&lt;aside&gt;</code> : un contenu à côté (encadré, publicité, liens).</li><li><code>&lt;footer&gt;</code> : le pied de page (contact, copyright).</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;header&gt;
+  &lt;h1&gt;Mon blog voyage&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Accueil&lt;/a&gt; | &lt;a href="#"&gt;Destinations&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Un week-end à Djerba&lt;/h2&gt;
+    &lt;p&gt;Plages, poterie et couscous au poisson…&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;aside&gt;À lire aussi : Tozeur&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;© 2026 Mon blog&lt;/footer&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les balises sémantiques" sandbox="" style="height:330px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;header,nav,main,article,aside,footer{border:2px dashed;padding:6px;margin:4px}header{border-color:#e67e22}nav{border-color:#8e44ad}main{border-color:#288b8b}article{border-color:#2980b9}aside{border-color:#c0392b}footer{border-color:#27ae60}h1,h2,p{margin:2px}&lt;/style&gt;
+&lt;header&gt;&lt;h1&gt;Mon blog voyage&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;#&quot;&gt;Accueil&lt;/a&gt; | &lt;a href=&quot;#&quot;&gt;Destinations&lt;/a&gt;&lt;/nav&gt;&lt;/header&gt;
+&lt;main&gt;&lt;article&gt;&lt;h2&gt;Un week-end à Djerba&lt;/h2&gt;&lt;p&gt;Plages, poterie et couscous au poisson…&lt;/p&gt;&lt;/article&gt;&lt;aside&gt;À lire aussi : Tozeur&lt;/aside&gt;&lt;/main&gt;
+&lt;footer&gt;© 2026 Mon blog&lt;/footer&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Dans le résultat, chaque zone a une bordure de couleur pour que tu voies le découpage. Sans CSS, ces balises ne changent rien à l'affichage : elles donnent du <strong>sens</strong>.</p>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>3 façons d'ajouter du CSS</h3>
-<ul><li><strong>En ligne</strong> : <code>&lt;p style="color: red;"&gt;</code> → à éviter, c'est difficile à modifier.</li><li><strong>Interne</strong> : dans une balise <code>&lt;style&gt;</code> dans le <code>&lt;head&gt;</code> → pour une seule page.</li><li><strong>Externe</strong> : dans un fichier <code>style.css</code> relié avec <code>&lt;link&gt;</code> → <strong>la meilleure façon</strong> : un seul fichier pour tout le site !</li></ul>
-<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Ma page&lt;/title&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;</code></pre></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Si ton CSS ne marche pas, vérifie d'abord le chemin dans <code>href</code> : le fichier <code>style.css</code> est-il bien dans le même dossier ?</p>
+<h3><span class="num">2</span>&lt;div&gt; et &lt;span&gt; : les boîtes sans sens</h3>
+<p><code>&lt;div&gt;</code> est une <strong>boîte</strong> qui prend toute la largeur (un bloc). <code>&lt;span&gt;</code> entoure un <strong>morceau de texte</strong> dans une ligne.</p>
+<p>Ils n'ont pas de sens particulier : on les utilise pour regrouper des éléments et leur donner un style en CSS.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div&gt;Je suis un bloc div.&lt;/div&gt;
+&lt;div&gt;Moi aussi, je commence sur une nouvelle ligne.&lt;/div&gt;
+&lt;p&gt;Un mot &lt;span style="color:red"&gt;en rouge&lt;/span&gt; dans la phrase.&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : &lt;div&gt; et &lt;span&gt; : les boîtes sans sens" sandbox="" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;Je suis un bloc div.&lt;/div&gt;
+&lt;div&gt;Moi aussi, je commence sur une nouvelle ligne.&lt;/div&gt;
+&lt;p&gt;Un mot &lt;span style=&quot;color:red&quot;&gt;en rouge&lt;/span&gt; dans la phrase.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Règle d'or : si une balise sémantique existe (<code>&lt;nav&gt;</code>, <code>&lt;footer&gt;</code>…), utilise-la plutôt qu'une <code>&lt;div&gt;</code>.</p>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>Les sélecteurs : balise, classe, id</h3>
-<ul><li><code>p { }</code> → <strong>tous</strong> les paragraphes.</li><li><code>.important { }</code> → tous les éléments qui ont <code>class="important"</code> (un point devant). Une classe peut être utilisée <strong>plusieurs fois</strong>.</li><li><code>#titre { }</code> → l'élément qui a <code>id="titre"</code> (un dièse devant). Un id est <strong>unique</strong> dans la page.</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h2 id="titre"&gt;Les règles du club&lt;/h2&gt;
-&lt;p&gt;Arriver à l'heure.&lt;/p&gt;
-&lt;p class="important"&gt;Porter une tenue de sport.&lt;/p&gt;
-&lt;p&gt;Ranger le matériel.&lt;/p&gt;
-&lt;p class="important"&gt;Respecter les autres.&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>p { color: gray; }
-.important { color: crimson; font-weight: bold; }
-#titre { color: teal; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les sélecteurs : balise, classe, id" sandbox="" style="height:190px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;p { color: gray; }
-.important { color: crimson; font-weight: bold; }
-#titre { color: teal; }&lt;/style&gt;&lt;h2 id=&quot;titre&quot;&gt;Les règles du club&lt;/h2&gt;
-&lt;p&gt;Arriver à l&#x27;heure.&lt;/p&gt;
-&lt;p class=&quot;important&quot;&gt;Porter une tenue de sport.&lt;/p&gt;
-&lt;p&gt;Ranger le matériel.&lt;/p&gt;
-&lt;p class=&quot;important&quot;&gt;Respecter les autres.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">3</span>Une vidéo YouTube avec &lt;iframe&gt;</h3>
+<p>Sur YouTube : sous la vidéo, clique sur <strong>Partager → Intégrer</strong>, puis copie le code <code>&lt;iframe&gt;</code> et colle-le dans ta page.</p>
+<p>Une <code>&lt;iframe&gt;</code> affiche une autre page web <strong>à l'intérieur</strong> de ta page.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;iframe width="360" height="203"
+  src="https://www.youtube.com/embed/UB1O30fR-EE"
+  title="Vidéo YouTube"
+  allowfullscreen&gt;&lt;/iframe&gt;</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Tu peux faire pareil avec Google Maps : <strong>Partager → Intégrer une carte</strong>.</p>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>Les couleurs</h3>
-<p>Il y a plusieurs façons d'écrire une couleur :</p>
-<ul><li><strong>Nom</strong> en anglais : <code>red</code>, <code>teal</code>, <code>orange</code>… (140 noms existent).</li><li><strong>HEX</strong> : <code>#288b8b</code> (le plus utilisé). Copie-le sur <strong>htmlcolorcodes.com</strong>.</li><li><strong>RGB</strong> : <code>rgb(40, 139, 139)</code> = quantité de Rouge, Vert, Bleu de 0 à 255.</li><li><strong>RGBA</strong> : <code>rgba(0, 0, 0, 0.5)</code> = avec de la transparence (0 = invisible, 1 = opaque).</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="a"&gt;orange&lt;/div&gt;
-&lt;div class="b"&gt;#288b8b&lt;/div&gt;
-&lt;div class="c"&gt;rgb(142, 68, 173)&lt;/div&gt;
-&lt;div class="d"&gt;rgba(..., 0.4)&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.a { background-color: orange; }
-.b { background-color: #288b8b; }
-.c { background-color: rgb(142, 68, 173); }
-.d { background-color: rgba(142, 68, 173, 0.4); }
-div { color: white; padding: 8px; margin: 4px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les couleurs" sandbox="" style="height:190px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.a { background-color: orange; }
-.b { background-color: #288b8b; }
-.c { background-color: rgb(142, 68, 173); }
-.d { background-color: rgba(142, 68, 173, 0.4); }
-div { color: white; padding: 8px; margin: 4px; }&lt;/style&gt;&lt;div class=&quot;a&quot;&gt;orange&lt;/div&gt;
-&lt;div class=&quot;b&quot;&gt;#288b8b&lt;/div&gt;
-&lt;div class=&quot;c&quot;&gt;rgb(142, 68, 173)&lt;/div&gt;
-&lt;div class=&quot;d&quot;&gt;rgba(..., 0.4)&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-</div>
-<div class="notion">
-<h3><span class="num">5</span>Grouper et combiner</h3>
-<p><code>h1, h2 { }</code> : la virgule applique la règle à <strong>plusieurs</strong> sélecteurs.</p>
-<p><code>nav a { }</code> : l'espace veut dire « les <code>&lt;a&gt;</code> qui sont <strong>dans</strong> un <code>&lt;nav&gt;</code> ».</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h1&gt;Titre&lt;/h1&gt;
-&lt;h2&gt;Sous-titre&lt;/h2&gt;
-&lt;nav&gt;&lt;a href="#"&gt;Lien du menu&lt;/a&gt;&lt;/nav&gt;
-&lt;a href="#"&gt;Lien en dehors du menu&lt;/a&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>h1, h2 { font-family: Arial; color: navy; }
-nav a { color: orange; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Grouper et combiner" sandbox="" style="height:160px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;h1, h2 { font-family: Arial; color: navy; }
-nav a { color: orange; }&lt;/style&gt;&lt;h1&gt;Titre&lt;/h1&gt;
-&lt;h2&gt;Sous-titre&lt;/h2&gt;
-&lt;nav&gt;&lt;a href=&quot;#&quot;&gt;Lien du menu&lt;/a&gt;&lt;/nav&gt;
-&lt;a href=&quot;#&quot;&gt;Lien en dehors du menu&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Si deux règles se contredisent, c'est la plus précise qui gagne : <code>#id</code> &gt; <code>.classe</code> &gt; <code>balise</code>. À précision égale, la dernière écrite gagne (c'est la <strong>cascade</strong>).</p>
+<h3><span class="num">4</span>Audio et vidéo de ton ordinateur</h3>
+<p>Pour un fichier qui est dans ton dossier, utilise <code>&lt;audio&gt;</code> ou <code>&lt;video&gt;</code>. L'attribut <code>controls</code> affiche les boutons lecture/pause.</p>
+<p>Attention : le fichier doit <strong>vraiment exister</strong> dans ton dossier (ex. <code>media/musique.mp3</code>).</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;audio controls src="media/musique.mp3"&gt;&lt;/audio&gt;
+
+&lt;video controls width="320" src="media/clip.mp4"&gt;&lt;/video&gt;</code></pre></div></div>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:15</span><span>Échauffement : <strong>CSS Diner</strong> niveaux 1 à 6 (les sélecteurs en jouant).</span></li>
-<li><span class="temps">0:15 – 0:35</span><span>Découverte : syntaxe d'une règle, les 3 façons d'ajouter du CSS, <code>&lt;link&gt;</code>.</span></li>
-<li><span class="temps">0:35 – 0:55</span><span>Sélecteurs balise / classe / id, couleurs avec <strong>HTML Color Codes</strong>.</span></li>
-<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : on habille la fiche joueur.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : la palette Coolors.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : chacun présente sa palette de couleurs. Checklist.</span></li>
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : sur une capture d'écran d'un site connu, les élèves entourent au crayon l'en-tête, le menu, le contenu et le pied de page.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte des balises sémantiques. On dessine le plan d'une page sur papier.</span></li>
+<li><span class="temps">0:35 – 0:50</span><span><code>&lt;div&gt;</code> / <code>&lt;span&gt;</code>, puis intégration YouTube et Google Maps.</span></li>
+<li><span class="temps">0:50 – 1:35</span><span>Exercices 1 à 3 : le blog voyage.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la page « Mon artiste préféré ».</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan du module HTML : quiz rapide sur toutes les balises vues.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Relier mon CSS<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance06/index.html</code> (une fiche joueur ou artiste : titre, photo, paragraphes, liste).</li>
-<li>Crée <code>seance06/style.css</code> et relie-le avec <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>.</li>
-<li>Test : écris <code>body { background-color: lightyellow; }</code>. Si le fond change, c'est relié !</li>
+<div class="exercice"><h3>Exercice 1 · Le plan de ma page<span class="niveau facile">facile</span></h3><ol>
+<li>Sur une feuille, dessine 5 rectangles : header, nav, main, aside, footer.</li>
+<li>Crée <code>seance06/index.html</code> et écris ces 5 balises dans le <code>&lt;body&gt;</code> (avec <code>&lt;nav&gt;</code> dans le <code>&lt;header&gt;</code>).</li>
+<li>Dans le <code>&lt;header&gt;</code>, mets un <code>&lt;h1&gt;</code> « Mon blog voyage ». Dans le <code>&lt;footer&gt;</code>, un copyright <code>&amp;copy; 2026</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Colorer avec les sélecteurs de balise<span class="niveau facile">facile</span></h3><ol>
-<li>Donne une couleur au <code>&lt;h1&gt;</code> et une autre aux <code>&lt;h2&gt;</code> (va chercher les codes HEX sur htmlcolorcodes.com).</li>
-<li>Donne une couleur de texte à tous les <code>&lt;p&gt;</code>.</li>
-<li>Groupe <code>h1, h2</code> pour leur donner la même police : <code>font-family: Arial;</code>.</li>
+<div class="exercice"><h3>Exercice 2 · Remplir le contenu<span class="niveau moyen">moyen</span></h3><ol>
+<li>Dans <code>&lt;nav&gt;</code>, ajoute 3 liens : Accueil, Destinations, Contact.</li>
+<li>Dans <code>&lt;main&gt;</code>, crée 2 <code>&lt;article&gt;</code> : chacun a un <code>&lt;h2&gt;</code>, une image et un paragraphe sur une ville de Tunisie.</li>
+<li>Dans <code>&lt;aside&gt;</code>, ajoute une liste « Mes conseils de voyage ».</li>
+<li>Utilise un <code>&lt;span&gt;</code> pour colorer un mot dans un paragraphe (avec <code>style="color: …"</code>).</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Classes et id<span class="niveau moyen">moyen</span></h3><ol>
-<li>Ajoute <code>class="stat"</code> sur 3 paragraphes (les statistiques du joueur) et colore-les en vert.</li>
-<li>Ajoute <code>id="bio"</code> sur la section biographie et donne-lui une couleur de fond en <code>rgba</code> légèrement transparente.</li>
-<li>Colore uniquement les liens qui sont dans le <code>&lt;nav&gt;</code> avec <code>nav a { }</code>.</li>
+<div class="exercice"><h3>Exercice 3 · Ajouter des médias<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute une <code>&lt;section&gt;</code> « En vidéo » avec une vidéo YouTube sur une de tes villes.</li>
+<li>Ajoute une carte Google Maps intégrée de cette ville.</li>
+<li>Vérifie que ta page reste lisible sur un petit écran (réduis la fenêtre).</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : La palette Coolors</h2>
-<p>Va sur <strong>coolors.co</strong>, appuie sur la barre espace jusqu'à trouver une palette de 5 couleurs que tu aimes.</p>
-<p>Utilise uniquement ces 5 couleurs (en HEX) pour toute ta page : fond, titres, texte, liens, encadrés. Bonus : termine les niveaux 7 à 14 de <strong>CSS Diner</strong>.</p>
+<h2>🏆 Défi bonus : La page « Mon artiste préféré »</h2>
+<p>Crée une page complète sur ton chanteur, sportif ou créateur préféré en utilisant <strong>toutes</strong> les balises vues dans le module 1 : titres, paragraphes, liens, images, liste, tableau (ses dates importantes), structure sémantique et une vidéo YouTube.</p>
+<p>Vérifie ton code avec le <strong>validateur W3C</strong> (lien dans les ressources) : essaie d'avoir 0 erreur !</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">J'oublie le <code>;</code> à la fin d'une ligne</div><div class="ok">Chaque déclaration finit par <code>;</code> sinon la ligne suivante ne marche pas</div></div>
-<div class="erreur"><div class="ko"><code>.important</code> dans le CSS mais <code>class="Important"</code> dans le HTML</div><div class="ok">Même nom exactement, sans le point dans le HTML : <code>class="important"</code></div></div>
-<div class="erreur"><div class="ko">J'écris <code>colour</code> ou <code>couleur</code></div><div class="ok">Les propriétés sont en anglais américain : <code>color</code></div></div>
-<div class="erreur"><div class="ko">J'utilise le même <code>id</code> sur plusieurs éléments</div><div class="ok">Un <code>id</code> est unique ; pour plusieurs éléments j'utilise une <code>class</code></div></div>
+<div class="erreur"><div class="ko">Je mets plusieurs <code>&lt;main&gt;</code> dans la page</div><div class="ok">Un seul <code>&lt;main&gt;</code> par page</div></div>
+<div class="erreur"><div class="ko">J'utilise des <code>&lt;div&gt;</code> partout</div><div class="ok">J'utilise d'abord les balises sémantiques quand elles existent</div></div>
+<div class="erreur"><div class="ko">La vidéo ne s'affiche pas : j'ai copié l'adresse <code>watch?v=</code></div><div class="ok">Il faut le code <strong>Intégrer</strong> avec l'adresse <code>/embed/</code></div></div>
+<div class="erreur"><div class="ko">Mon audio ne marche pas</div><div class="ok">Le fichier doit exister dans mon dossier et le chemin <code>src</code> doit être juste</div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>CSS</dt><dd>Cascading Style Sheets : le langage du style.</dd></div>
-<div><dt>Sélecteur</dt><dd>La partie qui choisit les éléments à styler (<code>p</code>, <code>.carte</code>, <code>#menu</code>).</dd></div>
-<div><dt>Propriété</dt><dd>Ce qu'on modifie (<code>color</code>, <code>background-color</code>…).</dd></div>
-<div><dt>Valeur</dt><dd>Comment on le modifie (<code>red</code>, <code>#288b8b</code>, <code>20px</code>…).</dd></div>
-<div><dt>Classe</dt><dd>Un nom que plusieurs éléments peuvent partager. Sélecteur <code>.nom</code>.</dd></div>
-<div><dt>Id</dt><dd>Un nom unique pour un seul élément. Sélecteur <code>#nom</code>.</dd></div>
-<div><dt>HEX</dt><dd>Code couleur qui commence par <code>#</code> suivi de 6 caractères.</dd></div>
+<div><dt>Sémantique</dt><dd>Qui donne du sens : la balise dit à quoi sert son contenu.</dd></div>
+<div><dt>Bloc</dt><dd>Un élément qui commence sur une nouvelle ligne et prend toute la largeur (<code>div</code>, <code>p</code>, <code>h1</code>).</dd></div>
+<div><dt>En ligne (inline)</dt><dd>Un élément qui reste dans la ligne de texte (<code>span</code>, <code>a</code>, <code>strong</code>).</dd></div>
+<div><dt>iframe</dt><dd>Une fenêtre qui affiche une autre page dans ma page.</dd></div>
+<div><dt>Intégrer (embed)</dt><dd>Mettre un contenu d'un autre site (vidéo, carte) dans ma page.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/css/css_syntax.asp" target="_blank"><span class="tag">W3Schools</span><br>La syntaxe CSS</a></li>
-<li><a href="https://www.w3schools.com/css/css_howto.asp" target="_blank"><span class="tag">W3Schools</span><br>Les 3 façons d'ajouter du CSS</a></li>
-<li><a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank"><span class="tag">W3Schools</span><br>Les sélecteurs</a></li>
-<li><a href="https://www.w3schools.com/css/css_colors.asp" target="_blank"><span class="tag">W3Schools</span><br>Les couleurs</a></li>
-<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
-<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
-<li><a href="https://flukeout.github.io/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CSS Diner</strong> : apprends les sélecteurs CSS en jouant</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps/What_is_CSS" target="_blank"><span class="tag">MDN</span><br>Qu'est-ce que CSS ? (en français)</a></li>
+<li><a href="https://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>Les balises sémantiques</a></li>
+<li><a href="https://www.w3schools.com/html/html_blocks.asp" target="_blank"><span class="tag">W3Schools</span><br>Bloc et en ligne : div et span</a></li>
+<li><a href="https://www.w3schools.com/html/html_youtube.asp" target="_blank"><span class="tag">W3Schools</span><br>Intégrer une vidéo YouTube</a></li>
+<li><a href="https://www.w3schools.com/html/html5_audio.asp" target="_blank"><span class="tag">W3Schools</span><br>La balise audio</a></li>
+<li><a href="https://www.w3schools.com/html/html5_video.asp" target="_blank"><span class="tag">W3Schools</span><br>La balise video</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure" target="_blank"><span class="tag">MDN</span><br>Structure d'un site web (en français)</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais écrire une règle : <code>sélecteur { propriété: valeur; }</code>.</li>
-<li>Mon CSS est dans un fichier séparé relié avec <code>&lt;link&gt;</code>.</li>
-<li>Je sais viser un élément par balise, <code>.classe</code> et <code>#id</code>.</li>
-<li>Je sais écrire une couleur en HEX et en RGB.</li>
-<li>Je sais trouver un code couleur sur htmlcolorcodes.com.</li>
+<li>Ma page a un <code>&lt;header&gt;</code>, un <code>&lt;nav&gt;</code>, un <code>&lt;main&gt;</code> et un <code>&lt;footer&gt;</code>.</li>
+<li>Je sais quand utiliser <code>&lt;article&gt;</code> ou <code>&lt;section&gt;</code>.</li>
+<li>Je sais la différence entre <code>&lt;div&gt;</code> et <code>&lt;span&gt;</code>.</li>
+<li>Je sais intégrer une vidéo YouTube.</li>
+<li>Mon code passe le validateur W3C sans erreur grave.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

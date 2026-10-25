@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 15 · Pseudo-classes, transitions et transformations — Formation Web 13-18</title>
+  <title>Séance 15 · Flexbox 2 : navbar et cartes — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 <main class="page">
 
   <div class="hero">
-    <span class="module">Module 4 · Interactivité et projet</span>
-    <h1><span>Séance 15</span> · Pseudo-classes, transitions et transformations</h1>
-    <p>Un site vivant réagit quand on le survole ou qu'on clique. Aujourd'hui, sans JavaScript, tu crées des boutons animés, des cartes qui bougent et un menu déroulant.</p>
+    <span class="module">Module 3 · Mise en page</span>
+    <h1><span>Séance 15</span> · Flexbox 2 : navbar et cartes</h1>
+    <p>Maintenant que tu connais Flexbox, tu construis les deux éléments qu'on trouve sur presque tous les sites : une barre de navigation et une rangée de cartes.</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : VS Code, Live Server</li>
+      <li>🧰 Outils : VS Code, Live Server, Flexbox Froggy (révision)</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,193 +35,171 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Utiliser les pseudo-classes <code>:hover</code>, <code>:focus</code>, <code>:active</code> et <code>:nth-child()</code>.</li><li>Rendre un changement doux avec <code>transition</code>.</li><li>Déplacer, agrandir et tourner un élément avec <code>transform</code> (<code>translate</code>, <code>scale</code>, <code>rotate</code>).</li>
+      <li>Construire une barre de navigation avec un logo à gauche et des liens à droite.</li><li>Créer une rangée de cartes de même hauteur avec Flexbox.</li><li>Contrôler la taille des éléments avec <code>flex-grow</code>, <code>flex-basis</code> et le raccourci <code>flex</code>.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Le responsive : balise viewport, <code>@media (max-width: 600px)</code>, mobile first avec <code>min-width</code>, images en <code>max-width: 100%</code>.</p>
+    <p><code>display: flex</code> sur le parent. <code>justify-content</code> = axe horizontal, <code>align-items</code> = axe vertical. <code>flex-wrap: wrap</code> et <code>gap</code> pour les espacer.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>Les pseudo-classes</h3>
-<p>Une pseudo-classe vise un élément dans un <strong>état</strong> ou une <strong>position</strong> particulière. Elle commence par <code>:</code>.</p>
-<ul><li><code>:hover</code> : la souris est dessus.</li><li><code>:focus</code> : le champ est sélectionné (on écrit dedans).</li><li><code>:active</code> : on est en train de cliquer.</li><li><code>:first-child</code> / <code>:last-child</code> : le premier / le dernier enfant.</li><li><code>:nth-child(2)</code> : le 2e enfant. <code>:nth-child(even)</code> : les pairs, <code>:nth-child(odd)</code> : les impairs.</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul&gt;
-  &lt;li&gt;1. Premier (first-child)&lt;/li&gt;
-  &lt;li&gt;2. Pair&lt;/li&gt;
-  &lt;li&gt;3. Impair&lt;/li&gt;
-  &lt;li&gt;4. Pair&lt;/li&gt;
-&lt;/ul&gt;
-&lt;input placeholder="Clique ici (focus)"&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>li:nth-child(even) { background: #e3f3f3; }
-li:first-child { font-weight: bold; color: #e67e22; }
-input:focus { outline: 3px solid #288b8b; }
-li { padding: 4px; list-style: none; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les pseudo-classes" sandbox="" style="height:180px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;li:nth-child(even) { background: #e3f3f3; }
-li:first-child { font-weight: bold; color: #e67e22; }
-input:focus { outline: 3px solid #288b8b; }
-li { padding: 4px; list-style: none; }&lt;/style&gt;&lt;ul&gt;
-  &lt;li&gt;1. Premier (first-child)&lt;/li&gt;
-  &lt;li&gt;2. Pair&lt;/li&gt;
-  &lt;li&gt;3. Impair&lt;/li&gt;
-  &lt;li&gt;4. Pair&lt;/li&gt;
-&lt;/ul&gt;
-&lt;input placeholder=&quot;Clique ici (focus)&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> <code>:nth-child(even)</code> est parfait pour colorer une ligne sur deux dans un tableau.</p>
+<h3><span class="num">1</span>La navbar classique</h3>
+<p>Un <code>&lt;nav&gt;</code> en flex avec <code>justify-content: space-between</code> : le logo part à gauche, la liste de liens à droite.</p>
+<p>La liste <code>&lt;ul&gt;</code> est elle aussi en flex pour mettre les liens côte à côte. C'est un <strong>flex dans un flex</strong> !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;nav&gt;
+  &lt;div class="logo"&gt;MonSite&lt;/div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Projets&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>nav { display: flex; justify-content: space-between; align-items: center; background: #22303c; padding: 10px 16px; }
+.logo { color: #e67e22; font-weight: bold; font-size: 20px; }
+nav ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+nav a { color: white; text-decoration: none; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La navbar classique" sandbox="" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;nav { display: flex; justify-content: space-between; align-items: center; background: #22303c; padding: 10px 16px; }
+.logo { color: #e67e22; font-weight: bold; font-size: 20px; }
+nav ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+nav a { color: white; text-decoration: none; }&lt;/style&gt;&lt;nav&gt;
+  &lt;div class=&quot;logo&quot;&gt;MonSite&lt;/div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Projets&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>transition : un changement en douceur</h3>
-<p>Sans transition, le changement au <code>:hover</code> est immédiat. Avec <code>transition</code>, il dure un certain temps.</p>
-<p><code>transition: propriété durée;</code> → ex. <code>transition: background-color 0.3s;</code> ou <code>transition: all 0.3s;</code>.</p>
-<p>On écrit la transition sur l'élément <strong>normal</strong>, pas dans le <code>:hover</code>.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button class="bouton"&gt;Survole-moi&lt;/button&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.bouton {
-  background: #288b8b; color: white; padding: 12px 24px;
-  border: none; border-radius: 8px; font-size: 16px;
-  transition: background-color 0.4s, border-radius 0.4s;
-}
-.bouton:hover {
-  background: #e67e22;
-  border-radius: 30px;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : transition : un changement en douceur" sandbox="" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.bouton {
-  background: #288b8b; color: white; padding: 12px 24px;
-  border: none; border-radius: 8px; font-size: 16px;
-  transition: background-color 0.4s, border-radius 0.4s;
-}
-.bouton:hover {
-  background: #e67e22;
-  border-radius: 30px;
-}&lt;/style&gt;&lt;button class=&quot;bouton&quot;&gt;Survole-moi&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-</div>
-<div class="notion">
-<h3><span class="num">3</span>transform : bouger sans casser la page</h3>
-<ul><li><code>translate(x, y)</code> : déplacer (ex. <code>translateY(-8px)</code> monte de 8px).</li><li><code>scale(1.2)</code> : agrandir de 20 %. <code>scale(0.8)</code> : rétrécir.</li><li><code>rotate(10deg)</code> : tourner de 10 degrés.</li><li>On peut combiner : <code>transform: scale(1.1) rotate(-3deg);</code>.</li></ul>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="c monte"&gt;monte&lt;/div&gt;
-&lt;div class="c zoom"&gt;zoom&lt;/div&gt;
-&lt;div class="c tourne"&gt;tourne&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.c { display: inline-block; width: 90px; padding: 20px 0; margin: 8px; text-align: center;
-     background: #e3f3f3; border-radius: 10px; transition: transform 0.3s; }
-.monte:hover { transform: translateY(-10px); }
-.zoom:hover { transform: scale(1.2); }
-.tourne:hover { transform: rotate(15deg); }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : transform : bouger sans casser la page" sandbox="" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.c { display: inline-block; width: 90px; padding: 20px 0; margin: 8px; text-align: center;
-     background: #e3f3f3; border-radius: 10px; transition: transform 0.3s; }
-.monte:hover { transform: translateY(-10px); }
-.zoom:hover { transform: scale(1.2); }
-.tourne:hover { transform: rotate(15deg); }&lt;/style&gt;&lt;div class=&quot;c monte&quot;&gt;monte&lt;/div&gt;
-&lt;div class=&quot;c zoom&quot;&gt;zoom&lt;/div&gt;
-&lt;div class=&quot;c tourne&quot;&gt;tourne&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Passe la souris sur chaque boîte du résultat ! <code>transform</code> + <code>transition</code> = le duo le plus utilisé des sites modernes.</p>
-</div>
-<div class="notion">
-<h3><span class="num">4</span>Un menu déroulant en CSS</h3>
-<p>Le sous-menu est caché (<code>display: none</code>). Quand on survole le parent, il apparaît (<code>display: block</code>).</p>
-<p>Le sélecteur <code>.menu:hover .sous-menu</code> veut dire : « le <code>.sous-menu</code> qui est dans un <code>.menu</code> survolé ».</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="menu"&gt;
-  &lt;span&gt;Jeux ▾&lt;/span&gt;
-  &lt;div class="sous-menu"&gt;
-    &lt;a href="#"&gt;Aventure&lt;/a&gt;
-    &lt;a href="#"&gt;Sport&lt;/a&gt;
-    &lt;a href="#"&gt;Réflexion&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.menu { position: relative; display: inline-block; }
-.sous-menu { display: none; position: absolute; background: white;
-             box-shadow: 0 4px 10px rgba(0,0,0,0.2); min-width: 140px; }
-.menu:hover .sous-menu { display: block; }
-.sous-menu a { display: block; padding: 8px; color: #22303c; text-decoration: none; }
-.sous-menu a:hover { background: #e3f3f3; }
-.menu &gt; span { background: #22303c; color: white; padding: 8px 14px; display: inline-block; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un menu déroulant en CSS" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.menu { position: relative; display: inline-block; }
-.sous-menu { display: none; position: absolute; background: white;
-             box-shadow: 0 4px 10px rgba(0,0,0,0.2); min-width: 140px; }
-.menu:hover .sous-menu { display: block; }
-.sous-menu a { display: block; padding: 8px; color: #22303c; text-decoration: none; }
-.sous-menu a:hover { background: #e3f3f3; }
-.menu &gt; span { background: #22303c; color: white; padding: 8px 14px; display: inline-block; }&lt;/style&gt;&lt;div class=&quot;menu&quot;&gt;
-  &lt;span&gt;Jeux ▾&lt;/span&gt;
-  &lt;div class=&quot;sous-menu&quot;&gt;
-    &lt;a href=&quot;#&quot;&gt;Aventure&lt;/a&gt;
-    &lt;a href=&quot;#&quot;&gt;Sport&lt;/a&gt;
-    &lt;a href=&quot;#&quot;&gt;Réflexion&lt;/a&gt;
-  &lt;/div&gt;
+<h3><span class="num">2</span>flex-grow : qui prend la place libre ?</h3>
+<p><code>flex-grow</code> se met sur un <strong>enfant</strong>. Il dit quelle part de l'espace libre l'élément prend.</p>
+<p><code>flex-grow: 1</code> sur tous → ils partagent l'espace en parts égales. <code>flex-grow: 2</code> → cet élément prend 2 parts.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="boite"&gt;
+  &lt;div class="un"&gt;grow 1&lt;/div&gt;
+  &lt;div class="deux"&gt;grow 2&lt;/div&gt;
+  &lt;div class="un"&gt;grow 1&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.boite { display: flex; gap: 6px; }
+.boite div { background: #288b8b; color: white; padding: 10px; border-radius: 6px; }
+.un { flex-grow: 1; }
+.deux { flex-grow: 2; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : flex-grow : qui prend la place libre ?" sandbox="" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite { display: flex; gap: 6px; }
+.boite div { background: #288b8b; color: white; padding: 10px; border-radius: 6px; }
+.un { flex-grow: 1; }
+.deux { flex-grow: 2; }&lt;/style&gt;&lt;div class=&quot;boite&quot;&gt;
+  &lt;div class=&quot;un&quot;&gt;grow 1&lt;/div&gt;
+  &lt;div class=&quot;deux&quot;&gt;grow 2&lt;/div&gt;
+  &lt;div class=&quot;un&quot;&gt;grow 1&lt;/div&gt;
 &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Le raccourci flex</h3>
+<p><code>flex: 1 1 250px;</code> veut dire : je peux <strong>grandir</strong> (1), je peux <strong>rétrécir</strong> (1), ma taille de départ est <strong>250px</strong>.</p>
+<p>Avec <code>flex-wrap: wrap</code>, ça donne des cartes qui remplissent toute la ligne et passent à la ligne quand l'écran est petit. C'est déjà du <strong>responsive</strong> !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="cartes"&gt;
+  &lt;div class="carte"&gt;HTML&lt;/div&gt;
+  &lt;div class="carte"&gt;CSS&lt;/div&gt;
+  &lt;div class="carte"&gt;Flexbox&lt;/div&gt;
+  &lt;div class="carte"&gt;Grid&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.cartes { display: flex; flex-wrap: wrap; gap: 10px; }
+.carte { flex: 1 1 150px; background: #e3f3f3; padding: 12px; border-radius: 8px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le raccourci flex" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.cartes { display: flex; flex-wrap: wrap; gap: 10px; }
+.carte { flex: 1 1 150px; background: #e3f3f3; padding: 12px; border-radius: 8px; }&lt;/style&gt;&lt;div class=&quot;cartes&quot;&gt;
+  &lt;div class=&quot;carte&quot;&gt;HTML&lt;/div&gt;
+  &lt;div class=&quot;carte&quot;&gt;CSS&lt;/div&gt;
+  &lt;div class=&quot;carte&quot;&gt;Flexbox&lt;/div&gt;
+  &lt;div class=&quot;carte&quot;&gt;Grid&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Des cartes de même hauteur</h3>
+<p>Avec Flexbox, les cartes d'une même ligne ont automatiquement <strong>la même hauteur</strong> (grâce à <code>align-items: stretch</code>, la valeur par défaut).</p>
+<p>Pour coller le bouton en bas de chaque carte : la carte est elle-même en <code>flex-direction: column</code> et le bouton reçoit <code>margin-top: auto</code>.</p>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>.carte {
+  display: flex;
+  flex-direction: column;
+}
+.carte .bouton {
+  margin-top: auto;   /* pousse le bouton tout en bas */
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>margin-top: auto</code> dans un flex = « prends tout l'espace libre au-dessus de moi ». C'est un super truc à retenir.</p>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:10</span><span>Échauffement : CSS Diner niveaux 15 à 20 (<code>:first-child</code>, <code>:nth-child</code>).</span></li>
-<li><span class="temps">0:10 – 0:30</span><span>Découverte : pseudo-classes, puis la différence avec et sans <code>transition</code>.</span></li>
-<li><span class="temps">0:30 – 0:50</span><span><code>transform</code> : translate, scale, rotate. Le menu déroulant pas à pas.</span></li>
-<li><span class="temps">0:50 – 1:35</span><span>Exercices 1 à 3 : la page « boutique de jeux » interactive.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : la carte qui se retourne.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : vote pour le bouton le plus original de la classe.</span></li>
+<li><span class="temps">0:00 – 0:15</span><span>Échauffement : Flexbox Froggy niveaux 16 à 24 (ou révision des niveaux difficiles).</span></li>
+<li><span class="temps">0:15 – 0:35</span><span>Découverte guidée : on construit ensemble la navbar pas à pas au vidéoprojecteur.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span><code>flex-grow</code>, raccourci <code>flex</code>, cartes de même hauteur, <code>margin-top: auto</code>.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page d'accueil d'un club.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : le footer en 3 colonnes.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : présentation de 3 pages au vidéoprojecteur.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Mes boutons<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance15/index.html</code> avec 4 boutons (4 classes différentes).</li>
-<li>Pour chacun, crée un effet <code>:hover</code> différent : couleur, bordure, ombre, coins arrondis.</li>
-<li>Ajoute une <code>transition</code> de <code>0.3s</code> sur chaque bouton. Compare avec et sans.</li>
-<li>Ajoute un effet <code>:active</code> (le bouton rétrécit avec <code>transform: scale(0.95)</code>).</li>
+<div class="exercice"><h3>Exercice 1 · Ma navbar<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance15/index.html</code> avec un <code>&lt;nav&gt;</code> : un logo (texte ou emoji) + une <code>&lt;ul&gt;</code> de 4 liens.</li>
+<li>Mets le <code>&lt;nav&gt;</code> en flex avec <code>justify-content: space-between</code> et <code>align-items: center</code>.</li>
+<li>Mets la <code>&lt;ul&gt;</code> en flex avec <code>gap: 20px</code> et enlève les puces (<code>list-style: none</code>).</li>
+<li>Ajoute un effet <code>:hover</code> sur les liens (changement de couleur).</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Les cartes qui bougent<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée 3 cartes avec une image. Au <code>:hover</code>, la carte monte (<code>translateY(-10px)</code>) et l'ombre grandit.</li>
-<li>Au <code>:hover</code> de la carte, l'image zoome (<code>.carte:hover img { transform: scale(1.1); }</code>). Ajoute <code>overflow: hidden</code> sur la carte pour que l'image ne déborde pas.</li>
-<li>Crée un tableau de scores et colore une ligne sur deux avec <code>tr:nth-child(even)</code>.</li>
+<div class="exercice"><h3>Exercice 2 · La rangée de cartes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Sous la navbar, crée une <code>&lt;section class="cartes"&gt;</code> avec 3 cartes : image, titre, paragraphe et bouton.</li>
+<li>Mets la section en <code>display: flex; flex-wrap: wrap; gap: 20px;</code> et chaque carte en <code>flex: 1 1 250px;</code>.</li>
+<li>Écris un texte plus long dans une des cartes : les 3 cartes gardent-elles la même hauteur ?</li>
+<li>Colle les boutons en bas des cartes avec <code>flex-direction: column</code> + <code>margin-top: auto</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Le menu déroulant<span class="niveau difficile">difficile</span></h3><ol>
-<li>Crée une navbar avec 4 liens. Le 2e lien « Jeux ▾ » a un sous-menu de 3 liens.</li>
-<li>Cache le sous-menu avec <code>display: none</code> et <code>position: absolute</code>.</li>
-<li>Affiche-le au survol avec <code>.menu:hover .sous-menu { display: block; }</code>.</li>
-<li>Ajoute un style <code>:focus</code> visible sur les liens (pour les personnes qui naviguent au clavier avec Tab).</li>
+<div class="exercice"><h3>Exercice 3 · La bannière de bienvenue<span class="niveau moyen">moyen</span></h3><ol>
+<li>Entre la navbar et les cartes, ajoute une bannière avec un texte à gauche et une image à droite.</li>
+<li>Mets la bannière en flex avec <code>align-items: center</code> et <code>gap: 30px</code>.</li>
+<li>Donne <code>flex: 1</code> au texte et à l'image pour qu'ils prennent chacun la moitié.</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : La carte qui se retourne</h2>
-<p>Crée une carte de jeu qui se retourne au survol pour montrer son dos (<code>transform: rotateY(180deg)</code>). Cherche « flip card » sur W3Schools How To.</p>
-<p>Bonus : un formulaire de connexion dont les champs s'agrandissent légèrement et changent de bordure au <code>:focus</code>.</p>
+<h2>🏆 Défi bonus : Le footer en 3 colonnes</h2>
+<p>Ajoute un <code>&lt;footer&gt;</code> en flex avec 3 colonnes : « À propos », « Liens utiles » (une liste) et « Suivez-nous » (des emojis de réseaux sociaux).</p>
+<p>Les colonnes doivent passer l'une sous l'autre sur un petit écran grâce à <code>flex-wrap</code> et <code>flex: 1 1 200px</code>.</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">Ma transition ne marche qu'à l'aller</div><div class="ok">La <code>transition</code> va sur l'élément normal, pas dans <code>:hover</code></div></div>
-<div class="erreur"><div class="ko"><code>transition: 0.3s</code> sans effet</div><div class="ok">La propriété qui change doit avoir une valeur de départ (ex. une couleur de fond au départ)</div></div>
-<div class="erreur"><div class="ko">J'écris deux <code>transform</code> : seul le dernier marche</div><div class="ok">Je les combine sur une ligne : <code>transform: scale(1.1) rotate(5deg);</code></div></div>
-<div class="erreur"><div class="ko">Mon sous-menu disparaît quand je descends la souris</div><div class="ok">Le sous-menu doit être <strong>dans</strong> l'élément <code>.menu</code> survolé</div></div>
+<div class="erreur"><div class="ko">Mes liens de menu sont l'un sous l'autre</div><div class="ok">La <code>&lt;ul&gt;</code> aussi doit être en <code>display: flex</code></div></div>
+<div class="erreur"><div class="ko">Il reste des puces et un décalage à gauche dans le menu</div><div class="ok"><code>list-style: none; margin: 0; padding: 0;</code> sur la <code>&lt;ul&gt;</code></div></div>
+<div class="erreur"><div class="ko"><code>flex-grow</code> ne fait rien</div><div class="ok"><code>flex-grow</code> se met sur les <strong>enfants</strong>, et le parent doit être en flex</div></div>
+<div class="erreur"><div class="ko">Mes cartes sont toutes petites sur mobile</div><div class="ok">J'utilise <code>flex: 1 1 250px</code> + <code>flex-wrap: wrap</code> sur le parent</div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Pseudo-classe</dt><dd>Un état ou une position d'un élément (<code>:hover</code>, <code>:nth-child</code>).</dd></div>
-<div><dt>Transition</dt><dd>Le passage progressif d'un style à un autre.</dd></div>
-<div><dt>Transformation</dt><dd>Déplacer, agrandir, tourner un élément (<code>transform</code>).</dd></div>
-<div><dt>Focus</dt><dd>Quand un élément est sélectionné (au clic ou avec la touche Tab).</dd></div>
-<div><dt>Dropdown</dt><dd>Un menu déroulant.</dd></div>
+<div><dt>Navbar</dt><dd>La barre de navigation en haut d'un site.</dd></div>
+<div><dt>flex-grow</dt><dd>La capacité d'un élément à grandir pour prendre l'espace libre.</dd></div>
+<div><dt>flex-basis</dt><dd>La taille de départ d'un élément flex.</dd></div>
+<div><dt>flex</dt><dd>Le raccourci de <code>flex-grow</code>, <code>flex-shrink</code> et <code>flex-basis</code>.</dd></div>
+<div><dt>Carte (card)</dt><dd>Un bloc qui présente un élément : image, titre, texte, bouton.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank"><span class="tag">W3Schools</span><br>Les pseudo-classes</a></li>
-<li><a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank"><span class="tag">W3Schools</span><br>Les transitions</a></li>
-<li><a href="https://www.w3schools.com/css/css3_2dtransforms.asp" target="_blank"><span class="tag">W3Schools</span><br>Les transformations 2D</a></li>
-<li><a href="https://www.w3schools.com/css/css3_buttons.asp" target="_blank"><span class="tag">W3Schools</span><br>Styler des boutons</a></li>
-<li><a href="https://www.w3schools.com/css/css_dropdowns.asp" target="_blank"><span class="tag">W3Schools</span><br>Les menus déroulants</a></li>
-<li><a href="https://www.w3schools.com/howto/howto_css_flip_card.asp" target="_blank"><span class="tag">W3Schools</span><br>La carte qui se retourne</a></li>
-<li><a href="https://flukeout.github.io/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CSS Diner</strong> : apprends les sélecteurs CSS en jouant</a></li>
+<li><a href="https://www.w3schools.com/css/css3_flexbox_items.asp" target="_blank"><span class="tag">W3Schools</span><br>Les propriétés des éléments (flex-grow…)</a></li>
+<li><a href="https://www.w3schools.com/css/css_navbar_horizontal.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer une navbar horizontale</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_css_cards.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer des cartes</a></li>
+<li><a href="https://www.w3schools.com/css/css3_flexbox_responsive.asp" target="_blank"><span class="tag">W3Schools</span><br>Flexbox et responsive</a></li>
+<li><a href="https://flexboxfroggy.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Flexbox Froggy</strong> : aide les grenouilles avec Flexbox (24 niveaux)</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank"><span class="tag">Guide</span><br><strong>CSS-Tricks</strong> : le guide illustré de Flexbox (en anglais)</a></li>
 <li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je connais <code>:hover</code>, <code>:focus</code>, <code>:active</code> et <code>:nth-child()</code>.</li>
-<li>Je sais où écrire la <code>transition</code>.</li>
-<li>Je sais utiliser <code>translate</code>, <code>scale</code> et <code>rotate</code>.</li>
-<li>Je sais faire un menu déroulant en CSS.</li>
-<li>Mes liens ont un style <code>:focus</code> visible.</li>
+<li>Je sais faire une navbar avec logo à gauche et liens à droite.</li>
+<li>Je sais faire une rangée de cartes qui passent à la ligne.</li>
+<li>Je sais à quoi sert <code>flex-grow</code>.</li>
+<li>Je comprends <code>flex: 1 1 250px</code>.</li>
+<li>Je sais coller un bouton en bas d'une carte.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

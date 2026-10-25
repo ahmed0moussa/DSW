@@ -3,32 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le modèle de boîte</title>
+  <title>Fiche joueur</title>
   <link rel="stylesheet" href="exemple.css">
 </head>
 <body>
 
-  <h1>Mes amis du club</h1>
+  <header>
+    <h1>⚽ Fiche joueur</h1>
+    <nav>
+      <a href="#bio">Biographie</a> |
+      <a href="#stats">Statistiques</a>
+    </nav>
+  </header>
 
-  <div class="carte">
-    <img class="avatar" src="https://picsum.photos/seed/ami1/200/200" alt="Photo de Nour">
-    <h2>Nour</h2>
-    <p>Elle adore le dessin et les mangas. C'est la meilleure en CSS du groupe !</p>
-  </div>
+  <main>
+    <img src="https://picsum.photos/seed/joueur/300/200" alt="Photo du joueur" width="300">
 
-  <div class="carte">
-    <img class="avatar" src="https://picsum.photos/seed/ami2/200/200" alt="Photo de Youssef">
-    <h2>Youssef</h2>
-    <p>Fan de football et de jeux de stratégie. Il veut créer son propre jeu.</p>
-  </div>
+    <section id="bio">
+      <h2>Biographie</h2>
+      <p>Amine a 15 ans. Il joue au club de sa ville depuis l'âge de 8 ans.</p>
+      <p>Il rêve de jouer un jour dans l'équipe nationale.</p>
+    </section>
 
-  <div class="carte speciale">
-    <img class="avatar" src="https://picsum.photos/seed/ami3/200/200" alt="Photo de Lina">
-    <h2>Lina</h2>
-    <p>Elle fait de la natation et elle écrit un blog sur les animaux.</p>
-  </div>
+    <section id="stats">
+      <h2>Statistiques de la saison</h2>
+      <p class="stat">Matchs joués : 18</p>
+      <p class="stat">Buts : 12</p>
+      <p class="stat">Passes décisives : 9</p>
+      <p class="important">Meilleur buteur du tournoi régional !</p>
+    </section>
+  </main>
 
-  <div class="badge">🏆<br>Champion</div>
+  <footer>
+    <p>Club Junior · Saison 2026</p>
+  </footer>
 
 </body>
 </html>

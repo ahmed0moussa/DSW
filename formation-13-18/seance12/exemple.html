@@ -3,68 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club de robotique</title>
+  <title>Boutique de jeux</title>
   <link rel="stylesheet" href="exemple.css">
 </head>
-<body>
+<body id="haut">
 
-  <nav>
-    <a class="logo" href="#">🤖 RoboClub</a>
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Ateliers</a></li>
-      <li><a href="#">Équipe</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-
-  <header class="banniere">
-    <div class="texte">
-      <h1>Construis ton premier robot</h1>
-      <p>Chaque samedi, viens apprendre l'électronique, la programmation et la créativité avec nous.</p>
-      <a class="bouton" href="#">Je m'inscris</a>
-    </div>
-    <img src="https://picsum.photos/seed/robot/600/400" alt="Un robot sur une table d'atelier">
+  <header>
+    <h1>🎲 La boutique des jeux de société</h1>
   </header>
 
-  <main class="cartes">
-    <article class="carte">
-      <img src="https://picsum.photos/seed/electronique/400/250" alt="Des composants électroniques">
-      <h2>Électronique</h2>
-      <p>Découvre les LED, les moteurs et les capteurs.</p>
-      <a class="bouton" href="#">Voir l'atelier</a>
-    </article>
-    <article class="carte">
-      <img src="https://picsum.photos/seed/programmation/400/250" alt="Un écran avec du code">
-      <h2>Programmation</h2>
-      <p>Apprends à donner des ordres à ton robot : avancer, tourner, éviter les obstacles, suivre une ligne au sol et réagir à la lumière.</p>
-      <a class="bouton" href="#">Voir l'atelier</a>
-    </article>
-    <article class="carte">
-      <img src="https://picsum.photos/seed/competition/400/250" alt="Une compétition de robots">
-      <h2>Compétition</h2>
-      <p>Prépare-toi pour le concours régional.</p>
-      <a class="bouton" href="#">Voir l'atelier</a>
-    </article>
+  <nav>
+    <a href="#nouveautes">Nouveautés</a>
+    <a href="#promos">Promos</a>
+    <a href="#infos">Infos</a>
+  </nav>
+
+  <main>
+    <section id="nouveautes">
+      <h2>Nouveautés</h2>
+      <div class="carte">
+        <img src="https://picsum.photos/seed/jeu1/400/260" alt="Boîte du jeu Robot Run">
+        <span class="badge">NOUVEAU</span>
+        <h3 class="titre-photo">Robot Run</h3>
+      </div>
+      <div class="carte">
+        <img src="https://picsum.photos/seed/jeu2/400/260" alt="Boîte du jeu Désert Quest">
+        <span class="badge">-20 %</span>
+        <h3 class="titre-photo">Désert Quest</h3>
+      </div>
+      <div class="carte cachee">
+        <img src="https://picsum.photos/seed/jeu3/400/260" alt="Jeu bientôt disponible">
+        <h3 class="titre-photo">Bientôt…</h3>
+      </div>
+    </section>
+
+    <section id="promos">
+      <h2>Promos</h2>
+      <p>Toute la semaine, <span class="etiquette">2 jeux achetés</span> = <span class="etiquette">1 offert</span>.</p>
+      <p>Fais défiler la page : le menu reste en haut grâce à <code>position: sticky</code>.</p>
+    </section>
+
+    <section id="infos">
+      <h2>Infos</h2>
+      <p>Ouvert du lundi au samedi, de 9h à 19h.</p>
+      <p>Viens tester les jeux sur place le mercredi après-midi !</p>
+    </section>
   </main>
 
-  <footer>
-    <div class="colonne">
-      <h3>À propos</h3>
-      <p>Le RoboClub accueille les jeunes de 13 à 18 ans.</p>
-    </div>
-    <div class="colonne">
-      <h3>Liens utiles</h3>
-      <ul>
-        <li><a href="#">Planning</a></li>
-        <li><a href="#">Inscription</a></li>
-      </ul>
-    </div>
-    <div class="colonne">
-      <h3>Suivez-nous</h3>
-      <p>📸 📘 ▶️</p>
-    </div>
-  </footer>
+  <a class="retour" href="#haut">⬆ Haut</a>
 
 </body>
 </html>

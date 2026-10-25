@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma première page</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment marche le web ?</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    header { background: #288b8b; color: white; text-align: center; padding: 30px 16px; }
+    main { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+    h2 { color: #288b8b; }
+    .voyage { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+    .etape { flex: 1 1 170px; background: white; border: 3px solid #288b8b; border-radius: 12px; padding: 14px; text-align: center; }
+    .etape span { display: block; font-size: 40px; }
+    .fleche { font-size: 30px; color: #e67e22; font-weight: bold; }
+    .maison { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .carte { background: white; border-radius: 12px; padding: 14px; border-top: 6px solid #e67e22; }
+    .url { background: #22303c; color: white; padding: 14px; border-radius: 10px; font-family: Consolas, monospace; font-size: 18px; overflow-wrap: anywhere; }
+    .url .p { color: #f9a825; } .url .d { color: #7bd389; } .url .c { color: #8ecbff; }
+  </style>
+</head>
+<body>
 
-    <!-- Le titre principal : un seul h1 par page -->
-    <h1>Yasmine Ben Ali</h1>
+  <header>
+    <h1>🌍 Comment marche le web ?</h1>
+    <p>La page à regarder avec ton formateur pendant la séance 1</p>
+  </header>
 
-    <h2>Qui suis-je ?</h2>
-    <p>J'ai 14 ans et j'habite à Sousse. Je suis en 9e année au collège.</p>
+  <main>
+    <h2>1. Le voyage d'une page</h2>
+    <div class="voyage">
+      <div class="etape"><span>🧑‍💻</span>Je tape une adresse dans mon <strong>navigateur</strong></div>
+      <div class="fleche">→</div>
+      <div class="etape"><span>🌐</span>La demande voyage sur <strong>Internet</strong></div>
+      <div class="fleche">→</div>
+      <div class="etape"><span>🗄️</span>Le <strong>serveur</strong> renvoie les fichiers HTML, CSS, images</div>
+      <div class="fleche">→</div>
+      <div class="etape"><span>🖥️</span>Le navigateur <strong>affiche</strong> la page</div>
+    </div>
 
-    <h2>Mes passions</h2>
-    <p>J'adore le basket, la musique et les jeux de construction.<br>
-       Le week-end, je joue avec mon équipe au club de la ville.</p>
+    <h2>2. L'adresse (URL)</h2>
+    <p class="url"><span class="p">https://</span><span class="d">fr.wikipedia.org</span><span class="c">/wiki/Tunisie</span></p>
+    <p><span style="color:#b8860b;font-weight:bold">Protocole</span> · <span style="color:#2e8b57;font-weight:bold">Nom de domaine</span> · <span style="color:#1f6fb2;font-weight:bold">Chemin</span></p>
 
-    <h2>Plus tard, je veux être…</h2>
-    <h3>Développeuse web</h3>
-    <p>Je veux créer des sites et des applications utiles pour les gens.</p>
-    <p>J'aime ce métier parce qu'on peut créer quelque chose de nouveau chaque jour.</p>
+    <h2>3. Un site, c'est comme une maison</h2>
+    <div class="maison">
+      <div class="carte"><h3>🧱 HTML</h3><p>Les murs et les pièces : la structure et le contenu.</p></div>
+      <div class="carte"><h3>🎨 CSS</h3><p>La peinture et la décoration : couleurs, tailles, placement.</p></div>
+      <div class="carte"><h3>💡 JavaScript</h3><p>L'électricité : ce qui bouge et réagit. (Pour plus tard !)</p></div>
+      <div class="carte"><h3>🖼️ Médias</h3><p>Les meubles : images, vidéos, sons.</p></div>
+    </div>
 
-    <!-- Fin de ma page -->
-  </body>
+    <h2>4. Mon outil : VS Code</h2>
+    <p>Un éditeur de code gratuit qui colore le code, le complète, et affiche ma page avec <strong>Live Server</strong>.
+       Cette page aussi a été écrite avec VS Code : appuie sur <strong>Ctrl + U</strong> pour voir son code !</p>
+  </main>
+
+</body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 16 · Les animations CSS — Formation Web 13-18</title>
+  <title>Séance 16 · CSS Grid : la mise en page en grille — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 <main class="page">
 
   <div class="hero">
-    <span class="module">Module 4 · Interactivité et projet</span>
-    <h1><span>Séance 16</span> · Les animations CSS</h1>
-    <p>Une transition se déclenche au survol. Une <strong>animation</strong> peut se lancer toute seule, se répéter à l'infini et avoir plusieurs étapes. Aujourd'hui tu crées des chargements, des rebonds et une bannière animée.</p>
+    <span class="module">Module 3 · Mise en page</span>
+    <h1><span>Séance 16</span> · CSS Grid : la mise en page en grille</h1>
+    <p>Flexbox aligne sur une ligne. CSS Grid organise en <strong>lignes ET colonnes</strong> à la fois. C'est parfait pour une galerie ou la structure d'une page entière. On commence en jardinant 🥕 !</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Intermédiaire</li>
-      <li>🧰 Outils : VS Code, Live Server, Animista</li>
+      <li>🧰 Outils : Grid Garden, VS Code, Live Server</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,174 +35,174 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Décrire les étapes d'une animation avec <code>@keyframes</code> (<code>from</code>/<code>to</code> ou des pourcentages).</li><li>Lancer une animation avec <code>animation-name</code>, <code>animation-duration</code>, <code>animation-iteration-count</code>…</li><li>Utiliser le raccourci <code>animation</code> et décaler des animations avec <code>animation-delay</code>.</li>
+      <li>Créer une grille avec <code>display: grid</code> et <code>grid-template-columns</code>, en utilisant l'unité <code>fr</code> et <code>repeat()</code>.</li><li>Faire prendre plusieurs cases à un élément avec <code>grid-column: span 2</code> et <code>grid-row</code>.</li><li>Dessiner la mise en page d'une page avec <code>grid-template-areas</code>.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p><code>transition</code> rend un changement doux (au <code>:hover</code>). <code>transform</code> déplace (<code>translate</code>), agrandit (<code>scale</code>) et tourne (<code>rotate</code>).</p>
+    <p>Flexbox : <code>display: flex</code> sur le parent, <code>justify-content</code>, <code>align-items</code>, <code>flex-wrap</code>, <code>gap</code>, <code>flex: 1 1 250px</code> sur les enfants.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>@keyframes : les étapes</h3>
-<p>On donne un <strong>nom</strong> à l'animation et on décrit ses étapes. <code>from</code> = le début, <code>to</code> = la fin.</p>
-<p>On peut aussi utiliser des pourcentages : <code>0%</code>, <code>50%</code>, <code>100%</code>…</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="balle"&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>@keyframes rebond {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-40px); }
-  100% { transform: translateY(0); }
+<h3><span class="num">1</span>Créer une grille</h3>
+<p>Comme Flexbox, Grid se met sur le <strong>parent</strong>. On dit combien de colonnes on veut avec <code>grid-template-columns</code>.</p>
+<p>L'unité <code>fr</code> (fraction) partage l'espace libre : <code>1fr 1fr 1fr</code> = 3 colonnes égales. <code>1fr 2fr</code> = la 2e colonne est 2 fois plus large.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="grille"&gt;
+  &lt;div&gt;1fr&lt;/div&gt;&lt;div&gt;2fr&lt;/div&gt;&lt;div&gt;1fr&lt;/div&gt;
+  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.grille {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 8px;
 }
-.balle {
-  width: 50px; height: 50px; border-radius: 50%;
-  background: #e67e22; margin-top: 50px;
-  animation: rebond 1s infinite;
-}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : @keyframes : les étapes" sandbox="" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;@keyframes rebond {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-40px); }
-  100% { transform: translateY(0); }
+.grille div { background: #288b8b; color: white; padding: 12px; border-radius: 6px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Créer une grille" sandbox="" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.grille {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 8px;
 }
-.balle {
-  width: 50px; height: 50px; border-radius: 50%;
-  background: #e67e22; margin-top: 50px;
-  animation: rebond 1s infinite;
-}&lt;/style&gt;&lt;div class=&quot;balle&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-</div>
-<div class="notion">
-<h3><span class="num">2</span>Les propriétés d'animation</h3>
-<ul><li><code>animation-name</code> : le nom des <code>@keyframes</code>.</li><li><code>animation-duration</code> : la durée (<code>2s</code>).</li><li><code>animation-iteration-count</code> : combien de fois (<code>3</code>, ou <code>infinite</code> pour toujours).</li><li><code>animation-delay</code> : attendre avant de commencer (<code>0.5s</code>).</li><li><code>animation-direction: alternate</code> : aller puis revenir.</li><li><code>animation-timing-function</code> : la vitesse (<code>linear</code>, <code>ease-in-out</code>…).</li></ul>
-<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* Le raccourci : nom durée vitesse délai répétition direction */
-.element {
-  animation: glisse 2s ease-in-out 0.5s infinite alternate;
-}</code></pre></div></div>
-</div>
-<div class="notion">
-<h3><span class="num">3</span>Le chargement en 3 points</h3>
-<p>La même animation sur 3 points, avec un <code>animation-delay</code> différent pour chacun : ils sautent l'un après l'autre !</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="points"&gt;
-  &lt;div class="point"&gt;&lt;/div&gt;
-  &lt;div class="point"&gt;&lt;/div&gt;
-  &lt;div class="point"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.points { display: flex; gap: 8px; padding-top: 30px; }
-.point { width: 16px; height: 16px; border-radius: 50%; background: #288b8b;
-         animation: saut 0.6s infinite alternate; }
-.point:nth-child(2) { animation-delay: 0.2s; }
-.point:nth-child(3) { animation-delay: 0.4s; }
-@keyframes saut { to { transform: translateY(-20px); } }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le chargement en 3 points" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.points { display: flex; gap: 8px; padding-top: 30px; }
-.point { width: 16px; height: 16px; border-radius: 50%; background: #288b8b;
-         animation: saut 0.6s infinite alternate; }
-.point:nth-child(2) { animation-delay: 0.2s; }
-.point:nth-child(3) { animation-delay: 0.4s; }
-@keyframes saut { to { transform: translateY(-20px); } }&lt;/style&gt;&lt;div class=&quot;points&quot;&gt;
-  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
+.grille div { background: #288b8b; color: white; padding: 12px; border-radius: 6px; }&lt;/style&gt;&lt;div class=&quot;grille&quot;&gt;
+  &lt;div&gt;1fr&lt;/div&gt;&lt;div&gt;2fr&lt;/div&gt;&lt;div&gt;1fr&lt;/div&gt;
+  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
 &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>Animer les couleurs et l'apparition</h3>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h2 class="titre"&gt;Bienvenue !&lt;/h2&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>@keyframes arc-en-ciel {
-  0%   { background: #288b8b; }
-  50%  { background: #8e44ad; }
-  100% { background: #e67e22; }
+<h3><span class="num">2</span>repeat() et auto-fit</h3>
+<p><code>repeat(4, 1fr)</code> = <code>1fr 1fr 1fr 1fr</code>.</p>
+<p>La formule magique : <code>repeat(auto-fit, minmax(150px, 1fr))</code> → <strong>autant de colonnes que possible</strong>, chacune d'au moins 150px. La grille devient responsive toute seule !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="galerie"&gt;
+  &lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
+  &lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;&lt;div&gt;7&lt;/div&gt;&lt;div&gt;8&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
 }
-@keyframes apparition {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+.galerie div { background: #e67e22; color: white; padding: 20px 0; text-align: center; border-radius: 6px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : repeat() et auto-fit" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
 }
-.titre { color: white; padding: 14px; border-radius: 8px;
-         animation: arc-en-ciel 3s infinite alternate, apparition 1s; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Animer les couleurs et l&#x27;apparition" sandbox="" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;@keyframes arc-en-ciel {
-  0%   { background: #288b8b; }
-  50%  { background: #8e44ad; }
-  100% { background: #e67e22; }
+.galerie div { background: #e67e22; color: white; padding: 20px 0; text-align: center; border-radius: 6px; }&lt;/style&gt;&lt;div class=&quot;galerie&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
+  &lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;&lt;div&gt;7&lt;/div&gt;&lt;div&gt;8&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Réduis la fenêtre de ton navigateur : le nombre de colonnes change automatiquement.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Prendre plusieurs cases : span</h3>
+<p>Sur un <strong>enfant</strong> : <code>grid-column: span 2</code> → il prend 2 colonnes. <code>grid-row: span 2</code> → il prend 2 lignes.</p>
+<p>On peut aussi donner les lignes de début et de fin : <code>grid-column: 1 / 3</code> (de la ligne 1 à la ligne 3).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="grille"&gt;
+  &lt;div class="large"&gt;span 2 colonnes&lt;/div&gt;
+  &lt;div class="haut"&gt;span 2 lignes&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.grille div { background: #e3f3f3; padding: 12px; border-radius: 6px; }
+.grille .large { grid-column: span 2; background: #fdf0e3; }
+.grille .haut { grid-row: span 2; background: #ede7f6; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Prendre plusieurs cases : span" sandbox="" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.grille div { background: #e3f3f3; padding: 12px; border-radius: 6px; }
+.grille .large { grid-column: span 2; background: #fdf0e3; }
+.grille .haut { grid-row: span 2; background: #ede7f6; }&lt;/style&gt;&lt;div class=&quot;grille&quot;&gt;
+  &lt;div class=&quot;large&quot;&gt;span 2 colonnes&lt;/div&gt;
+  &lt;div class=&quot;haut&quot;&gt;span 2 lignes&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;&lt;div&gt;4&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>grid-template-areas : dessiner sa page</h3>
+<p>On donne un <strong>nom</strong> à chaque zone avec <code>grid-area</code>, puis on « dessine » la grille avec des mots. Chaque ligne entre guillemets = une ligne de la grille.</p>
+<div class="code-demo"><div><span class="label">CSS</span><pre><code>.page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "haut  haut"
+    "menu  contenu"
+    "bas   bas";
+  gap: 6px;
 }
-@keyframes apparition {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.titre { color: white; padding: 14px; border-radius: 8px;
-         animation: arc-en-ciel 3s infinite alternate, apparition 1s; }&lt;/style&gt;&lt;h2 class=&quot;titre&quot;&gt;Bienvenue !&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Sur <strong>animista.net</strong>, tu choisis une animation, tu la règles et tu copies le code <code>@keyframes</code>. Mais attention : une page avec trop d'animations fatigue les yeux. Une ou deux, c'est mieux !</p>
+header { grid-area: haut; }
+nav    { grid-area: menu; }
+main   { grid-area: contenu; }
+footer { grid-area: bas; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : grid-template-areas : dessiner sa page" sandbox="" style="height:220px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.page{display:grid;grid-template-columns:1fr 3fr;grid-template-areas:&quot;haut haut&quot; &quot;menu contenu&quot; &quot;bas bas&quot;;gap:6px}.page&gt;*{padding:14px;border-radius:6px;color:white;font-weight:bold}header{grid-area:haut;background:#e67e22}nav{grid-area:menu;background:#8e44ad}main{grid-area:contenu;background:#288b8b;min-height:80px}footer{grid-area:bas;background:#22303c}&lt;/style&gt;&lt;div class=&quot;page&quot;&gt;&lt;header&gt;header&lt;/header&gt;&lt;nav&gt;nav&lt;/nav&gt;&lt;main&gt;main&lt;/main&gt;&lt;footer&gt;footer&lt;/footer&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <strong>Flexbox ou Grid ?</strong> Flexbox pour aligner sur <strong>une</strong> direction (un menu, une rangée de boutons). Grid pour une mise en page en <strong>2 dimensions</strong> (une galerie, la structure de la page).</p>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:10</span><span>Échauffement : quelle différence entre une transition et une animation ? On regarde des chargements sur des applis connues.</span></li>
-<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>@keyframes</code>, les propriétés d'animation, le raccourci.</span></li>
-<li><span class="temps">0:35 – 0:50</span><span>Le chargement 3 points avec <code>animation-delay</code> et <code>:nth-child</code>. Démonstration d'Animista.</span></li>
-<li><span class="temps">0:50 – 1:35</span><span>Exercices 1 à 3.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : la scène animée.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan : galerie des animations de la classe. Fin des notions techniques !</span></li>
+<li><span class="temps">0:00 – 0:35</span><span><strong>Grid Garden</strong> (cssgridgarden.com/#fr) : niveaux 1 à 15.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Synthèse : <code>grid-template-columns</code>, <code>fr</code>, <code>repeat</code>, <code>gap</code>, <code>span</code>, <code>grid-template-areas</code>. Comparaison Flexbox / Grid.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page magazine.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : finir Grid Garden ou la galerie « bento ».</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : « Flexbox ou Grid ? » sur 5 exemples de sites.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · La balle qui rebondit<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance16/index.html</code> avec une <code>&lt;div class="balle"&gt;</code> ronde.</li>
-<li>Écris des <code>@keyframes rebond</code> avec 3 étapes (0 %, 50 %, 100 %).</li>
-<li>Applique l'animation à la balle : <code>1s</code>, <code>infinite</code>.</li>
-<li>Change la durée et la vitesse (<code>ease-in</code>, <code>linear</code>) et observe.</li>
+<div class="exercice"><h3>Exercice 1 · Ma première grille<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance16/index.html</code> avec une <code>&lt;div class="grille"&gt;</code> qui contient 9 cases numérotées.</li>
+<li>Mets <code>display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;</code>.</li>
+<li>Change en <code>1fr 2fr 1fr</code>, puis en <code>200px 1fr</code>. Observe.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Le chargement<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée 3 points côte à côte (Flexbox).</li>
-<li>Crée une animation <code>saut</code> et applique-la aux 3 points.</li>
-<li>Décale le 2e et le 3e point avec <code>animation-delay</code> et <code>:nth-child()</code>.</li>
-<li>Bonus : crée un cercle de chargement qui tourne (<code>rotate(360deg)</code>, <code>linear</code>, <code>infinite</code>) avec une bordure de couleur seulement en haut.</li>
+<div class="exercice"><h3>Exercice 2 · La galerie responsive<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée une galerie de 8 photos (sur ton thème préféré) avec <code>object-fit: cover</code> et la même hauteur.</li>
+<li>Utilise <code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</code>.</li>
+<li>Fais prendre 2 colonnes et 2 lignes à la première photo avec <code>span</code>.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · La bannière animée<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée une bannière avec un titre et un sous-titre.</li>
-<li>Fais apparaître le titre en fondu (<code>opacity</code> de 0 à 1) en glissant du haut.</li>
-<li>Fais apparaître le sous-titre 0.5s après le titre (<code>animation-delay</code>).</li>
-<li>Ajoute un fond qui change de couleur doucement avec <code>alternate</code>.</li>
+<div class="exercice"><h3>Exercice 3 · La page magazine<span class="niveau difficile">difficile</span></h3><ol>
+<li>Crée une page avec <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code> et <code>&lt;footer&gt;</code>.</li>
+<li>Dessine sur papier ta mise en page, puis écris-la avec <code>grid-template-areas</code>.</li>
+<li>Donne une couleur de fond différente à chaque zone pour vérifier le placement.</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : La scène animée</h2>
-<p>Crée une petite scène en CSS uniquement : un soleil qui tourne ☀️, des nuages qui traversent l'écran ☁️ (<code>translateX</code>) et une voiture ou un vélo qui roule 🚲.</p>
-<p>Bonus : essaie un niveau de <strong>CSS Battle</strong> pour t'entraîner à dessiner des formes en CSS.</p>
+<h2>🏆 Défi bonus : La grille « bento »</h2>
+<p>Les sites modernes utilisent des grilles « bento » (comme une boîte à repas japonaise) : des cases de tailles différentes. Crée une grille de 4 colonnes avec 7 cases, certaines en <code>span 2</code> (largeur ou hauteur).</p>
+<p>Et termine les <strong>28 niveaux</strong> de Grid Garden !</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">Mon animation ne démarre pas</div><div class="ok">Le nom dans <code>animation</code> doit être exactement celui des <code>@keyframes</code></div></div>
-<div class="erreur"><div class="ko">J'oublie la durée : <code>animation: rebond infinite;</code></div><div class="ok">Il faut une durée : <code>animation: rebond 1s infinite;</code></div></div>
-<div class="erreur"><div class="ko">L'animation saute brusquement à la fin</div><div class="ok">J'ajoute <code>alternate</code> ou une étape <code>100%</code> égale à <code>0%</code></div></div>
-<div class="erreur"><div class="ko">Trop d'animations : la page est fatigante</div><div class="ok">J'anime seulement 1 ou 2 éléments importants</div></div>
+<div class="erreur"><div class="ko">Je mets <code>display: grid</code> sur les cases</div><div class="ok"><code>display: grid</code> va sur le <strong>parent</strong></div></div>
+<div class="erreur"><div class="ko"><code>grid-template-areas</code> ne marche pas</div><div class="ok">Chaque ligne doit avoir <strong>le même nombre</strong> de mots, et chaque zone un <code>grid-area</code></div></div>
+<div class="erreur"><div class="ko">J'écris <code>grid-template-column</code> sans s</div><div class="ok">C'est <code>grid-template-columns</code> (avec un s)</div></div>
+<div class="erreur"><div class="ko">Mes images n'ont pas la même hauteur</div><div class="ok">Je leur donne <code>height</code> + <code>object-fit: cover</code> et <code>width: 100%</code></div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>Animation</dt><dd>Un changement de style automatique, en plusieurs étapes.</dd></div>
-<div><dt>@keyframes</dt><dd>La règle qui décrit les étapes d'une animation.</dd></div>
-<div><dt>infinite</dt><dd>L'animation se répète sans fin.</dd></div>
-<div><dt>delay</dt><dd>Le temps d'attente avant le début.</dd></div>
-<div><dt>alternate</dt><dd>L'animation va puis revient.</dd></div>
+<div><dt>Grid</dt><dd>Un système de CSS pour organiser en lignes et en colonnes.</dd></div>
+<div><dt>fr</dt><dd>Fraction de l'espace libre.</dd></div>
+<div><dt>repeat()</dt><dd>Répète une taille de colonne plusieurs fois.</dd></div>
+<div><dt>minmax()</dt><dd>Une taille minimum et une taille maximum.</dd></div>
+<div><dt>span</dt><dd>Faire prendre plusieurs cases à un élément.</dd></div>
+<div><dt>grid-area</dt><dd>Le nom d'une zone de la grille.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank"><span class="tag">W3Schools</span><br>Les animations CSS</a></li>
-<li><a href="https://www.w3schools.com/howto/howto_css_loader.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer un cercle de chargement</a></li>
-<li><a href="https://animista.net/" target="_blank"><span class="tag outil">Outil</span><br><strong>Animista</strong> : galerie d'animations CSS prêtes à copier</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_animations/Using_CSS_animations" target="_blank"><span class="tag">MDN</span><br>Utiliser les animations CSS (en français)</a></li>
-<li><a href="https://cssbattle.dev/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CSS Battle</strong> : reproduire une image avec le moins de code possible</a></li>
-<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+<li><a href="https://cssgridgarden.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Grid Garden</strong> : arrose ton jardin avec CSS Grid (28 niveaux)</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid.asp" target="_blank"><span class="tag">W3Schools</span><br>CSS Grid : introduction</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid_container.asp" target="_blank"><span class="tag">W3Schools</span><br>Le conteneur Grid</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid_item.asp" target="_blank"><span class="tag">W3Schools</span><br>Les éléments Grid (span, grid-area)</a></li>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank"><span class="tag">Guide</span><br><strong>CSS-Tricks</strong> : le guide illustré de CSS Grid (en anglais)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Grids" target="_blank"><span class="tag">MDN</span><br>Les grilles (en français)</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais écrire des <code>@keyframes</code> avec <code>from</code>/<code>to</code> ou des pourcentages.</li>
-<li>Je sais appliquer une animation avec le raccourci <code>animation</code>.</li>
-<li>Je sais répéter une animation avec <code>infinite</code>.</li>
-<li>Je sais décaler des animations avec <code>animation-delay</code>.</li>
-<li>Je n'abuse pas des animations.</li>
+<li>Je sais créer une grille de 3 colonnes égales.</li>
+<li>Je comprends l'unité <code>fr</code>.</li>
+<li>Je sais faire une galerie responsive avec <code>auto-fit</code> et <code>minmax</code>.</li>
+<li>Je sais faire prendre 2 colonnes à un élément.</li>
+<li>Je sais choisir entre Flexbox et Grid.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

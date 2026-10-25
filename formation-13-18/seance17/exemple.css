@@ -1,0 +1,149 @@
+/* ============ 1. TÉLÉPHONE (mobile first) ============ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #22303c;
+}
+
+img {
+  max-width: 100%;   /* une image ne dépasse jamais */
+  height: auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;   /* sur téléphone : l'un sous l'autre */
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background-color: #22303c;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #e67e22;
+}
+
+.liens {
+  display: flex;
+  gap: 15px;
+}
+
+.ecran {
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  background-color: #e67e22;
+}
+
+.tablette,
+.ordinateur {
+  display: none;
+}
+
+.conteneur {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.cartes {
+  display: grid;
+  grid-template-columns: 1fr;    /* une colonne */
+  gap: 15px;
+}
+
+.carte {
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+.carte img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.carte h2 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.decor {
+  display: none;    /* caché sur téléphone */
+}
+
+/* ============ 2. TABLETTE : 600px et plus ============ */
+@media (min-width: 600px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 30px;
+  }
+
+  .ecran {
+    background-color: #8e44ad;
+  }
+
+  .telephone {
+    display: none;
+  }
+
+  .tablette {
+    display: inline;
+  }
+
+  .cartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .decor {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* ============ 3. ORDINATEUR : 900px et plus ============ */
+@media (min-width: 900px) {
+  .ecran {
+    background-color: #288b8b;
+  }
+
+  .tablette {
+    display: none;
+  }
+
+  .ordinateur {
+    display: inline;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .cartes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

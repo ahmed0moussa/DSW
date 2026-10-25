@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 24 · Projet final 3/3 : finaliser, publier, présenter — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 24</span> · Projet final 3/3 : finaliser, publier, présenter</h1>
+    <p>Dernière séance ! Tu termines le style de ton site, tu le rends responsive, tu le mets en ligne pour que tout le monde puisse le voir… et tu le présentes à la classe. 🎉</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : VS Code, F12, Validateur W3C, Netlify Drop ou GitHub Pages</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Terminer le CSS de toutes mes pages et les rendre responsive.</li><li>Vérifier mon site : responsive, liens, images, validateur, accessibilité de base.</li><li>Mettre mon site en ligne et le présenter à l'oral en 3 minutes.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Séance 22 : cahier des charges, maquette, dossier du projet. Séance 23 : HTML de toutes les pages, CSS de base (variables, header, footer, page d'accueil).</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Ce qu'il reste à faire</h3>
+<ul><li>1. Finir le CSS des autres pages (cartes, galerie, tableau, formulaire…).</li><li>2. Le responsive : <code>@media</code> à la fin du fichier, test à 375px, 768px et 1280px.</li><li>3. Les effets : <code>:hover</code>, transitions, une animation (une seule !).</li><li>4. La checklist qualité, puis la mise en ligne.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Toutes les 15 minutes, regarde ton site en mode téléphone (F12). C'est plus facile de corriger tout de suite qu'à la fin.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>La checklist qualité</h3>
+<ul><li>Tous les liens du menu marchent, sur toutes les pages.</li><li>Toutes les images s'affichent et ont un <code>alt</code>.</li><li>Pas de défilement horizontal sur téléphone.</li><li>Le texte est lisible : assez grand, assez de contraste avec le fond.</li><li>Le validateur W3C ne trouve pas d'erreur grave.</li><li>Les fichiers ont des noms en minuscules, sans espace ni accent.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Mettre son site en ligne</h3>
+<p><strong>Méthode simple : Netlify Drop</strong>. Va sur <strong>app.netlify.com/drop</strong>, puis glisse le <strong>dossier</strong> de ton site dans la page. En quelques secondes, tu obtiens une adresse en ligne à partager !</p>
+<p><strong>Méthode des pros : GitHub Pages</strong>. Crée un compte GitHub, crée un dépôt, envoie tes fichiers (bouton « Add file → Upload files »), puis active <strong>Settings → Pages</strong>. Ton site sera à l'adresse <code>tonpseudo.github.io/nom-du-depot</code>.</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Le dossier doit contenir <code>index.html</code> à sa racine, sinon le site ne s'ouvre pas. Avant de publier, demande l'accord d'un adulte et ne mets jamais d'informations personnelles (adresse, téléphone).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Présenter son site (3 minutes)</h3>
+<ul><li>1. Le sujet et le public : « Mon site parle de… il est pour… ».</li><li>2. La visite : on clique sur chaque page.</li><li>3. La partie dont je suis le plus fier / la plus fière, et comment je l'ai codée.</li><li>4. Une difficulté et comment je l'ai résolue.</li><li>5. Ce que j'aimerais ajouter (peut-être avec JavaScript !).</li></ul>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="grille-evaluation.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel de ce qu'il reste à faire et de la grille d'évaluation.</span></li>
+<li><span class="temps">0:10 – 0:55</span><span>Exercices 1 et 2 : fin du CSS, responsive et effets. Le formateur passe voir chaque élève.</span></li>
+<li><span class="temps">0:55 – 1:15</span><span>Exercice 3 : checklist qualité et mise en ligne.</span></li>
+<li><span class="temps">1:15 – 1:55</span><span>Présentations orales (3 min par élève ou par binôme). Les autres donnent un compliment et un conseil.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Clôture de la formation : remise des attestations, « et maintenant ? » (JavaScript !).</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Je finis le CSS<span class="niveau moyen">moyen</span></h3><ol>
+<li>Termine le style de chaque page, en utilisant tes variables <code>var(--…)</code> pour toutes les couleurs.</li>
+<li>Utilise Flexbox ou Grid pour les cartes et la galerie.</li>
+<li>Compare chaque page avec ta maquette.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Responsive et effets<span class="niveau difficile">difficile</span></h3><ol>
+<li>Teste ton site à 375px (téléphone), 768px (tablette), 1280px (ordinateur).</li>
+<li>Ajoute les <code>@media</code> nécessaires (menu en colonne, une seule colonne de cartes…).</li>
+<li>Ajoute des <code>:hover</code> avec transitions sur les liens, les boutons et les cartes.</li>
+<li>Ajoute une animation (une seule !) : apparition du titre, chargement…</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Vérifier et publier<span class="niveau moyen">moyen</span></h3><ol>
+<li>Passe la checklist qualité (notion 2) et corrige ce qui ne va pas.</li>
+<li>Passe chaque page dans le validateur W3C.</li>
+<li>Publie ton site sur Netlify Drop (ou GitHub Pages) et note l'adresse.</li>
+<li>Envoie l'adresse à ton formateur et prépare ta présentation de 3 minutes.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Et après ?</h2>
+<p>Ajoute un mode sombre à ton site avec <code>@media (prefers-color-scheme: dark)</code> : tu redéfinis tes variables <code>:root</code> dedans et ton site change selon le réglage du téléphone !</p>
+<p>La suite de l'aventure : <strong>JavaScript</strong>, pour rendre tes pages vraiment interactives (un bouton qui ouvre le menu, un quiz, un jeu…).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je passe 40 minutes sur une seule couleur</div><div class="ok">Je fais d'abord tout le site simplement, je peaufine à la fin</div></div>
+<div class="erreur"><div class="ko">Le site en ligne n'a pas de style</div><div class="ok">Le dossier <code>css/</code> doit être envoyé avec les pages, et les chemins sont sensibles aux majuscules</div></div>
+<div class="erreur"><div class="ko">Netlify affiche « Page not found »</div><div class="ok">Le fichier <code>index.html</code> doit être à la racine du dossier envoyé</div></div>
+<div class="erreur"><div class="ko">Je lis mon code pendant la présentation</div><div class="ok">Je montre le site, et j'explique avec mes mots une partie du code</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Mettre en ligne (publier)</dt><dd>Copier son site sur un serveur pour qu'il soit visible sur Internet.</dd></div>
+<div><dt>Hébergeur</dt><dd>Un service qui garde ton site en ligne (Netlify, GitHub Pages).</dd></div>
+<div><dt>Nom de domaine / URL</dt><dd>L'adresse de ton site.</dd></div>
+<div><dt>Contraste</dt><dd>La différence entre la couleur du texte et celle du fond.</dd></div>
+<div><dt>Accessibilité</dt><dd>Rendre un site utilisable par tout le monde, y compris les personnes handicapées.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://app.netlify.com/drop" target="_blank"><span class="tag outil">Outil</span><br><strong>Netlify Drop</strong> : glisser son dossier pour publier son site</a></li>
+<li><a href="https://pages.github.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>GitHub Pages</strong> : mettre son site en ligne gratuitement</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+<li><a href="https://webaim.org/resources/contrastchecker/" target="_blank"><span class="tag outil">Outil</span><br><strong>WebAIM Contrast Checker</strong> : vérifier le contraste texte / fond</a></li>
+<li><a href="https://www.w3schools.com/css/css_rwd_templates.asp" target="_blank"><span class="tag">W3Schools</span><br>Modèles de pages responsive</a></li>
+<li><a href="https://www.w3schools.com/js/default.asp" target="_blank"><span class="tag">W3Schools</span><br>La suite : le cours JavaScript de W3Schools</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Common_questions/Tools_and_setup/Upload_files_to_a_web_server" target="_blank"><span class="tag">MDN</span><br>Mettre un site en ligne (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mon site a 3 ou 4 pages reliées par le même menu.</li>
+<li>Il utilise un seul fichier CSS avec des variables.</li>
+<li>Il est responsive (testé à 375px, 768px et 1280px).</li>
+<li>Il est en ligne et j'ai son adresse.</li>
+<li>J'ai présenté mon site à la classe.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance23/index.html">← Séance 23</a>
+<a href="../../groupe_13_17.html">Sommaire →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

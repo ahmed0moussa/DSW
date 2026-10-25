@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Séance 03 · Listes et tableaux — Formation Web 13-18</title>
+  <title>Séance 03 · Texte, liens et images — Formation Web 13-18</title>
   <link rel="stylesheet" href="../assets/cours.css">
 </head>
 <body>
@@ -20,12 +20,12 @@
 
   <div class="hero">
     <span class="module">Module 1 · HTML</span>
-    <h1><span>Séance 03</span> · Listes et tableaux</h1>
-    <p>Pour ranger des informations, on utilise des listes (une à la suite de l'autre) et des tableaux (en lignes et colonnes).</p>
+    <h1><span>Séance 03</span> · Texte, liens et images</h1>
+    <p>Une page sans liens ni images, c'est triste ! Aujourd'hui tu apprends à mettre du texte en valeur, à créer des liens et à afficher des images.</p>
     <ul class="chips">
       <li>⏱️ Durée : 2 h</li>
       <li>📶 Niveau : Débutant</li>
-      <li>🧰 Outils : VS Code, Live Server</li>
+      <li>🧰 Outils : VS Code, Live Server, Unsplash ou Picsum pour les images</li>
     </ul>
     <nav class="toc" aria-label="Sommaire de la fiche">
       <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
@@ -35,190 +35,141 @@
   <section class="bloc objectif" id="objectif">
     <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
     <ul>
-      <li>Créer une liste à puces <code>&lt;ul&gt;</code> et une liste numérotée <code>&lt;ol&gt;</code>.</li><li>Construire un tableau avec <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> et <code>&lt;td&gt;</code>.</li><li>Fusionner des cases avec <code>colspan</code> et organiser un tableau avec <code>&lt;thead&gt;</code> et <code>&lt;tbody&gt;</code>.</li>
+      <li>Mettre du texte en valeur avec <code>&lt;strong&gt;</code> et <code>&lt;em&gt;</code>.</li><li>Créer des liens vers un autre site et vers une autre page de mon site.</li><li>Afficher une image avec <code>&lt;img&gt;</code> et lui donner un texte <code>alt</code>.</li>
     </ul>
   </section>
 
   <section class="bloc rappel">
     <h2>🔁 Rappel</h2>
-    <p>Les liens se font avec <code>&lt;a href="…"&gt;</code>, les images avec <code>&lt;img src="…" alt="…"&gt;</code>. Les images sont rangées dans le dossier <code>images/</code>.</p>
+    <p>Une page HTML a un squelette : <code>&lt;head&gt;</code> pour les infos invisibles, <code>&lt;body&gt;</code> pour le contenu visible. On structure avec <code>&lt;h1&gt;</code>…<code>&lt;h6&gt;</code> et <code>&lt;p&gt;</code>.</p>
   </section>
 
   <section class="bloc" id="note">
     <h2>📒 La note : ce qu'il faut comprendre</h2>
 <div class="notion">
-<h3><span class="num">1</span>La liste à puces &lt;ul&gt;</h3>
-<p><code>&lt;ul&gt;</code> (unordered list) = liste <strong>sans ordre</strong>. Chaque élément est dans un <code>&lt;li&gt;</code> (list item).</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h3&gt;Dans mon sac&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Un cahier&lt;/li&gt;
-  &lt;li&gt;Une trousse&lt;/li&gt;
-  &lt;li&gt;Une gourde&lt;/li&gt;
-&lt;/ul&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La liste à puces &lt;ul&gt;" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h3&gt;Dans mon sac&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Un cahier&lt;/li&gt;
-  &lt;li&gt;Une trousse&lt;/li&gt;
-  &lt;li&gt;Une gourde&lt;/li&gt;
-&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">1</span>Mettre du texte en valeur</h3>
+<p><code>&lt;strong&gt;</code> met un mot <strong>important</strong> en gras. <code>&lt;em&gt;</code> insiste sur un mot (en italique).</p>
+<p>On peut aussi utiliser <code>&lt;mark&gt;</code> pour surligner.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;Le HTML est &lt;strong&gt;très important&lt;/strong&gt;, il faut &lt;em&gt;bien&lt;/em&gt; le pratiquer. &lt;mark&gt;Révise ce soir !&lt;/mark&gt;&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Mettre du texte en valeur" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Le HTML est &lt;strong&gt;très important&lt;/strong&gt;, il faut &lt;em&gt;bien&lt;/em&gt; le pratiquer. &lt;mark&gt;Révise ce soir !&lt;/mark&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">2</span>La liste numérotée &lt;ol&gt;</h3>
-<p><code>&lt;ol&gt;</code> (ordered list) = liste <strong>dans l'ordre</strong> : un classement, des étapes…</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h3&gt;Mon top 3 des sports&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Football&lt;/li&gt;
-  &lt;li&gt;Handball&lt;/li&gt;
-  &lt;li&gt;Natation&lt;/li&gt;
-&lt;/ol&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La liste numérotée &lt;ol&gt;" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h3&gt;Mon top 3 des sports&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Football&lt;/li&gt;
-  &lt;li&gt;Handball&lt;/li&gt;
-  &lt;li&gt;Natation&lt;/li&gt;
-&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> Une liste peut contenir une autre liste : mets un <code>&lt;ul&gt;</code> à l'intérieur d'un <code>&lt;li&gt;</code>.</p>
+<h3><span class="num">2</span>Les liens avec &lt;a&gt;</h3>
+<p>La balise <code>&lt;a&gt;</code> crée un lien. L'<strong>attribut</strong> <code>href</code> donne l'adresse où aller.</p>
+<p>Un attribut est une information en plus, écrite dans la balise ouvrante : <code>nom="valeur"</code>.</p>
+<p><code>target="_blank"</code> ouvre le lien dans un <strong>nouvel onglet</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;a href="https://www.wikipedia.org" target="_blank"&gt;Aller sur Wikipédia&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="contact.html"&gt;Ma page contact&lt;/a&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les liens avec &lt;a&gt;" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;a href=&quot;https://www.wikipedia.org&quot; target=&quot;_blank&quot;&gt;Aller sur Wikipédia&lt;/a&gt;
+&lt;br&gt;
+&lt;a href=&quot;contact.html&quot;&gt;Ma page contact&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pour un site extérieur, l'adresse commence par <code>https://</code>. Pour une page de ton site, écris juste le nom du fichier.</p>
 </div>
 <div class="notion">
-<h3><span class="num">3</span>Un tableau simple</h3>
-<p><code>&lt;table&gt;</code> = le tableau. <code>&lt;tr&gt;</code> (table row) = une <strong>ligne</strong>. <code>&lt;th&gt;</code> = une case de <strong>titre</strong>. <code>&lt;td&gt;</code> = une case normale.</p>
-<p>On construit un tableau <strong>ligne par ligne</strong>.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;table border="1"&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Joueur&lt;/th&gt;
-    &lt;th&gt;Poste&lt;/th&gt;
-    &lt;th&gt;Buts&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Amine&lt;/td&gt;
-    &lt;td&gt;Attaquant&lt;/td&gt;
-    &lt;td&gt;12&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Rania&lt;/td&gt;
-    &lt;td&gt;Milieu&lt;/td&gt;
-    &lt;td&gt;7&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un tableau simple" sandbox="" style="height:140px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;table border=&quot;1&quot;&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Joueur&lt;/th&gt;
-    &lt;th&gt;Poste&lt;/th&gt;
-    &lt;th&gt;Buts&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Amine&lt;/td&gt;
-    &lt;td&gt;Attaquant&lt;/td&gt;
-    &lt;td&gt;12&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Rania&lt;/td&gt;
-    &lt;td&gt;Milieu&lt;/td&gt;
-    &lt;td&gt;7&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
-<p class="astuce">💡 <strong>Astuce :</strong> <code>border="1"</code> sert juste à voir les cases. Dès la séance 6, on fera les bordures en CSS.</p>
+<h3><span class="num">3</span>Les images avec &lt;img&gt;</h3>
+<p><code>&lt;img&gt;</code> est une balise orpheline. <code>src</code> = l'adresse de l'image, <code>alt</code> = la description de l'image.</p>
+<p>Le texte <code>alt</code> s'affiche si l'image ne charge pas et il est lu par les logiciels pour les personnes aveugles. Il est <strong>obligatoire</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;img src="https://picsum.photos/seed/plage/300/180" alt="Une plage au coucher du soleil" width="300"&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les images avec &lt;img&gt;" sandbox="" style="height:220px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;img src=&quot;https://picsum.photos/seed/plage/300/180&quot; alt=&quot;Une plage au coucher du soleil&quot; width=&quot;300&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <div class="notion">
-<h3><span class="num">4</span>Organiser un tableau : thead, tbody, colspan</h3>
-<p><code>&lt;thead&gt;</code> regroupe la ligne des titres, <code>&lt;tbody&gt;</code> le contenu, <code>&lt;tfoot&gt;</code> le bas (total…).</p>
-<p><code>colspan="2"</code> : une case prend la place de <strong>2 colonnes</strong>. <code>rowspan="2"</code> : une case prend <strong>2 lignes</strong>.</p>
-<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;table border="1"&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;&lt;th&gt;Matière&lt;/th&gt;&lt;th&gt;Note&lt;/th&gt;&lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;&lt;td&gt;Maths&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Anglais&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;&lt;td colspan="2"&gt;Moyenne : 16&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tfoot&gt;
-&lt;/table&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Organiser un tableau : thead, tbody, colspan" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;table border=&quot;1&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;&lt;th&gt;Matière&lt;/th&gt;&lt;th&gt;Note&lt;/th&gt;&lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;&lt;td&gt;Maths&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Anglais&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;Moyenne : 16&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tfoot&gt;
-&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<h3><span class="num">4</span>Les chemins : où est mon image ?</h3>
+<p>On range ses images dans un dossier <code>images/</code>. Le chemin dépend de l'endroit où se trouve ton fichier HTML :</p>
+<ul><li><code>photo.jpg</code> → l'image est dans le <strong>même dossier</strong> que la page.</li><li><code>images/photo.jpg</code> → l'image est dans le dossier <code>images</code> à côté de la page.</li><li><code>../photo.jpg</code> → l'image est dans le dossier <strong>parent</strong> (on remonte d'un niveau).</li></ul>
+<div class="code-demo solo"><div><span class="label">Schéma</span><pre><code>seance03/
+├── index.html
+├── contact.html
+└── images/
+    └── tunis.jpg
+
+&lt;!-- dans index.html : --&gt;
+&lt;img src="images/tunis.jpg" alt="Avenue Habib Bourguiba"&gt;</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pas d'espace ni d'accent dans les noms de fichiers : <code>ma-photo.jpg</code> et pas <code>Ma Photo é.jpg</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Une image cliquable</h3>
+<p>On peut mettre une image <strong>dans</strong> un lien : toute l'image devient cliquable.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;a href="https://fr.wikipedia.org/wiki/Djerba" target="_blank"&gt;
+  &lt;img src="https://picsum.photos/seed/djerba/200/130" alt="Djerba" width="200"&gt;
+&lt;/a&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Une image cliquable" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Djerba&quot; target=&quot;_blank&quot;&gt;
+  &lt;img src=&quot;https://picsum.photos/seed/djerba/200/130&quot; alt=&quot;Djerba&quot; width=&quot;200&quot;&gt;
+&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
 </div>
 <p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
 </section>
 <section class="bloc" id="deroule">
 <h2>⏱️ Déroulé de la séance (2 h)</h2>
 <ol class="timeline">
-<li><span class="temps">0:00 – 0:10</span><span>Échauffement : quiz oral « Quelle balise pour… ? » (lien, image, titre, gras).</span></li>
-<li><span class="temps">0:10 – 0:30</span><span>Découverte des listes <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, listes imbriquées.</span></li>
-<li><span class="temps">0:30 – 0:55</span><span>Découverte des tableaux : on dessine d'abord le tableau au tableau blanc, puis on le code ligne par ligne.</span></li>
-<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3.</span></li>
-<li><span class="temps">1:35 – 1:50</span><span>Défi : l'emploi du temps de la classe.</span></li>
-<li><span class="temps">1:50 – 2:00</span><span>Bilan et checklist.</span></li>
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : chaque élève écrit de mémoire le squelette HTML. Correction ensemble.</span></li>
+<li><span class="temps">0:10 – 0:40</span><span>Découverte : <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, les attributs, les liens <code>&lt;a&gt;</code>.</span></li>
+<li><span class="temps">0:40 – 1:00</span><span>Les images, le texte <code>alt</code>, le dossier <code>images/</code> et les chemins.</span></li>
+<li><span class="temps">1:00 – 1:35</span><span>Exercices 1 à 3 : la page « Ma ville ».</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi bonus : mini-site de 2 pages liées.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : on teste tous les liens des voisins. Checklist.</span></li>
 </ol>
 </section>
 <section class="bloc" id="exercices">
 <h2>🛠️ Exercices pas à pas</h2>
-<div class="exercice"><h3>Exercice 1 · Mes listes<span class="niveau facile">facile</span></h3><ol>
-<li>Crée <code>seance03/index.html</code>.</li>
-<li>Fais une liste à puces de 5 choses que tu aimes manger.</li>
-<li>Fais une liste numérotée de ton top 5 des chansons ou des films.</li>
-<li>Ajoute un lien sur au moins un élément de la liste (vers YouTube ou Wikipédia).</li>
+<div class="exercice"><h3>Exercice 1 · Ma ville<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance03/index.html</code> avec le squelette.</li>
+<li>Écris un <code>&lt;h1&gt;</code> avec le nom de ta ville et 2 paragraphes de présentation.</li>
+<li>Mets en gras (<code>&lt;strong&gt;</code>) le nom de 3 lieux connus de ta ville.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 2 · Une liste dans une liste<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée une liste <code>&lt;ul&gt;</code> « Mes matières » avec 3 matières.</li>
-<li>Dans chaque <code>&lt;li&gt;</code>, ajoute une sous-liste <code>&lt;ul&gt;</code> avec 2 chapitres étudiés.</li>
-<li>Observe : les puces changent de forme pour la sous-liste.</li>
+<div class="exercice"><h3>Exercice 2 · Ajouter des images<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un dossier <code>images</code> dans <code>seance03</code>.</li>
+<li>Télécharge 2 photos de ta ville (sur Unsplash) et range-les dans <code>images/</code>.</li>
+<li>Affiche-les avec <code>&lt;img src="images/…" alt="…" width="300"&gt;</code>.</li>
+<li>Vérifie : écris volontairement un mauvais nom d'image. Que voit-on ? (le texte <code>alt</code> !) Puis corrige.</li>
 </ol></div>
-<div class="exercice"><h3>Exercice 3 · Le tableau de mon équipe<span class="niveau moyen">moyen</span></h3><ol>
-<li>Crée un tableau avec 3 colonnes : Prénom, Sport, Âge.</li>
-<li>Utilise <code>&lt;thead&gt;</code> pour la ligne de titres (<code>&lt;th&gt;</code>) et <code>&lt;tbody&gt;</code> pour 4 lignes de données.</li>
-<li>Ajoute une 4e colonne « Photo » avec une petite image (<code>width="60"</code>) dans chaque ligne.</li>
+<div class="exercice"><h3>Exercice 3 · Des liens utiles<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un <code>&lt;h2&gt;Pour en savoir plus&lt;/h2&gt;</code>.</li>
+<li>Crée un lien vers la page Wikipédia de ta ville qui s'ouvre dans un nouvel onglet.</li>
+<li>Crée un lien vers Google Maps de ta ville.</li>
+<li>Rends une de tes images cliquable (l'image dans un <code>&lt;a&gt;</code>).</li>
 </ol></div>
 </section>
 <section class="bloc defi" id="defi">
-<h2>🏆 Défi bonus : L'emploi du temps</h2>
-<p>Reproduis l'emploi du temps de ta classe pour 3 jours (lignes = jours, colonnes = heures).</p>
-<p>Ajoute une ligne « Pause déjeuner » qui prend toute la largeur grâce à <code>colspan</code>. Bonus : utilise <code>rowspan</code> pour un cours de 2 heures.</p>
+<h2>🏆 Défi bonus : Mini-site de 2 pages</h2>
+<p>Crée une deuxième page <code>monuments.html</code> qui présente 2 monuments de ta ville avec une image chacun.</p>
+<p>Ajoute un lien « Voir les monuments » dans <code>index.html</code> et un lien « ← Retour à l'accueil » dans <code>monuments.html</code>. Les deux pages doivent être reliées !</p>
 </section>
 <section class="bloc" id="erreurs">
 <h2>⚠️ Erreurs fréquentes</h2>
 <div class="erreurs">
-<div class="erreur"><div class="ko">Je mets du texte directement dans <code>&lt;ul&gt;</code> sans <code>&lt;li&gt;</code></div><div class="ok">Chaque élément de la liste est dans un <code>&lt;li&gt;</code></div></div>
-<div class="erreur"><div class="ko">Je mélange l'ordre : <code>&lt;td&gt;</code> en dehors d'un <code>&lt;tr&gt;</code></div><div class="ok">Toujours <code>&lt;table&gt;</code> → <code>&lt;tr&gt;</code> → <code>&lt;td&gt;</code></div></div>
-<div class="erreur"><div class="ko">Une ligne a 4 cases et une autre en a 3</div><div class="ok">Chaque ligne doit avoir le même nombre de cases (ou utiliser <code>colspan</code>)</div></div>
-<div class="erreur"><div class="ko">J'utilise un tableau pour placer toute ma page</div><div class="ok">Les tableaux servent aux <strong>données</strong> ; la mise en page se fera en CSS</div></div>
+<div class="erreur"><div class="ko"><code>&lt;img src="images/Photo.JPG"&gt;</code> alors que le fichier s'appelle <code>photo.jpg</code></div><div class="ok">Le nom doit être <strong>exactement</strong> le même (majuscules comprises)</div></div>
+<div class="erreur"><div class="ko">J'oublie l'attribut <code>alt</code></div><div class="ok">Toujours une description : <code>alt="La plage de Hammamet"</code></div></div>
+<div class="erreur"><div class="ko"><code>&lt;a href="www.google.com"&gt;</code></div><div class="ok">Il faut le début complet : <code>href="https://www.google.com"</code></div></div>
+<div class="erreur"><div class="ko">J'oublie les guillemets : <code>href=page.html</code></div><div class="ok">Les valeurs vont entre guillemets : <code>href="page.html"</code></div></div>
 </div>
 </section>
 <section class="bloc" id="vocabulaire">
 <h2>📚 Vocabulaire</h2>
 <dl class="vocab">
-<div><dt>ul</dt><dd>Unordered list : liste à puces.</dd></div>
-<div><dt>ol</dt><dd>Ordered list : liste numérotée.</dd></div>
-<div><dt>li</dt><dd>List item : un élément de la liste.</dd></div>
-<div><dt>tr</dt><dd>Table row : une ligne du tableau.</dd></div>
-<div><dt>th / td</dt><dd>Case de titre / case de donnée.</dd></div>
-<div><dt>colspan / rowspan</dt><dd>Fusionner des colonnes / des lignes.</dd></div>
+<div><dt>Attribut</dt><dd>Une information en plus dans la balise ouvrante : <code>href</code>, <code>src</code>, <code>alt</code>…</dd></div>
+<div><dt>Lien hypertexte</dt><dd>Un texte ou une image sur lequel on clique pour aller ailleurs.</dd></div>
+<div><dt>URL</dt><dd>L'adresse d'une page web, ex. <code>https://www.wikipedia.org</code>.</dd></div>
+<div><dt>Chemin relatif</dt><dd>L'adresse d'un fichier à partir de la page actuelle, ex. <code>images/chat.jpg</code>.</dd></div>
+<div><dt>Texte alternatif</dt><dd>La description d'une image dans <code>alt</code>.</dd></div>
 </dl>
 </section>
 <section class="bloc" id="ressources">
 <h2>🔗 Ressources</h2>
 <ul class="ressources">
-<li><a href="https://www.w3schools.com/html/html_lists.asp" target="_blank"><span class="tag">W3Schools</span><br>Les listes</a></li>
-<li><a href="https://www.w3schools.com/html/html_tables.asp" target="_blank"><span class="tag">W3Schools</span><br>Les tableaux</a></li>
-<li><a href="https://www.w3schools.com/html/html_table_colspan_rowspan.asp" target="_blank"><span class="tag">W3Schools</span><br>colspan et rowspan</a></li>
-<li><a href="https://developer.mozilla.org/fr/docs/Learn/HTML/Tables/Basics" target="_blank"><span class="tag">MDN</span><br>Les bases des tableaux (en français)</a></li>
-<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+<li><a href="https://www.w3schools.com/html/html_formatting.asp" target="_blank"><span class="tag">W3Schools</span><br>Mettre en forme le texte (strong, em, mark)</a></li>
+<li><a href="https://www.w3schools.com/html/html_links.asp" target="_blank"><span class="tag">W3Schools</span><br>Les liens</a></li>
+<li><a href="https://www.w3schools.com/html/html_images.asp" target="_blank"><span class="tag">W3Schools</span><br>Les images</a></li>
+<li><a href="https://www.w3schools.com/html/html_filepaths.asp" target="_blank"><span class="tag">W3Schools</span><br>Les chemins de fichiers</a></li>
+<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+<li><a href="https://picsum.photos/" target="_blank"><span class="tag outil">Outil</span><br><strong>Picsum</strong> : images d'exemple (ex. <code>https://picsum.photos/400/300</code>)</a></li>
+<li><a href="https://emojipedia.org/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Emojipedia</strong> : copier des emojis pour décorer ses pages</a></li>
 </ul>
 </section>
 <section class="bloc" id="verifie">
 <h2>✅ Je vérifie que j'ai compris</h2>
 <ul class="checklist">
-<li>Je sais quand utiliser <code>&lt;ul&gt;</code> ou <code>&lt;ol&gt;</code>.</li>
-<li>Chaque élément de mes listes est dans un <code>&lt;li&gt;</code>.</li>
-<li>Je sais construire un tableau ligne par ligne.</li>
-<li>J'utilise <code>&lt;th&gt;</code> pour les titres de colonnes.</li>
-<li>Je sais fusionner deux cases avec <code>colspan</code>.</li>
+<li>Je sais créer un lien vers un site et vers une page de mon site.</li>
+<li>Toutes mes images ont un attribut <code>alt</code>.</li>
+<li>Mes images sont rangées dans un dossier <code>images/</code>.</li>
+<li>Je comprends la différence entre <code>images/photo.jpg</code> et <code>../photo.jpg</code>.</li>
+<li>Mes noms de fichiers sont en minuscules, sans espace ni accent.</li>
 </ul>
 </section>
 <nav class="nav-seances" aria-label="Séances">

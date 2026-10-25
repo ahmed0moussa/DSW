@@ -1,119 +1,59 @@
+/* La boîte fait exactement la largeur demandée */
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f6f9;
-}
-
-header {
-  padding: 30px 20px;
-  text-align: center;
-  background-color: #1d6b6b;
-  color: white;
-}
-
-/* Le menu défile puis reste collé en haut */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding: 10px;
-  text-align: center;
-  background-color: #288b8b;
-}
-
-/* inline-block : dans la ligne mais avec un padding */
-nav a {
-  display: inline-block;
-  margin: 4px;
-  padding: 10px 18px;
-  border-radius: 20px;
-  background-color: white;
-  color: #1d6b6b;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-main {
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
   padding: 20px;
 }
 
-section {
-  min-height: 300px;
+h1 {
+  text-align: center;
+  color: #288b8b;
 }
 
-/* Parent relative… */
 .carte {
-  position: relative;
-  display: inline-block;
-  width: 260px;
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  vertical-align: top;
+  max-width: 320px;
+  margin: 20px auto;          /* centrée */
+  padding: 20px;              /* espace intérieur */
+  border: 3px solid #288b8b;  /* bordure */
+  border-radius: 12px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.carte img {
-  display: block;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.carte h2 {
+  margin: 10px 0 5px;
+  border-bottom: 3px solid #e67e22;
+  padding-bottom: 5px;
 }
 
-/* …enfant absolute */
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;         /* image ronde */
+  border: 4px solid #e3f3f3;
+}
+
+.speciale {
+  border: 3px dashed #e67e22;
+  padding: 30px;
+}
+
 .badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background-color: crimson;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-/* Le titre posé sur l'image */
-.titre-photo {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding: 10px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.cachee {
-  visibility: hidden;   /* invisible mais garde sa place */
-}
-
-.etiquette {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 6px;
+  width: 150px;
+  height: 150px;
+  margin: 30px auto;
+  padding-top: 40px;
+  border: 6px double #e67e22;
+  border-radius: 50%;
   background-color: #fdf0e3;
-  color: #8a4a12;
+  text-align: center;
+  font-size: 22px;
   font-weight: bold;
-}
-
-/* Reste au même endroit de l'écran */
-.retour {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 20;
-  padding: 12px 16px;
-  border-radius: 30px;
-  background-color: #e67e22;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
