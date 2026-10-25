@@ -1,4 +1,4 @@
-# DSW — Mes activités DécliTech
+# DSW — Mes activités (Ahmed Moussa)
 
 Point d'entrée : `index.html` (choix du groupe).
 

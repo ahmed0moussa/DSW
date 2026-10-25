@@ -68,8 +68,12 @@ img {
   font-weight: bold;
 }
 
-.topbar img {
-  height: 38px;
+.topbar .nom {
+  font-size: 18px;
+  padding: 4px 14px;
+  border: 2px solid white;
+  border-radius: 30px;
+  white-space: nowrap;
 }
 
 .topbar a {

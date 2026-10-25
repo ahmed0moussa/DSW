@@ -19,7 +19,7 @@
 - **Les liens W3Schools** dans chaque activité CSS (act10 → act20) : une très bonne habitude.
 - **Les mini-projets 17 à 20** (carte profil, fiche produit, galerie, FAQ) avec des étapes « Structure / Style / Bonus ».
 - **La progression générale** : HTML → CSS → Flexbox → Grid → Responsive → Animations → Projets.
-- **Les 4 projets** (Portfolio, FastDrop, GreenStay, DécliTech Academy) : de très bons modèles de sites complets.
+- **Les 4 projets** (Portfolio, FastDrop, GreenStay, Web Academy) : de très bons modèles de sites complets.
 
 ## 2. Les problèmes généraux
 
