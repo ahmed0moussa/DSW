@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 10 · Display et position — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 10</span> · Display et position</h1>
+    <p>Pourquoi certains éléments se mettent les uns sous les autres et d'autres côte à côte ? Et comment coller un menu en haut de l'écran ? Réponse : <code>display</code> et <code>position</code>.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer la différence entre <code>block</code>, <code>inline</code> et <code>inline-block</code>, et cacher un élément avec <code>display: none</code>.</li><li>Placer un élément avec <code>position</code> : <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.</li><li>Gérer la superposition des éléments avec <code>z-index</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>On sait mettre des fonds, des dégradés et des filtres. Chaque élément est une boîte avec <code>padding</code>, <code>border</code> et <code>margin</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>block, inline, inline-block</h3>
+<ul><li><code>block</code> : prend <strong>toute la largeur</strong>, commence sur une nouvelle ligne (<code>div</code>, <code>p</code>, <code>h1</code>, <code>section</code>…).</li><li><code>inline</code> : reste <strong>dans la ligne</strong>, on ne peut pas lui donner de <code>width</code>/<code>height</code> (<code>span</code>, <code>a</code>, <code>strong</code>…).</li><li><code>inline-block</code> : reste dans la ligne <strong>mais</strong> accepte <code>width</code>, <code>height</code> et <code>padding</code>. Idéal pour des boutons ou des badges.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;span class="b"&gt;block&lt;/span&gt;&lt;span class="b"&gt;block&lt;/span&gt;
+&lt;span class="i"&gt;inline&lt;/span&gt; &lt;span class="i"&gt;inline&lt;/span&gt;
+&lt;p&gt;&lt;span class="ib"&gt;inline-block&lt;/span&gt; &lt;span class="ib"&gt;inline-block&lt;/span&gt;&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.b { display: block; background: #e3f3f3; margin: 4px 0; }
+.i { display: inline; background: #fdf0e3; }
+.ib { display: inline-block; width: 90px; height: 40px; background: #ede7f6; text-align: center; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : block, inline, inline-block" sandbox="" style="height:160px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.b { display: block; background: #e3f3f3; margin: 4px 0; }
+.i { display: inline; background: #fdf0e3; }
+.ib { display: inline-block; width: 90px; height: 40px; background: #ede7f6; text-align: center; }&lt;/style&gt;&lt;span class=&quot;b&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;b&quot;&gt;block&lt;/span&gt;
+&lt;span class=&quot;i&quot;&gt;inline&lt;/span&gt; &lt;span class=&quot;i&quot;&gt;inline&lt;/span&gt;
+&lt;p&gt;&lt;span class=&quot;ib&quot;&gt;inline-block&lt;/span&gt; &lt;span class=&quot;ib&quot;&gt;inline-block&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Cacher un élément</h3>
+<ul><li><code>display: none;</code> → l'élément <strong>disparaît</strong> complètement (il ne prend plus de place).</li><li><code>visibility: hidden;</code> → l'élément est invisible <strong>mais garde sa place</strong>.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>display: none</code> est très utilisé avec les media queries (séance 14) pour cacher un élément sur mobile.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>position: relative et absolute</h3>
+<p><code>relative</code> : l'élément bouge <strong>par rapport à sa place normale</strong> avec <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>.</p>
+<p><code>absolute</code> : l'élément se place <strong>par rapport au premier parent</strong> qui a <code>position: relative</code>. Parfait pour un badge « Nouveau » sur une carte !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div style="padding:15px"&gt;
+&lt;div class="carte"&gt;Nouveau jeu : Robot Run
+  &lt;span class="badge"&gt;NOUVEAU&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.carte { position: relative; width: 200px; height: 120px; background: #e3f3f3; border-radius: 8px; padding: 10px; }
+.badge { position: absolute; top: -10px; right: -10px; background: crimson; color: white; padding: 4px 10px; border-radius: 20px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : position: relative et absolute" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.carte { position: relative; width: 200px; height: 120px; background: #e3f3f3; border-radius: 8px; padding: 10px; }
+.badge { position: absolute; top: -10px; right: -10px; background: crimson; color: white; padding: 4px 10px; border-radius: 20px; }&lt;/style&gt;&lt;div style=&quot;padding:15px&quot;&gt;
+&lt;div class=&quot;carte&quot;&gt;Nouveau jeu : Robot Run
+  &lt;span class=&quot;badge&quot;&gt;NOUVEAU&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Retiens : <strong>parent relative, enfant absolute</strong>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>position: fixed et sticky</h3>
+<ul><li><code>fixed</code> : l'élément reste <strong>collé à l'écran</strong>, même quand on fait défiler la page (bouton « retour en haut », bulle de chat).</li><li><code>sticky</code> : l'élément défile normalement <strong>puis se colle</strong> quand il atteint <code>top: 0</code> (menu qui reste en haut).</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;nav&gt;Je reste en haut&lt;/nav&gt;
+&lt;p&gt;Fais défiler…&lt;/p&gt;&lt;p&gt;…encore…&lt;/p&gt;&lt;p&gt;…le menu reste visible !&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;Fin.&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>nav {
+  position: sticky;
+  top: 0;
+  background: #288b8b;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : position: fixed et sticky" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;nav{position:sticky;top:0;background:#288b8b;color:white;padding:8px}p{margin:30px 0}&lt;/style&gt;&lt;nav&gt;Je reste en haut&lt;/nav&gt;&lt;p&gt;Fais défiler dans ce cadre…&lt;/p&gt;&lt;p&gt;…encore…&lt;/p&gt;&lt;p&gt;…le menu reste visible !&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;.&lt;/p&gt;&lt;p&gt;Fin.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>z-index : qui est au-dessus ?</h3>
+<p>Quand des éléments positionnés se chevauchent, celui qui a le plus grand <code>z-index</code> passe <strong>devant</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="rouge"&gt;z-index 1&lt;/div&gt;&lt;div class="bleu"&gt;z-index 3&lt;/div&gt;&lt;div class="vert"&gt;z-index 2&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>div { position: absolute; width: 90px; height: 90px; color: white; padding: 5px; }
+.rouge { background: crimson; top: 10px; left: 10px; z-index: 1; }
+.bleu { background: #2980b9; top: 40px; left: 50px; z-index: 3; }
+.vert { background: #27ae60; top: 70px; left: 90px; z-index: 2; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : z-index : qui est au-dessus ?" sandbox="" style="height:180px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;div { position: absolute; width: 90px; height: 90px; color: white; padding: 5px; }
+.rouge { background: crimson; top: 10px; left: 10px; z-index: 1; }
+.bleu { background: #2980b9; top: 40px; left: 50px; z-index: 3; }
+.vert { background: #27ae60; top: 70px; left: 90px; z-index: 2; }&lt;/style&gt;&lt;div class=&quot;rouge&quot;&gt;z-index 1&lt;/div&gt;&lt;div class=&quot;bleu&quot;&gt;z-index 3&lt;/div&gt;&lt;div class=&quot;vert&quot;&gt;z-index 2&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : avec F12 sur un site, trouver 3 éléments <code>block</code> et 3 éléments <code>inline</code>.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>block</code>, <code>inline</code>, <code>inline-block</code>, <code>display: none</code>.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Les positions : relative / absolute (badge), fixed (bouton), sticky (menu). <code>z-index</code>.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : la page boutique de jeux.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la carte avec étiquette de prix.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan du module 2 : quiz sur tout le CSS de base.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Un menu en inline-block<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance10/index.html</code> avec un <code>&lt;nav&gt;</code> qui contient 4 liens.</li>
+<li>Donne aux liens <code>display: inline-block</code>, un <code>padding</code>, une couleur de fond et des coins arrondis : ce sont des boutons !</li>
+<li>Ajoute un long contenu (plusieurs sections) pour pouvoir faire défiler la page.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le menu collant<span class="niveau moyen">moyen</span></h3><ol>
+<li>Donne au <code>&lt;nav&gt;</code> : <code>position: sticky; top: 0;</code> et une couleur de fond.</li>
+<li>Fais défiler la page : le menu doit rester en haut.</li>
+<li>Ajoute un lien « ⬆ Haut » en <code>position: fixed</code> en bas à droite (<code>bottom: 20px; right: 20px;</code>) qui renvoie vers <code>#haut</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Les badges<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée 3 cartes de jeux (<code>position: relative</code>) avec une image chacune.</li>
+<li>Ajoute un <code>&lt;span class="badge"&gt;</code> « -20 % » en <code>position: absolute</code> dans le coin en haut à droite.</li>
+<li>Cache une des cartes avec <code>display: none</code>, puis essaie avec <code>visibility: hidden</code> : quelle différence vois-tu ?</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le texte sur l'image</h2>
+<p>Crée une carte photo : l'image prend toute la carte et le titre est <strong>posé par-dessus l'image</strong> en bas, sur un fond noir transparent (<code>position: absolute; bottom: 0;</code>).</p>
+<p>Bonus : ajoute une bulle de chat ronde 💬 en <code>position: fixed</code> en bas à gauche, avec un <code>z-index</code> élevé.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Mon élément <code>absolute</code> part tout en haut de la page</div><div class="ok">J'ai oublié <code>position: relative</code> sur le <strong>parent</strong></div></div>
+<div class="erreur"><div class="ko"><code>width</code> ne marche pas sur mon <code>&lt;span&gt;</code> ou mon <code>&lt;a&gt;</code></div><div class="ok">Ils sont <code>inline</code> : j'ajoute <code>display: inline-block</code></div></div>
+<div class="erreur"><div class="ko"><code>z-index</code> ne fait rien</div><div class="ok">Il marche sur les éléments positionnés (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>)</div></div>
+<div class="erreur"><div class="ko"><code>sticky</code> ne colle pas</div><div class="ok">Il faut aussi <code>top: 0;</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>display</dt><dd>La façon dont un élément s'affiche (<code>block</code>, <code>inline</code>, <code>none</code>…).</dd></div>
+<div><dt>Élément bloc</dt><dd>Prend toute la largeur et passe à la ligne.</dd></div>
+<div><dt>Élément en ligne</dt><dd>Reste dans la ligne de texte.</dd></div>
+<div><dt>position</dt><dd>La façon de placer un élément (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>).</dd></div>
+<div><dt>z-index</dt><dd>L'ordre de superposition : plus grand = devant.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_display_visibility.asp" target="_blank"><span class="tag">W3Schools</span><br>display et visibility</a></li>
+<li><a href="https://www.w3schools.com/css/css_inline-block.asp" target="_blank"><span class="tag">W3Schools</span><br>inline-block</a></li>
+<li><a href="https://www.w3schools.com/css/css_positioning.asp" target="_blank"><span class="tag">W3Schools</span><br>Les positions</a></li>
+<li><a href="https://www.w3schools.com/css/css_z-index.asp" target="_blank"><span class="tag">W3Schools</span><br>z-index</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_css_image_text.asp" target="_blank"><span class="tag">W3Schools</span><br>Texte posé sur une image</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Positioning" target="_blank"><span class="tag">MDN</span><br>Le positionnement (en français)</a></li>
+<li><a href="https://flukeout.github.io/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CSS Diner</strong> : apprends les sélecteurs CSS en jouant</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais la différence entre <code>block</code>, <code>inline</code> et <code>inline-block</code>.</li>
+<li>Je sais cacher un élément avec <code>display: none</code>.</li>
+<li>Je sais placer un badge avec parent <code>relative</code> + enfant <code>absolute</code>.</li>
+<li>Je sais faire un menu qui reste en haut avec <code>sticky</code>.</li>
+<li>Je sais à quoi sert <code>z-index</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance09/index.html">← Séance 09</a>
+<a href="../seance11/index.html">Séance 11 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

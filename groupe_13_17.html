@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groupe 13-17 ans - Mes Activités</title>
+    <title>Groupe 13-18 ans - Formation Web HTML &amp; CSS</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            color: #22303c;
             margin: 0;
             padding: 0;
         }
@@ -43,191 +48,389 @@
         }
 
         main {
-            padding: 20px;
-            text-align: center;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 16px 50px;
         }
 
-        .activity-list {
+        .intro {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            line-height: 1.6;
+        }
+
+        .intro h2 {
+            margin-top: 0;
+            color: #E67E22;
+        }
+
+        .chiffres {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
         }
 
-        .activity-card {
+        .chiffres li {
+            background: #fdf0e3;
+            color: #8a4a12;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .module {
+            margin-top: 40px;
+        }
+
+        .module h2 {
+            color: var(--couleur);
+            border-left: 8px solid var(--couleur);
+            padding-left: 12px;
+            margin-bottom: 4px;
+        }
+
+        .module .desc {
+            margin-top: 0;
+            color: #555;
+        }
+
+        .grille {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .seance {
+            display: flex;
+            flex-direction: column;
             background-color: #fff;
-            padding: 20px;
+            padding: 18px;
             border-radius: 10px;
-            width: 200px;
+            border-top: 5px solid var(--couleur);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.2s;
             text-decoration: none;
             color: inherit;
-            cursor: pointer;
         }
 
-        .activity-card:hover {
-            transform: scale(1.05);
+        .seance:hover {
+            transform: scale(1.03);
         }
 
-        .activity-card h2 {
-            margin: 0 0 10px 0;
+        .seance .num {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--couleur);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .seance h3 {
+            margin: 6px 0 8px;
             font-size: 18px;
         }
 
-        .activity-card p {
-            margin: 0;
+        .seance p {
+            margin: 0 0 10px;
             font-size: 14px;
             color: #555;
+            line-height: 1.5;
         }
 
-        .projects-title {
+        .seance .duree {
+            margin-top: auto;
+            font-size: 13px;
+            color: #777;
+        }
+
+        .section-titre {
             margin-top: 50px;
+            color: #E67E22;
         }
 
-        .project-card {
-            width: 260px;
+        .outils {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 10px;
+            padding: 0;
+            list-style: none;
         }
 
-        .project-card img {
+        .outils a {
+            display: block;
+            height: 100%;
+            background: white;
+            padding: 12px 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            color: inherit;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .outils a:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .outils .tag {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #288B8B;
+            text-transform: uppercase;
+        }
+
+        .projets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .projet {
+            width: 240px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            text-align: center;
+        }
+
+        .projet:hover {
+            transform: scale(1.05);
+        }
+
+        .projet img {
             width: 70px;
             height: 70px;
             object-fit: cover;
             border-radius: 50%;
             margin-bottom: 12px;
         }
+
+        .projet h3 {
+            margin: 0 0 6px;
+        }
+
+        .projet p {
+            margin: 0;
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
-        <h1>Groupe 13-17 ans</h1>
+        <h1>Groupe 13-18 ans · Formation Web</h1>
     </header>
 
     <a href="index.html" class="back-link">← Retour à la sélection</a>
 
     <main>
-        <h2>Liste des Activités</h2>
+        <section class="intro">
+            <h2>Bienvenue dans la formation HTML &amp; CSS !</h2>
+            <p>Chaque séance a une <strong>fiche</strong> à lire : l'objectif, la note de cours avec des exemples,
+               les exercices pas à pas, un défi, les erreurs à éviter et les ressources (W3Schools, Flexbox Froggy, Grid Garden…).
+               À la fin, tu crées et tu publies <strong>ton propre site</strong>.</p>
+            <ul class="chiffres">
+                <li>📚 20 séances</li>
+                <li>⏱️ 2 h par séance</li>
+                <li>🧩 4 modules</li>
+                <li>🚀 1 projet final en ligne</li>
+            </ul>
+        </section>
 
-        <div class="activity-list">
-            <a href="act1.html" class="activity-card">
-                <h2>Activité 1</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
+    <section class="module" style="--couleur: #288b8b;">
+      <h2>Module 1 · HTML</h2>
+      <p class="desc">Écrire le contenu et la structure d'une page.</p>
+      <div class="grille">
+        <a href="formation-13-18/seance01/index.html" class="seance">
+          <span class="num">Séance 01</span>
+          <h3>Le web et ma première page</h3>
+          <p>🎯 Expliquer avec mes mots ce qu'est une page web et le rôle du HTML.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance02/index.html" class="seance">
+          <span class="num">Séance 02</span>
+          <h3>Texte, liens et images</h3>
+          <p>🎯 Mettre du texte en valeur avec &lt;strong&gt; et &lt;em&gt;.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance03/index.html" class="seance">
+          <span class="num">Séance 03</span>
+          <h3>Listes et tableaux</h3>
+          <p>🎯 Créer une liste à puces &lt;ul&gt; et une liste numérotée &lt;ol&gt;.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance04/index.html" class="seance">
+          <span class="num">Séance 04</span>
+          <h3>Les formulaires</h3>
+          <p>🎯 Créer un formulaire avec &lt;form&gt;, &lt;label&gt; et &lt;input&gt;.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance05/index.html" class="seance">
+          <span class="num">Séance 05</span>
+          <h3>Structure sémantique et médias</h3>
+          <p>🎯 Découper une page en zones avec &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt; et &lt;footer&gt;.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #e67e22;">
+      <h2>Module 2 · Bases du CSS</h2>
+      <p class="desc">Donner du style : couleurs, textes, boîtes, fonds, positions.</p>
+      <div class="grille">
+        <a href="formation-13-18/seance06/index.html" class="seance">
+          <span class="num">Séance 06</span>
+          <h3>Mon premier CSS : sélecteurs et couleurs</h3>
+          <p>🎯 Écrire une règle CSS : sélecteur, propriété, valeur.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance07/index.html" class="seance">
+          <span class="num">Séance 07</span>
+          <h3>Le texte, les polices et les unités</h3>
+          <p>🎯 Changer la police avec font-family et ajouter une police de Google Fonts.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-13-18/seance08/index.html" class="seance">
+          <span class="num">Séance 08</span>
+          <h3>Le modèle de boîte (box model)</h3>
+          <p>🎯 Expliquer les 4 couches d'une boîte : contenu, padding, border, margin.</p>
+          <span class="duree">⏱️ 2 h · Débutant → Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance09/index.html" class="seance">
+          <span class="num">Séance 09</span>
+          <h3>Fonds, dégradés et images</h3>
+          <p>🎯 Mettre une image de fond avec background-image et la régler avec background-size et background-position.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance10/index.html" class="seance">
+          <span class="num">Séance 10</span>
+          <h3>Display et position</h3>
+          <p>🎯 Expliquer la différence entre block, inline et inline-block, et cacher un élément avec display: none.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #8e44ad;">
+      <h2>Module 3 · Mise en page</h2>
+      <p class="desc">Placer les éléments avec Flexbox et Grid, s'adapter au téléphone.</p>
+      <div class="grille">
+        <a href="formation-13-18/seance11/index.html" class="seance">
+          <span class="num">Séance 11</span>
+          <h3>Flexbox 1 : aligner facilement</h3>
+          <p>🎯 Transformer une boîte en conteneur flex avec display: flex.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance12/index.html" class="seance">
+          <span class="num">Séance 12</span>
+          <h3>Flexbox 2 : navbar et cartes</h3>
+          <p>🎯 Construire une barre de navigation avec un logo à gauche et des liens à droite.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance13/index.html" class="seance">
+          <span class="num">Séance 13</span>
+          <h3>CSS Grid : la mise en page en grille</h3>
+          <p>🎯 Créer une grille avec display: grid et grid-template-columns, en utilisant l'unité fr et repeat().</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance14/index.html" class="seance">
+          <span class="num">Séance 14</span>
+          <h3>Le responsive design</h3>
+          <p>🎯 Ajouter la balise &lt;meta name="viewport"&gt; et tester ma page en mode téléphone avec F12.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #c0392b;">
+      <h2>Module 4 · Interactivité et projet</h2>
+      <p class="desc">Rendre le site vivant, le construire en plusieurs pages et réaliser son projet.</p>
+      <div class="grille">
+        <a href="formation-13-18/seance15/index.html" class="seance">
+          <span class="num">Séance 15</span>
+          <h3>Pseudo-classes, transitions et transformations</h3>
+          <p>🎯 Utiliser les pseudo-classes :hover, :focus, :active et :nth-child().</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance16/index.html" class="seance">
+          <span class="num">Séance 16</span>
+          <h3>Les animations CSS</h3>
+          <p>🎯 Décrire les étapes d'une animation avec @keyframes (from/to ou des pourcentages).</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance17/index.html" class="seance">
+          <span class="num">Séance 17</span>
+          <h3>Un site multi-pages et les variables CSS</h3>
+          <p>🎯 Organiser les fichiers d'un site : index.html, autres pages, dossiers css/ et images/.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance18/index.html" class="seance">
+          <span class="num">Séance 18</span>
+          <h3>Atelier : carte profil et galerie</h3>
+          <p>🎯 Réaliser un composant complet à partir d'un modèle, en autonomie.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-13-18/seance19/index.html" class="seance">
+          <span class="num">Séance 19</span>
+          <h3>Projet final 1/2 : préparer et structurer</h3>
+          <p>🎯 Rédiger le cahier des charges de mon site : sujet, public, pages, contenu, couleurs.</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+        <a href="formation-13-18/seance20/index.html" class="seance">
+          <span class="num">Séance 20</span>
+          <h3>Projet final 2/2 : styler, publier, présenter</h3>
+          <p>🎯 Écrire le CSS de mon site en suivant ma maquette et ma charte graphique.</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+      </div>
+    </section>
 
-            <a href="act2.html" class="activity-card">
-                <h2>Activité 2</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act3.html" class="activity-card">
-                <h2>Activité 3</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
+        <h2 class="section-titre">🧰 La boîte à outils</h2>
+        <ul class="outils">
+        <li><a href="https://www.w3schools.com/" target="_blank"><span class="tag">W3Schools</span><strong>W3Schools</strong> : le cours et les exemples de référence</a></li>
+        <li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag">Outil</span><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
+        <li><a href="https://coolors.co/" target="_blank"><span class="tag">Outil</span><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+        <li><a href="https://fonts.google.com/" target="_blank"><span class="tag">Outil</span><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+        <li><a href="https://flexboxfroggy.com/#fr" target="_blank"><span class="tag">Jeu</span><strong>Flexbox Froggy</strong> : aide les grenouilles avec Flexbox (24 niveaux)</a></li>
+        <li><a href="https://cssgridgarden.com/#fr" target="_blank"><span class="tag">Jeu</span><strong>Grid Garden</strong> : arrose ton jardin avec CSS Grid (28 niveaux)</a></li>
+        <li><a href="https://flukeout.github.io/" target="_blank"><span class="tag">Jeu</span><strong>CSS Diner</strong> : apprends les sélecteurs CSS en jouant</a></li>
+        <li><a href="https://codepen.io/pen/" target="_blank"><span class="tag">Outil</span><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+        <li><a href="https://unsplash.com/fr" target="_blank"><span class="tag">Outil</span><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+        <li><a href="https://animista.net/" target="_blank"><span class="tag">Outil</span><strong>Animista</strong> : galerie d'animations CSS prêtes à copier</a></li>
+        <li><a href="https://developer.mozilla.org/fr/" target="_blank"><span class="tag">MDN</span><strong>MDN</strong> : la documentation officielle du web, en français</a></li>
+        <li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag">Outil</span><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+        </ul>
 
-            <a href="act3_1.html" class="activity-card">
-                <h2>Activité 3.1</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act4.html" class="activity-card">
-                <h2>Activité 4</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-
-            <a href="act5.html" class="activity-card">
-                <h2>Activité 5.0</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-
-            <a href="act6.html" class="activity-card">
-                <h2>Activité 6</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act7.html" class="activity-card">
-                <h2>Activité 7</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act7_1.html" class="activity-card">
-                <h2>Activité 7.1</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-             <a href="act8.html" class="activity-card">
-                <h2>Activité 8</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-             <a href="act9.html" class="activity-card">
-                <h2>Activité 9</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act10.html" class="activity-card">
-                <h2>Activité 10</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act11.html" class="activity-card">
-                <h2>Activité 11</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-             <a href="act12.html" class="activity-card">
-                <h2>Activité 12</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act13/index.html" class="activity-card">
-                <h2>Activité 13</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act14.html" class="activity-card">
-                <h2>Activité 14</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act15.html" class="activity-card">
-                <h2>Activité 15</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act16.html" class="activity-card">
-                <h2>Activité 16</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act17.html" class="activity-card">
-                <h2>Activité 17</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act18.html" class="activity-card">
-                <h2>Activité 18</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act19.html" class="activity-card">
-                <h2>Activité 19</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-            <a href="act20.html" class="activity-card">
-                <h2>Activité 20</h2>
-                <p>Cliquer pour ouvrir</p>
-            </a>
-        </div>
-
-        <h2 class="projects-title">Liste des Projets</h2>
-
-        <div class="activity-list">
-            <a href="portfolio-website/index.html" class="activity-card project-card">
-                <img src="portfolio-website/images/hero-headshot.webp" alt="Portfolio project">
-                <h2>Projet 1</h2>
-                <p>Portfolio Website</p>
-            </a>
-            <a href="fastdrop-delivery/index.html" class="activity-card project-card">
-                <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=200&q=80" alt="FastDrop delivery project">
-                <h2>Projet 2</h2>
-                <p>FastDrop Delivery</p>
-            </a>
-            <a href="greenstay-hotel/index.html" class="activity-card project-card">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=200&q=80" alt="GreenStay hotel project">
-                <h2>Projet 3</h2>
-                <p>GreenStay Hotel</p>
-            </a>
-            <a href="declitech-academy/index.html" class="activity-card project-card">
-                <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="DécliTech Academy project">
-                <h2>Projet 4</h2>
-                <p>DécliTech Academy</p>
-            </a>
+        <h2 class="section-titre">💡 Projets modèles (pour s'inspirer au projet final)</h2>
+        <div class="projets">
+        <a href="portfolio-website/index.html" class="projet">
+          <img src="portfolio-website/images/hero-headshot.webp" alt="Projet Portfolio Website">
+          <h3>Projet 1</h3>
+          <p>Portfolio Website</p>
+        </a>
+        <a href="fastdrop-delivery/index.html" class="projet">
+          <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=200&q=80" alt="Projet FastDrop Delivery">
+          <h3>Projet 2</h3>
+          <p>FastDrop Delivery</p>
+        </a>
+        <a href="greenstay-hotel/index.html" class="projet">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=200&q=80" alt="Projet GreenStay Hotel">
+          <h3>Projet 3</h3>
+          <p>GreenStay Hotel</p>
+        </a>
+        <a href="declitech-academy/index.html" class="projet">
+          <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Projet DécliTech Academy">
+          <h3>Projet 4</h3>
+          <p>DécliTech Academy</p>
+        </a>
         </div>
     </main>
 </body>

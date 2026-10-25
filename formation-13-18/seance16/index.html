@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 16 · Les animations CSS — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 16</span> · Les animations CSS</h1>
+    <p>Une transition se déclenche au survol. Une <strong>animation</strong> peut se lancer toute seule, se répéter à l'infini et avoir plusieurs étapes. Aujourd'hui tu crées des chargements, des rebonds et une bannière animée.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, Animista</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Décrire les étapes d'une animation avec <code>@keyframes</code> (<code>from</code>/<code>to</code> ou des pourcentages).</li><li>Lancer une animation avec <code>animation-name</code>, <code>animation-duration</code>, <code>animation-iteration-count</code>…</li><li>Utiliser le raccourci <code>animation</code> et décaler des animations avec <code>animation-delay</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p><code>transition</code> rend un changement doux (au <code>:hover</code>). <code>transform</code> déplace (<code>translate</code>), agrandit (<code>scale</code>) et tourne (<code>rotate</code>).</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>@keyframes : les étapes</h3>
+<p>On donne un <strong>nom</strong> à l'animation et on décrit ses étapes. <code>from</code> = le début, <code>to</code> = la fin.</p>
+<p>On peut aussi utiliser des pourcentages : <code>0%</code>, <code>50%</code>, <code>100%</code>…</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="balle"&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>@keyframes rebond {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
+}
+.balle {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: #e67e22; margin-top: 50px;
+  animation: rebond 1s infinite;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : @keyframes : les étapes" sandbox="" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;@keyframes rebond {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
+}
+.balle {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: #e67e22; margin-top: 50px;
+  animation: rebond 1s infinite;
+}&lt;/style&gt;&lt;div class=&quot;balle&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Les propriétés d'animation</h3>
+<ul><li><code>animation-name</code> : le nom des <code>@keyframes</code>.</li><li><code>animation-duration</code> : la durée (<code>2s</code>).</li><li><code>animation-iteration-count</code> : combien de fois (<code>3</code>, ou <code>infinite</code> pour toujours).</li><li><code>animation-delay</code> : attendre avant de commencer (<code>0.5s</code>).</li><li><code>animation-direction: alternate</code> : aller puis revenir.</li><li><code>animation-timing-function</code> : la vitesse (<code>linear</code>, <code>ease-in-out</code>…).</li></ul>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* Le raccourci : nom durée vitesse délai répétition direction */
+.element {
+  animation: glisse 2s ease-in-out 0.5s infinite alternate;
+}</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Le chargement en 3 points</h3>
+<p>La même animation sur 3 points, avec un <code>animation-delay</code> différent pour chacun : ils sautent l'un après l'autre !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="points"&gt;
+  &lt;div class="point"&gt;&lt;/div&gt;
+  &lt;div class="point"&gt;&lt;/div&gt;
+  &lt;div class="point"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.points { display: flex; gap: 8px; padding-top: 30px; }
+.point { width: 16px; height: 16px; border-radius: 50%; background: #288b8b;
+         animation: saut 0.6s infinite alternate; }
+.point:nth-child(2) { animation-delay: 0.2s; }
+.point:nth-child(3) { animation-delay: 0.4s; }
+@keyframes saut { to { transform: translateY(-20px); } }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le chargement en 3 points" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.points { display: flex; gap: 8px; padding-top: 30px; }
+.point { width: 16px; height: 16px; border-radius: 50%; background: #288b8b;
+         animation: saut 0.6s infinite alternate; }
+.point:nth-child(2) { animation-delay: 0.2s; }
+.point:nth-child(3) { animation-delay: 0.4s; }
+@keyframes saut { to { transform: translateY(-20px); } }&lt;/style&gt;&lt;div class=&quot;points&quot;&gt;
+  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;point&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Animer les couleurs et l'apparition</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h2 class="titre"&gt;Bienvenue !&lt;/h2&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>@keyframes arc-en-ciel {
+  0%   { background: #288b8b; }
+  50%  { background: #8e44ad; }
+  100% { background: #e67e22; }
+}
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.titre { color: white; padding: 14px; border-radius: 8px;
+         animation: arc-en-ciel 3s infinite alternate, apparition 1s; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Animer les couleurs et l&#x27;apparition" sandbox="" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;@keyframes arc-en-ciel {
+  0%   { background: #288b8b; }
+  50%  { background: #8e44ad; }
+  100% { background: #e67e22; }
+}
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.titre { color: white; padding: 14px; border-radius: 8px;
+         animation: arc-en-ciel 3s infinite alternate, apparition 1s; }&lt;/style&gt;&lt;h2 class=&quot;titre&quot;&gt;Bienvenue !&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Sur <strong>animista.net</strong>, tu choisis une animation, tu la règles et tu copies le code <code>@keyframes</code>. Mais attention : une page avec trop d'animations fatigue les yeux. Une ou deux, c'est mieux !</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : quelle différence entre une transition et une animation ? On regarde des chargements sur des applis connues.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>@keyframes</code>, les propriétés d'animation, le raccourci.</span></li>
+<li><span class="temps">0:35 – 0:50</span><span>Le chargement 3 points avec <code>animation-delay</code> et <code>:nth-child</code>. Démonstration d'Animista.</span></li>
+<li><span class="temps">0:50 – 1:35</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la scène animée.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : galerie des animations de la classe. Fin des notions techniques !</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · La balle qui rebondit<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance16/index.html</code> avec une <code>&lt;div class="balle"&gt;</code> ronde.</li>
+<li>Écris des <code>@keyframes rebond</code> avec 3 étapes (0 %, 50 %, 100 %).</li>
+<li>Applique l'animation à la balle : <code>1s</code>, <code>infinite</code>.</li>
+<li>Change la durée et la vitesse (<code>ease-in</code>, <code>linear</code>) et observe.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le chargement<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée 3 points côte à côte (Flexbox).</li>
+<li>Crée une animation <code>saut</code> et applique-la aux 3 points.</li>
+<li>Décale le 2e et le 3e point avec <code>animation-delay</code> et <code>:nth-child()</code>.</li>
+<li>Bonus : crée un cercle de chargement qui tourne (<code>rotate(360deg)</code>, <code>linear</code>, <code>infinite</code>) avec une bordure de couleur seulement en haut.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La bannière animée<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée une bannière avec un titre et un sous-titre.</li>
+<li>Fais apparaître le titre en fondu (<code>opacity</code> de 0 à 1) en glissant du haut.</li>
+<li>Fais apparaître le sous-titre 0.5s après le titre (<code>animation-delay</code>).</li>
+<li>Ajoute un fond qui change de couleur doucement avec <code>alternate</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La scène animée</h2>
+<p>Crée une petite scène en CSS uniquement : un soleil qui tourne ☀️, des nuages qui traversent l'écran ☁️ (<code>translateX</code>) et une voiture ou un vélo qui roule 🚲.</p>
+<p>Bonus : essaie un niveau de <strong>CSS Battle</strong> pour t'entraîner à dessiner des formes en CSS.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Mon animation ne démarre pas</div><div class="ok">Le nom dans <code>animation</code> doit être exactement celui des <code>@keyframes</code></div></div>
+<div class="erreur"><div class="ko">J'oublie la durée : <code>animation: rebond infinite;</code></div><div class="ok">Il faut une durée : <code>animation: rebond 1s infinite;</code></div></div>
+<div class="erreur"><div class="ko">L'animation saute brusquement à la fin</div><div class="ok">J'ajoute <code>alternate</code> ou une étape <code>100%</code> égale à <code>0%</code></div></div>
+<div class="erreur"><div class="ko">Trop d'animations : la page est fatigante</div><div class="ok">J'anime seulement 1 ou 2 éléments importants</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Animation</dt><dd>Un changement de style automatique, en plusieurs étapes.</dd></div>
+<div><dt>@keyframes</dt><dd>La règle qui décrit les étapes d'une animation.</dd></div>
+<div><dt>infinite</dt><dd>L'animation se répète sans fin.</dd></div>
+<div><dt>delay</dt><dd>Le temps d'attente avant le début.</dd></div>
+<div><dt>alternate</dt><dd>L'animation va puis revient.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank"><span class="tag">W3Schools</span><br>Les animations CSS</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_css_loader.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer un cercle de chargement</a></li>
+<li><a href="https://animista.net/" target="_blank"><span class="tag outil">Outil</span><br><strong>Animista</strong> : galerie d'animations CSS prêtes à copier</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_animations/Using_CSS_animations" target="_blank"><span class="tag">MDN</span><br>Utiliser les animations CSS (en français)</a></li>
+<li><a href="https://cssbattle.dev/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CSS Battle</strong> : reproduire une image avec le moins de code possible</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais écrire des <code>@keyframes</code> avec <code>from</code>/<code>to</code> ou des pourcentages.</li>
+<li>Je sais appliquer une animation avec le raccourci <code>animation</code>.</li>
+<li>Je sais répéter une animation avec <code>infinite</code>.</li>
+<li>Je sais décaler des animations avec <code>animation-delay</code>.</li>
+<li>Je n'abuse pas des animations.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance15/index.html">← Séance 15</a>
+<a href="../seance17/index.html">Séance 17 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

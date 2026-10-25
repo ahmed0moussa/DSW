@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 01 · Le web et ma première page — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 01</span> · Le web et ma première page</h1>
+    <p>Aujourd'hui tu découvres comment marche un site web et tu crées ta toute première page HTML sur ton ordinateur.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code + extension Live Server, navigateur Chrome</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer avec mes mots ce qu'est une page web et le rôle du HTML.</li><li>Créer un fichier <code>index.html</code> avec la structure de base (le squelette).</li><li>Utiliser les titres <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>, les paragraphes <code>&lt;p&gt;</code> et les commentaires.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>C'est la première séance ! Pas besoin de connaissances. Il faut juste savoir créer un dossier et un fichier sur l'ordinateur.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>C'est quoi une page web ?</h3>
+<p>Une page web est un simple <strong>fichier texte</strong> qui se termine par <code>.html</code>. Le navigateur (Chrome, Firefox…) lit ce fichier et l'affiche joliment.</p>
+<p>Un site web utilise 3 langages, comme une maison :</p>
+<ul><li><strong>HTML</strong> = les murs et les pièces (la structure, le contenu).</li><li><strong>CSS</strong> = la peinture et la décoration (couleurs, tailles, placement).</li><li><strong>JavaScript</strong> = l'électricité (ce qui bouge et réagit). On le verra plus tard.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Dans ce cours on commence par le HTML, puis on ajoute le CSS. Un bon site commence toujours par une bonne structure.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Une balise HTML</h3>
+<p>Le HTML utilise des <strong>balises</strong>. Une balise s'ouvre avec <code>&lt;nom&gt;</code> et se ferme avec <code>&lt;/nom&gt;</code>. Ce qui est entre les deux est le <strong>contenu</strong>.</p>
+<p>Ensemble (ouverture + contenu + fermeture), cela s'appelle un <strong>élément</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;Bonjour, je suis un paragraphe.&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Une balise HTML" sandbox="" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Bonjour, je suis un paragraphe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> N'oublie jamais le <code>/</code> dans la balise fermante : <code>&lt;/p&gt;</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Le squelette d'une page</h3>
+<p>Toute page HTML commence par la même structure. Dans VS Code, tape <code>!</code> puis appuie sur <strong>Entrée</strong> : le squelette s'écrit tout seul !</p>
+<p><code>&lt;head&gt;</code> contient les informations <strong>invisibles</strong> (titre de l'onglet, langue…). <code>&lt;body&gt;</code> contient tout ce qui est <strong>visible</strong> sur la page.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ma première page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Tout ce qui est visible va ici --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>&lt;meta charset="UTF-8"&gt;</code> permet d'afficher correctement les accents (é, è, à).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Les titres et les paragraphes</h3>
+<p>Il existe 6 niveaux de titres : <code>&lt;h1&gt;</code> est le plus important (un seul par page), <code>&lt;h6&gt;</code> le plus petit.</p>
+<p><code>&lt;p&gt;</code> sert à écrire un paragraphe. <code>&lt;br&gt;</code> fait un retour à la ligne (c'est une balise <strong>orpheline</strong> : elle n'a pas de fermeture).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h1&gt;Mon titre principal&lt;/h1&gt;
+&lt;h2&gt;Un sous-titre&lt;/h2&gt;
+&lt;h3&gt;Un plus petit titre&lt;/h3&gt;
+&lt;p&gt;Ceci est un paragraphe.&lt;br&gt;Et ceci est la ligne suivante.&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les titres et les paragraphes" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Mon titre principal&lt;/h1&gt;
+&lt;h2&gt;Un sous-titre&lt;/h2&gt;
+&lt;h3&gt;Un plus petit titre&lt;/h3&gt;
+&lt;p&gt;Ceci est un paragraphe.&lt;br&gt;Et ceci est la ligne suivante.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Les commentaires</h3>
+<p>Un commentaire est une note pour toi (ou pour ton formateur). Le navigateur <strong>ne l'affiche pas</strong>.</p>
+<p>Raccourci dans VS Code : sélectionne une ligne puis <strong>Ctrl + /</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;!-- Ceci est un commentaire : il est invisible --&gt;
+&lt;p&gt;Ceci est visible.&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les commentaires" sandbox="" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;!-- Ceci est un commentaire : il est invisible --&gt;
+&lt;p&gt;Ceci est visible.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Accueil, présentation de la formation. Question : « Quels sites tu utilises chaque jour ? » On regarde ensemble le code d'un vrai site (clic droit → Afficher le code source).</span></li>
+<li><span class="temps">0:15 – 0:35</span><span>Installation : VS Code, l'extension <strong>Live Server</strong>, création du dossier <code>formation-web/seance01</code>.</span></li>
+<li><span class="temps">0:35 – 1:00</span><span>Découverte : balise, élément, squelette HTML (<code>!</code> + Entrée), titres et paragraphes.</span></li>
+<li><span class="temps">1:00 – 1:30</span><span>Exercices 1 et 2 : « Ma carte d'identité » en HTML.</span></li>
+<li><span class="temps">1:30 – 1:50</span><span>Exercice 3 et défi bonus.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : chacun montre sa page. Checklist « Je vérifie ».</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Préparer mon espace de travail<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un dossier <code>formation-web</code> sur le bureau, puis dedans un dossier <code>seance01</code>.</li>
+<li>Ouvre VS Code → <strong>Fichier → Ouvrir le dossier</strong> → choisis <code>formation-web</code>.</li>
+<li>Crée un fichier <code>index.html</code> dans <code>seance01</code>.</li>
+<li>Tape <code>!</code> puis <strong>Entrée</strong> pour écrire le squelette. Change le <code>&lt;title&gt;</code> en « Ma première page ».</li>
+<li>Clic droit dans le fichier → <strong>Open with Live Server</strong>. Ta page s'ouvre dans le navigateur !</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Ma carte d'identité<span class="niveau facile">facile</span></h3><ol>
+<li>Dans <code>&lt;body&gt;</code>, écris un <code>&lt;h1&gt;</code> avec ton prénom.</li>
+<li>Ajoute un <code>&lt;h2&gt;Qui suis-je ?&lt;/h2&gt;</code> et un paragraphe <code>&lt;p&gt;</code> qui te présente (âge, ville, école).</li>
+<li>Ajoute un <code>&lt;h2&gt;Mes passions&lt;/h2&gt;</code> et un paragraphe sur ce que tu aimes.</li>
+<li>Enregistre (<strong>Ctrl + S</strong>) : la page se met à jour toute seule grâce à Live Server.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Mon futur métier<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un <code>&lt;h2&gt;Plus tard, je veux être…&lt;/h2&gt;</code>.</li>
+<li>Écris 2 paragraphes : le métier choisi, puis pourquoi tu l'aimes.</li>
+<li>Utilise au moins une fois <code>&lt;br&gt;</code> pour couper une ligne.</li>
+<li>Ajoute un commentaire <code>&lt;!-- Fin de ma page --&gt;</code> à la fin du <code>&lt;body&gt;</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La page « recette de cuisine »</h2>
+<p>Crée un nouveau fichier <code>recette.html</code> avec la recette de ton plat tunisien préféré (couscous, brik, makroud…).</p>
+<p>Utilise un <code>&lt;h1&gt;</code> pour le nom du plat, des <code>&lt;h2&gt;</code> pour « Ingrédients » et « Préparation » et des paragraphes. Utilise au moins 3 niveaux de titres différents.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'oublie de fermer une balise : <code>&lt;p&gt;Bonjour</code></div><div class="ok">Je ferme toujours : <code>&lt;p&gt;Bonjour&lt;/p&gt;</code></div></div>
+<div class="erreur"><div class="ko">J'écris mon texte dans <code>&lt;head&gt;</code></div><div class="ok">Tout le contenu visible va dans <code>&lt;body&gt;</code></div></div>
+<div class="erreur"><div class="ko">Mon fichier s'appelle <code>index.html.txt</code> ou <code>Index HTML</code></div><div class="ok">Nom en minuscules, sans espace, extension <code>.html</code></div></div>
+<div class="erreur"><div class="ko">Je modifie le fichier mais rien ne change</div><div class="ok">J'enregistre avec <strong>Ctrl + S</strong> (le rond blanc sur l'onglet de VS Code = pas enregistré)</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>HTML</dt><dd>HyperText Markup Language : le langage qui décrit la structure d'une page.</dd></div>
+<div><dt>Balise</dt><dd>Un mot entre chevrons, comme <code>&lt;p&gt;</code> ou <code>&lt;/p&gt;</code>.</dd></div>
+<div><dt>Élément</dt><dd>Balise ouvrante + contenu + balise fermante.</dd></div>
+<div><dt>Navigateur</dt><dd>Le logiciel qui affiche les pages web (Chrome, Firefox, Edge).</dd></div>
+<div><dt>Éditeur de code</dt><dd>Le logiciel où on écrit le code (VS Code).</dd></div>
+<div><dt>Balise orpheline</dt><dd>Une balise sans fermeture, comme <code>&lt;br&gt;</code> ou <code>&lt;img&gt;</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/html/html_intro.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au HTML</a></li>
+<li><a href="https://www.w3schools.com/html/html_headings.asp" target="_blank"><span class="tag">W3Schools</span><br>Les titres h1 à h6</a></li>
+<li><a href="https://www.w3schools.com/html/html_paragraphs.asp" target="_blank"><span class="tag">W3Schools</span><br>Les paragraphes</a></li>
+<li><a href="https://www.w3schools.com/html/html_comments.asp" target="_blank"><span class="tag">W3Schools</span><br>Les commentaires</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web" target="_blank"><span class="tag">MDN</span><br>Commencer avec le web (en français)</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>VS Code</strong> : l'éditeur de code qu'on utilise</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais à quoi servent HTML, CSS et JavaScript.</li>
+<li>Je sais créer le squelette d'une page avec <code>!</code> + Entrée.</li>
+<li>Je sais la différence entre <code>&lt;head&gt;</code> et <code>&lt;body&gt;</code>.</li>
+<li>J'utilise un seul <code>&lt;h1&gt;</code> et des <code>&lt;h2&gt;</code> pour les parties.</li>
+<li>Je sais ouvrir ma page avec Live Server.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../../groupe_13_17.html">← Sommaire</a>
+<a href="../seance02/index.html">Séance 02 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

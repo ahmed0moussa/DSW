@@ -1,0 +1,59 @@
+/* La boîte fait exactement la largeur demandée */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #288b8b;
+}
+
+.carte {
+  max-width: 320px;
+  margin: 20px auto;          /* centrée */
+  padding: 20px;              /* espace intérieur */
+  border: 3px solid #288b8b;  /* bordure */
+  border-radius: 12px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carte h2 {
+  margin: 10px 0 5px;
+  border-bottom: 3px solid #e67e22;
+  padding-bottom: 5px;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;         /* image ronde */
+  border: 4px solid #e3f3f3;
+}
+
+.speciale {
+  border: 3px dashed #e67e22;
+  padding: 30px;
+}
+
+.badge {
+  width: 150px;
+  height: 150px;
+  margin: 30px auto;
+  padding-top: 40px;
+  border: 6px double #e67e22;
+  border-radius: 50%;
+  background-color: #fdf0e3;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}

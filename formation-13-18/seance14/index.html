@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 14 · Le responsive design — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 3 · Mise en page</span>
+    <h1><span>Séance 14</span> · Le responsive design</h1>
+    <p>Plus de la moitié des visiteurs regardent les sites sur un téléphone. Un site <strong>responsive</strong> s'adapte à toutes les tailles d'écran : téléphone, tablette, ordinateur.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, mode appareil de F12 (Ctrl + Shift + M)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Ajouter la balise <code>&lt;meta name="viewport"&gt;</code> et tester ma page en mode téléphone avec F12.</li><li>Écrire des media queries <code>@media</code> pour changer le style selon la largeur de l'écran.</li><li>Construire une page « mobile first » avec des images et des grilles qui s'adaptent.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Grid : <code>grid-template-columns: repeat(3, 1fr)</code>, <code>auto-fit</code> + <code>minmax</code>, <code>grid-template-areas</code>. Flexbox : <code>flex-wrap: wrap</code> et <code>flex: 1 1 250px</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>La balise viewport</h3>
+<p>Sans cette ligne dans le <code>&lt;head&gt;</code>, le téléphone affiche la page comme sur un ordinateur, toute petite. Elle est <strong>obligatoire</strong> pour le responsive.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Bonne nouvelle : VS Code l'ajoute automatiquement quand tu tapes <code>!</code> + Entrée.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Tester en mode téléphone</h3>
+<p>Ouvre F12, puis clique sur l'icône 📱 (ou <strong>Ctrl + Shift + M</strong>). Tu peux choisir un modèle de téléphone (iPhone, Samsung…) ou changer la largeur à la main.</p>
+<ul><li>Téléphone : moins de <strong>600px</strong>.</li><li>Tablette : entre <strong>600px</strong> et <strong>900px</strong>.</li><li>Ordinateur : plus de <strong>900px</strong>.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les media queries</h3>
+<p>Une media query, c'est une <strong>condition</strong> : « SI l'écran fait moins de 600px, ALORS applique ces règles ».</p>
+<p>Les règles dans <code>@media</code> remplacent les règles normales quand la condition est vraie. On les écrit <strong>à la fin</strong> du fichier CSS.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="boite"&gt;Réduis la fenêtre : je deviens orange sur téléphone !&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.boite { background: #288b8b; color: white; padding: 20px; }
+
+/* SI l'écran fait 600px ou moins */
+@media (max-width: 600px) {
+  .boite { background: #e67e22; }
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les media queries" sandbox="" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite { background: #288b8b; color: white; padding: 20px; }
+
+/* SI l&#x27;écran fait 600px ou moins */
+@media (max-width: 600px) {
+  .boite { background: #e67e22; }
+}&lt;/style&gt;&lt;div class=&quot;boite&quot;&gt;Réduis la fenêtre : je deviens orange sur téléphone !&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le cadre du résultat est petit : la boîte est peut-être déjà orange ! Ouvre l'exemple de la séance et change la largeur de la fenêtre.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Mobile first</h3>
+<p><strong>Mobile first</strong> = on écrit d'abord le CSS pour le téléphone (une seule colonne), puis on <strong>ajoute</strong> des colonnes pour les grands écrans avec <code>min-width</code>.</p>
+<p>C'est plus simple, car sur téléphone tout est souvent l'un sous l'autre.</p>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* 1. Téléphone : une colonne */
+.cartes { display: grid; grid-template-columns: 1fr; gap: 15px; }
+
+/* 2. Tablette : 2 colonnes */
+@media (min-width: 600px) {
+  .cartes { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 3. Ordinateur : 4 colonnes */
+@media (min-width: 900px) {
+  .cartes { grid-template-columns: repeat(4, 1fr); }
+}</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Les images et les textes fluides</h3>
+<ul><li><code>img { max-width: 100%; height: auto; }</code> → une image ne dépasse <strong>jamais</strong> de son parent.</li><li>Utilise des largeurs en <code>%</code> ou <code>max-width</code> au lieu de <code>width</code> fixe en <code>px</code>.</li><li>Sur mobile : on cache ce qui n'est pas important (<code>display: none</code>), on passe les menus en colonne (<code>flex-direction: column</code>).</li></ul>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>img { max-width: 100%; height: auto; }
+.conteneur { width: 90%; max-width: 1100px; margin: 0 auto; }</code></pre></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : chacun ouvre un site connu sur son téléphone et sur l'ordinateur. Qu'est-ce qui change ?</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Découverte : viewport, mode appareil de F12, tailles d'écran.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span>Media queries <code>max-width</code> / <code>min-width</code>, mobile first, images fluides. On transforme ensemble une page fixe en page responsive.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : rendre responsive la page de la séance 12 ou 13.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la page qui change de couleur selon l'écran.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : on teste les pages sur de vrais téléphones (Live Server + même Wi-Fi). Fin du module 3.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le test<span class="niveau facile">facile</span></h3><ol>
+<li>Copie ton travail de la séance 12 (navbar + cartes) dans <code>seance14/</code>.</li>
+<li>Vérifie que la balise <code>&lt;meta name="viewport"&gt;</code> est dans le <code>&lt;head&gt;</code>.</li>
+<li>Ouvre F12 → mode appareil (Ctrl + Shift + M) → choisis un téléphone. Note tout ce qui ne va pas (texte trop petit, élément qui dépasse…).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Les media queries<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute <code>img { max-width: 100%; height: auto; }</code>.</li>
+<li>À la fin du CSS, écris <code>@media (max-width: 600px) { … }</code>.</li>
+<li>Dedans : passe la navbar en colonne (<code>flex-direction: column</code>), réduis la taille du <code>&lt;h1&gt;</code>, réduis les <code>padding</code>.</li>
+<li>Vérifie en mode téléphone qu'il n'y a plus de barre de défilement horizontale.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Une grille qui s'adapte<span class="niveau difficile">difficile</span></h3><ol>
+<li>Crée une grille de 8 cartes en <strong>mobile first</strong> : 1 colonne par défaut.</li>
+<li>Ajoute <code>@media (min-width: 600px)</code> → 2 colonnes, puis <code>@media (min-width: 900px)</code> → 4 colonnes.</li>
+<li>Cache un élément décoratif sur téléphone avec <code>display: none</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : L'écran caméléon</h2>
+<p>Crée une page qui affiche en grand « 📱 Téléphone », « 📟 Tablette » ou « 💻 Ordinateur » selon la largeur de l'écran, avec une couleur de fond différente à chaque fois. Utilise <code>display: none</code> dans les media queries.</p>
+<p>Bonus : teste ta page sur ton vrai téléphone (même Wi-Fi que l'ordinateur, adresse IP de Live Server).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'ai oublié la balise viewport : tout est minuscule sur téléphone</div><div class="ok"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></div></div>
+<div class="erreur"><div class="ko">Ma media query est au début du CSS et ne marche pas</div><div class="ok">Je mets les media queries <strong>à la fin</strong> du fichier</div></div>
+<div class="erreur"><div class="ko"><code>@media (max-width: 600px) { .menu { … }</code> : il manque une accolade</div><div class="ok">Une <code>}</code> pour la règle ET une <code>}</code> pour la media query</div></div>
+<div class="erreur"><div class="ko">Une image dépasse et crée un défilement horizontal</div><div class="ok"><code>max-width: 100%</code> sur les images, pas de <code>width</code> fixe trop grand</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Responsive</dt><dd>Qui s'adapte à toutes les tailles d'écran.</dd></div>
+<div><dt>Viewport</dt><dd>La zone visible de la page dans le navigateur.</dd></div>
+<div><dt>Media query</dt><dd>Une condition <code>@media</code> qui applique du CSS selon l'écran.</dd></div>
+<div><dt>Breakpoint</dt><dd>Une largeur où le design change (600px, 900px…).</dd></div>
+<div><dt>Mobile first</dt><dd>Écrire d'abord le CSS du téléphone, puis celui des grands écrans.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_rwd_intro.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au responsive</a></li>
+<li><a href="https://www.w3schools.com/css/css_rwd_viewport.asp" target="_blank"><span class="tag">W3Schools</span><br>La balise viewport</a></li>
+<li><a href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank"><span class="tag">W3Schools</span><br>Les media queries</a></li>
+<li><a href="https://www.w3schools.com/css/css_rwd_images.asp" target="_blank"><span class="tag">W3Schools</span><br>Les images responsive</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/device-mode" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : simuler un téléphone (en anglais)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank"><span class="tag">MDN</span><br>Le responsive design (en français)</a></li>
+<li><a href="https://cssgridgarden.com/#fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Grid Garden</strong> : arrose ton jardin avec CSS Grid (28 niveaux)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Ma page a la balise viewport.</li>
+<li>Je sais tester ma page en mode téléphone avec F12.</li>
+<li>Je sais écrire une media query.</li>
+<li>Je comprends le principe « mobile first ».</li>
+<li>Ma page n'a pas de défilement horizontal sur téléphone.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance13/index.html">← Séance 13</a>
+<a href="../seance15/index.html">Séance 15 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

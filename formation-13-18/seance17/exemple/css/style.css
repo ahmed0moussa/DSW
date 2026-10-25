@@ -1,0 +1,207 @@
+/* ==========================================
+   1. Variables : change le thème ici !
+   ========================================== */
+:root {
+  --principale: #2e8b57;
+  --accent: #e67e22;
+  --fond: #f3f8f4;
+  --texte: #1f2d24;
+  --carte: #ffffff;
+  --police: 'Poppins', Arial, sans-serif;
+  --arrondi: 12px;
+}
+
+/* Thème nuit : décommente ce bloc pour essayer
+:root {
+  --principale: #7bd389;
+  --fond: #14201a;
+  --texte: #e8f3ec;
+  --carte: #1f2f26;
+}
+*/
+
+/* ==========================================
+   2. Réglages de base
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--police);
+  background-color: var(--fond);
+  color: var(--texte);
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: var(--principale);
+}
+
+.bouton {
+  display: inline-block;
+  padding: 12px 22px;
+  border: none;
+  border-radius: var(--arrondi);
+  background-color: var(--accent);
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.bouton:hover {
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+   3. Parties communes : header et footer
+   ========================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px 30px;
+  background-color: var(--principale);
+}
+
+.logo {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+nav a {
+  padding: 8px 14px;
+  border-radius: var(--arrondi);
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a.actif {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--principale);
+  color: white;
+}
+
+/* ==========================================
+   4. Parties des pages
+   ========================================== */
+.banniere {
+  padding: 50px 20px;
+  border-radius: var(--arrondi);
+  text-align: center;
+  background: linear-gradient(135deg, var(--principale), var(--accent));
+  color: white;
+}
+
+.banniere h1 {
+  color: white;
+}
+
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.carte {
+  overflow: hidden;
+  border-radius: var(--arrondi);
+  background-color: var(--carte);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.carte img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.carte h2,
+.carte p {
+  padding: 0 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--carte);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--principale);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  border: 2px solid #cfdcd3;
+  border-radius: var(--arrondi);
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--principale);
+}
+
+/* ==========================================
+   5. Responsive
+   ========================================== */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+
+  .banniere {
+    padding: 30px 15px;
+  }
+}

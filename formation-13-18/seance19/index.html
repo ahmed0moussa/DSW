@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 19 · Projet final 1/2 : préparer et structurer — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 19</span> · Projet final 1/2 : préparer et structurer</h1>
+    <p>C'est le moment de créer TON site ! Comme les vrais développeurs, on commence par réfléchir : le sujet, le public, les pages, la maquette. Ensuite on écrit tout le HTML.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : Papier et crayon, Excalidraw, Coolors, Google Fonts, VS Code</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Rédiger le cahier des charges de mon site : sujet, public, pages, contenu, couleurs.</li><li>Dessiner la maquette de chaque page (version ordinateur et téléphone).</li><li>Créer l'arborescence et écrire le HTML sémantique de toutes les pages.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Un site = plusieurs pages reliées par le même menu, un seul fichier CSS, des variables CSS pour le thème. On construit le HTML d'abord, le CSS ensuite.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Choisir son sujet</h3>
+<p>Choisis un sujet <strong>que tu aimes</strong> : tu vas passer 4 heures dessus ! Quelques idées :</p>
+<ul><li>Mon portfolio (qui je suis, mes projets, mon contact).</li><li>Le site d'un club ou d'une association (sport, robotique, théâtre…).</li><li>Un guide touristique de ma ville ou de ma région.</li><li>Le site d'un restaurant, d'un hôtel ou d'une boutique (inventé).</li><li>Une page de fan sur un jeu, un sport, un artiste, un livre.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Regarde les 4 projets modèles de la formation (Portfolio, FastDrop, GreenStay, DécliTech Academy) sur la page sommaire pour t'inspirer.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le cahier des charges</h3>
+<p>C'est le document qui décrit le site <strong>avant</strong> de le créer. Il répond aux questions : <strong>Quoi ?</strong> (le sujet) <strong>Pour qui ?</strong> (le public) <strong>Quelles pages ?</strong> <strong>Quel contenu ?</strong> <strong>Quel style ?</strong></p>
+<p>Ouvre le modèle de la séance, et remplis-le (sur papier ou dans un fichier).</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>La maquette (wireframe)</h3>
+<p>Une maquette est un <strong>dessin simple</strong> de la page avec des rectangles : où est le menu, les images, les textes, les boutons. Pas de détails, pas de couleurs.</p>
+<p>Dessine chaque page 2 fois : version <strong>ordinateur</strong> (large) et version <strong>téléphone</strong> (étroite, tout l'un sous l'autre).</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>┌──────────────────────────────┐     ┌───────────┐
+│ LOGO          Accueil  Menu  │     │ LOGO   ☰  │
+├──────────────────────────────┤     ├───────────┤
+│        GRANDE BANNIÈRE        │     │ BANNIÈRE  │
+│      titre + bouton           │     ├───────────┤
+├─────────┬─────────┬──────────┤     │ carte 1   │
+│ carte 1 │ carte 2 │ carte 3  │     │ carte 2   │
+├─────────┴─────────┴──────────┤     │ carte 3   │
+│           FOOTER              │     ├───────────┤
+└──────────────────────────────┘     │ FOOTER    │
+        Ordinateur                    └───────────┘
+                                        Téléphone</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Tu peux dessiner ta maquette sur <strong>excalidraw.com</strong> (gratuit, sans inscription).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Le HTML d'abord</h3>
+<p>Une fois la maquette prête, crée tous les fichiers et écris le HTML de <strong>toutes</strong> les pages, avec les vrais textes et les vraies images. Le CSS viendra à la séance 20.</p>
+<ul><li>Balises sémantiques : <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>.</li><li>Un seul <code>&lt;h1&gt;</code> par page, des <code>&lt;h2&gt;</code> pour les parties.</li><li>Toutes les images avec un <code>alt</code>.</li><li>Des <code>class</code> bien nommées pour le CSS (<code>.banniere</code>, <code>.carte</code>, <code>.galerie</code>).</li></ul>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="cahier-des-charges.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Présentation du projet final et de la grille d'évaluation. Visite des 4 projets modèles.</span></li>
+<li><span class="temps">0:15 – 0:40</span><span>Exercice 1 : choisir le sujet et remplir le cahier des charges. Validation rapide par le formateur.</span></li>
+<li><span class="temps">0:40 – 1:05</span><span>Exercice 2 : maquettes papier (ordinateur + téléphone). Choix de la palette et des polices.</span></li>
+<li><span class="temps">1:05 – 1:50</span><span>Exercice 3 : arborescence et HTML de toutes les pages.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Point d'étape : chacun dit où il en est et ce qu'il fera à la séance 20. Le HTML non fini est à terminer à la maison.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le cahier des charges<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ouvre le modèle de cahier des charges (bouton plus haut) et remplis chaque partie.</li>
+<li>Choisis entre <strong>3 et 4 pages</strong> (dont <code>index.html</code>).</li>
+<li>Fais valider ton cahier des charges par le formateur avant de continuer.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Maquettes et style<span class="niveau moyen">moyen</span></h3><ol>
+<li>Dessine la maquette de la page d'accueil en version ordinateur et téléphone.</li>
+<li>Dessine les autres pages (version ordinateur suffit).</li>
+<li>Choisis ta palette sur Coolors (note les 5 codes HEX) et 2 polices sur Google Fonts.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · L'arborescence et le HTML<span class="niveau difficile">difficile</span></h3><ol>
+<li>Crée le dossier du projet avec <code>index.html</code>, les autres pages, <code>css/style.css</code> et <code>images/</code>.</li>
+<li>Rassemble tes images (Unsplash ou tes photos) dans <code>images/</code> avec des noms simples.</li>
+<li>Écris le HTML complet de toutes les pages avec le même <code>&lt;header&gt;</code> et <code>&lt;footer&gt;</code>.</li>
+<li>Dans <code>style.css</code>, écris déjà les variables <code>:root</code> avec tes couleurs et tes polices.</li>
+<li>Vérifie tes pages avec le validateur W3C.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Une page en plus</h2>
+<p>Ajoute à ton site une page « Galerie » ou « FAQ » qui utilise un composant que tu as appris (galerie Grid, menu déroulant, carte qui se retourne…).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je commence à coder sans plan</div><div class="ok">Cahier des charges et maquette d'abord : on gagne du temps ensuite</div></div>
+<div class="erreur"><div class="ko">Je veux faire 8 pages</div><div class="ok">3 ou 4 pages bien finies valent mieux que 8 pages vides</div></div>
+<div class="erreur"><div class="ko">Je mets du « Lorem ipsum » partout</div><div class="ok">J'écris mes vrais textes, même courts</div></div>
+<div class="erreur"><div class="ko">Mes images s'appellent <code>IMG_20260512_142233.jpg</code></div><div class="ok">Je les renomme : <code>plage.jpg</code>, <code>equipe.jpg</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Cahier des charges</dt><dd>Le document qui décrit le site à créer.</dd></div>
+<div><dt>Public cible</dt><dd>Les personnes pour qui on crée le site.</dd></div>
+<div><dt>Maquette (wireframe)</dt><dd>Un dessin simple de la page avec des rectangles.</dd></div>
+<div><dt>Arborescence</dt><dd>L'organisation des pages et des dossiers du site.</dd></div>
+<div><dt>Charte graphique</dt><dd>Les couleurs et les polices choisies pour le site.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://excalidraw.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Excalidraw</strong> : dessiner la maquette de son site</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+<li><a href="https://www.w3schools.com/css/css_website_layout.asp" target="_blank"><span class="tag">W3Schools</span><br>Les mises en page classiques d'un site</a></li>
+<li><a href="https://www.w3schools.com/howto/default.asp" target="_blank"><span class="tag">W3Schools</span><br>W3Schools How To : des dizaines de composants</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mon cahier des charges est rempli et validé.</li>
+<li>J'ai une maquette de la page d'accueil (ordinateur + téléphone).</li>
+<li>J'ai choisi mes couleurs (HEX) et mes polices.</li>
+<li>Tous mes fichiers et dossiers sont créés.</li>
+<li>Le HTML de toutes mes pages est écrit et passe le validateur.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance18/index.html">← Séance 18</a>
+<a href="../seance20/index.html">Séance 20 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

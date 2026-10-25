@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 17 · Un site multi-pages et les variables CSS — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 17</span> · Un site multi-pages et les variables CSS</h1>
+    <p>Un vrai site a plusieurs pages qui partagent le même menu, le même pied de page et le même style. Aujourd'hui tu organises ton premier site complet de 3 pages.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Organiser les fichiers d'un site : <code>index.html</code>, autres pages, dossiers <code>css/</code> et <code>images/</code>.</li><li>Relier plusieurs pages entre elles avec le même menu et un seul fichier CSS.</li><li>Utiliser des variables CSS (<code>:root</code>, <code>--couleur</code>, <code>var()</code>) pour changer tout le thème en une ligne.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>On sait tout faire sur une page : structure, texte, boîte, Flexbox, Grid, responsive, transitions et animations.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>L'organisation des fichiers</h3>
+<p>La page d'accueil s'appelle <strong>toujours</strong> <code>index.html</code> : c'est elle qui s'ouvre en premier quand on visite un site.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>mon-site/
+├── index.html        ← la page d'accueil
+├── activites.html
+├── contact.html
+├── css/
+│   └── style.css     ← UN seul CSS pour toutes les pages
+└── images/
+    ├── logo.png
+    └── foret.jpg</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le chemin vers le CSS depuis une page : <code>href="css/style.css"</code>. Depuis le CSS vers une image : <code>url("../images/foret.jpg")</code> (on remonte d'un dossier).</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le même menu sur toutes les pages</h3>
+<p>On copie le même <code>&lt;header&gt;</code> et le même <code>&lt;footer&gt;</code> dans chaque page. Seul le contenu de <code>&lt;main&gt;</code> change.</p>
+<p>On ajoute une classe <code>actif</code> sur le lien de la page où l'on se trouve, pour que le visiteur sache où il est.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;!-- dans activites.html --&gt;
+&lt;nav&gt;
+  &lt;a href="index.html"&gt;Accueil&lt;/a&gt;
+  &lt;a href="activites.html" class="actif"&gt;Activités&lt;/a&gt;
+  &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les variables CSS</h3>
+<p>Une variable garde une valeur pour la réutiliser partout. On la déclare dans <code>:root</code> (toute la page) avec deux tirets : <code>--nom: valeur;</code>.</p>
+<p>On l'utilise avec <code>var(--nom)</code>. Pour changer la couleur de <strong>tout</strong> le site, il suffit de changer <strong>une seule ligne</strong> !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="carte"&gt;
+  &lt;h2&gt;Randonnée&lt;/h2&gt;
+  &lt;span class="bouton"&gt;Je participe&lt;/span&gt;
+&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>:root {
+  --principale: #288b8b;
+  --accent: #e67e22;
+  --arrondi: 10px;
+}
+h2 { color: var(--principale); }
+.bouton { background: var(--accent); color: white; padding: 10px 18px;
+          border-radius: var(--arrondi); display: inline-block; }
+.carte { border: 3px solid var(--principale); border-radius: var(--arrondi); padding: 10px; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les variables CSS" sandbox="" style="height:140px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;:root {
+  --principale: #288b8b;
+  --accent: #e67e22;
+  --arrondi: 10px;
+}
+h2 { color: var(--principale); }
+.bouton { background: var(--accent); color: white; padding: 10px 18px;
+          border-radius: var(--arrondi); display: inline-block; }
+.carte { border: 3px solid var(--principale); border-radius: var(--arrondi); padding: 10px; }&lt;/style&gt;&lt;div class=&quot;carte&quot;&gt;
+  &lt;h2&gt;Randonnée&lt;/h2&gt;
+  &lt;span class=&quot;bouton&quot;&gt;Je participe&lt;/span&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Un CSS bien rangé</h3>
+<p>Pour s'y retrouver, on range le fichier CSS dans le même ordre à chaque fois, avec des commentaires :</p>
+<ul><li>1. Les variables (<code>:root</code>).</li><li>2. Les réglages de base (<code>*</code>, <code>body</code>, <code>img</code>, <code>a</code>).</li><li>3. Les parties communes (header, nav, footer).</li><li>4. Les parties de chaque page (cartes, formulaire…).</li><li>5. Les media queries à la fin.</li></ul>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple/index.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : on ouvre un vrai site et on liste ses pages. Que retrouve-t-on sur toutes les pages ?</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Découverte : arborescence des fichiers, <code>index.html</code>, chemins <code>css/</code> et <code>../images/</code>.</span></li>
+<li><span class="temps">0:30 – 0:50</span><span>Menu commun et classe <code>actif</code>. Variables CSS : on change le thème du site exemple en direct.</span></li>
+<li><span class="temps">0:50 – 1:40</span><span>Exercices 1 à 3 : le mini-site de 3 pages.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le changement de thème.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : « Le prochain cours, on commence ton projet final. Réfléchis à ton thème ! »</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · L'arborescence<span class="niveau facile">facile</span></h3><ol>
+<li>Crée le dossier <code>seance17/mon-site/</code> avec <code>index.html</code>, <code>activites.html</code>, <code>contact.html</code> et les dossiers <code>css/</code> et <code>images/</code>.</li>
+<li>Crée <code>css/style.css</code> et relie-le dans les 3 pages avec <code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code>.</li>
+<li>Écris le même <code>&lt;header&gt;</code> (logo + menu) et le même <code>&lt;footer&gt;</code> dans les 3 pages.</li>
+<li>Clique sur tous les liens du menu : chaque page doit s'ouvrir.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Les variables et le style commun<span class="niveau moyen">moyen</span></h3><ol>
+<li>En haut de <code>style.css</code>, déclare dans <code>:root</code> : 2 couleurs, une couleur de fond, une police et un arrondi.</li>
+<li>Utilise <code>var(--…)</code> partout dans le CSS (header, liens, boutons, footer).</li>
+<li>Ajoute la classe <code>actif</code> sur le bon lien dans chaque page et donne-lui un style.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le contenu des pages<span class="niveau moyen">moyen</span></h3><ol>
+<li>Accueil : une bannière + 3 cartes en Flexbox ou Grid.</li>
+<li>Activités : un tableau ou une liste de 4 activités avec images.</li>
+<li>Contact : un formulaire stylé (<code>:focus</code>, bouton avec transition).</li>
+<li>Vérifie les 3 pages en mode téléphone (F12).</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le changement de thème</h2>
+<p>Change seulement les valeurs des variables dans <code>:root</code> pour créer un thème « nuit » (fond sombre, texte clair). Si tout ton site change d'un coup, bravo : tes variables sont bien utilisées !</p>
+<p>Bonus : ajoute une page <code>404.html</code> (page introuvable) amusante avec une animation.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Mon style ne marche que sur la page d'accueil</div><div class="ok">Chaque page doit avoir le <code>&lt;link&gt;</code> vers <code>css/style.css</code></div></div>
+<div class="erreur"><div class="ko">L'image de fond ne s'affiche pas depuis le CSS</div><div class="ok">Depuis <code>css/style.css</code>, on remonte : <code>url("../images/fond.jpg")</code></div></div>
+<div class="erreur"><div class="ko"><code>var(principale)</code> ne marche pas</div><div class="ok">Avec les deux tirets : <code>var(--principale)</code></div></div>
+<div class="erreur"><div class="ko">Un lien du menu mène à une page blanche ou une erreur</div><div class="ok">Le nom dans <code>href</code> doit être exactement le nom du fichier</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Arborescence</dt><dd>L'organisation des dossiers et des fichiers d'un site.</dd></div>
+<div><dt>index.html</dt><dd>La page d'accueil, ouverte en premier.</dd></div>
+<div><dt>Variable CSS</dt><dd>Une valeur nommée qu'on réutilise : <code>--couleur</code>.</dd></div>
+<div><dt>:root</dt><dd>Le sélecteur de la racine de la page, où l'on déclare les variables.</dd></div>
+<div><dt>var()</dt><dd>La fonction qui utilise une variable.</dd></div>
+<div><dt>Thème</dt><dd>L'ensemble des couleurs, polices et styles d'un site.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css3_variables.asp" target="_blank"><span class="tag">W3Schools</span><br>Les variables CSS</a></li>
+<li><a href="https://www.w3schools.com/html/html_filepaths.asp" target="_blank"><span class="tag">W3Schools</span><br>Les chemins de fichiers</a></li>
+<li><a href="https://www.w3schools.com/css/css_navbar.asp" target="_blank"><span class="tag">W3Schools</span><br>Les barres de navigation</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/Dealing_with_files" target="_blank"><span class="tag">MDN</span><br>Gérer les fichiers d'un site (en français)</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Ma page d'accueil s'appelle <code>index.html</code>.</li>
+<li>Mes pages utilisent un seul fichier CSS.</li>
+<li>Le même menu et le même footer sont sur toutes les pages.</li>
+<li>Le lien de la page actuelle est mis en valeur.</li>
+<li>Mes couleurs principales sont dans des variables CSS.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance16/index.html">← Séance 16</a>
+<a href="../seance18/index.html">Séance 18 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

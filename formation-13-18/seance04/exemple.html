@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription au club de robotique</title>
+  </head>
+  <body>
+
+    <h1>🤖 Inscription au club de robotique</h1>
+    <p>Remplis ce formulaire pour rejoindre le club. Les champs avec * sont obligatoires.</p>
+
+    <form>
+      <fieldset>
+        <legend>Qui es-tu ?</legend>
+
+        <label for="prenom">Prénom * :</label><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Ex : Sami" required><br><br>
+
+        <label for="email">Email * :</label><br>
+        <input type="email" id="email" name="email" placeholder="sami@exemple.com" required><br><br>
+
+        <label for="age">Âge :</label><br>
+        <input type="number" id="age" name="age" min="10" max="18" value="14"><br><br>
+
+        <label for="naissance">Date de naissance :</label><br>
+        <input type="date" id="naissance" name="naissance"><br><br>
+
+        <label for="ville">Ville :</label><br>
+        <select id="ville" name="ville">
+          <option value="">-- Choisis ta ville --</option>
+          <option value="tunis">Tunis</option>
+          <option value="sfax">Sfax</option>
+          <option value="sousse">Sousse</option>
+          <option value="bizerte">Bizerte</option>
+          <option value="gabes">Gabès</option>
+        </select>
+      </fieldset>
+
+      <br>
+
+      <fieldset>
+        <legend>Ton niveau et tes envies</legend>
+
+        <p>Ton niveau en informatique :</p>
+        <input type="radio" id="debutant" name="niveau" value="debutant">
+        <label for="debutant">Débutant</label><br>
+        <input type="radio" id="moyen" name="niveau" value="moyen">
+        <label for="moyen">Moyen</label><br>
+        <input type="radio" id="confirme" name="niveau" value="confirme">
+        <label for="confirme">Confirmé</label>
+
+        <p>Les activités qui t'intéressent :</p>
+        <input type="checkbox" id="robots" name="activites" value="robots">
+        <label for="robots">Construire des robots</label><br>
+        <input type="checkbox" id="web" name="activites" value="web">
+        <label for="web">Créer des sites web</label><br>
+        <input type="checkbox" id="jeux" name="activites" value="jeux">
+        <label for="jeux">Créer des jeux</label><br><br>
+
+        <label for="couleur">Ta couleur préférée pour ton robot :</label>
+        <input type="color" id="couleur" name="couleur" value="#288b8b"><br><br>
+
+        <label for="motivation">Pourquoi veux-tu t'inscrire ? * :</label><br>
+        <textarea id="motivation" name="motivation" rows="4" cols="30"
+                  placeholder="J'aimerais apprendre à…" required></textarea>
+      </fieldset>
+
+      <br>
+      <button type="submit">Je m'inscris</button>
+      <button type="reset">Tout effacer</button>
+    </form>
+
+  </body>
+</html>

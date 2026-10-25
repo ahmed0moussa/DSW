@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 04 · Les formulaires — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="https://decli.tech/assets/images/logo/logo%20h.png" alt="Logo DécliTech">
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 04</span> · Les formulaires</h1>
+    <p>Un formulaire permet au visiteur d'écrire et d'envoyer des informations : inscription, contact, sondage… Aujourd'hui tu crées le formulaire d'inscription d'un club.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer un formulaire avec <code>&lt;form&gt;</code>, <code>&lt;label&gt;</code> et <code>&lt;input&gt;</code>.</li><li>Choisir le bon type de champ : texte, email, nombre, date, radio, case à cocher, liste.</li><li>Rendre un champ obligatoire avec <code>required</code> et donner un exemple avec <code>placeholder</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Les listes : <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code> + <code>&lt;li&gt;</code>. Les tableaux : <code>&lt;table&gt;</code> → <code>&lt;tr&gt;</code> → <code>&lt;th&gt;</code>/<code>&lt;td&gt;</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Un champ de texte avec son étiquette</h3>
+<p><code>&lt;form&gt;</code> entoure tout le formulaire. <code>&lt;input&gt;</code> est un champ (balise orpheline).</p>
+<p><code>&lt;label&gt;</code> est l'étiquette du champ. Son attribut <code>for</code> doit être <strong>identique</strong> à l'<code>id</code> du champ : quand on clique sur l'étiquette, le curseur va dans le champ !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;form&gt;
+  &lt;label for="prenom"&gt;Ton prénom :&lt;/label&gt;
+  &lt;input type="text" id="prenom" placeholder="Ex : Sami"&gt;
+&lt;/form&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un champ de texte avec son étiquette" sandbox="" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;form&gt;
+  &lt;label for=&quot;prenom&quot;&gt;Ton prénom :&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;prenom&quot; placeholder=&quot;Ex : Sami&quot;&gt;
+&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Les types de champs</h3>
+<p>L'attribut <code>type</code> change le champ. Le navigateur affiche automatiquement le bon outil (calendrier, couleurs…).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;input type="email" placeholder="email@exemple.com"&gt;&lt;br&gt;
+&lt;input type="password" placeholder="Mot de passe"&gt;&lt;br&gt;
+&lt;input type="number" min="10" max="18" value="14"&gt;&lt;br&gt;
+&lt;input type="date"&gt;&lt;br&gt;
+&lt;input type="color" value="#288b8b"&gt;&lt;br&gt;
+&lt;input type="range" min="0" max="10"&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les types de champs" sandbox="" style="height:210px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;input type=&quot;email&quot; placeholder=&quot;email@exemple.com&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;password&quot; placeholder=&quot;Mot de passe&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;number&quot; min=&quot;10&quot; max=&quot;18&quot; value=&quot;14&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;date&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;color&quot; value=&quot;#288b8b&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Choisir : radio, checkbox, select</h3>
+<ul><li><code>radio</code> = <strong>un seul</strong> choix possible. Tous les boutons du groupe ont le <strong>même</strong> <code>name</code>.</li><li><code>checkbox</code> = <strong>plusieurs</strong> choix possibles.</li><li><code>&lt;select&gt;</code> + <code>&lt;option&gt;</code> = une liste déroulante.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;Niveau :&lt;/p&gt;
+&lt;input type="radio" id="deb" name="niveau"&gt;
+&lt;label for="deb"&gt;Débutant&lt;/label&gt;
+&lt;input type="radio" id="conf" name="niveau"&gt;
+&lt;label for="conf"&gt;Confirmé&lt;/label&gt;
+
+&lt;p&gt;Activités :&lt;/p&gt;
+&lt;input type="checkbox" id="robot"&gt;
+&lt;label for="robot"&gt;Robotique&lt;/label&gt;
+&lt;input type="checkbox" id="web"&gt;
+&lt;label for="web"&gt;Web&lt;/label&gt;
+
+&lt;p&gt;Ville :
+&lt;select&gt;
+  &lt;option&gt;Tunis&lt;/option&gt;
+  &lt;option&gt;Sfax&lt;/option&gt;
+  &lt;option&gt;Sousse&lt;/option&gt;
+&lt;/select&gt;&lt;/p&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Choisir : radio, checkbox, select" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Niveau :&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;deb&quot; name=&quot;niveau&quot;&gt;
+&lt;label for=&quot;deb&quot;&gt;Débutant&lt;/label&gt;
+&lt;input type=&quot;radio&quot; id=&quot;conf&quot; name=&quot;niveau&quot;&gt;
+&lt;label for=&quot;conf&quot;&gt;Confirmé&lt;/label&gt;
+
+&lt;p&gt;Activités :&lt;/p&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;robot&quot;&gt;
+&lt;label for=&quot;robot&quot;&gt;Robotique&lt;/label&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;web&quot;&gt;
+&lt;label for=&quot;web&quot;&gt;Web&lt;/label&gt;
+
+&lt;p&gt;Ville :
+&lt;select&gt;
+  &lt;option&gt;Tunis&lt;/option&gt;
+  &lt;option&gt;Sfax&lt;/option&gt;
+  &lt;option&gt;Sousse&lt;/option&gt;
+&lt;/select&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Zone de texte, obligatoire et bouton</h3>
+<p><code>&lt;textarea&gt;</code> = une grande zone pour écrire un message.</p>
+<p><code>required</code> = le champ est <strong>obligatoire</strong> : le navigateur bloque l'envoi s'il est vide. Essaie de cliquer sur Envoyer sans rien écrire dans l'exemple de la séance !</p>
+<p><code>&lt;button type="submit"&gt;</code> = le bouton d'envoi.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;form&gt;
+  &lt;label for="msg"&gt;Ton message :&lt;/label&gt;&lt;br&gt;
+  &lt;textarea id="msg" rows="3" cols="30" required&gt;&lt;/textarea&gt;&lt;br&gt;
+  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Zone de texte, obligatoire et bouton" sandbox="" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;form&gt;
+  &lt;label for=&quot;msg&quot;&gt;Ton message :&lt;/label&gt;&lt;br&gt;
+  &lt;textarea id=&quot;msg&quot; rows=&quot;3&quot; cols=&quot;30&quot; required&gt;&lt;/textarea&gt;&lt;br&gt;
+  &lt;button type=&quot;submit&quot;&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pour l'instant le formulaire n'envoie les données nulle part. Pour les recevoir il faut un serveur ou du JavaScript : ce sera pour plus tard !</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : on regarde un vrai formulaire d'inscription (Instagram, une école…). Quels champs voit-on ?</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : <code>&lt;form&gt;</code>, <code>&lt;label for&gt;</code> + <code>id</code>, types d'<code>&lt;input&gt;</code>.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Radio, checkbox, select, textarea, <code>required</code>, <code>placeholder</code>.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : le formulaire d'inscription au club.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : le sondage de la classe.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : on échange les ordinateurs et on teste le formulaire du voisin.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Les informations de base<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance04/index.html</code> avec un <code>&lt;h1&gt;Inscription au club&lt;/h1&gt;</code>.</li>
+<li>Ajoute un <code>&lt;form&gt;</code> avec : prénom (text), email (email), âge (number entre 10 et 18).</li>
+<li>Chaque champ a un <code>&lt;label for="…"&gt;</code> relié à son <code>id</code>. Teste en cliquant sur les étiquettes.</li>
+<li>Ajoute un <code>placeholder</code> dans chaque champ.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Les choix<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute 3 boutons radio pour le niveau (Débutant, Moyen, Confirmé) avec le même <code>name</code>.</li>
+<li>Ajoute 4 cases à cocher pour les activités du club.</li>
+<li>Ajoute une liste déroulante <code>&lt;select&gt;</code> avec 5 villes de Tunisie.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Message et envoi<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un <code>&lt;textarea&gt;</code> « Pourquoi veux-tu t'inscrire ? ».</li>
+<li>Rends le prénom, l'email et le message obligatoires avec <code>required</code>.</li>
+<li>Ajoute un bouton « Je m'inscris ». Teste : que se passe-t-il si un champ obligatoire est vide ? Et si l'email n'a pas de <code>@</code> ?</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le sondage de la classe</h2>
+<p>Crée un formulaire de sondage « Ta journée idéale » avec au moins 6 types de champs différents : <code>date</code>, <code>color</code>, <code>range</code>, <code>radio</code>, <code>checkbox</code>, <code>select</code>, <code>textarea</code>…</p>
+<p>Organise les questions avec <code>&lt;fieldset&gt;</code> et <code>&lt;legend&gt;</code> (cherche sur W3Schools comment ça marche !).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le <code>for</code> du label ne correspond pas à l'<code>id</code></div><div class="ok"><code>&lt;label for="age"&gt;</code> va avec <code>&lt;input id="age"&gt;</code> (exactement pareil)</div></div>
+<div class="erreur"><div class="ko">Je peux cocher plusieurs boutons radio en même temps</div><div class="ok">Tous les radios du groupe doivent avoir le <strong>même</strong> <code>name</code></div></div>
+<div class="erreur"><div class="ko">J'écris <code>&lt;input&gt;&lt;/input&gt;</code></div><div class="ok"><code>&lt;input&gt;</code> est orpheline : pas de fermeture</div></div>
+<div class="erreur"><div class="ko">Je mets le bouton en dehors du <code>&lt;form&gt;</code></div><div class="ok">Le bouton d'envoi doit être <strong>dans</strong> le <code>&lt;form&gt;</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Formulaire</dt><dd>Une zone où le visiteur saisit des informations.</dd></div>
+<div><dt>Champ</dt><dd>Une case où l'on écrit ou choisit quelque chose (<code>&lt;input&gt;</code>).</dd></div>
+<div><dt>Label</dt><dd>L'étiquette qui explique ce qu'il faut écrire dans le champ.</dd></div>
+<div><dt>placeholder</dt><dd>Un exemple écrit en gris dans le champ vide.</dd></div>
+<div><dt>required</dt><dd>Rend le champ obligatoire.</dd></div>
+<div><dt>name</dt><dd>Le nom de la donnée envoyée. Il regroupe aussi les boutons radio.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/html/html_forms.asp" target="_blank"><span class="tag">W3Schools</span><br>Les formulaires</a></li>
+<li><a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank"><span class="tag">W3Schools</span><br>Tous les types d'input</a></li>
+<li><a href="https://www.w3schools.com/html/html_form_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>select, textarea, button, fieldset</a></li>
+<li><a href="https://www.w3schools.com/html/html_form_attributes.asp" target="_blank"><span class="tag">W3Schools</span><br>required, placeholder, min, max</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Forms/Your_first_form" target="_blank"><span class="tag">MDN</span><br>Mon premier formulaire (en français)</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Chaque champ a un <code>&lt;label&gt;</code> relié avec <code>for</code> et <code>id</code>.</li>
+<li>Je connais au moins 5 types d'<code>input</code>.</li>
+<li>Je sais la différence entre radio et checkbox.</li>
+<li>Je sais rendre un champ obligatoire.</li>
+<li>Mon bouton d'envoi est dans le <code>&lt;form&gt;</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance03/index.html">← Séance 03</a>
+<a href="../seance05/index.html">Séance 05 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>
