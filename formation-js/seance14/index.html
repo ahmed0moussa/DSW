@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 14 · Les objets : des fiches de données — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 3 · Les données et le temps</span>
+    <h1><span>Séance 14</span> · Les objets : des fiches de données</h1>
+    <p>Un produit a un nom, un prix, une image. Un joueur a un pseudo, un score, un avatar. Pour regrouper toutes les infos d'une même chose, on utilise un <strong>objet</strong>. Et un <strong>tableau d'objets</strong> permet de générer automatiquement toutes les cartes d'une boutique !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer un objet avec des propriétés et lire une propriété avec le point (<code>produit.prix</code>).</li><li>Ranger plusieurs objets dans un tableau.</li><li>Générer automatiquement des cartes dans la page à partir d'un tableau d'objets.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Un tableau : <code>["a", "b"]</code>, l'indice commence à 0, <code>push</code>, <code>length</code>, <code>for…of</code>. Une fonction <code>afficher()</code> reconstruit la page à partir du tableau.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Un objet = une fiche</h3>
+<p>Un objet s'écrit entre <strong>accolades</strong> <code>{ }</code>. Il contient des <strong>propriétés</strong> : un nom, deux-points, une valeur.</p>
+<p>On lit une propriété avec un <strong>point</strong> : <code>objet.propriete</code>.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const joueur = {
+  pseudo: "NourGamer",
+  age: 15,
+  score: 1200,
+  enLigne: true
+};
+
+console.log(joueur.pseudo);
+console.log(joueur.score);
+joueur.score += 100;          // on modifie
+console.log(joueur.score);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un objet = une fiche" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const joueur = { pseudo: &quot;NourGamer&quot;, age: 15, score: 1200, enLigne: true };
+console.log(joueur.pseudo);
+console.log(joueur.score);
+joueur.score += 100;
+console.log(joueur.score);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Un tableau d'objets</h3>
+<p>Le format le plus utilisé du web : une <strong>liste de fiches</strong>. C'est comme ça que les sites gardent leurs produits, leurs articles, leurs vidéos…</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const produits = [
+  { nom: "Maillot", prix: 45, emoji: "👕" },
+  { nom: "Ballon", prix: 30, emoji: "⚽" },
+  { nom: "Casquette", prix: 20, emoji: "🧢" }
+];
+
+console.log(produits[1].nom);    // "Ballon"
+for (const p of produits) {
+  console.log(p.emoji + " " + p.nom + " : " + p.prix + " DT");
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un tableau d&#x27;objets" sandbox="allow-scripts allow-modals" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const produits = [
+  { nom: &quot;Maillot&quot;, prix: 45, emoji: &quot;👕&quot; },
+  { nom: &quot;Ballon&quot;, prix: 30, emoji: &quot;⚽&quot; },
+  { nom: &quot;Casquette&quot;, prix: 20, emoji: &quot;🧢&quot; }
+];
+console.log(produits[1].nom);
+for (const p of produits) {
+  console.log(p.emoji + &quot; &quot; + p.nom + &quot; : &quot; + p.prix + &quot; DT&quot;);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Générer des cartes</h3>
+<p>Une boucle sur le tableau + <code>createElement</code> = toutes les cartes de la boutique sont créées automatiquement. Pour ajouter un produit, on ajoute juste une ligne dans le tableau !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div id="boutique"&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>#boutique { display: flex; gap: 8px; flex-wrap: wrap; }
+.carte { border: 2px solid #dde3ea; border-radius: 10px; padding: 10px; width: 110px; text-align: center; }
+.carte .emoji { font-size: 32px; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>const produits = [
+  { nom: "Maillot", prix: 45, emoji: "👕" },
+  { nom: "Ballon", prix: 30, emoji: "⚽" },
+  { nom: "Casquette", prix: 20, emoji: "🧢" }
+];
+const boutique = document.querySelector("#boutique");
+
+for (const p of produits) {
+  const carte = document.createElement("div");
+  carte.classList.add("carte");
+  carte.innerHTML = `&lt;div class="emoji"&gt;${p.emoji}&lt;/div&gt;
+                     &lt;strong&gt;${p.nom}&lt;/strong&gt;&lt;br&gt;${p.prix} DT`;
+  boutique.append(carte);
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Générer des cartes" sandbox="allow-scripts allow-modals" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;#boutique { display: flex; gap: 8px; flex-wrap: wrap; }
+.carte { border: 2px solid #dde3ea; border-radius: 10px; padding: 10px; width: 110px; text-align: center; }
+.carte .emoji { font-size: 32px; }&lt;/style&gt;&lt;div id=&quot;boutique&quot;&gt;&lt;/div&gt;&lt;script&gt;const produits = [
+  { nom: &quot;Maillot&quot;, prix: 45, emoji: &quot;👕&quot; },
+  { nom: &quot;Ballon&quot;, prix: 30, emoji: &quot;⚽&quot; },
+  { nom: &quot;Casquette&quot;, prix: 20, emoji: &quot;🧢&quot; }
+];
+const boutique = document.querySelector(&quot;#boutique&quot;);
+
+for (const p of produits) {
+  const carte = document.createElement(&quot;div&quot;);
+  carte.classList.add(&quot;carte&quot;);
+  carte.innerHTML = `&lt;div class=&quot;emoji&quot;&gt;${p.emoji}&lt;/div&gt;
+                     &lt;strong&gt;${p.nom}&lt;/strong&gt;&lt;br&gt;${p.prix} DT`;
+  boutique.append(carte);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Ici <code>innerHTML</code> ne pose pas de problème : les textes viennent de <strong>notre</strong> tableau, pas d'un visiteur.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Filtrer et trier</h3>
+<ul><li><code>produits.filter(p =&gt; p.prix &lt; 40)</code> : un nouveau tableau avec seulement les produits à moins de 40 DT.</li><li><code>produits.sort((a, b) =&gt; a.prix - b.prix)</code> : trie du moins cher au plus cher.</li><li><code>p =&gt; …</code> est une <strong>fonction fléchée</strong> : une façon courte d'écrire une petite fonction.</li></ul>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const pasCher = produits.filter(p =&gt; p.prix &lt; 40);
+console.log(pasCher.length + " produits à moins de 40 DT");</code></pre></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel des tableaux. Question : « Sur une boutique en ligne, chaque produit a quelles infos ? » On les écrit au tableau.</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Les objets : la fiche d'identité. Lire et modifier une propriété.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span>Tableau d'objets, générer des cartes, puis <code>filter</code> et <code>sort</code> avec des boutons.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3 : la boutique du club.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le panier.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Ma fiche en objet<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un objet <code>moi</code> avec : <code>prenom</code>, <code>age</code>, <code>ville</code>, <code>passions</code> (un tableau !).</li>
+<li>Affiche dans la page : « Je m'appelle … j'ai … ans ».</li>
+<li>Affiche la liste de tes passions en <code>&lt;li&gt;</code> avec une boucle sur <code>moi.passions</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La boutique du club<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un tableau <code>produits</code> d'au moins 6 objets : <code>nom</code>, <code>prix</code>, <code>image</code> (une adresse Picsum), <code>categorie</code>.</li>
+<li>Écris une fonction <code>afficher(liste)</code> qui crée une carte par produit (image, nom, prix) dans une grille CSS.</li>
+<li>Appelle <code>afficher(produits)</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Filtres et tri<span class="niveau difficile">difficile</span></h3><ol>
+<li>Ajoute des boutons de catégorie : au clic, <code>afficher(produits.filter(p =&gt; p.categorie === "…"))</code>.</li>
+<li>Ajoute un bouton « Tout voir ».</li>
+<li>Ajoute un bouton « Prix croissant » qui trie avec <code>sort</code> puis réaffiche.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le panier</h2>
+<p>Ajoute un bouton « Ajouter au panier » sur chaque carte. Un tableau <code>panier</code> reçoit les produits, et en haut de la page on voit « 🛒 3 articles · 95 DT ». Bonus : un bouton pour vider le panier.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'écris <code>produit[nom]</code> ou <code>produit-&gt;nom</code></div><div class="ok">On utilise le point : <code>produit.nom</code></div></div>
+<div class="erreur"><div class="ko">J'oublie les virgules entre les propriétés</div><div class="ok"><code>{ nom: "Ballon", prix: 30 }</code> : une virgule entre chaque propriété</div></div>
+<div class="erreur"><div class="ko"><code>produits.nom</code> donne <code>undefined</code></div><div class="ok"><code>produits</code> est un tableau : il faut un élément d'abord, <code>produits[0].nom</code>, ou une boucle</div></div>
+<div class="erreur"><div class="ko">Mon filtre ne trouve rien</div><div class="ok">Je vérifie l'orthographe exacte de la catégorie (majuscules, accents)</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Objet</dt><dd>Un ensemble de propriétés entre accolades <code>{ }</code>.</dd></div>
+<div><dt>Propriété</dt><dd>Un couple nom : valeur dans un objet.</dd></div>
+<div><dt>Notation pointée</dt><dd>Lire une propriété avec un point : <code>joueur.score</code>.</dd></div>
+<div><dt>Tableau d'objets</dt><dd>Une liste de fiches, le format le plus courant des données du web.</dd></div>
+<div><dt>filter / sort</dt><dd>Garder certains éléments / trier un tableau.</dd></div>
+<div><dt>Fonction fléchée</dt><dd>Une fonction courte : <code>p =&gt; p.prix</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_objects.asp" target="_blank"><span class="tag">W3Schools</span><br>Les objets</a></li>
+<li><a href="https://www.w3schools.com/js/js_array_iteration.asp" target="_blank"><span class="tag">W3Schools</span><br>Parcourir les tableaux (filter, map…)</a></li>
+<li><a href="https://www.w3schools.com/js/js_array_sort.asp" target="_blank"><span class="tag">W3Schools</span><br>Trier un tableau</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_filter_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : filtrer des éléments</a></li>
+<li><a href="https://fr.javascript.info/object" target="_blank"><span class="tag">Cours</span><br>Les objets (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/arrow-functions-basics" target="_blank"><span class="tag">Cours</span><br>Les fonctions fléchées (javascript.info, en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais créer un objet avec des propriétés.</li>
+<li>Je sais lire et modifier une propriété avec le point.</li>
+<li>Je sais créer un tableau d'objets.</li>
+<li>Je sais générer des cartes dans la page à partir d'un tableau d'objets.</li>
+<li>Je sais filtrer un tableau avec <code>filter</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance13/index.html">← Séance 13</a>
+<a href="../seance15/index.html">Séance 15 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

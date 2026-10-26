@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 18 · Projet 2/4 : menu, thème et bouton haut de page — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Projet : mon site interactif</span>
+    <h1><span>Séance 18</span> · Projet 2/4 : menu, thème et bouton haut de page</h1>
+    <p>On code les interactions <strong>⭐</strong> de ton site : celles qu'on retrouve sur presque tous les sites. Le menu burger pour le téléphone, le mode sombre qui se souvient, et le bouton « retour en haut ».</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12 (mode téléphone)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Coder un menu burger qui s'ouvre et se ferme sur téléphone.</li><li>Coder un mode sombre sauvegardé avec <code>localStorage</code>.</li><li>Afficher un bouton « retour en haut » quand on fait défiler la page (<code>scroll</code>).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Séance 17 : tu as choisi tes interactions, écrit leurs algorithmes QUAND / ALORS, préparé les ids, les classes d'état et <code>js/script.js</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le menu burger</h3>
+<p>En CSS, sur petit écran : le menu est caché, le bouton ☰ est visible, et <code>.menu.ouvert</code> affiche le menu. En JavaScript : un simple <code>toggle</code>.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const boutonMenu = document.querySelector("#bouton-menu");
+const menu = document.querySelector(".menu");
+
+boutonMenu.addEventListener("click", function () {
+  menu.classList.toggle("ouvert");
+});
+
+// Fermer le menu quand on clique sur un lien
+for (const lien of menu.querySelectorAll("a")) {
+  lien.addEventListener("click", function () {
+    menu.classList.remove("ouvert");
+  });
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Teste avec F12 → mode téléphone (Ctrl + Shift + M). Sur ordinateur, le bouton ☰ est caché par le CSS.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le mode sombre qui se souvient</h3>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const boutonTheme = document.querySelector("#theme");
+
+if (localStorage.getItem("theme") === "sombre") {
+  document.body.classList.add("sombre");
+}
+
+boutonTheme.addEventListener("click", function () {
+  document.body.classList.toggle("sombre");
+  const theme = document.body.classList.contains("sombre") ? "sombre" : "clair";
+  localStorage.setItem("theme", theme);
+});</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le CSS fait tout le travail : <code>body.sombre { … }</code>, <code>body.sombre .carte { … }</code>. Si tu as des variables CSS (<code>:root</code>), redéfinis-les dans <code>body.sombre</code> !</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Le bouton « retour en haut »</h3>
+<p>L'événement <code>scroll</code> se déclenche quand on fait défiler la page. <code>window.scrollY</code> donne le nombre de pixels défilés.</p>
+<p><code>window.scrollTo({ top: 0, behavior: "smooth" })</code> remonte en douceur.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const boutonHaut = document.querySelector("#haut-de-page");
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY &gt; 300) {
+    boutonHaut.classList.remove("cache");
+  } else {
+    boutonHaut.classList.add("cache");
+  }
+});
+
+boutonHaut.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});</code></pre></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel de l'objectif : 3 interactions ⭐ aujourd'hui. On montre l'exemple en mode téléphone.</span></li>
+<li><span class="temps">0:10 – 0:50</span><span>Exercice 1 : le menu burger (démonstration rapide, puis chacun l'adapte à son site).</span></li>
+<li><span class="temps">0:50 – 1:20</span><span>Exercice 2 : le mode sombre sauvegardé.</span></li>
+<li><span class="temps">1:20 – 1:50</span><span>Exercice 3 : le bouton retour en haut, puis les interactions ⭐ choisies par chacun.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Point d'étape : ce qui marche, ce qui reste pour la séance 19.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le menu burger<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un <code>&lt;button id="bouton-menu"&gt;☰&lt;/button&gt;</code> dans ton header.</li>
+<li>En CSS, dans <code>@media (max-width: 700px)</code> : bouton visible, <code>.menu</code> caché, <code>.menu.ouvert</code> visible en colonne.</li>
+<li>En JS : <code>toggle("ouvert")</code> au clic, et fermeture au clic sur un lien.</li>
+<li>Bonus : le bouton affiche ✖ quand le menu est ouvert.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le mode sombre<span class="niveau moyen">moyen</span></h3><ol>
+<li>Écris <code>body.sombre { … }</code> et les règles des autres éléments en mode sombre.</li>
+<li>Ajoute un bouton 🌙 et le code <code>toggle</code> + <code>localStorage</code>.</li>
+<li>Vérifie que le thème reste après F5 et sur <strong>toutes</strong> les pages du site.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le bouton retour en haut<span class="niveau facile">facile</span></h3><ol>
+<li>Ajoute un bouton ⬆ en <code>position: fixed</code> en bas à droite, caché au départ.</li>
+<li>Affiche-le quand <code>window.scrollY &gt; 300</code>.</li>
+<li>Au clic, remonte en douceur avec <code>scrollTo</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La barre de progression</h2>
+<p>Ajoute une fine barre de couleur en haut de la page qui grandit pendant qu'on lit. Largeur en % = <code>scrollY / (document.body.scrollHeight - window.innerHeight) * 100</code>.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le menu ne s'ouvre pas</div><div class="ok">Je vérifie que le CSS <code>.menu.ouvert</code> existe <strong>dans</strong> la media query et que la classe est bien ajoutée (F12)</div></div>
+<div class="erreur"><div class="ko">Le thème ne reste pas sur les autres pages</div><div class="ok">Le code qui lit <code>localStorage</code> doit être dans <code>script.js</code>, relié sur toutes les pages</div></div>
+<div class="erreur"><div class="ko">Erreur « null » sur une page qui n'a pas de bouton ☰</div><div class="ok">Je vérifie que l'élément existe : <code>if (boutonMenu) { … }</code></div></div>
+<div class="erreur"><div class="ko"><code>scrollTo</code> ne marche pas</div><div class="ok">On l'appelle sur <code>window</code> : <code>window.scrollTo(…)</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>scroll</dt><dd>L'événement « on fait défiler la page ».</dd></div>
+<div><dt>scrollY</dt><dd>Le nombre de pixels défilés depuis le haut.</dd></div>
+<div><dt>scrollTo</dt><dd>Fait défiler la page jusqu'à une position.</dd></div>
+<div><dt>window</dt><dd>L'objet qui représente la fenêtre du navigateur.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/howto/howto_js_topnav_responsive.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : menu responsive</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : mode sombre</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_scroll_to_top.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : retour en haut</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_scroll_indicator.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : barre de progression</a></li>
+<li><a href="https://fr.javascript.info/onscroll" target="_blank"><span class="tag">Cours</span><br>L'événement scroll (javascript.info, en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mon menu burger marche sur téléphone et se ferme au clic sur un lien.</li>
+<li>Mon mode sombre est sauvegardé et marche sur toutes les pages.</li>
+<li>Le bouton retour en haut apparaît au bon moment.</li>
+<li>Il n'y a aucune erreur rouge dans la console.</li>
+<li>J'ai testé en mode téléphone.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance17/index.html">← Séance 17</a>
+<a href="../seance19/index.html">Séance 19 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

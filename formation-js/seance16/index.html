@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 16 · Mini-projet : le quiz — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 3 · Les données et le temps</span>
+    <h1><span>Séance 16</span> · Mini-projet : le quiz</h1>
+    <p>Fin du module 3 ! Tu crées un <strong>quiz interactif</strong> : les questions sont rangées dans un tableau d'objets, le joueur clique sur une réponse, la page lui dit si c'est juste, compte les points et affiche le score final.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Organiser les données d'une application dans un tableau d'objets.</li><li>Afficher une question à la fois et passer à la suivante.</li><li>Gérer un score et un écran de fin avec un bouton « Rejouer ».</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 3 : les tableaux (<code>[ ]</code>, indice, <code>length</code>), les objets (<code>{ }</code>, <code>objet.propriete</code>), <code>setTimeout</code>, <code>localStorage</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Les données du quiz</h3>
+<p>Chaque question est un objet : le texte, les choix possibles (un tableau) et l'indice de la bonne réponse.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const questions = [
+  {
+    question: "Quelle balise crée un lien ?",
+    choix: ["&lt;p&gt;", "&lt;a&gt;", "&lt;img&gt;"],
+    bonne: 1
+  },
+  {
+    question: "Quelle propriété CSS change la couleur du texte ?",
+    choix: ["color", "background", "font-size"],
+    bonne: 0
+  }
+];</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>L'état du jeu</h3>
+<p>Deux variables suffisent pour savoir où on en est :</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>let numero = 0;   // la question affichée (indice dans le tableau)
+let score = 0;    // les bonnes réponses</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> On appelle ça l'<strong>état</strong> de l'application. Toute la page est construite à partir de ces variables.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Afficher une question</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h3 id="q"&gt;&lt;/h3&gt;
+&lt;div id="choix"&gt;&lt;/div&gt;
+&lt;p id="res"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const questions = [
+  { question: "2 + 2 = ?", choix: ["3", "4", "5"], bonne: 1 },
+  { question: "Capitale de la Tunisie ?", choix: ["Sfax", "Tunis", "Sousse"], bonne: 1 }
+];
+let numero = 0, score = 0;
+
+function afficherQuestion() {
+  const q = questions[numero];
+  document.querySelector("#q").textContent = q.question;
+  const zone = document.querySelector("#choix");
+  zone.innerHTML = "";
+  q.choix.forEach(function (texte, i) {
+    const b = document.createElement("button");
+    b.textContent = texte;
+    b.addEventListener("click", function () { repondre(i); });
+    zone.append(b);
+  });
+}
+
+function repondre(i) {
+  if (i === questions[numero].bonne) score++;
+  numero++;
+  if (numero &lt; questions.length) {
+    afficherQuestion();
+  } else {
+    document.querySelector("#q").textContent = "Terminé !";
+    document.querySelector("#choix").innerHTML = "";
+    document.querySelector("#res").textContent = "Score : " + score + " / " + questions.length;
+  }
+}
+
+afficherQuestion();</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Afficher une question" sandbox="allow-scripts allow-modals" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h3 id=&quot;q&quot;&gt;&lt;/h3&gt;
+&lt;div id=&quot;choix&quot;&gt;&lt;/div&gt;
+&lt;p id=&quot;res&quot;&gt;&lt;/p&gt;&lt;script&gt;const questions = [
+  { question: &quot;2 + 2 = ?&quot;, choix: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;], bonne: 1 },
+  { question: &quot;Capitale de la Tunisie ?&quot;, choix: [&quot;Sfax&quot;, &quot;Tunis&quot;, &quot;Sousse&quot;], bonne: 1 }
+];
+let numero = 0, score = 0;
+
+function afficherQuestion() {
+  const q = questions[numero];
+  document.querySelector(&quot;#q&quot;).textContent = q.question;
+  const zone = document.querySelector(&quot;#choix&quot;);
+  zone.innerHTML = &quot;&quot;;
+  q.choix.forEach(function (texte, i) {
+    const b = document.createElement(&quot;button&quot;);
+    b.textContent = texte;
+    b.addEventListener(&quot;click&quot;, function () { repondre(i); });
+    zone.append(b);
+  });
+}
+
+function repondre(i) {
+  if (i === questions[numero].bonne) score++;
+  numero++;
+  if (numero &lt; questions.length) {
+    afficherQuestion();
+  } else {
+    document.querySelector(&quot;#q&quot;).textContent = &quot;Terminé !&quot;;
+    document.querySelector(&quot;#choix&quot;).innerHTML = &quot;&quot;;
+    document.querySelector(&quot;#res&quot;).textContent = &quot;Score : &quot; + score + &quot; / &quot; + questions.length;
+  }
+}
+
+afficherQuestion();&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>forEach(function (texte, i) { … })</code> parcourt le tableau en donnant l'élément <strong>et</strong> son indice.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Montrer si c'est juste</h3>
+<p>Pour que le joueur voie la correction : on colore le bouton cliqué en vert ou en rouge, on bloque les autres boutons (<code>disabled = true</code>), et on passe à la question suivante après 1 seconde avec <code>setTimeout</code>.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>bouton.classList.add(i === q.bonne ? "juste" : "faux");
+for (const b of zone.querySelectorAll("button")) b.disabled = true;
+setTimeout(questionSuivante, 1000);</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>condition ? valeurSiVrai : valeurSiFaux</code> est un <strong>if</strong> en une ligne (l'opérateur ternaire).</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span><strong>Quiz du module 3</strong> (fait avec… le quiz de l'exemple !).</span></li>
+<li><span class="temps">0:15 – 0:30</span><span>Présentation du mini-projet : les données, l'état, les fonctions. Chaque binôme choisit un thème (foot, musique, Tunisie, jeux vidéo…).</span></li>
+<li><span class="temps">0:30 – 1:40</span><span>Construction en binômes (exercices 1 à 3).</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi et finitions.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Les binômes échangent leurs quiz. Bilan du module 3.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Les questions<span class="niveau moyen">moyen</span></h3><ol>
+<li>Choisis un thème et écris au moins 6 questions dans un tableau d'objets <code>{ question, choix, bonne }</code>.</li>
+<li>Crée les variables d'état <code>numero</code> et <code>score</code>.</li>
+<li>Vérifie dans la console : <code>console.log(questions[0].choix[questions[0].bonne])</code> affiche la bonne réponse.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le jeu<span class="niveau difficile">difficile</span></h3><ol>
+<li>Écris <code>afficherQuestion()</code> : le texte de la question et un bouton par choix.</li>
+<li>Écris <code>repondre(i)</code> : ajoute 1 au score si c'est juste, colore le bouton, bloque les boutons, puis question suivante après 1 seconde.</li>
+<li>Affiche la progression : « Question 3 / 6 ».</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · L'écran de fin<span class="niveau moyen">moyen</span></h3><ol>
+<li>À la fin, affiche le score et un message selon le résultat (bravo, pas mal, à revoir).</li>
+<li>Ajoute un bouton « Rejouer » qui remet <code>numero</code> et <code>score</code> à 0 et relance <code>afficherQuestion()</code>.</li>
+<li>Sauvegarde le meilleur score dans <code>localStorage</code> et affiche-le.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le quiz chronométré</h2>
+<p>Ajoute un compte à rebours de 10 secondes par question (<code>setInterval</code>). Si le temps est écoulé, la réponse est comptée fausse et on passe à la suivante. Bonus : mélange l'ordre des questions au début de chaque partie.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Erreur « Cannot read properties of undefined (reading 'question') »</div><div class="ok"><code>numero</code> a dépassé la dernière question : je teste <code>numero &lt; questions.length</code> avant d'afficher</div></div>
+<div class="erreur"><div class="ko">On peut cliquer 3 fois sur la même question et gagner 3 points</div><div class="ok">Je bloque les boutons après le premier clic (<code>disabled = true</code>)</div></div>
+<div class="erreur"><div class="ko">Le bouton « Rejouer » garde l'ancien score</div><div class="ok">Je remets <strong>toutes</strong> les variables d'état à 0</div></div>
+<div class="erreur"><div class="ko">La bonne réponse est toujours fausse</div><div class="ok"><code>bonne</code> est un <strong>indice</strong> : il commence à 0</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>État (state)</dt><dd>Les variables qui décrivent où en est l'application.</dd></div>
+<div><dt>forEach</dt><dd>Parcourt un tableau en donnant l'élément et son indice.</dd></div>
+<div><dt>disabled</dt><dd>Un bouton désactivé, qu'on ne peut plus cliquer.</dd></div>
+<div><dt>Ternaire</dt><dd>Un if en une ligne : <code>condition ? a : b</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer des éléments (révision)</a></li>
+<li><a href="https://www.w3schools.com/js/js_array_iteration.asp" target="_blank"><span class="tag">W3Schools</span><br>forEach et les autres parcours</a></li>
+<li><a href="https://fr.javascript.info/array-methods" target="_blank"><span class="tag">Cours</span><br>Les méthodes des tableaux (javascript.info, en français)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mes questions sont dans un tableau d'objets.</li>
+<li>Une seule question s'affiche à la fois.</li>
+<li>Le score est juste et on ne peut répondre qu'une fois par question.</li>
+<li>Il y a un écran de fin et un bouton « Rejouer ».</li>
+<li>Le meilleur score est sauvegardé.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance15/index.html">← Séance 15</a>
+<a href="../seance17/index.html">Séance 17 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

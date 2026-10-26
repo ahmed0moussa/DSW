@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 12 · Mini-projet : ma to-do list — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 12</span> · Mini-projet : ma to-do list</h1>
+    <p>Fin du module 2 ! Tu construis une vraie petite application : une <strong>liste de tâches</strong> (to-do list). On ajoute des tâches, on les coche quand elles sont faites, on les supprime, et un compteur suit tout ça.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Construire une application complète en assemblant DOM, événements, formulaires et création d'éléments.</li><li>Découper un projet en petites fonctions qui ont chacune un rôle.</li><li>Tester et déboguer son application avec la console.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 2 : <code>querySelector</code>, <code>textContent</code>, <code>classList</code>, <code>addEventListener</code>, <code>.value</code>, <code>submit</code> + <code>preventDefault</code>, <code>createElement</code>, <code>append</code>, <code>remove</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le cahier des charges</h3>
+<ul><li>Un champ + un bouton pour <strong>ajouter</strong> une tâche (la touche Entrée marche aussi).</li><li>Chaque tâche a une case ou un clic pour la <strong>cocher</strong> (texte barré).</li><li>Chaque tâche a un bouton ✖ pour la <strong>supprimer</strong>.</li><li>Un <strong>compteur</strong> : « 2 tâches restantes ».</li><li>Bonus : un bouton « Effacer les tâches terminées ».</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Découper en fonctions</h3>
+<p>Avant de coder, on découpe le travail. Chaque fonction a <strong>un seul rôle</strong> :</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>function creerTache(texte) { … }     // crée le &lt;li&gt; et ses boutons
+function mettreAJourCompteur() { … }  // compte les tâches restantes
+
+formulaire.addEventListener("submit", function (e) {
+  e.preventDefault();
+  creerTache(champ.value);
+  mettreAJourCompteur();
+});</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Écris d'abord les étapes en commentaires, puis remplis chaque fonction. Teste après <strong>chaque</strong> petite étape.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Cocher une tâche : toggle</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul&gt;&lt;li id="t"&gt;Faire mes devoirs (clique-moi)&lt;/li&gt;&lt;/ul&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.fait { text-decoration: line-through; color: gray; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>const tache = document.querySelector("#t");
+tache.addEventListener("click", function () {
+  tache.classList.toggle("fait");
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Cocher une tâche : toggle" sandbox="allow-scripts allow-modals" style="height:60px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.fait { text-decoration: line-through; color: gray; }&lt;/style&gt;&lt;ul&gt;&lt;li id=&quot;t&quot;&gt;Faire mes devoirs (clique-moi)&lt;/li&gt;&lt;/ul&gt;&lt;script&gt;const tache = document.querySelector(&quot;#t&quot;);
+tache.addEventListener(&quot;click&quot;, function () {
+  tache.classList.toggle(&quot;fait&quot;);
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Compter seulement les tâches restantes</h3>
+<p>Le sélecteur CSS <code>:not(.fait)</code> sélectionne les tâches qui <strong>n'ont pas</strong> la classe <code>fait</code>.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>function mettreAJourCompteur() {
+  const restantes = document.querySelectorAll("#taches li:not(.fait)").length;
+  compteur.textContent = restantes + " tâche(s) restante(s)";
+}</code></pre></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span><strong>Quiz du module 2</strong> (10 questions) : DOM, classList, événements, formulaires, createElement.</span></li>
+<li><span class="temps">0:15 – 0:30</span><span>Présentation du mini-projet. On écrit ensemble les étapes en français et le découpage en fonctions.</span></li>
+<li><span class="temps">0:30 – 1:40</span><span>Construction en binômes, étape par étape (exercices 1 à 3). Le formateur aide et montre la console pour déboguer.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi et finitions (CSS, emojis…).</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>On teste les to-do lists des autres binômes. Bilan du module 2.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Ajouter des tâches<span class="niveau moyen">moyen</span></h3><ol>
+<li>HTML : un <code>&lt;form&gt;</code> (champ + bouton), une <code>&lt;ul id="taches"&gt;</code> vide, un <code>&lt;p id="compteur"&gt;</code>.</li>
+<li>Crée la fonction <code>creerTache(texte)</code> qui crée un <code>&lt;li&gt;</code> et l'ajoute à la liste.</li>
+<li>À l'envoi du formulaire : <code>preventDefault</code>, ignorer si vide, <code>creerTache</code>, vider le champ.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Cocher et supprimer<span class="niveau moyen">moyen</span></h3><ol>
+<li>Dans <code>creerTache</code>, au clic sur le texte de la tâche : <code>classList.toggle("fait")</code>.</li>
+<li>Ajoute un bouton ✖ qui supprime la tâche.</li>
+<li>Style : <code>.fait</code> barré et gris, le bouton ✖ à droite (Flexbox !).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le compteur et le nettoyage<span class="niveau difficile">difficile</span></h3><ol>
+<li>Crée <code>mettreAJourCompteur()</code> avec <code>:not(.fait)</code>. Appelle-la après chaque ajout, chaque coche et chaque suppression.</li>
+<li>Ajoute un bouton « Effacer les tâches terminées » : une boucle sur <code>querySelectorAll(".fait")</code> qui fait <code>remove()</code>.</li>
+<li>Quand il n'y a plus de tâche : « Rien à faire, bravo ! 🎉 ».</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Les priorités</h2>
+<p>Ajoute une liste <code>&lt;select&gt;</code> « Priorité » (🔴 urgent, 🟠 normal, 🟢 pas pressé). La tâche reçoit une classe selon la priorité, et les tâches urgentes s'ajoutent <strong>en haut</strong> de la liste (<code>prepend</code>).</p>
+<p>À la séance 15, on fera en sorte que la liste soit <strong>sauvegardée</strong> même si on ferme la page !</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le compteur n'est pas à jour</div><div class="ok">J'appelle <code>mettreAJourCompteur()</code> après <strong>chaque</strong> changement</div></div>
+<div class="erreur"><div class="ko">Cliquer sur ✖ coche aussi la tâche</div><div class="ok">J'écoute le clic sur le <strong>texte</strong> (un <code>&lt;span&gt;</code>) et pas sur tout le <code>&lt;li&gt;</code></div></div>
+<div class="erreur"><div class="ko">J'ai écrit tout le code d'un coup et rien ne marche</div><div class="ok">Je teste après chaque petite étape et je lis la console</div></div>
+<div class="erreur"><div class="ko">Des tâches vides s'ajoutent</div><div class="ok"><code>if (texte.trim() === "") return;</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Application</dt><dd>Un programme qu'on utilise pour faire quelque chose (ici, gérer ses tâches).</dd></div>
+<div><dt>To-do list</dt><dd>Une liste de choses à faire.</dd></div>
+<div><dt>Découper</dt><dd>Diviser un problème en petites fonctions simples.</dd></div>
+<div><dt>:not()</dt><dd>Sélecteur CSS « tout sauf… ».</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/howto/howto_js_todolist.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : une to-do list</a></li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer et supprimer des éléments (révision)</a></li>
+<li><a href="https://fr.javascript.info/introduction-browser-events" target="_blank"><span class="tag">Cours</span><br>Les événements (révision) (javascript.info, en français)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je peux ajouter une tâche avec le bouton et avec Entrée.</li>
+<li>Je peux cocher et décocher une tâche.</li>
+<li>Je peux supprimer une tâche.</li>
+<li>Le compteur est toujours juste.</li>
+<li>Mon code est découpé en fonctions avec des noms clairs.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance11/index.html">← Séance 11</a>
+<a href="../seance13/index.html">Séance 13 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les formulaires</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    form { display: flex; flex-direction: column; gap: 6px; }
+    input, textarea { padding: 10px; border: 2px solid #dde3ea; border-radius: 8px; font: inherit; }
+    .ligne { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+    .champ-erreur { border-color: #c0392b; }
+    .erreur { color: #c0392b; font-weight: bold; }
+    .succes { color: #2e8b57; font-weight: bold; }
+    .attention { color: #e67e22; }
+    .limite { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>📝 Inscription au tournoi</h1>
+    <form id="inscription" class="carte" novalidate>
+      <label for="pseudo">Pseudo</label>
+      <input id="pseudo" placeholder="3 lettres minimum">
+
+      <label for="age">Âge</label>
+      <input id="age" type="number" placeholder="Entre 10 et 18">
+
+      <label for="email">Email</label>
+      <input id="email" placeholder="toi@exemple.com">
+
+      <label for="message">Pourquoi veux-tu participer ? <span id="compteur">0 / 100</span></label>
+      <textarea id="message" rows="3" maxlength="100"></textarea>
+
+      <label class="ligne"><input type="checkbox" id="reglement"> J'accepte le règlement</label>
+
+      <button>S'inscrire</button>
+      <p id="info"></p>
+    </form>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

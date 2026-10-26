@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les événements</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    .grand { font-size: 48px; font-weight: bold; margin: 0; }
+    .negatif { color: #c0392b; }
+    body.sombre { background: #1f2933; color: #f4f6f9; }
+    body.sombre .carte { background: #2c3a47; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>👆 Les événements</h1>
+
+    <div class="carte">
+      <h2>Le compteur</h2>
+      <p class="grand"><span id="compteur">0</span></p>
+      <button id="moins">− 1</button>
+      <button id="plus">+ 1</button>
+      <button id="zero">Remise à zéro</button>
+    </div>
+
+    <div class="carte">
+      <h2>Les likes</h2>
+      <button id="like">❤️ J'aime</button> <span id="likes">0</span> likes
+    </div>
+
+    <div class="carte">
+      <h2>Le mode sombre</h2>
+      <button id="theme">🌙 Mode sombre</button>
+    </div>
+
+    <div class="carte">
+      <h2>La galerie</h2>
+      <img id="photo" src="https://picsum.photos/seed/galerie1/320/200" alt="Photo de la galerie" width="320">
+      <p>
+        <button id="precedent">◀</button>
+        <button id="suivant">▶</button>
+        <span>(ou les flèches du clavier)</span>
+      </p>
+    </div>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

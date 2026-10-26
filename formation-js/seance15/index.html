@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 15 · Le temps et la mémoire — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 3 · Les données et le temps</span>
+    <h1><span>Séance 15</span> · Le temps et la mémoire</h1>
+    <p>Un chronomètre, un diaporama qui défile tout seul, un message qui disparaît après 3 secondes… JavaScript sait gérer le <strong>temps</strong>. Et avec <code>localStorage</code>, ta page peut se <strong>souvenir</strong> des choses même après avoir été fermée !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12 (onglet Application)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Lancer une action après un délai avec <code>setTimeout</code>.</li><li>Répéter une action à intervalle régulier avec <code>setInterval</code> et l'arrêter avec <code>clearInterval</code>.</li><li>Sauvegarder et relire des données avec <code>localStorage</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Les tableaux <code>[ ]</code> et les objets <code>{ }</code>. Une fonction <code>afficher()</code> reconstruit la page à partir des données.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>setTimeout : plus tard</h3>
+<p><code>setTimeout(fonction, délai)</code> lance la fonction <strong>une fois</strong>, après un délai en <strong>millisecondes</strong> (1000 ms = 1 seconde).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button id="b"&gt;Afficher un message&lt;/button&gt;
+&lt;p id="msg"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#b").addEventListener("click", function () {
+  const msg = document.querySelector("#msg");
+  msg.textContent = "✅ Message envoyé !";
+  setTimeout(function () {
+    msg.textContent = "";      // disparaît après 2 secondes
+  }, 2000);
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : setTimeout : plus tard" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button id=&quot;b&quot;&gt;Afficher un message&lt;/button&gt;
+&lt;p id=&quot;msg&quot;&gt;&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#b&quot;).addEventListener(&quot;click&quot;, function () {
+  const msg = document.querySelector(&quot;#msg&quot;);
+  msg.textContent = &quot;✅ Message envoyé !&quot;;
+  setTimeout(function () {
+    msg.textContent = &quot;&quot;;      // disparaît après 2 secondes
+  }, 2000);
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>setInterval : régulièrement</h3>
+<p><code>setInterval(fonction, délai)</code> relance la fonction <strong>toutes les</strong> X millisecondes, sans s'arrêter.</p>
+<p>Pour l'arrêter, on garde son numéro dans une variable et on appelle <code>clearInterval(numero)</code>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p style="font-size:32px" id="chrono"&gt;0&lt;/p&gt;
+&lt;button id="start"&gt;▶ Démarrer&lt;/button&gt;
+&lt;button id="stop"&gt;⏸ Pause&lt;/button&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>let secondes = 0;
+let minuteur = null;
+const chrono = document.querySelector("#chrono");
+
+document.querySelector("#start").addEventListener("click", function () {
+  if (minuteur !== null) return;          // déjà lancé
+  minuteur = setInterval(function () {
+    secondes++;
+    chrono.textContent = secondes;
+  }, 1000);
+});
+
+document.querySelector("#stop").addEventListener("click", function () {
+  clearInterval(minuteur);
+  minuteur = null;
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : setInterval : régulièrement" sandbox="allow-scripts allow-modals" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p style=&quot;font-size:32px&quot; id=&quot;chrono&quot;&gt;0&lt;/p&gt;
+&lt;button id=&quot;start&quot;&gt;▶ Démarrer&lt;/button&gt;
+&lt;button id=&quot;stop&quot;&gt;⏸ Pause&lt;/button&gt;&lt;script&gt;let secondes = 0;
+let minuteur = null;
+const chrono = document.querySelector(&quot;#chrono&quot;);
+
+document.querySelector(&quot;#start&quot;).addEventListener(&quot;click&quot;, function () {
+  if (minuteur !== null) return;          // déjà lancé
+  minuteur = setInterval(function () {
+    secondes++;
+    chrono.textContent = secondes;
+  }, 1000);
+});
+
+document.querySelector(&quot;#stop&quot;).addEventListener(&quot;click&quot;, function () {
+  clearInterval(minuteur);
+  minuteur = null;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>localStorage : la mémoire du navigateur</h3>
+<p><code>localStorage</code> garde des données dans le navigateur, <strong>même si on ferme la page</strong>. Il ne garde que du <strong>texte</strong>.</p>
+<ul><li><code>localStorage.setItem("cle", "valeur")</code> : sauvegarder.</li><li><code>localStorage.getItem("cle")</code> : relire (renvoie <code>null</code> s'il n'y a rien).</li><li><code>localStorage.removeItem("cle")</code> : effacer.</li></ul>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>// Retenir le thème choisi
+localStorage.setItem("theme", "sombre");
+
+// Au chargement de la page
+const theme = localStorage.getItem("theme");
+if (theme === "sombre") {
+  document.body.classList.add("sombre");
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pour voir ce qui est sauvegardé : F12 → onglet <strong>Application</strong> → <strong>Local Storage</strong>. Les données restent sur <strong>cet</strong> ordinateur et <strong>ce</strong> navigateur seulement.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Sauvegarder un tableau : JSON</h3>
+<p><code>localStorage</code> ne garde que du texte. Pour un tableau ou un objet, on le transforme en texte avec <code>JSON.stringify</code>, et on le retransforme avec <code>JSON.parse</code>.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const taches = ["Réviser", "Ranger"];
+localStorage.setItem("taches", JSON.stringify(taches));
+
+const sauvegarde = localStorage.getItem("taches");
+const relues = sauvegarde ? JSON.parse(sauvegarde) : [];
+console.log(relues);</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> C'est exactement ce qu'il faut pour que ta to-do list de la séance 12 se souvienne des tâches !</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel des objets. Question : « Comment un site se souvient que tu as choisi le mode sombre ? »</span></li>
+<li><span class="temps">0:10 – 0:30</span><span><code>setTimeout</code>, <code>setInterval</code>, <code>clearInterval</code> : on construit ensemble le chronomètre.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span><code>localStorage</code> : on sauvegarde le thème, on regarde dans F12 → Application. JSON pour les tableaux.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : la to-do list qui se souvient.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : « La prochaine fois, mini-projet : le quiz ! »</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le chronomètre<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un affichage <code>00:00</code> et 3 boutons : Démarrer, Pause, Remise à zéro.</li>
+<li>Avec <code>setInterval</code>, ajoute 1 seconde chaque seconde.</li>
+<li>Affiche les minutes et les secondes : <code>Math.floor(s / 60)</code> et <code>s % 60</code>.</li>
+<li>Bonus : <code>String(n).padStart(2, "0")</code> pour écrire <code>05</code> au lieu de <code>5</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le diaporama automatique<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un tableau de 4 adresses d'images et une <code>&lt;img&gt;</code>.</li>
+<li>Avec <code>setInterval</code>, change d'image toutes les 3 secondes (et reviens à la 1re après la dernière).</li>
+<li>Ajoute un bouton ⏸ / ▶ pour mettre en pause et relancer.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le thème qui se souvient<span class="niveau moyen">moyen</span></h3><ol>
+<li>Reprends ton bouton mode sombre de la séance 9.</li>
+<li>À chaque clic, sauvegarde le thème avec <code>localStorage.setItem</code>.</li>
+<li>Au chargement de la page, lis le thème avec <code>getItem</code> et applique-le.</li>
+<li>Ferme la page, rouvre-la : le thème est resté ! Vérifie dans F12 → Application.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La to-do list qui se souvient</h2>
+<p>Reprends ta to-do list de la séance 12. Range les tâches dans un tableau d'objets <code>{ texte, fait }</code>, sauvegarde-le avec <code>JSON.stringify</code> à chaque changement, et recharge-le au démarrage avec <code>JSON.parse</code>.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>setTimeout(maFonction(), 2000)</code> : ça s'exécute tout de suite</div><div class="ok">Sans parenthèses : <code>setTimeout(maFonction, 2000)</code></div></div>
+<div class="erreur"><div class="ko">Mon chrono va de plus en plus vite</div><div class="ok">J'ai lancé plusieurs <code>setInterval</code> : je vérifie qu'il n'est pas déjà lancé</div></div>
+<div class="erreur"><div class="ko">J'écris le délai en secondes : <code>setInterval(f, 3)</code></div><div class="ok">Le délai est en <strong>millisecondes</strong> : 3 secondes = <code>3000</code></div></div>
+<div class="erreur"><div class="ko"><code>localStorage.getItem</code> me renvoie <code>"[object Object]"</code></div><div class="ok">J'utilise <code>JSON.stringify</code> pour sauvegarder et <code>JSON.parse</code> pour relire</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>setTimeout</dt><dd>Lance une fonction une fois, après un délai.</dd></div>
+<div><dt>setInterval</dt><dd>Relance une fonction régulièrement.</dd></div>
+<div><dt>clearInterval</dt><dd>Arrête un <code>setInterval</code>.</dd></div>
+<div><dt>Milliseconde (ms)</dt><dd>Un millième de seconde : 1000 ms = 1 s.</dd></div>
+<div><dt>localStorage</dt><dd>La mémoire du navigateur, qui reste après la fermeture de la page.</dd></div>
+<div><dt>JSON</dt><dd>Une façon d'écrire des tableaux et des objets sous forme de texte.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_timing.asp" target="_blank"><span class="tag">W3Schools</span><br>setTimeout et setInterval</a></li>
+<li><a href="https://www.w3schools.com/js/js_json.asp" target="_blank"><span class="tag">W3Schools</span><br>JSON</a></li>
+<li><a href="https://www.w3schools.com/jsref/prop_win_localstorage.asp" target="_blank"><span class="tag">W3Schools</span><br>localStorage</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_slideshow.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : un diaporama</a></li>
+<li><a href="https://fr.javascript.info/settimeout-setinterval" target="_blank"><span class="tag">Cours</span><br>setTimeout et setInterval (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/localstorage" target="_blank"><span class="tag">Cours</span><br>localStorage (javascript.info, en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais lancer une action après un délai avec <code>setTimeout</code>.</li>
+<li>Je sais répéter une action avec <code>setInterval</code> et l'arrêter.</li>
+<li>Je sais que les délais sont en millisecondes.</li>
+<li>Je sais sauvegarder et relire une valeur avec <code>localStorage</code>.</li>
+<li>Je sais sauvegarder un tableau avec <code>JSON.stringify</code> / <code>JSON.parse</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance14/index.html">← Séance 14</a>
+<a href="../seance16/index.html">Séance 16 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

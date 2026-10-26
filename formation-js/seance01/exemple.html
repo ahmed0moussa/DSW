@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le jeu du robot</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    .grille { display: grid; grid-template-columns: repeat(5, 60px); gap: 4px; margin: 10px 0; }
+    .grille div { width: 60px; height: 60px; background: white; border: 2px solid #dde3ea; border-radius: 6px;
+                  display: flex; align-items: center; justify-content: center; font-size: 30px; }
+    .mur { background: #22303c !important; }
+    ol li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🤖 Le jeu du robot</h1>
+    <div class="carte">
+      <p>Le robot regarde vers la <strong>droite</strong>. Il connaît 3 ordres :
+         <strong>AVANCER</strong>, <strong>TOURNER À GAUCHE</strong>, <strong>TOURNER À DROITE</strong>.
+         Les cases noires sont des murs.</p>
+      <div class="grille">
+        <div>🤖</div><div></div><div></div><div class="mur"></div><div></div>
+        <div class="mur"></div><div class="mur"></div><div></div><div class="mur"></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div class="mur"></div><div class="mur"></div><div class="mur"></div><div></div>
+        <div></div><div></div><div></div><div></div><div>💎</div>
+      </div>
+      <p><strong>Ta mission :</strong> écris sur une feuille les ordres pour amener le robot jusqu'au trésor 💎.</p>
+    </div>
+    <div class="carte">
+      <h2>Niveau 2 : avec RÉPÉTER</h2>
+      <p>Réécris ta solution en utilisant <strong>RÉPÉTER … fois</strong> pour la rendre plus courte.</p>
+      <h2>Niveau 3 : avec SI</h2>
+      <p>Invente un ordre <strong>SI mur devant ALORS tourner à droite</strong>. Peux-tu écrire un seul algorithme
+         qui marche pour plusieurs labyrinthes ?</p>
+    </div>
+    <p class="astuce">Ensuite, joue au Labyrinthe de <a href="https://blockly.games/?lang=fr" target="_blank">Blockly Games</a>.</p>
+  </main>
+</body>
+</html>

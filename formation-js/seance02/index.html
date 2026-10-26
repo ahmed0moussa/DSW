@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 02 · Mon premier JavaScript — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · Penser comme un programmeur</span>
+    <h1><span>Séance 02</span> · Mon premier JavaScript</h1>
+    <p>Aujourd'hui tu écris tes premières lignes de JavaScript ! Tu découvres où on écrit le code, comment l'ordinateur te répond dans la <strong>console</strong>, et comment lire un message d'erreur.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, Chrome (console F12)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Ajouter du JavaScript à une page avec la balise <code>&lt;script&gt;</code> et un fichier <code>.js</code>.</li><li>Afficher des messages avec <code>console.log()</code> et les lire dans la <strong>console</strong> (F12).</li><li>Lire un message d'erreur et retrouver la ligne qui pose problème.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Un algorithme est une suite d'étapes précises. Les 3 briques sont la séquence, la condition et la boucle. Un programme, c'est un algorithme écrit dans un langage comme JavaScript.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>HTML, CSS… et JavaScript</h3>
+<ul><li><strong>HTML</strong> = la structure (les murs).</li><li><strong>CSS</strong> = la décoration (la peinture).</li><li><strong>JavaScript</strong> = l'action (l'électricité) : il réagit aux clics, calcule, change la page, crée des jeux.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> JavaScript n'a rien à voir avec le langage Java : c'est juste un nom qui se ressemble !</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Où écrire le JavaScript ?</h3>
+<p>Comme le CSS, le JavaScript peut être <strong>dans la page</strong> ou dans un <strong>fichier séparé</strong>. La meilleure façon : un fichier <code>script.js</code> relié juste <strong>avant</strong> <code>&lt;/body&gt;</code>.</p>
+<p>Pourquoi à la fin ? Parce que le navigateur lit la page de haut en bas : à la fin, tous les éléments HTML existent déjà.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;body&gt;
+  &lt;h1&gt;Ma page&lt;/h1&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>console.log : l'ordinateur te répond</h3>
+<p><code>console.log()</code> affiche un message dans la <strong>console</strong>. Ouvre-la avec <strong>F12</strong> → onglet <strong>Console</strong>.</p>
+<p>Le texte s'écrit entre <strong>guillemets</strong>. Chaque instruction se termine par un <strong>point-virgule</strong> <code>;</code>.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>console.log("Bonjour !");
+console.log("Je m'appelle Sami");
+console.log(5 + 3);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : console.log : l&#x27;ordinateur te répond" sandbox="allow-scripts allow-modals" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;console.log(&quot;Bonjour !&quot;);
+console.log(&quot;Je m&#x27;appelle Sami&quot;);
+console.log(5 + 3);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le visiteur ne voit pas la console : c'est l'outil du <strong>développeur</strong> pour vérifier son code.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Les commentaires</h3>
+<p>Les commentaires sont des notes pour toi. JavaScript les ignore.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>// Commentaire sur une ligne
+
+/* Commentaire
+   sur plusieurs lignes */
+
+console.log("Ceci s'affiche");</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Dans VS Code, <strong>Ctrl + /</strong> met une ligne en commentaire, comme en HTML et en CSS.</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Lire une erreur</h3>
+<p>Si tu fais une faute, la console affiche une ligne <strong>rouge</strong>. Elle te dit <strong>quoi</strong> (le type d'erreur) et <strong>où</strong> (le fichier et le numéro de ligne, à droite).</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>console.log("Bonjour");
+consol.log("Oups");   // faute de frappe !</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Lire une erreur" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;console.log(&quot;Bonjour&quot;);
+consol.log(&quot;Oups&quot;);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>consol is not defined</code> veut dire : « je ne connais pas le mot consol ». Clique sur le nom du fichier à droite de l'erreur : la console t'emmène à la bonne ligne.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel : un algorithme, les 3 briques. Petit niveau de Blockly Games ensemble.</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Découverte : où écrire le JS, la balise <code>&lt;script&gt;</code>, la console F12, <code>console.log</code>.</span></li>
+<li><span class="temps">0:30 – 0:50</span><span>Exercice 1 en direct : chaque élève fait apparaître son premier message.</span></li>
+<li><span class="temps">0:50 – 1:10</span><span>Commentaires et erreurs : le formateur fait exprès des erreurs, les élèves lisent la console et trouvent la ligne.</span></li>
+<li><span class="temps">1:10 – 1:45</span><span>Exercices 2 et 3, puis le défi.</span></li>
+<li><span class="temps">1:45 – 2:00</span><span>Bilan : « Où écrit-on le JS ? Où voit-on les messages ? Comment lire une erreur ? »</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Mon premier message<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance02/index.html</code> (squelette avec <code>!</code> + Entrée) et <code>seance02/script.js</code>.</li>
+<li>Relie le script juste avant <code>&lt;/body&gt;</code> : <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code>.</li>
+<li>Dans <code>script.js</code>, écris <code>console.log("Bonjour, je m'appelle …");</code>.</li>
+<li>Ouvre la page avec Live Server, puis <strong>F12 → Console</strong> : ton message est là ! 🎉</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La console calculatrice<span class="niveau facile">facile</span></h3><ol>
+<li>Affiche le résultat de 5 calculs avec <code>console.log()</code> : <code>12 + 8</code>, <code>100 - 37</code>, <code>6 * 7</code>, <code>81 / 9</code>, <code>2 + 3 * 4</code>.</li>
+<li>Pourquoi <code>2 + 3 * 4</code> donne 14 et pas 20 ? (Comme en maths : la multiplication d'abord.)</li>
+<li>Essaie <code>console.log("5" + 3);</code>. Que se passe-t-il ? On en reparlera à la séance 3 !</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Chasse aux bugs<span class="niveau moyen">moyen</span></h3><ol>
+<li>Copie ces 3 lignes dans ton script : <code>console.log("Salut")</code>, <code>console.log("ça va ?";</code> et <code>Console.log("au revoir");</code>.</li>
+<li>Ouvre la console : lis le message d'erreur et trouve la ligne.</li>
+<li>Corrige les 2 erreurs une par une (une parenthèse manquante, une majuscule en trop).</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le dessin dans la console</h2>
+<p>Avec plusieurs <code>console.log()</code>, dessine un sapin, une maison ou ton prénom en grand avec des caractères (<code>*</code>, <code>#</code>, <code>/</code>, <code>\</code>).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'oublie les guillemets : <code>console.log(Bonjour);</code></div><div class="ok">Un texte est toujours entre guillemets : <code>console.log("Bonjour");</code></div></div>
+<div class="erreur"><div class="ko">J'écris <code>Console.log</code> ou <code>consol.log</code></div><div class="ok">JavaScript fait la différence entre majuscules et minuscules : <code>console.log</code></div></div>
+<div class="erreur"><div class="ko">Je ne vois rien sur la page</div><div class="ok"><code>console.log</code> écrit dans la <strong>console</strong> (F12), pas dans la page</div></div>
+<div class="erreur"><div class="ko">Mon script ne marche pas du tout</div><div class="ok">Je vérifie le chemin dans <code>&lt;script src="…"&gt;</code> et le nom du fichier</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>JavaScript (JS)</dt><dd>Le langage qui rend les pages web interactives.</dd></div>
+<div><dt>Script</dt><dd>Un fichier ou un morceau de code JavaScript.</dd></div>
+<div><dt>Console</dt><dd>L'outil du navigateur (F12) qui affiche les messages et les erreurs.</dd></div>
+<div><dt>Instruction</dt><dd>Une ligne de code qui donne un ordre, terminée par <code>;</code>.</dd></div>
+<div><dt>Erreur (error)</dt><dd>Un message rouge qui dit ce qui ne va pas et où.</dd></div>
+<div><dt>Commentaire</dt><dd>Une note ignorée par JavaScript : <code>//</code> ou <code>/* */</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_whereto.asp" target="_blank"><span class="tag">W3Schools</span><br>Où écrire le JavaScript</a></li>
+<li><a href="https://www.w3schools.com/js/js_output.asp" target="_blank"><span class="tag">W3Schools</span><br>Afficher des résultats (console.log…)</a></li>
+<li><a href="https://www.w3schools.com/js/js_comments.asp" target="_blank"><span class="tag">W3Schools</span><br>Les commentaires</a></li>
+<li><a href="https://fr.javascript.info/hello-world" target="_blank"><span class="tag">Cours</span><br>Hello, world! (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/debugging-chrome" target="_blank"><span class="tag">Cours</span><br>Déboguer dans Chrome (javascript.info, en français)</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/console" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : utiliser la console (en anglais)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais relier un fichier <code>.js</code> à ma page.</li>
+<li>Je sais ouvrir la console avec F12.</li>
+<li>Je sais afficher un message avec <code>console.log()</code>.</li>
+<li>Je sais écrire un commentaire en JavaScript.</li>
+<li>Je sais lire une erreur et trouver la ligne.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance01/index.html">← Séance 01</a>
+<a href="../seance03/index.html">Séance 03 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

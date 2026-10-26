@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma to-do list</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    form { display: flex; gap: 8px; flex-wrap: wrap; }
+    #champ { flex: 1 1 200px; }
+    input, select { padding: 10px; border: 2px solid #dde3ea; border-radius: 8px; font: inherit; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; gap: 10px; padding: 10px; margin: 6px 0; border-radius: 8px; background: #f4f6f9; border-left: 6px solid #e67e22; }
+    li.urgent { border-left-color: #c0392b; }
+    li.tranquille { border-left-color: #2e8b57; }
+    li span { flex: 1; cursor: pointer; }
+    li.fait span { text-decoration: line-through; color: gray; }
+    li button { background: #c0392b; padding: 4px 10px; }
+    .bas { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>✅ Ma to-do list</h1>
+    <div class="carte">
+      <form id="formulaire">
+        <input id="champ" placeholder="Nouvelle tâche…" autocomplete="off">
+        <select id="priorite">
+          <option value="normal">🟠 Normal</option>
+          <option value="urgent">🔴 Urgent</option>
+          <option value="tranquille">🟢 Pas pressé</option>
+        </select>
+        <button>Ajouter</button>
+      </form>
+      <ul id="taches"></ul>
+      <div class="bas">
+        <p id="compteur"></p>
+        <button id="nettoyer" type="button">Effacer les tâches terminées</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

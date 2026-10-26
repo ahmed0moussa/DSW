@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 07 · Trouver et changer un élément de la page — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 07</span> · Trouver et changer un élément de la page</h1>
+    <p>Jusqu'ici, JavaScript parlait dans la console. Maintenant, il va <strong>modifier la page elle-même</strong> : changer un titre, un texte, une image. C'est le moment où HTML, CSS et JavaScript travaillent ensemble !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, F12 (Elements + Console)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer ce qu'est le <strong>DOM</strong> : la page vue par JavaScript.</li><li>Trouver un élément avec <code>document.querySelector()</code> en utilisant les sélecteurs CSS.</li><li>Changer le texte, le HTML et les attributs d'un élément (<code>textContent</code>, <code>innerHTML</code>, <code>src</code>).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 1 : variables, conditions (<code>if</code>), boucles (<code>for</code>, <code>while</code>), fonctions. Côté CSS, tu connais les sélecteurs : balise <code>p</code>, classe <code>.carte</code>, id <code>#titre</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le DOM : la page vue par JavaScript</h3>
+<p>Quand le navigateur lit ton HTML, il construit un <strong>arbre</strong> d'éléments : le <strong>DOM</strong> (Document Object Model). <code>document</code> représente toute la page.</p>
+<p>Chaque balise devient un <strong>objet</strong> que JavaScript peut trouver et modifier. Les changements se voient <strong>tout de suite</strong> à l'écran.</p>
+<div class="code-demo solo"><div><span class="label">Schéma</span><pre><code>document
+└── html
+    ├── head
+    │   └── title
+    └── body
+        ├── h1  « Bienvenue »
+        └── p   « Bonjour »</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> F12 → onglet <strong>Elements</strong> : c'est exactement le DOM. Quand JavaScript change la page, tu le vois changer là aussi.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Trouver un élément : querySelector</h3>
+<p><code>document.querySelector("sélecteur")</code> trouve le <strong>premier</strong> élément qui correspond. On utilise <strong>les mêmes sélecteurs qu'en CSS</strong> !</p>
+<p>On range l'élément trouvé dans une variable pour l'utiliser ensuite.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h1 id="titre"&gt;Bonjour&lt;/h1&gt;
+&lt;p class="message"&gt;Texte de départ&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const titre = document.querySelector("#titre");
+const message = document.querySelector(".message");
+
+titre.textContent = "Bienvenue au club ! 🎉";
+message.textContent = "Ce texte a été changé par JavaScript.";</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Trouver un élément : querySelector" sandbox="allow-scripts allow-modals" style="height:130px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;titre&quot;&gt;Bonjour&lt;/h1&gt;
+&lt;p class=&quot;message&quot;&gt;Texte de départ&lt;/p&gt;&lt;script&gt;const titre = document.querySelector(&quot;#titre&quot;);
+const message = document.querySelector(&quot;.message&quot;);
+
+titre.textContent = &quot;Bienvenue au club ! 🎉&quot;;
+message.textContent = &quot;Ce texte a été changé par JavaScript.&quot;;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>textContent ou innerHTML ?</h3>
+<ul><li><code>textContent</code> : change le <strong>texte</strong> seulement (le plus sûr).</li><li><code>innerHTML</code> : change le <strong>HTML</strong> à l'intérieur (on peut ajouter des balises comme <code>&lt;strong&gt;</code>).</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p id="a"&gt;&lt;/p&gt;
+&lt;p id="b"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#a").textContent = "&lt;strong&gt;Gras ?&lt;/strong&gt;";
+document.querySelector("#b").innerHTML = "&lt;strong&gt;Gras !&lt;/strong&gt;";</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : textContent ou innerHTML ?" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p id=&quot;a&quot;&gt;&lt;/p&gt;
+&lt;p id=&quot;b&quot;&gt;&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#a&quot;).textContent = &quot;&lt;strong&gt;Gras ?&lt;/strong&gt;&quot;;
+document.querySelector(&quot;#b&quot;).innerHTML = &quot;&lt;strong&gt;Gras !&lt;/strong&gt;&quot;;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> N'utilise <code>innerHTML</code> qu'avec du texte que <strong>toi</strong> tu as écrit, jamais avec ce qu'un visiteur a tapé (il pourrait y glisser du code).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Changer un attribut</h3>
+<p>On peut changer les attributs : <code>src</code> d'une image, <code>href</code> d'un lien, <code>alt</code>…</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;img id="photo" src="https://picsum.photos/seed/chat/160/100" alt="Une photo" width="160"&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const photo = document.querySelector("#photo");
+photo.src = "https://picsum.photos/seed/plage/160/100";
+photo.alt = "Une plage";</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Trouver plusieurs éléments : querySelectorAll</h3>
+<p><code>querySelectorAll</code> renvoie <strong>tous</strong> les éléments qui correspondent. On les parcourt avec une boucle <code>for…of</code>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul&gt;
+  &lt;li class="fruit"&gt;pomme&lt;/li&gt;
+  &lt;li class="fruit"&gt;banane&lt;/li&gt;
+  &lt;li class="fruit"&gt;orange&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const fruits = document.querySelectorAll(".fruit");
+for (const fruit of fruits) {
+  fruit.textContent = fruit.textContent.toUpperCase() + " ✅";
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Trouver plusieurs éléments : querySelectorAll" sandbox="allow-scripts allow-modals" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;ul&gt;
+  &lt;li class=&quot;fruit&quot;&gt;pomme&lt;/li&gt;
+  &lt;li class=&quot;fruit&quot;&gt;banane&lt;/li&gt;
+  &lt;li class=&quot;fruit&quot;&gt;orange&lt;/li&gt;
+&lt;/ul&gt;&lt;script&gt;const fruits = document.querySelectorAll(&quot;.fruit&quot;);
+for (const fruit of fruits) {
+  fruit.textContent = fruit.textContent.toUpperCase() + &quot; ✅&quot;;
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Bilan du module 1 et présentation du module 2 : « Maintenant, JavaScript touche la page ! »</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Le DOM : on dessine l'arbre d'une petite page au tableau, puis on l'explore dans F12 → Elements.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span><code>querySelector</code>, <code>textContent</code>, <code>innerHTML</code>, attributs. Démonstration en direct dans la console de F12.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : la page qui dit bonjour selon l'heure.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Je change ma page<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance07/index.html</code> avec un <code>&lt;h1 id="titre"&gt;</code>, un <code>&lt;p class="intro"&gt;</code> et une image <code>&lt;img id="photo"&gt;</code>.</li>
+<li>Dans <code>script.js</code>, trouve le titre avec <code>querySelector</code> et change son texte.</li>
+<li>Change aussi le texte du paragraphe et le <code>src</code> de l'image.</li>
+<li>Ouvre F12 → Elements : vérifie que le HTML a bien changé.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La console comme télécommande<span class="niveau facile">facile</span></h3><ol>
+<li>Sur ta page, ouvre la console (F12) et tape directement : <code>document.querySelector("h1").textContent = "Coucou"</code>.</li>
+<li>Essaie sur Wikipédia : change le titre de la page depuis la console.</li>
+<li>Recharge : tout revient. Tu as compris : JavaScript change la page <strong>dans ton navigateur</strong>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La fiche joueur automatique<span class="niveau moyen">moyen</span></h3><ol>
+<li>Dans ton HTML, prépare des emplacements vides : <code>&lt;span id="nom"&gt;&lt;/span&gt;</code>, <code>&lt;span id="age"&gt;&lt;/span&gt;</code>, <code>&lt;span id="score"&gt;&lt;/span&gt;</code>.</li>
+<li>Dans le JS, crée les variables <code>nom</code>, <code>anneeNaissance</code>, <code>score</code>.</li>
+<li>Calcule l'âge, puis remplis les emplacements avec <code>textContent</code>.</li>
+<li>Avec <code>querySelectorAll</code> et une boucle, ajoute une étoile ⭐ devant chaque élément de classe <code>.qualite</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Bonjour ou bonsoir ?</h2>
+<p>Avec <code>new Date().getHours()</code>, récupère l'heure actuelle. Selon l'heure, affiche dans le <code>&lt;h1&gt;</code> « Bonjour ☀️ », « Bon après-midi 🌤️ » ou « Bonsoir 🌙 ». Tu combines DOM + conditions !</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>querySelector("titre")</code> ne trouve rien (<code>null</code>)</div><div class="ok">Il faut le sélecteur complet : <code>"#titre"</code> pour un id, <code>".intro"</code> pour une classe</div></div>
+<div class="erreur"><div class="ko">Erreur « Cannot set properties of null »</div><div class="ok">L'élément n'a pas été trouvé : je vérifie le sélecteur et que le <code>&lt;script&gt;</code> est à la fin du <code>&lt;body&gt;</code></div></div>
+<div class="erreur"><div class="ko">J'écris <code>textcontent</code> ou <code>TextContent</code></div><div class="ok">Majuscules exactes : <code>textContent</code>, <code>innerHTML</code>, <code>querySelector</code></div></div>
+<div class="erreur"><div class="ko"><code>querySelectorAll(...).textContent = …</code> ne marche pas</div><div class="ok"><code>querySelectorAll</code> renvoie une liste : j'utilise une boucle <code>for…of</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>DOM</dt><dd>L'arbre des éléments de la page, que JavaScript peut modifier.</dd></div>
+<div><dt>document</dt><dd>L'objet qui représente toute la page.</dd></div>
+<div><dt>querySelector</dt><dd>Trouve le premier élément qui correspond à un sélecteur CSS.</dd></div>
+<div><dt>querySelectorAll</dt><dd>Trouve tous les éléments qui correspondent.</dd></div>
+<div><dt>textContent</dt><dd>Le texte d'un élément.</dd></div>
+<div><dt>innerHTML</dt><dd>Le HTML à l'intérieur d'un élément.</dd></div>
+<div><dt>null</dt><dd>« Rien » : par exemple quand un élément n'a pas été trouvé.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au DOM</a></li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>Trouver des éléments</a></li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_html.asp" target="_blank"><span class="tag">W3Schools</span><br>Changer le HTML</a></li>
+<li><a href="https://fr.javascript.info/searching-elements-dom" target="_blank"><span class="tag">Cours</span><br>Rechercher des éléments (javascript.info, en français)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents" target="_blank"><span class="tag">MDN</span><br>Manipuler le document (en français)</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/console" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : utiliser la console (en anglais)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais expliquer ce qu'est le DOM.</li>
+<li>Je sais trouver un élément avec <code>querySelector</code> et un sélecteur CSS.</li>
+<li>Je sais changer un texte avec <code>textContent</code>.</li>
+<li>Je sais changer un attribut comme <code>src</code>.</li>
+<li>Je sais modifier plusieurs éléments avec <code>querySelectorAll</code> et une boucle.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance06/index.html">← Séance 06</a>
+<a href="../seance08/index.html">Séance 08 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

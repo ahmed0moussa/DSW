@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 17 · Projet 1/4 : choisir mes interactions — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Projet : mon site interactif</span>
+    <h1><span>Séance 17</span> · Projet 1/4 : choisir mes interactions</h1>
+    <p>Tu as créé ton site en HTML et CSS pendant la première formation. Maintenant, tu vas le rendre <strong>vivant</strong> avec JavaScript ! Le projet dure 4 séances. Aujourd'hui : on choisit les interactions et on les prépare sur papier.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : Ton site du projet HTML/CSS, papier, Excalidraw</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Choisir 3 ou 4 interactions utiles pour mon site.</li><li>Décrire chaque interaction en français : QUAND… ALORS… (l'algorithme).</li><li>Préparer le HTML et le CSS nécessaires (ids, classes, état caché / visible).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Tu sais tout faire : variables, conditions, boucles, fonctions, DOM, événements, formulaires, créer des éléments, tableaux, objets, <code>setInterval</code>, <code>localStorage</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le catalogue des interactions</h3>
+<ul><li>⭐ <strong>Menu burger</strong> : sur téléphone, le menu est caché derrière ☰ et s'ouvre au clic.</li><li>⭐ <strong>Mode sombre</strong> qui se souvient (<code>localStorage</code>).</li><li>⭐ <strong>Bouton « retour en haut »</strong> qui apparaît quand on descend.</li><li>⭐⭐ <strong>FAQ en accordéon</strong> : la réponse s'ouvre au clic sur la question.</li><li>⭐⭐ <strong>Formulaire de contact vérifié</strong> avec messages d'erreur.</li><li>⭐⭐ <strong>Diaporama</strong> (slider) avec boutons et défilement automatique.</li><li>⭐⭐⭐ <strong>Galerie ou produits générés</strong> depuis un tableau d'objets, avec <strong>filtres</strong>.</li><li>⭐⭐⭐ <strong>Quiz</strong> sur le thème de ton site.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Choisis au moins <strong>une ⭐</strong>, <strong>une ⭐⭐</strong> et, si tu veux un défi, <strong>une ⭐⭐⭐</strong>. Mieux vaut 3 interactions qui marchent parfaitement que 6 à moitié finies.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Écrire l'algorithme d'abord</h3>
+<p>Pour chaque interaction, écris en français : <strong>QUAND</strong> (l'événement) → <strong>ALORS</strong> (ce qui change). Exemple pour le menu burger :</p>
+<div class="code-demo solo"><div><span class="label">Algorithme</span><pre><code>QUAND on clique sur le bouton ☰
+ALORS le menu reçoit / perd la classe "ouvert"
+      (en CSS : .menu        → display: none
+                .menu.ouvert → display: flex)
+QUAND on clique sur un lien du menu
+ALORS le menu perd la classe "ouvert"</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Préparer le HTML et le CSS</h3>
+<ul><li>Des <strong>id</strong> clairs sur les éléments que JavaScript va chercher : <code>#bouton-menu</code>, <code>#menu</code>, <code>#theme</code>.</li><li>Des <strong>classes d'état</strong> en CSS : <code>.ouvert</code>, <code>.cache</code>, <code>.actif</code>, <code>.sombre</code>. JavaScript se contente de les ajouter / enlever.</li><li>Un fichier <code>js/script.js</code> relié <strong>avant</strong> <code>&lt;/body&gt;</code> sur <strong>toutes</strong> les pages.</li></ul>
+<div class="code-demo solo"><div><span class="label">Schéma</span><pre><code>mon-site/
+├── index.html
+├── …
+├── css/style.css
+├── js/script.js      ← nouveau !
+└── images/</code></pre></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="catalogue.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Présentation du projet JS et de la grille d'évaluation (séance 20). On regarde l'exemple des séances 18 et 19 pour donner des idées.</span></li>
+<li><span class="temps">0:15 – 0:45</span><span>Exercice 1 : chacun ouvre son site HTML/CSS et choisit 3-4 interactions dans le catalogue. Validation par le formateur.</span></li>
+<li><span class="temps">0:45 – 1:20</span><span>Exercice 2 : l'algorithme QUAND / ALORS de chaque interaction, sur papier ou Excalidraw.</span></li>
+<li><span class="temps">1:20 – 1:50</span><span>Exercice 3 : préparer le HTML (ids), le CSS (classes d'état) et le fichier <code>js/script.js</code>.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Point d'étape : chacun présente ses interactions en une phrase.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Je choisis<span class="niveau facile">facile</span></h3><ol>
+<li>Ouvre ton site du projet HTML/CSS (fais-en une copie : <code>mon-site-js/</code>).</li>
+<li>Choisis 3 ou 4 interactions dans le catalogue, avec au moins une ⭐ et une ⭐⭐.</li>
+<li>Pour chacune, note sur quelle page elle sera et pourquoi elle est utile au visiteur.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · J'écris les algorithmes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Pour chaque interaction, écris QUAND… ALORS… en français.</li>
+<li>Liste les variables dont tu auras besoin (ex. <code>numeroImage</code>, <code>score</code>).</li>
+<li>Liste les fonctions (ex. <code>ouvrirMenu()</code>, <code>afficherImage()</code>).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Je prépare le terrain<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute les ids et les éléments HTML nécessaires (bouton ☰, bouton 🌙, zone de la FAQ…).</li>
+<li>Écris les classes d'état dans ton CSS (<code>.ouvert</code>, <code>.cache</code>, <code>.sombre</code>…) et teste-les <strong>à la main</strong> en les ajoutant dans F12.</li>
+<li>Crée <code>js/script.js</code>, relie-le sur toutes les pages, et vérifie avec un <code>console.log("script chargé")</code>.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Prendre de l'avance</h2>
+<p>Code déjà l'interaction ⭐ la plus simple (par exemple le bouton « retour en haut »).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je choisis 8 interactions</div><div class="ok">3 ou 4 interactions qui marchent valent mieux que 8 à moitié finies</div></div>
+<div class="erreur"><div class="ko">Je commence à coder sans algorithme</div><div class="ok">QUAND… ALORS… d'abord : on gagne beaucoup de temps</div></div>
+<div class="erreur"><div class="ko">Je mets les styles dans le JavaScript</div><div class="ok">Les styles vont dans des classes CSS ; JavaScript ajoute / enlève les classes</div></div>
+<div class="erreur"><div class="ko">Mon script ne marche que sur la page d'accueil</div><div class="ok">Le <code>&lt;script src="js/script.js"&gt;</code> doit être sur <strong>toutes</strong> les pages</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Interaction</dt><dd>Quelque chose qui réagit à une action du visiteur.</dd></div>
+<div><dt>Classe d'état</dt><dd>Une classe CSS qui représente un état : ouvert, caché, actif…</dd></div>
+<div><dt>Menu burger</dt><dd>Le bouton ☰ qui ouvre le menu sur téléphone.</dd></div>
+<div><dt>Accordéon</dt><dd>Une liste de blocs qui s'ouvrent et se ferment au clic.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/howto/howto_js_topnav_responsive.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : menu responsive (burger)</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_accordion.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : accordéon</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_slideshow.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : diaporama</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : mode sombre</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_scroll_to_top.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : bouton retour en haut</a></li>
+<li><a href="https://excalidraw.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Excalidraw</strong> : dessiner son plan ou sa maquette</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>J'ai choisi 3 ou 4 interactions.</li>
+<li>J'ai écrit l'algorithme QUAND / ALORS de chacune.</li>
+<li>Mon HTML a les ids nécessaires.</li>
+<li>Mes classes d'état sont prêtes dans le CSS.</li>
+<li><code>js/script.js</code> est relié sur toutes mes pages.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance16/index.html">← Séance 16</a>
+<a href="../seance18/index.html">Séance 18 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

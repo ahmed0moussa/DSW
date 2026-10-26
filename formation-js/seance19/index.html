@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 19 · Projet 3/4 : diaporama, accordéon et galerie — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Projet : mon site interactif</span>
+    <h1><span>Séance 19</span> · Projet 3/4 : diaporama, accordéon et galerie</h1>
+    <p>On code maintenant les interactions <strong>⭐⭐</strong> et <strong>⭐⭐⭐</strong> : un diaporama, une FAQ en accordéon, une galerie générée depuis un tableau avec des filtres… Tout ce que tu as appris dans les modules 2 et 3 sert ici !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Coder un diaporama avec boutons et défilement automatique.</li><li>Coder une FAQ en accordéon.</li><li>Générer une galerie depuis un tableau d'objets avec des boutons de filtre.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Séance 18 : menu burger (<code>toggle</code>), mode sombre (<code>localStorage</code>), bouton retour en haut (<code>scroll</code>). Module 3 : tableaux, objets, <code>filter</code>, <code>setInterval</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le diaporama</h3>
+<p>Un tableau d'images, un numéro, une fonction <code>afficher(n)</code>. Les boutons changent le numéro, <code>setInterval</code> le fait tout seul.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const images = ["img/1.jpg", "img/2.jpg", "img/3.jpg"];
+let numero = 0;
+const photo = document.querySelector("#photo");
+
+function afficher(n) {
+  numero = (n + images.length) % images.length;   // reste entre 0 et 2
+  photo.src = images[numero];
+}
+
+document.querySelector("#suivant").addEventListener("click", () =&gt; afficher(numero + 1));
+document.querySelector("#precedent").addEventListener("click", () =&gt; afficher(numero - 1));
+setInterval(() =&gt; afficher(numero + 1), 4000);</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>(n + images.length) % images.length</code> : une formule magique pour revenir au début après la dernière image, et à la fin avant la première.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>L'accordéon (FAQ)</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button class="question"&gt;Combien ça coûte ?&lt;/button&gt;
+&lt;div class="reponse"&gt;L'inscription est gratuite !&lt;/div&gt;
+&lt;button class="question"&gt;Quand ont lieu les activités ?&lt;/button&gt;
+&lt;div class="reponse"&gt;Le mercredi et le samedi.&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.reponse { display: none; padding: 6px 10px; background: #f4f6f9; }
+.question.ouverte + .reponse { display: block; }
+.question { width: 100%; text-align: left; margin-top: 4px; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>for (const question of document.querySelectorAll(".question")) {
+  question.addEventListener("click", function () {
+    question.classList.toggle("ouverte");
+  });
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : L&#x27;accordéon (FAQ)" sandbox="allow-scripts allow-modals" style="height:160px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.reponse { display: none; padding: 6px 10px; background: #f4f6f9; }
+.question.ouverte + .reponse { display: block; }
+.question { width: 100%; text-align: left; margin-top: 4px; }&lt;/style&gt;&lt;button class=&quot;question&quot;&gt;Combien ça coûte ?&lt;/button&gt;
+&lt;div class=&quot;reponse&quot;&gt;L&#x27;inscription est gratuite !&lt;/div&gt;
+&lt;button class=&quot;question&quot;&gt;Quand ont lieu les activités ?&lt;/button&gt;
+&lt;div class=&quot;reponse&quot;&gt;Le mercredi et le samedi.&lt;/div&gt;&lt;script&gt;for (const question of document.querySelectorAll(&quot;.question&quot;)) {
+  question.addEventListener(&quot;click&quot;, function () {
+    question.classList.toggle(&quot;ouverte&quot;);
+  });
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le sélecteur CSS <code>+</code> vise l'élément <strong>juste après</strong> : <code>.question.ouverte + .reponse</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>La galerie filtrée</h3>
+<p>Exactement la boutique de la séance 14, adaptée à ton site : un tableau d'objets, une fonction <code>afficher(liste)</code>, des boutons qui appellent <code>afficher(photos.filter(…))</code>.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const photos = [
+  { titre: "Plage", categorie: "mer", image: "images/plage.jpg" },
+  { titre: "Forêt", categorie: "nature", image: "images/foret.jpg" }
+];
+
+function afficher(liste) {
+  galerie.innerHTML = "";
+  for (const p of liste) {
+    const figure = document.createElement("figure");
+    figure.innerHTML = `&lt;img src="${p.image}" alt="${p.titre}"&gt;
+                        &lt;figcaption&gt;${p.titre}&lt;/figcaption&gt;`;
+    galerie.append(figure);
+  }
+}</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Tester comme un pro</h3>
+<ul><li>Console ouverte en permanence : <strong>0 erreur rouge</strong>.</li><li>Teste chaque interaction sur <strong>chaque page</strong>.</li><li>Teste en mode téléphone (F12 → Ctrl + Shift + M).</li><li>Demande à ton voisin d'utiliser ton site <strong>sans explication</strong> : trouve-t-il tout seul comment ça marche ?</li></ul>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Point de départ : chacun liste ce qu'il reste à faire. Rappel de la méthode : petit pas + test.</span></li>
+<li><span class="temps">0:10 – 1:30</span><span>Travail sur les interactions ⭐⭐ / ⭐⭐⭐ (exercices au choix selon le plan de chacun). Le formateur passe voir chaque élève ; mini-démonstrations quand un problème revient.</span></li>
+<li><span class="temps">1:30 – 1:50</span><span>Exercice 3 obligatoire : la session de tests en binôme.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Point d'étape et préparation de la présentation (séance 20).</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le diaporama<span class="niveau moyen">moyen</span></h3><ol>
+<li>Un tableau de 3 à 5 images de ton site, une <code>&lt;img id="photo"&gt;</code>, deux boutons ◀ ▶.</li>
+<li>La fonction <code>afficher(n)</code> avec la formule modulo.</li>
+<li>Le défilement automatique toutes les 4 secondes avec <code>setInterval</code>.</li>
+<li>Bonus : des petits points ● ● ● sous l'image, le point actif est coloré.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La FAQ ou la galerie<span class="niveau difficile">difficile</span></h3><ol>
+<li><strong>FAQ</strong> : 4 questions/réponses, <code>toggle("ouverte")</code>, une flèche qui tourne (CSS <code>transform: rotate</code>).</li>
+<li><strong>ou Galerie</strong> : un tableau d'au moins 6 objets, <code>afficher(liste)</code>, 3 boutons de filtre + « Tout voir ».</li>
+<li>Le bouton du filtre actif est mis en valeur (classe <code>.actif</code>).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La session de tests<span class="niveau facile">facile</span></h3><ol>
+<li>Ouvre la console sur chaque page : corrige toutes les erreurs rouges.</li>
+<li>Teste chaque interaction en mode téléphone.</li>
+<li>Échange ton ordinateur avec ton voisin : il note sur un papier tout ce qui ne marche pas ou n'est pas clair. Corrige.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La fenêtre (modale)</h2>
+<p>Dans ta galerie, un clic sur une photo l'ouvre en grand par-dessus la page, avec un fond noir transparent et un bouton ✖ (cherche « modal image » sur W3Schools How To). La touche Échap la ferme aussi.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le diaporama affiche une image cassée après la dernière</div><div class="ok">J'utilise la formule <code>(n + longueur) % longueur</code></div></div>
+<div class="erreur"><div class="ko">Toutes les réponses de la FAQ s'ouvrent ensemble</div><div class="ok">Je fais <code>toggle</code> sur <strong>la</strong> question cliquée, dans la boucle</div></div>
+<div class="erreur"><div class="ko">Mes filtres ne trouvent rien</div><div class="ok">Les catégories du tableau et des boutons doivent être écrites exactement pareil</div></div>
+<div class="erreur"><div class="ko">Ça marche sur mon ordinateur mais pas chez mon voisin</div><div class="ok">Je vérifie les chemins des images (majuscules, dossiers)</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Diaporama (slider)</dt><dd>Des images qui défilent.</dd></div>
+<div><dt>Modulo %</dt><dd>Le reste d'une division, utile pour boucler dans un tableau.</dd></div>
+<div><dt>Modale</dt><dd>Une fenêtre qui s'ouvre par-dessus la page.</dd></div>
+<div><dt>Test utilisateur</dt><dd>Faire essayer son site à quelqu'un d'autre.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/howto/howto_js_slideshow.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : diaporama</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_accordion.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : accordéon</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_filter_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : filtrer des éléments</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_css_modal_images.asp" target="_blank"><span class="tag">W3Schools</span><br>How To : image en grand (modale)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mes interactions ⭐⭐ / ⭐⭐⭐ marchent.</li>
+<li>Il n'y a aucune erreur rouge dans la console, sur aucune page.</li>
+<li>Tout marche en mode téléphone.</li>
+<li>Quelqu'un d'autre a testé mon site.</li>
+<li>J'ai corrigé les problèmes trouvés pendant les tests.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance18/index.html">← Séance 18</a>
+<a href="../seance20/index.html">Séance 20 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

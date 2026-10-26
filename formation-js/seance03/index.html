@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 03 · Les variables — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · Penser comme un programmeur</span>
+    <h1><span>Séance 03</span> · Les variables</h1>
+    <p>Un programme a besoin de <strong>retenir</strong> des informations : un prénom, un score, un prix. Pour ça, on utilise des <strong>variables</strong>, comme des boîtes avec une étiquette.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, console F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer une variable avec <code>let</code> ou <code>const</code> et changer sa valeur.</li><li>Reconnaître les types de données : nombre, texte (chaîne), booléen.</li><li>Faire des calculs et coller des textes ensemble.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Le JavaScript s'écrit dans un fichier <code>.js</code> relié avant <code>&lt;/body&gt;</code>. <code>console.log()</code> affiche un message dans la console (F12). Une erreur s'affiche en rouge avec le numéro de ligne.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Une variable = une boîte avec une étiquette</h3>
+<p>Une <strong>variable</strong> garde une valeur en mémoire. On lui donne un <strong>nom</strong> (l'étiquette) et une <strong>valeur</strong> (ce qu'il y a dans la boîte).</p>
+<p><code>let</code> crée une variable dont la valeur <strong>peut changer</strong>. Le <code>=</code> veut dire « range dans la boîte » (et pas « est égal à » comme en maths).</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>let prenom = "Yasmine";
+let score = 0;
+
+console.log(prenom);
+console.log(score);
+
+score = 10;          // on change la valeur
+console.log(score);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Une variable = une boîte avec une étiquette" sandbox="allow-scripts allow-modals" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;let prenom = &quot;Yasmine&quot;;
+let score = 0;
+console.log(prenom);
+console.log(score);
+score = 10;
+console.log(score);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>let ou const ?</h3>
+<ul><li><code>let</code> : la valeur peut changer (un score, une vie qui diminue).</li><li><code>const</code> : la valeur ne change <strong>jamais</strong> (une constante : ta date de naissance, le nombre de jours dans une semaine).</li></ul>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const joursParSemaine = 7;
+let vies = 3;
+vies = vies - 1;   // OK : let peut changer
+// joursParSemaine = 8;  → erreur ! const ne change pas</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Règle simple : utilise <code>const</code> par défaut, et <code>let</code> seulement si la valeur doit changer.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les types de données</h3>
+<ul><li><strong>Nombre</strong> (number) : <code>14</code>, <code>3.5</code>, <code>-2</code>. Sans guillemets.</li><li><strong>Texte</strong> (string, « chaîne de caractères ») : <code>"Bonjour"</code>. Toujours entre guillemets.</li><li><strong>Booléen</strong> (boolean) : <code>true</code> (vrai) ou <code>false</code> (faux). Pratique pour les conditions.</li></ul>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const age = 14;               // nombre
+const ville = "Sfax";        // texte
+const estInscrit = true;     // booléen
+console.log(typeof age, typeof ville, typeof estInscrit);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les types de données" sandbox="allow-scripts allow-modals" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const age = 14;
+const ville = &quot;Sfax&quot;;
+const estInscrit = true;
+console.log(typeof age, typeof ville, typeof estInscrit);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Calculer avec des variables</h3>
+<p>Les opérateurs : <code>+</code> (plus), <code>-</code> (moins), <code>*</code> (fois), <code>/</code> (divisé), <code>%</code> (reste de la division).</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const prixGlace = 2.5;
+const nombre = 4;
+const total = prixGlace * nombre;
+console.log("Total :", total, "DT");
+
+let points = 10;
+points = points + 5;   // on ajoute 5
+points += 5;           // pareil, en plus court
+console.log(points);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Calculer avec des variables" sandbox="allow-scripts allow-modals" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const prixGlace = 2.5;
+const nombre = 4;
+const total = prixGlace * nombre;
+console.log(&quot;Total :&quot;, total, &quot;DT&quot;);
+let points = 10;
+points = points + 5;
+points += 5;
+console.log(points);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Coller des textes</h3>
+<p>Le <code>+</code> entre deux textes les <strong>colle</strong> (on dit <strong>concaténer</strong>).</p>
+<p>Attention : <code>"5" + 3</code> donne <code>"53"</code> ! Si l'un des deux est un texte, JavaScript colle au lieu de calculer.</p>
+<p>Il existe une écriture plus pratique avec des <strong>accents graves</strong> (Alt Gr + 7) et <code>${ }</code> pour mettre une variable dans un texte.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const prenom = "Amine";
+const age = 15;
+console.log("Salut " + prenom + " !");
+console.log(`${prenom} a ${age} ans.`);
+console.log("5" + 3);   // "53" et pas 8 !</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Coller des textes" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const prenom = &quot;Amine&quot;;
+const age = 15;
+console.log(&quot;Salut &quot; + prenom + &quot; !&quot;);
+console.log(`${prenom} a ${age} ans.`);
+console.log(&quot;5&quot; + 3);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel : console.log, lire une erreur. Mini-défi : afficher son prénom et son âge dans la console.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : la boîte avec étiquette (on montre de vraies boîtes en carton !), <code>let</code>, <code>const</code>, <code>=</code>.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Les types de données, les calculs, la concaténation et le piège <code>"5" + 3</code>.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le ticket de caisse.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Ma carte d'identité en variables<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance03/index.html</code> et <code>script.js</code>.</li>
+<li>Crée les variables : <code>prenom</code>, <code>age</code>, <code>ville</code>, <code>aimeLeFoot</code> (true ou false).</li>
+<li>Affiche chaque variable dans la console.</li>
+<li>Affiche une phrase complète : « Je m'appelle … j'ai … ans et j'habite à … ».</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le score du jeu<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>let score = 0;</code> et <code>let vies = 3;</code>.</li>
+<li>Le joueur gagne 10 points, puis encore 25 points : mets à jour <code>score</code> et affiche-le.</li>
+<li>Le joueur perd une vie : mets à jour <code>vies</code> et affiche « Il te reste … vies ».</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La calculatrice d'anniversaire<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée <code>const anneeNaissance = …;</code> et <code>const anneeActuelle = 2026;</code>.</li>
+<li>Calcule ton âge dans une variable <code>age</code> et affiche-le.</li>
+<li>Calcule ton âge en mois, puis en jours (environ 365 jours par an).</li>
+<li>Affiche : « J'ai environ … jours ! »</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le ticket de caisse</h2>
+<p>Crée les variables de 3 articles achetés (prix et quantité de chaque). Calcule le total, puis le total avec une réduction de 10 %. Affiche un joli ticket dans la console.</p>
+<p>Bonus : cherche ce que fait <code>Math.round()</code> pour arrondir le prix.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'oublie <code>let</code> ou <code>const</code> la première fois</div><div class="ok">On crée la variable une fois avec <code>let</code> ou <code>const</code>, ensuite on utilise juste son nom</div></div>
+<div class="erreur"><div class="ko">J'écris <code>let prenom = Yasmine;</code> sans guillemets</div><div class="ok">Un texte va entre guillemets : <code>"Yasmine"</code></div></div>
+<div class="erreur"><div class="ko"><code>"10" + 5</code> donne <code>"105"</code></div><div class="ok">Un nombre s'écrit sans guillemets : <code>10 + 5</code></div></div>
+<div class="erreur"><div class="ko">Je mets des espaces ou des accents dans le nom : <code>let mon âge</code></div><div class="ok">Noms sans espace ni accent : <code>monAge</code> (on colle les mots, majuscule au début de chaque mot)</div></div>
+<div class="erreur"><div class="ko">Je change une <code>const</code> : erreur « Assignment to constant variable »</div><div class="ok">J'utilise <code>let</code> si la valeur doit changer</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Variable</dt><dd>Une boîte nommée qui garde une valeur.</dd></div>
+<div><dt>let / const</dt><dd>Créer une variable qui peut changer / qui ne change pas.</dd></div>
+<div><dt>Affectation</dt><dd>Ranger une valeur dans une variable avec <code>=</code>.</dd></div>
+<div><dt>Nombre (number)</dt><dd>Une valeur numérique : <code>14</code>, <code>2.5</code>.</dd></div>
+<div><dt>Chaîne (string)</dt><dd>Du texte entre guillemets.</dd></div>
+<div><dt>Booléen</dt><dd><code>true</code> (vrai) ou <code>false</code> (faux).</dd></div>
+<div><dt>Concaténer</dt><dd>Coller des textes avec <code>+</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_variables.asp" target="_blank"><span class="tag">W3Schools</span><br>Les variables</a></li>
+<li><a href="https://www.w3schools.com/js/js_let.asp" target="_blank"><span class="tag">W3Schools</span><br>let</a></li>
+<li><a href="https://www.w3schools.com/js/js_const.asp" target="_blank"><span class="tag">W3Schools</span><br>const</a></li>
+<li><a href="https://www.w3schools.com/js/js_datatypes.asp" target="_blank"><span class="tag">W3Schools</span><br>Les types de données</a></li>
+<li><a href="https://www.w3schools.com/js/js_arithmetic.asp" target="_blank"><span class="tag">W3Schools</span><br>Les calculs</a></li>
+<li><a href="https://fr.javascript.info/variables" target="_blank"><span class="tag">Cours</span><br>Les variables (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/types" target="_blank"><span class="tag">Cours</span><br>Les types de données (javascript.info, en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais créer une variable avec <code>let</code> et avec <code>const</code>.</li>
+<li>Je sais quand utiliser <code>let</code> ou <code>const</code>.</li>
+<li>Je reconnais un nombre, un texte et un booléen.</li>
+<li>Je sais faire un calcul avec des variables.</li>
+<li>Je comprends pourquoi <code>"5" + 3</code> donne <code>"53"</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance02/index.html">← Séance 02</a>
+<a href="../seance04/index.html">Séance 04 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

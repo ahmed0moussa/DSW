@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 06 · Les fonctions + mini-projet « Devine le nombre » — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · Penser comme un programmeur</span>
+    <h1><span>Séance 06</span> · Les fonctions + mini-projet « Devine le nombre »</h1>
+    <p>Une <strong>fonction</strong> est une recette qu'on écrit une fois et qu'on utilise autant de fois qu'on veut. Ensuite, tu réunis tout le module 1 dans ton premier jeu : « Devine le nombre » !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, console F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer une fonction et l'appeler.</li><li>Donner des <strong>paramètres</strong> à une fonction et récupérer un résultat avec <code>return</code>.</li><li>Programmer le jeu « Devine le nombre » avec des variables, des conditions, une boucle et des fonctions.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Les boucles : <code>for (let i = 1; i &lt;= 10; i++) { … }</code> répète un nombre précis de fois, <code>while (condition) { … }</code> répète tant que c'est vrai.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Créer et appeler une fonction</h3>
+<p>On <strong>déclare</strong> la fonction avec <code>function</code>, un nom, des parenthèses et des accolades. Rien ne se passe tant qu'on ne l'<strong>appelle</strong> pas avec son nom suivi de <code>()</code>.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>function direBonjour() {
+  console.log("Bonjour !");
+  console.log("Bienvenue au club 👋");
+}
+
+direBonjour();   // on l'appelle
+direBonjour();   // et encore une fois</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Créer et appeler une fonction" sandbox="allow-scripts allow-modals" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;function direBonjour() {
+  console.log(&quot;Bonjour !&quot;);
+  console.log(&quot;Bienvenue au club 👋&quot;);
+}
+direBonjour();
+direBonjour();&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Les paramètres</h3>
+<p>Un <strong>paramètre</strong> est une information qu'on donne à la fonction. Elle peut changer à chaque appel.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>function saluer(prenom) {
+  console.log("Salut " + prenom + " !");
+}
+
+saluer("Nour");
+saluer("Youssef");</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les paramètres" sandbox="allow-scripts allow-modals" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;function saluer(prenom) {
+  console.log(&quot;Salut &quot; + prenom + &quot; !&quot;);
+}
+saluer(&quot;Nour&quot;);
+saluer(&quot;Youssef&quot;);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Renvoyer un résultat : return</h3>
+<p><code>return</code> renvoie une valeur. On peut la ranger dans une variable.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>function calculerPrix(prix, quantite) {
+  return prix * quantite;
+}
+
+const total = calculerPrix(2.5, 4);
+console.log("À payer : " + total + " DT");</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Renvoyer un résultat : return" sandbox="allow-scripts allow-modals" style="height:50px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;function calculerPrix(prix, quantite) {
+  return prix * quantite;
+}
+const total = calculerPrix(2.5, 4);
+console.log(&quot;À payer : &quot; + total + &quot; DT&quot;);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pense à une machine à jus : tu mets des oranges (les paramètres), elle te rend un jus (le <code>return</code>).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Parler au visiteur : prompt et alert</h3>
+<ul><li><code>alert("message")</code> : affiche une fenêtre avec un message.</li><li><code>prompt("question")</code> : pose une question et renvoie la réponse <strong>sous forme de texte</strong>.</li><li><code>Number(texte)</code> : transforme un texte en nombre (<code>"12"</code> devient <code>12</code>).</li></ul>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const reponse = prompt("Quel âge as-tu ?");
+const age = Number(reponse);
+alert("Dans 10 ans, tu auras " + (age + 10) + " ans !");</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>prompt</code> et <code>alert</code> sont parfaits pour apprendre, mais les vrais sites ne les utilisent presque pas. Au module 2, on parlera directement à la page !</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Le hasard : Math.random</h3>
+<p><code>Math.random()</code> donne un nombre au hasard entre 0 et 1. Pour avoir un nombre entier entre 1 et 100 :</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const secret = Math.floor(Math.random() * 100) + 1;
+console.log(secret);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le hasard : Math.random" sandbox="allow-scripts allow-modals" style="height:50px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const secret = Math.floor(Math.random() * 100) + 1;
+console.log(secret);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>Math.floor()</code> arrondit vers le bas. Recharge le cadre (ou la page) : le nombre change à chaque fois.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span><strong>Quiz du module 1</strong> (10 questions) : algorithme, variables, conditions, boucles.</span></li>
+<li><span class="temps">0:15 – 0:40</span><span>Les fonctions : déclarer, appeler, paramètres, <code>return</code>. Exercice 1.</span></li>
+<li><span class="temps">0:40 – 0:50</span><span><code>prompt</code>, <code>alert</code>, <code>Number</code>, <code>Math.random</code>. On écrit ensemble l'algorithme du jeu en français au tableau.</span></li>
+<li><span class="temps">0:50 – 1:45</span><span>Mini-projet « Devine le nombre » (exercices 2 et 3), en binômes.</span></li>
+<li><span class="temps">1:45 – 2:00</span><span>On joue aux jeux des autres binômes. Bilan du module 1.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Mes premières fonctions<span class="niveau facile">facile</span></h3><ol>
+<li>Crée une fonction <code>presenter(prenom, age)</code> qui affiche « Je m'appelle … et j'ai … ans ».</li>
+<li>Appelle-la 3 fois avec des personnes différentes.</li>
+<li>Crée une fonction <code>carre(n)</code> qui <strong>renvoie</strong> <code>n * n</code>, et affiche <code>carre(7)</code>.</li>
+<li>Crée une fonction <code>estMajeur(age)</code> qui renvoie <code>true</code> si <code>age &gt;= 18</code>, sinon <code>false</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Devine le nombre : l'algorithme<span class="niveau moyen">moyen</span></h3><ol>
+<li>Écris d'abord en français (en commentaires) : l'ordinateur choisit un nombre secret entre 1 et 100 ; RÉPÉTER : le joueur propose, SI trop petit… SI trop grand… SI trouvé : bravo et on s'arrête.</li>
+<li>Crée <code>const secret</code> avec <code>Math.random()</code>.</li>
+<li>Crée <code>let essais = 0;</code> et <code>let trouve = false;</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Devine le nombre : le code<span class="niveau difficile">difficile</span></h3><ol>
+<li>Avec <code>while (!trouve)</code>, demande un nombre avec <code>prompt</code> et transforme-le avec <code>Number</code>.</li>
+<li>Si le joueur clique sur <strong>Annuler</strong>, <code>prompt</code> renvoie <code>null</code> : arrête la boucle avec <code>break</code>.</li>
+<li>Ajoute 1 à <code>essais</code> à chaque tour. Affiche « C'est plus ! » ou « C'est moins ! » avec <code>alert</code>.</li>
+<li>Quand c'est trouvé : « Bravo, trouvé en … essais ! 🎉 » et <code>trouve = true</code>.</li>
+<li>Range le message du résultat dans une fonction <code>messageResultat(essais)</code> qui renvoie un texte différent selon le nombre d'essais.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Les niveaux de difficulté</h2>
+<p>Au début du jeu, demande le niveau : facile (1 à 20), moyen (1 à 100), difficile (1 à 1000). Crée une fonction <code>nombreAuHasard(max)</code> qui renvoie un nombre entre 1 et <code>max</code>.</p>
+<p>Bonus : limite le nombre d'essais (10 maximum) et affiche « Perdu ! Le nombre était … ».</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Ma fonction ne fait rien</div><div class="ok">Il faut l'<strong>appeler</strong> : <code>direBonjour();</code></div></div>
+<div class="erreur"><div class="ko">J'oublie <code>return</code> : ma variable vaut <code>undefined</code></div><div class="ok">La fonction doit renvoyer la valeur avec <code>return</code></div></div>
+<div class="erreur"><div class="ko"><code>prompt</code> renvoie <code>"12"</code> et mes comparaisons sont fausses</div><div class="ok">Je transforme en nombre : <code>Number(reponse)</code></div></div>
+<div class="erreur"><div class="ko">Le jeu ne s'arrête jamais quand je clique sur Annuler</div><div class="ok">Je teste <code>if (reponse === null) { break; }</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Fonction</dt><dd>Un bloc de code avec un nom, qu'on peut réutiliser.</dd></div>
+<div><dt>Appeler</dt><dd>Lancer une fonction : <code>nom()</code>.</dd></div>
+<div><dt>Paramètre</dt><dd>Une information donnée à la fonction.</dd></div>
+<div><dt>return</dt><dd>Renvoie un résultat et termine la fonction.</dd></div>
+<div><dt>prompt / alert</dt><dd>Poser une question / afficher un message dans une fenêtre.</dd></div>
+<div><dt>break</dt><dd>Sortir d'une boucle tout de suite.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_functions.asp" target="_blank"><span class="tag">W3Schools</span><br>Les fonctions</a></li>
+<li><a href="https://www.w3schools.com/js/js_random.asp" target="_blank"><span class="tag">W3Schools</span><br>Math.random</a></li>
+<li><a href="https://www.w3schools.com/js/js_popup.asp" target="_blank"><span class="tag">W3Schools</span><br>alert, confirm, prompt</a></li>
+<li><a href="https://fr.javascript.info/function-basics" target="_blank"><span class="tag">Cours</span><br>Les fonctions (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/alert-prompt-confirm" target="_blank"><span class="tag">Cours</span><br>alert, prompt, confirm (javascript.info, en français)</a></li>
+<li><a href="https://codecombat.com/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CodeCombat</strong> : un jeu d'aventure où l'on avance en écrivant du vrai code</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais créer et appeler une fonction.</li>
+<li>Je sais utiliser des paramètres.</li>
+<li>Je sais renvoyer une valeur avec <code>return</code>.</li>
+<li>Je sais transformer la réponse de <code>prompt</code> en nombre.</li>
+<li>Mon jeu « Devine le nombre » marche du début à la fin.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance05/index.html">← Séance 05</a>
+<a href="../seance07/index.html">Séance 07 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 13 · Les tableaux : des listes de données — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 3 · Les données et le temps</span>
+    <h1><span>Séance 13</span> · Les tableaux : des listes de données</h1>
+    <p>Une playlist, une liste d'élèves, les questions d'un quiz… Quand on a <strong>plusieurs valeurs</strong> du même genre, on les range dans un <strong>tableau</strong> (array). Et avec une boucle, on les affiche toutes d'un coup dans la page.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer un tableau, lire un élément avec son <strong>indice</strong> et connaître sa taille avec <code>length</code>.</li><li>Ajouter et enlever des éléments avec <code>push</code>, <code>pop</code>, <code>splice</code>.</li><li>Parcourir un tableau avec <code>for…of</code> pour afficher chaque élément dans la page.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 2 : on trouve des éléments (<code>querySelector</code>), on réagit aux clics (<code>addEventListener</code>), on crée des éléments (<code>createElement</code>, <code>append</code>).</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Créer un tableau</h3>
+<p>Un tableau s'écrit entre <strong>crochets</strong> <code>[ ]</code>, les valeurs séparées par des virgules. Chaque valeur a une <strong>position</strong>, l'<strong>indice</strong>, qui commence à <strong>0</strong> !</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const playlist = ["Calme", "Bella", "Dynamite", "Habibi"];
+
+console.log(playlist[0]);       // le 1er : "Calme"
+console.log(playlist[2]);       // le 3e : "Dynamite"
+console.log(playlist.length);   // 4 éléments</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Créer un tableau" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const playlist = [&quot;Calme&quot;, &quot;Bella&quot;, &quot;Dynamite&quot;, &quot;Habibi&quot;];
+console.log(playlist[0]);
+console.log(playlist[2]);
+console.log(playlist.length);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Le dernier élément est à l'indice <code>length - 1</code> : <code>playlist[playlist.length - 1]</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Ajouter, enlever, modifier</h3>
+<ul><li><code>tableau.push(valeur)</code> : ajoute à la <strong>fin</strong>.</li><li><code>tableau.pop()</code> : enlève le <strong>dernier</strong>.</li><li><code>tableau.splice(indice, 1)</code> : enlève l'élément à cet indice.</li><li><code>tableau[1] = "…"</code> : remplace l'élément à l'indice 1.</li><li><code>tableau.includes(valeur)</code> : <code>true</code> si la valeur est dans le tableau.</li></ul>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const courses = ["pain", "lait"];
+courses.push("œufs");
+console.log(courses);
+courses.splice(0, 1);    // enlève "pain"
+console.log(courses);
+console.log(courses.includes("lait"));</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Ajouter, enlever, modifier" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const courses = [&quot;pain&quot;, &quot;lait&quot;];
+courses.push(&quot;œufs&quot;);
+console.log(courses);
+courses.splice(0, 1);
+console.log(courses);
+console.log(courses.includes(&quot;lait&quot;));&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Un tableau créé avec <code>const</code> peut quand même changer de contenu : <code>const</code> empêche seulement de le remplacer par un autre tableau.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Parcourir un tableau</h3>
+<p><code>for (const element of tableau)</code> passe sur chaque élément, un par un.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const notes = [12, 15, 9, 17];
+let somme = 0;
+for (const note of notes) {
+  somme += note;
+}
+console.log("Moyenne :", somme / notes.length);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Parcourir un tableau" sandbox="allow-scripts allow-modals" style="height:50px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const notes = [12, 15, 9, 17];
+let somme = 0;
+for (const note of notes) {
+  somme += note;
+}
+console.log(&quot;Moyenne :&quot;, somme / notes.length);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Du tableau à la page</h3>
+<p>Le grand classique : on garde les <strong>données</strong> dans un tableau, et une fonction <strong>affiche</strong> tout le tableau dans la page. Quand le tableau change, on rappelle la fonction.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul id="liste"&gt;&lt;/ul&gt;
+&lt;button id="ajouter"&gt;Ajouter un titre&lt;/button&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const playlist = ["Calme", "Bella", "Dynamite"];
+const liste = document.querySelector("#liste");
+
+function afficher() {
+  liste.innerHTML = "";              // on vide
+  for (const titre of playlist) {    // on recrée tout
+    const li = document.createElement("li");
+    li.textContent = "🎵 " + titre;
+    liste.append(li);
+  }
+}
+
+document.querySelector("#ajouter").addEventListener("click", function () {
+  playlist.push("Nouveau titre " + (playlist.length + 1));
+  afficher();
+});
+
+afficher();</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Du tableau à la page" sandbox="allow-scripts allow-modals" style="height:190px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;ul id=&quot;liste&quot;&gt;&lt;/ul&gt;
+&lt;button id=&quot;ajouter&quot;&gt;Ajouter un titre&lt;/button&gt;&lt;script&gt;const playlist = [&quot;Calme&quot;, &quot;Bella&quot;, &quot;Dynamite&quot;];
+const liste = document.querySelector(&quot;#liste&quot;);
+
+function afficher() {
+  liste.innerHTML = &quot;&quot;;              // on vide
+  for (const titre of playlist) {    // on recrée tout
+    const li = document.createElement(&quot;li&quot;);
+    li.textContent = &quot;🎵 &quot; + titre;
+    liste.append(li);
+  }
+}
+
+document.querySelector(&quot;#ajouter&quot;).addEventListener(&quot;click&quot;, function () {
+  playlist.push(&quot;Nouveau titre &quot; + (playlist.length + 1));
+  afficher();
+});
+
+afficher();&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Un élément au hasard</h3>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const blagues = ["Blague 1…", "Blague 2…", "Blague 3…"];
+const indice = Math.floor(Math.random() * blagues.length);
+console.log(blagues[indice]);</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>Math.random() * blagues.length</code> donne un nombre entre 0 et la taille du tableau : parfait pour un indice au hasard.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Bilan du module 2, présentation du module 3 : « Comment Spotify garde ta playlist ? »</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Créer un tableau, les indices qui commencent à 0 (on aligne des élèves et on les numérote à partir de 0 !), <code>length</code>.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span><code>push</code>, <code>pop</code>, <code>splice</code>, <code>includes</code>, <code>for…of</code>. Du tableau à la page avec une fonction <code>afficher()</code>.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le générateur de blagues ou de citations.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Mon tableau de films<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un tableau <code>films</code> avec 5 titres.</li>
+<li>Affiche dans la console : le premier, le dernier et le nombre de films.</li>
+<li>Ajoute un film avec <code>push</code>, enlève le 2e avec <code>splice</code>, et affiche le tableau.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La playlist dans la page<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un tableau <code>playlist</code> et une fonction <code>afficher()</code> qui crée un <code>&lt;li&gt;</code> par titre dans une <code>&lt;ul&gt;</code>.</li>
+<li>Ajoute un formulaire pour ajouter un titre : <code>push</code> puis <code>afficher()</code>.</li>
+<li>Affiche au-dessus : « 6 titres dans ta playlist ».</li>
+<li>N'ajoute pas un titre déjà présent (<code>includes</code>) et affiche un message.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le lecteur au hasard<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un bouton « 🔀 Lecture au hasard ».</li>
+<li>Au clic, choisis un indice au hasard et affiche « En écoute : … ».</li>
+<li>Mets en valeur le titre en écoute dans la liste (une classe CSS).</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le générateur de citations</h2>
+<p>Crée un tableau de 10 citations ou blagues. Un bouton affiche une citation au hasard, avec une animation CSS d'apparition. Bonus : la même citation ne sort jamais deux fois de suite.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>playlist[1]</code> me donne le 2e élément, pas le 1er</div><div class="ok">Normal : les indices commencent à <strong>0</strong></div></div>
+<div class="erreur"><div class="ko"><code>playlist[playlist.length]</code> vaut <code>undefined</code></div><div class="ok">Le dernier est à <code>length - 1</code></div></div>
+<div class="erreur"><div class="ko">Ma liste dans la page affiche les titres en double</div><div class="ok">Dans <code>afficher()</code>, je vide d'abord : <code>liste.innerHTML = ""</code></div></div>
+<div class="erreur"><div class="ko">J'oublie d'appeler <code>afficher()</code> après un <code>push</code></div><div class="ok">Le tableau change, mais la page ne se met à jour que si je rappelle <code>afficher()</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Tableau (array)</dt><dd>Une liste de valeurs entre crochets <code>[ ]</code>.</dd></div>
+<div><dt>Indice</dt><dd>La position d'un élément, en commençant à 0.</dd></div>
+<div><dt>length</dt><dd>Le nombre d'éléments du tableau.</dd></div>
+<div><dt>push / pop</dt><dd>Ajouter à la fin / enlever le dernier.</dd></div>
+<div><dt>splice</dt><dd>Enlever (ou ajouter) des éléments à une position.</dd></div>
+<div><dt>Parcourir</dt><dd>Passer sur chaque élément avec une boucle.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank"><span class="tag">W3Schools</span><br>Les tableaux</a></li>
+<li><a href="https://www.w3schools.com/js/js_array_methods.asp" target="_blank"><span class="tag">W3Schools</span><br>Les méthodes des tableaux</a></li>
+<li><a href="https://www.w3schools.com/js/js_loop_forof.asp" target="_blank"><span class="tag">W3Schools</span><br>La boucle for…of</a></li>
+<li><a href="https://fr.javascript.info/array" target="_blank"><span class="tag">Cours</span><br>Les tableaux (javascript.info, en français)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Arrays" target="_blank"><span class="tag">MDN</span><br>Les tableaux (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais créer un tableau et lire un élément avec son indice.</li>
+<li>Je sais que les indices commencent à 0.</li>
+<li>Je sais ajouter et enlever des éléments.</li>
+<li>Je sais parcourir un tableau avec <code>for…of</code>.</li>
+<li>Je sais afficher un tableau dans la page avec une fonction <code>afficher()</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance12/index.html">← Séance 12</a>
+<a href="../seance14/index.html">Séance 14 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon site interactif (1)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    header { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 12px 20px; background: #1d3557; }
+    header .logo { color: white; font-weight: bold; font-size: 20px; text-decoration: none; }
+    .menu { display: flex; gap: 16px; }
+    .menu a { color: white; text-decoration: none; }
+    #bouton-menu { display: none; background: none; font-size: 26px; padding: 4px 10px; }
+    .outils { display: flex; gap: 8px; align-items: center; }
+    main { padding: 20px; }
+    section { min-height: 60vh; }
+    #haut-de-page { position: fixed; right: 20px; bottom: 20px; border-radius: 50%; width: 50px; height: 50px; padding: 0; font-size: 22px; background: #e67e22; }
+    .cache { display: none; }
+    body.sombre { background: #14202b; color: #f4f6f9; }
+    body.sombre .carte { background: #22303c; }
+    @media (max-width: 700px) {
+      #bouton-menu { display: block; }
+      .menu { display: none; width: 100%; flex-direction: column; padding: 10px 0; }
+      .menu.ouvert { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">🌿 Club Nature</a>
+    <div class="outils">
+      <button id="theme">🌙</button>
+      <button id="bouton-menu" aria-label="Ouvrir le menu">☰</button>
+    </div>
+    <nav class="menu">
+      <a href="#accueil">Accueil</a>
+      <a href="#activites">Activités</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil" class="carte">
+      <h1>Bienvenue au Club Nature</h1>
+      <p>Réduis la fenêtre (ou F12 → mode téléphone) pour voir le menu burger ☰.</p>
+      <p>Clique sur 🌙 puis recharge la page : le thème est sauvegardé.</p>
+      <p>Fais défiler vers le bas : le bouton ⬆ apparaît.</p>
+    </section>
+    <section id="activites" class="carte">
+      <h2>Nos activités</h2>
+      <p>Randonnées, potager, nettoyage des plages, observation des oiseaux…</p>
+    </section>
+    <section id="contact" class="carte">
+      <h2>Contact</h2>
+      <p>Écris-nous à contact@exemple.com</p>
+    </section>
+  </main>
+
+  <button id="haut-de-page" class="cache" aria-label="Retour en haut">⬆</button>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

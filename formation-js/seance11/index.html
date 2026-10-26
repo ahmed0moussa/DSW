@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 11 · Créer et supprimer des éléments — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 11</span> · Créer et supprimer des éléments</h1>
+    <p>Jusqu'ici, JavaScript modifiait des éléments qui existaient déjà. Maintenant, il va en <strong>créer</strong> de nouveaux : ajouter une ligne à une liste, un commentaire, une carte… et les supprimer.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer un nouvel élément avec <code>document.createElement()</code>.</li><li>L'ajouter dans la page avec <code>append()</code> (ou <code>prepend()</code>).</li><li>Supprimer un élément avec <code>remove()</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p><code>.value</code> lit un champ, <code>submit</code> + <code>preventDefault()</code> gère l'envoi d'un formulaire, <code>textContent</code> et <code>classList</code> modifient un élément.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Créer un élément en 3 étapes</h3>
+<ul><li>1. <strong>Créer</strong> : <code>const li = document.createElement("li");</code> (l'élément existe, mais n'est pas encore dans la page).</li><li>2. <strong>Remplir</strong> : <code>li.textContent = "…";</code>, <code>li.classList.add("…");</code>.</li><li>3. <strong>Ajouter</strong> dans un parent : <code>liste.append(li);</code> (à la fin) ou <code>liste.prepend(li);</code> (au début).</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul id="liste"&gt;
+  &lt;li&gt;Pain&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const liste = document.querySelector("#liste");
+
+const li = document.createElement("li");
+li.textContent = "Lait (ajouté par JS)";
+liste.append(li);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Créer un élément en 3 étapes" sandbox="allow-scripts allow-modals" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;ul id=&quot;liste&quot;&gt;
+  &lt;li&gt;Pain&lt;/li&gt;
+&lt;/ul&gt;&lt;script&gt;const liste = document.querySelector(&quot;#liste&quot;);
+
+const li = document.createElement(&quot;li&quot;);
+li.textContent = &quot;Lait (ajouté par JS)&quot;;
+liste.append(li);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Ajouter à chaque clic</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;input id="article" placeholder="Un article"&gt;
+&lt;button id="ajouter"&gt;Ajouter&lt;/button&gt;
+&lt;ul id="courses"&gt;&lt;/ul&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const champ = document.querySelector("#article");
+const courses = document.querySelector("#courses");
+
+document.querySelector("#ajouter").addEventListener("click", function () {
+  if (champ.value.trim() === "") return;   // rien à ajouter
+  const li = document.createElement("li");
+  li.textContent = champ.value;
+  courses.append(li);
+  champ.value = "";     // on vide le champ
+  champ.focus();        // le curseur revient dans le champ
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Ajouter à chaque clic" sandbox="allow-scripts allow-modals" style="height:160px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;input id=&quot;article&quot; placeholder=&quot;Un article&quot;&gt;
+&lt;button id=&quot;ajouter&quot;&gt;Ajouter&lt;/button&gt;
+&lt;ul id=&quot;courses&quot;&gt;&lt;/ul&gt;&lt;script&gt;const champ = document.querySelector(&quot;#article&quot;);
+const courses = document.querySelector(&quot;#courses&quot;);
+
+document.querySelector(&quot;#ajouter&quot;).addEventListener(&quot;click&quot;, function () {
+  if (champ.value.trim() === &quot;&quot;) return;   // rien à ajouter
+  const li = document.createElement(&quot;li&quot;);
+  li.textContent = champ.value;
+  courses.append(li);
+  champ.value = &quot;&quot;;     // on vide le champ
+  champ.focus();        // le curseur revient dans le champ
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>return</code> tout seul arrête la fonction tout de suite : pratique pour ignorer un champ vide.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Supprimer un élément</h3>
+<p><code>element.remove()</code> supprime l'élément de la page.</p>
+<p>Astuce : on peut ajouter un bouton ✖ <strong>dans</strong> chaque élément créé, avec son propre <code>addEventListener</code>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul id="l"&gt;&lt;/ul&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const l = document.querySelector("#l");
+for (const nom of ["Tomates", "Pâtes", "Fromage"]) {
+  const li = document.createElement("li");
+  li.textContent = nom + " ";
+  const croix = document.createElement("button");
+  croix.textContent = "✖";
+  croix.addEventListener("click", function () {
+    li.remove();
+  });
+  li.append(croix);
+  l.append(li);
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Supprimer un élément" sandbox="allow-scripts allow-modals" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;ul id=&quot;l&quot;&gt;&lt;/ul&gt;&lt;script&gt;const l = document.querySelector(&quot;#l&quot;);
+for (const nom of [&quot;Tomates&quot;, &quot;Pâtes&quot;, &quot;Fromage&quot;]) {
+  const li = document.createElement(&quot;li&quot;);
+  li.textContent = nom + &quot; &quot;;
+  const croix = document.createElement(&quot;button&quot;);
+  croix.textContent = &quot;✖&quot;;
+  croix.addEventListener(&quot;click&quot;, function () {
+    li.remove();
+  });
+  li.append(croix);
+  l.append(li);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Clique sur les ✖ dans le résultat. Chaque bouton supprime <strong>sa</strong> ligne.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Un élément plus complet : une carte</h3>
+<p>On peut créer plusieurs éléments et les emboîter, ou utiliser <code>innerHTML</code> pour aller plus vite avec du HTML qu'on a écrit nous-mêmes.</p>
+<div class="code-demo solo"><div><span class="label">JavaScript</span><pre><code>const carte = document.createElement("article");
+carte.classList.add("carte");
+carte.innerHTML = `
+  &lt;h3&gt;${titre}&lt;/h3&gt;
+  &lt;p&gt;${description}&lt;/p&gt;
+`;
+document.querySelector("#cartes").append(carte);</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Si le texte vient d'un visiteur, utilise plutôt <code>textContent</code> : c'est plus sûr que <code>innerHTML</code>.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel des formulaires. Question : « Quand tu postes un commentaire, d'où vient la nouvelle ligne ? »</span></li>
+<li><span class="temps">0:10 – 0:35</span><span><code>createElement</code>, <code>append</code>, <code>prepend</code>. On ajoute des éléments en direct depuis la console.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Ajouter à chaque clic, vider le champ, <code>remove()</code>, le bouton ✖ dans chaque ligne.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le livre d'or.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : « La prochaine fois, mini-projet : la to-do list ! »</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · La liste de courses<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un champ, un bouton « Ajouter » et une <code>&lt;ul&gt;</code> vide.</li>
+<li>Au clic, crée un <code>&lt;li&gt;</code> avec le texte du champ et ajoute-le à la liste.</li>
+<li>Vide le champ après l'ajout. N'ajoute rien si le champ est vide.</li>
+<li>Remplace le clic par un <code>&lt;form&gt;</code> avec <code>submit</code> pour que la touche Entrée marche.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Supprimer<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute un bouton ✖ dans chaque <code>&lt;li&gt;</code> créé.</li>
+<li>Au clic sur ✖, supprime la ligne avec <code>li.remove()</code>.</li>
+<li>Ajoute un bouton « Tout effacer » qui vide la liste (<code>liste.innerHTML = ""</code>).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le compteur d'articles<span class="niveau moyen">moyen</span></h3><ol>
+<li>Affiche au-dessus de la liste : « 3 articles ».</li>
+<li>Crée une fonction <code>mettreAJourCompteur()</code> qui compte les <code>li</code> avec <code>querySelectorAll("#courses li").length</code>.</li>
+<li>Appelle-la après chaque ajout et chaque suppression.</li>
+<li>Quand la liste est vide, affiche « Ta liste est vide 🛒 ».</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le livre d'or</h2>
+<p>Crée un formulaire « Prénom + message ». Chaque envoi ajoute une carte <strong>en haut</strong> de la liste (<code>prepend</code>) avec le prénom en gras, le message et l'heure (<code>new Date().toLocaleTimeString()</code>).</p>
+<p>Bonus : un bouton ❤️ sur chaque carte avec son propre compteur de likes.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">J'ai créé l'élément mais il n'apparaît pas</div><div class="ok">Il faut l'ajouter dans la page avec <code>parent.append(element)</code></div></div>
+<div class="erreur"><div class="ko"><code>document.createElement("&lt;li&gt;")</code> avec les chevrons</div><div class="ok">Juste le nom : <code>createElement("li")</code></div></div>
+<div class="erreur"><div class="ko">Tous les éléments ont le même texte</div><div class="ok">Je lis <code>champ.value</code> à l'intérieur de la fonction du clic</div></div>
+<div class="erreur"><div class="ko"><code>append</code> sur le mauvais parent : les lignes vont n'importe où</div><div class="ok">Je vérifie quel parent j'ai sélectionné</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>createElement</dt><dd>Crée un nouvel élément HTML (pas encore affiché).</dd></div>
+<div><dt>append / prepend</dt><dd>Ajoute un élément à la fin / au début d'un parent.</dd></div>
+<div><dt>remove</dt><dd>Supprime un élément de la page.</dd></div>
+<div><dt>Parent / enfant</dt><dd>Un élément qui en contient un autre / l'élément contenu.</dd></div>
+<div><dt>focus()</dt><dd>Met le curseur dans un champ.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp" target="_blank"><span class="tag">W3Schools</span><br>Créer et supprimer des éléments</a></li>
+<li><a href="https://fr.javascript.info/modifying-document" target="_blank"><span class="tag">Cours</span><br>Modifier le document (javascript.info, en français)</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_todolist.asp" target="_blank"><span class="tag">W3Schools</span><br>Exemple : une liste de tâches</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/createElement" target="_blank"><span class="tag">MDN</span><br>createElement (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais créer un élément avec <code>createElement</code>.</li>
+<li>Je sais l'ajouter avec <code>append</code> ou <code>prepend</code>.</li>
+<li>Je sais supprimer un élément avec <code>remove</code>.</li>
+<li>Je sais vider un champ après un ajout.</li>
+<li>Je sais compter les éléments d'une liste.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance10/index.html">← Séance 10</a>
+<a href="../seance12/index.html">Séance 12 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 08 · Changer le style avec JavaScript — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 08</span> · Changer le style avec JavaScript</h1>
+    <p>JavaScript peut aussi changer l'<strong>apparence</strong> : couleurs, tailles, affichage. La meilleure méthode : préparer des classes en CSS, et laisser JavaScript les ajouter ou les enlever.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Changer un style directement avec la propriété <code>style</code>.</li><li>Ajouter, enlever et basculer une classe avec <code>classList.add</code>, <code>remove</code> et <code>toggle</code>.</li><li>Combiner DOM, boucle et condition pour colorer automatiquement une page.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p><code>document.querySelector("#id")</code> trouve un élément, <code>textContent</code> change son texte, <code>querySelectorAll</code> + <code>for…of</code> change plusieurs éléments.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>La propriété style</h3>
+<p><code>element.style.propriete = "valeur"</code>. Les noms de propriétés CSS avec un tiret s'écrivent <strong>sans tiret, avec une majuscule</strong> : <code>background-color</code> devient <code>backgroundColor</code>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p id="texte"&gt;Je vais changer de style&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const texte = document.querySelector("#texte");
+texte.style.color = "white";
+texte.style.backgroundColor = "#288b8b";
+texte.style.padding = "10px";
+texte.style.borderRadius = "8px";</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La propriété style" sandbox="allow-scripts allow-modals" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p id=&quot;texte&quot;&gt;Je vais changer de style&lt;/p&gt;&lt;script&gt;const texte = document.querySelector(&quot;#texte&quot;);
+texte.style.color = &quot;white&quot;;
+texte.style.backgroundColor = &quot;#288b8b&quot;;
+texte.style.padding = &quot;10px&quot;;
+texte.style.borderRadius = &quot;8px&quot;;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Mieux : les classes avec classList</h3>
+<p>On écrit le style dans le <strong>CSS</strong> (une classe), et JavaScript se contente d'<strong>ajouter</strong> ou d'<strong>enlever</strong> la classe. Le code est plus propre et plus facile à modifier.</p>
+<ul><li><code>element.classList.add("nom")</code> : ajoute la classe.</li><li><code>element.classList.remove("nom")</code> : enlève la classe.</li><li><code>element.classList.toggle("nom")</code> : l'ajoute si elle n'y est pas, l'enlève si elle y est (interrupteur).</li><li><code>element.classList.contains("nom")</code> : <code>true</code> si l'élément a la classe.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p id="msg"&gt;Attention !&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.alerte { background: #fbeaea; color: #c0392b; border-left: 5px solid #c0392b; padding: 8px; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#msg").classList.add("alerte");</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Mieux : les classes avec classList" sandbox="allow-scripts allow-modals" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.alerte { background: #fbeaea; color: #c0392b; border-left: 5px solid #c0392b; padding: 8px; }&lt;/style&gt;&lt;p id=&quot;msg&quot;&gt;Attention !&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#msg&quot;).classList.add(&quot;alerte&quot;);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Montrer et cacher</h3>
+<p>Une classe <code>.cache { display: none; }</code> + <code>classList</code> = on peut montrer ou cacher n'importe quoi.</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;p class="secret cache"&gt;Message secret 🤫&lt;/p&gt;
+&lt;p&gt;Le message secret est caché.&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.cache { display: none; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>// Pour le montrer :
+document.querySelector(".secret").classList.remove("cache");</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Colorer automatiquement : boucle + condition + classe</h3>
+<p>Exemple : un bulletin dont les notes se colorent toutes seules en vert ou en rouge.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul&gt;
+  &lt;li class="note"&gt;14&lt;/li&gt;
+  &lt;li class="note"&gt;8&lt;/li&gt;
+  &lt;li class="note"&gt;17&lt;/li&gt;
+  &lt;li class="note"&gt;9&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.reussi { color: #2e8b57; font-weight: bold; }
+.echec { color: #c0392b; font-weight: bold; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>const notes = document.querySelectorAll(".note");
+for (const note of notes) {
+  const valeur = Number(note.textContent);
+  if (valeur &gt;= 10) {
+    note.classList.add("reussi");
+  } else {
+    note.classList.add("echec");
+  }
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Colorer automatiquement : boucle + condition + classe" sandbox="allow-scripts allow-modals" style="height:120px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.reussi { color: #2e8b57; font-weight: bold; }
+.echec { color: #c0392b; font-weight: bold; }&lt;/style&gt;&lt;ul&gt;
+  &lt;li class=&quot;note&quot;&gt;14&lt;/li&gt;
+  &lt;li class=&quot;note&quot;&gt;8&lt;/li&gt;
+  &lt;li class=&quot;note&quot;&gt;17&lt;/li&gt;
+  &lt;li class=&quot;note&quot;&gt;9&lt;/li&gt;
+&lt;/ul&gt;&lt;script&gt;const notes = document.querySelectorAll(&quot;.note&quot;);
+for (const note of notes) {
+  const valeur = Number(note.textContent);
+  if (valeur &gt;= 10) {
+    note.classList.add(&quot;reussi&quot;);
+  } else {
+    note.classList.add(&quot;echec&quot;);
+  }
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>textContent</code> est toujours un <strong>texte</strong> : on le transforme en nombre avec <code>Number()</code> avant de comparer.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel : <code>querySelector</code> et <code>textContent</code>. Mini-défi dans la console : changer le titre d'une page.</span></li>
+<li><span class="temps">0:10 – 0:30</span><span><code>style</code> : on change des couleurs en direct. Pourquoi c'est mieux avec des classes.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span><code>classList.add</code>, <code>remove</code>, <code>toggle</code>, <code>contains</code>, la classe <code>.cache</code>. Le bulletin coloré automatiquement.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le classement du championnat.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : « La semaine prochaine, on fera réagir la page aux clics ! »</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Je repeins ma page<span class="niveau facile">facile</span></h3><ol>
+<li>Crée une page avec un titre, 3 paragraphes et une image.</li>
+<li>Avec <code>style</code>, change la couleur du titre, le fond du <code>body</code> et la taille du texte d'un paragraphe.</li>
+<li>Arrondis l'image avec <code>style.borderRadius</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Les classes<span class="niveau facile">facile</span></h3><ol>
+<li>Dans ton CSS, crée les classes <code>.important</code> (fond jaune, gras) et <code>.cache</code> (<code>display: none</code>).</li>
+<li>Avec <code>classList.add</code>, rends le 2e paragraphe important.</li>
+<li>Cache l'image avec la classe <code>.cache</code>, puis montre-la à nouveau avec <code>remove</code>.</li>
+<li>Utilise <code>classList.toggle("important")</code> deux fois de suite sur le même paragraphe : que se passe-t-il ?</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le bulletin coloré<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un tableau HTML de 6 matières avec leur note (une cellule <code>&lt;td class="note"&gt;</code>).</li>
+<li>Avec <code>querySelectorAll</code> et une boucle, colore en vert les notes ≥ 10 et en rouge les autres (avec des classes).</li>
+<li>Ajoute une classe <code>.excellent</code> (avec un 🏆) pour les notes ≥ 16.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le classement du championnat</h2>
+<p>Fais un tableau de 6 équipes avec leurs points. Avec JavaScript : la 1re ligne en or, les 3 premières en vert, la dernière en rouge (« relégation »). Indice : <code>querySelectorAll("tr")</code> donne une liste, et la position se trouve avec un compteur dans la boucle.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>style.background-color = …</code> : erreur</div><div class="ok">Sans tiret : <code>style.backgroundColor</code></div></div>
+<div class="erreur"><div class="ko"><code>style.width = 200;</code> ne marche pas</div><div class="ok">Avec l'unité, entre guillemets : <code>"200px"</code></div></div>
+<div class="erreur"><div class="ko"><code>classList.add(".reussi")</code> avec le point</div><div class="ok">Sans le point : <code>classList.add("reussi")</code></div></div>
+<div class="erreur"><div class="ko">Je mets tout le style en JavaScript</div><div class="ok">Le style va dans le CSS (des classes), JavaScript ajoute ou enlève les classes</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>style</dt><dd>Le style en ligne d'un élément, modifiable en JavaScript.</dd></div>
+<div><dt>classList</dt><dd>La liste des classes d'un élément.</dd></div>
+<div><dt>add / remove</dt><dd>Ajouter / enlever une classe.</dd></div>
+<div><dt>toggle</dt><dd>Ajouter ou enlever une classe selon qu'elle est déjà là (un interrupteur).</dd></div>
+<div><dt>camelCase</dt><dd>L'écriture <code>backgroundColor</code> : mots collés, majuscule à chaque nouveau mot.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_htmldom_css.asp" target="_blank"><span class="tag">W3Schools</span><br>Changer le CSS avec JavaScript</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_add_class.asp" target="_blank"><span class="tag">W3Schools</span><br>Ajouter une classe</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_toggle_class.asp" target="_blank"><span class="tag">W3Schools</span><br>Basculer une classe</a></li>
+<li><a href="https://fr.javascript.info/styles-and-classes" target="_blank"><span class="tag">Cours</span><br>Styles et classes (javascript.info, en français)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais changer un style avec <code>element.style</code>.</li>
+<li>Je sais écrire les propriétés en camelCase (<code>backgroundColor</code>).</li>
+<li>Je sais ajouter et enlever une classe.</li>
+<li>Je sais à quoi sert <code>toggle</code>.</li>
+<li>Je sais colorer des éléments automatiquement avec une boucle et une condition.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance07/index.html">← Séance 07</a>
+<a href="../seance09/index.html">Séance 09 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

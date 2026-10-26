@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devine le nombre</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🎲 Devine le nombre</h1>
+    <div class="carte">
+      <p>L'ordinateur a choisi un nombre entre 1 et 100. Le jeu se lance tout seul dans des fenêtres.</p>
+      <p>Clique sur <strong>Annuler</strong> pour arrêter, puis recharge la page (<strong>F5</strong>) pour rejouer.</p>
+      <p>Ouvre aussi la console (<strong>F12</strong>) : les essais y sont notés.</p>
+    </div>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

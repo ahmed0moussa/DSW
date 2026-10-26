@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 04 · Les conditions : si… sinon… — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · Penser comme un programmeur</span>
+    <h1><span>Séance 04</span> · Les conditions : si… sinon…</h1>
+    <p>Un programme doit souvent <strong>choisir</strong> : SI le joueur a assez de points ALORS il passe au niveau suivant, SINON il recommence. En JavaScript, ce choix s'écrit avec <code>if</code> et <code>else</code>.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, console F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Comparer deux valeurs avec <code>===</code>, <code>!==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>.</li><li>Écrire une condition avec <code>if</code>, <code>else if</code> et <code>else</code>.</li><li>Combiner plusieurs conditions avec <code>&amp;&amp;</code> (ET) et <code>||</code> (OU).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Une variable garde une valeur : <code>let score = 10;</code>. Les types : nombre, texte, booléen (<code>true</code> / <code>false</code>). On calcule avec <code>+ - * /</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Comparer : la réponse est vrai ou faux</h3>
+<p>Une comparaison donne toujours un <strong>booléen</strong> : <code>true</code> ou <code>false</code>.</p>
+<ul><li><code>===</code> : est égal à. <code>!==</code> : est différent de.</li><li><code>&lt;</code> plus petit, <code>&gt;</code> plus grand, <code>&lt;=</code> plus petit ou égal, <code>&gt;=</code> plus grand ou égal.</li></ul>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const age = 15;
+console.log(age &gt; 12);      // true
+console.log(age === 18);    // false
+console.log(age !== 18);    // true</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Comparer : la réponse est vrai ou faux" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const age = 15;
+console.log(age &gt; 12);
+console.log(age === 18);
+console.log(age !== 18);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Ne confonds pas : un seul <code>=</code> <strong>range</strong> une valeur ; trois <code>===</code> <strong>comparent</strong>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>if et else</h3>
+<p><code>if (condition) { … }</code> : le code entre accolades s'exécute <strong>seulement si</strong> la condition est vraie.</p>
+<p><code>else { … }</code> : sinon, c'est ce code qui s'exécute.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const note = 13;
+
+if (note &gt;= 10) {
+  console.log("Bravo, tu as réussi ! 🎉");
+} else {
+  console.log("Courage, tu vas y arriver 💪");
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : if et else" sandbox="allow-scripts allow-modals" style="height:60px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const note = 13;
+if (note &gt;= 10) {
+  console.log(&quot;Bravo, tu as réussi ! 🎉&quot;);
+} else {
+  console.log(&quot;Courage, tu vas y arriver 💪&quot;);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Plusieurs choix : else if</h3>
+<p>On teste les conditions <strong>dans l'ordre</strong>. Dès qu'une est vraie, on s'arrête.</p>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const temperature = 32;
+
+if (temperature &gt;= 30) {
+  console.log("Il fait chaud : plage ! 🏖️");
+} else if (temperature &gt;= 18) {
+  console.log("Il fait bon : balade 🚶");
+} else {
+  console.log("Il fait froid : chocolat chaud ☕");
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Plusieurs choix : else if" sandbox="allow-scripts allow-modals" style="height:60px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const temperature = 32;
+if (temperature &gt;= 30) {
+  console.log(&quot;Il fait chaud : plage ! 🏖️&quot;);
+} else if (temperature &gt;= 18) {
+  console.log(&quot;Il fait bon : balade 🚶&quot;);
+} else {
+  console.log(&quot;Il fait froid : chocolat chaud ☕&quot;);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>ET, OU, NON</h3>
+<ul><li><code>&amp;&amp;</code> (ET) : vrai si <strong>les deux</strong> conditions sont vraies.</li><li><code>||</code> (OU) : vrai si <strong>au moins une</strong> condition est vraie.</li><li><code>!</code> (NON) : inverse : <code>!true</code> donne <code>false</code>.</li></ul>
+<div class="code-demo"><div><span class="label">JavaScript</span><pre><code>const age = 14;
+const aUnTicket = true;
+
+if (age &gt;= 12 &amp;&amp; aUnTicket) {
+  console.log("Tu peux entrer au cinéma 🎬");
+}
+
+const jour = "samedi";
+if (jour === "samedi" || jour === "dimanche") {
+  console.log("C'est le week-end !");
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : ET, OU, NON" sandbox="allow-scripts allow-modals" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;pre id=&#x27;console&#x27; style=&#x27;background:#1f2933;color:#7bd389;padding:10px;border-radius:8px;min-height:40px;font:14px Consolas,monospace;white-space:pre-wrap;margin:0&#x27;&gt;&lt;/pre&gt;&lt;script&gt;const __c=document.getElementById(&#x27;console&#x27;);console.log=(...a)=&gt;{__c.textContent+=a.map(x=&gt;typeof x===&#x27;object&#x27;?JSON.stringify(x):String(x)).join(&#x27; &#x27;)+&#x27;\n&#x27;};window.onerror=(m)=&gt;{__c.textContent+=&#x27;❌ &#x27;+m+&#x27;\n&#x27;};&lt;/script&gt;&lt;script&gt;const age = 14;
+const aUnTicket = true;
+if (age &gt;= 12 &amp;&amp; aUnTicket) {
+  console.log(&quot;Tu peux entrer au cinéma 🎬&quot;);
+}
+const jour = &quot;samedi&quot;;
+if (jour === &quot;samedi&quot; || jour === &quot;dimanche&quot;) {
+  console.log(&quot;C&#x27;est le week-end !&quot;);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel des variables. Jeu oral « vrai ou faux » : <code>7 &gt; 3</code>, <code>"chat" === "chien"</code>…</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Les comparaisons, <code>if</code> / <code>else</code>. On reprend l'algorithme du thé : SI menthe ALORS…</span></li>
+<li><span class="temps">0:30 – 0:50</span><span><code>else if</code>, puis <code>&amp;&amp;</code>, <code>||</code>, <code>!</code>. Exemple au tableau : les conditions pour entrer au cinéma.</span></li>
+<li><span class="temps">0:50 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le jeu « pierre, feuille, ciseaux ».</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Réussi ou pas ?<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>const note = …;</code>.</li>
+<li>Si la note est supérieure ou égale à 10, affiche « Admis », sinon « Pas encore ».</li>
+<li>Change la note plusieurs fois pour tester les deux cas.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La mention<span class="niveau moyen">moyen</span></h3><ol>
+<li>Avec <code>else if</code>, affiche la mention : 16 et plus « Très bien », 14 et plus « Bien », 12 et plus « Assez bien », 10 et plus « Passable », sinon « Insuffisant ».</li>
+<li>Teste avec 18, 15, 12, 10 et 7.</li>
+<li>Pourquoi l'ordre des conditions est-il important ? Essaie de mettre « Passable » en premier.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le portier de la salle de jeux<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée <code>age</code>, <code>aPayé</code> (booléen) et <code>estAccompagne</code> (booléen).</li>
+<li>On entre si : on a payé ET (on a 12 ans ou plus OU on est accompagné).</li>
+<li>Affiche « Bienvenue ! » ou « Désolé, tu ne peux pas entrer ».</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Pierre, feuille, ciseaux</h2>
+<p>Crée deux variables <code>joueur1</code> et <code>joueur2</code> qui valent <code>"pierre"</code>, <code>"feuille"</code> ou <code>"ciseaux"</code>. Écris les conditions qui affichent qui a gagné (ou égalité).</p>
+<p>Bonus : l'ordinateur choisit au hasard avec <code>Math.random()</code> (cherche sur W3Schools).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>if (note = 10)</code> avec un seul <code>=</code></div><div class="ok">Pour comparer : <code>===</code>. Un seul <code>=</code> range une valeur</div></div>
+<div class="erreur"><div class="ko">J'oublie les accolades <code>{ }</code></div><div class="ok">Le code de chaque cas va entre <code>{</code> et <code>}</code></div></div>
+<div class="erreur"><div class="ko">Je mets un <code>;</code> après la parenthèse : <code>if (x &gt; 3); {</code></div><div class="ok">Pas de <code>;</code> après <code>if (…)</code></div></div>
+<div class="erreur"><div class="ko"><code>if (age &gt; 12 &amp;&amp; &lt; 18)</code></div><div class="ok">Chaque comparaison est complète : <code>age &gt; 12 &amp;&amp; age &lt; 18</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Condition</dt><dd>Une question dont la réponse est vrai ou faux.</dd></div>
+<div><dt>if / else</dt><dd>Si… / sinon…</dd></div>
+<div><dt>else if</dt><dd>Sinon, si…</dd></div>
+<div><dt>Opérateur de comparaison</dt><dd><code>===</code>, <code>!==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>.</dd></div>
+<div><dt>Opérateur logique</dt><dd><code>&amp;&amp;</code> (ET), <code>||</code> (OU), <code>!</code> (NON).</dd></div>
+<div><dt>Bloc</dt><dd>Le code entre accolades <code>{ }</code>.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_comparisons.asp" target="_blank"><span class="tag">W3Schools</span><br>Les comparaisons</a></li>
+<li><a href="https://www.w3schools.com/js/js_if_else.asp" target="_blank"><span class="tag">W3Schools</span><br>if, else, else if</a></li>
+<li><a href="https://www.w3schools.com/js/js_random.asp" target="_blank"><span class="tag">W3Schools</span><br>Les nombres au hasard (Math.random)</a></li>
+<li><a href="https://fr.javascript.info/comparison" target="_blank"><span class="tag">Cours</span><br>Les comparaisons (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/ifelse" target="_blank"><span class="tag">Cours</span><br>Les conditions if et ? (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/logical-operators" target="_blank"><span class="tag">Cours</span><br>Les opérateurs logiques (javascript.info, en français)</a></li>
+<li><a href="https://blockly.games/?lang=fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Blockly Games</strong> : des jeux de logique avec des blocs, puis du JavaScript</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais la différence entre <code>=</code> et <code>===</code>.</li>
+<li>Je sais écrire un <code>if</code> avec un <code>else</code>.</li>
+<li>Je sais enchaîner plusieurs cas avec <code>else if</code>.</li>
+<li>Je sais combiner deux conditions avec <code>&amp;&amp;</code> et <code>||</code>.</li>
+<li>Je teste toujours tous les cas en changeant les valeurs.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance03/index.html">← Séance 03</a>
+<a href="../seance05/index.html">Séance 05 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

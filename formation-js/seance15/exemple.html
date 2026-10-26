@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le temps et la mémoire</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    .grand { font-size: 48px; font-weight: bold; margin: 0; font-family: Consolas, monospace; }
+    #diapo { width: 100%; max-width: 480px; border-radius: 10px; display: block; }
+    body.sombre { background: #1f2933; color: #f4f6f9; }
+    body.sombre .carte { background: #2c3a47; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>⏱️ Le temps et la mémoire</h1>
+
+    <div class="carte">
+      <h2>Le chronomètre</h2>
+      <p id="chrono" class="grand">00:00</p>
+      <button id="demarrer">▶ Démarrer</button>
+      <button id="pause">⏸ Pause</button>
+      <button id="zero">↺ Zéro</button>
+    </div>
+
+    <div class="carte">
+      <h2>Le diaporama</h2>
+      <img id="diapo" src="https://picsum.photos/seed/diapo0/480/260" alt="Diaporama">
+      <p><button id="lecture">⏸ Pause</button></p>
+    </div>
+
+    <div class="carte">
+      <h2>Le thème qui se souvient</h2>
+      <button id="theme">🌙 Mode sombre</button>
+      <p>Choisis un thème, puis recharge la page (F5) : il est toujours là !</p>
+      <p id="visites"></p>
+    </div>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

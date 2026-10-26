@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon site interactif (2)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f4f6f9; color: #22303c; line-height: 1.6; }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { color: #b8860b; }
+    .carte { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    button { padding: 10px 18px; border: none; border-radius: 8px; background: #288b8b; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #1d6b6b; }
+    .astuce { background: #fff8e1; border-left: 5px solid #f9a825; padding: 10px 14px; border-radius: 6px; }
+    .diapo { position: relative; }
+    .diapo img { width: 100%; height: 280px; object-fit: cover; border-radius: 12px; display: block; }
+    .diapo button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); }
+    #precedent { left: 10px; } #suivant { right: 10px; }
+    #points { text-align: center; margin-top: 8px; }
+    #points span { display: inline-block; width: 12px; height: 12px; margin: 0 4px; border-radius: 50%; background: #dde3ea; cursor: pointer; }
+    #points span.actif { background: #288b8b; }
+    .question { display: block; width: 100%; text-align: left; margin-top: 6px; background: #f4f6f9; color: #22303c; }
+    .question::after { content: " ▾"; }
+    .question.ouverte::after { content: " ▴"; }
+    .reponse { display: none; padding: 10px 14px; }
+    .question.ouverte + .reponse { display: block; }
+    #filtres { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .filtre { background: #f4f6f9; color: #22303c; }
+    .filtre.actif { background: #288b8b; color: white; }
+    #galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    figure { margin: 0; }
+    figure img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; display: block; }
+    figcaption { text-align: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🌿 Club Nature : diaporama, FAQ, galerie</h1>
+
+    <section class="carte">
+      <h2>Le diaporama</h2>
+      <div class="diapo">
+        <img id="photo" src="https://picsum.photos/seed/nature0/640/320" alt="Photo du club">
+        <button id="precedent" aria-label="Image précédente">◀</button>
+        <button id="suivant" aria-label="Image suivante">▶</button>
+      </div>
+      <div id="points"></div>
+    </section>
+
+    <section class="carte">
+      <h2>FAQ</h2>
+      <div id="faq">
+        <button class="question">Combien coûte l'inscription ?</button>
+        <div class="reponse">L'inscription est gratuite pour les 13-18 ans.</div>
+        <button class="question">Quand ont lieu les activités ?</button>
+        <div class="reponse">Le mercredi après-midi et le samedi matin.</div>
+        <button class="question">Faut-il du matériel ?</button>
+        <div class="reponse">De bonnes chaussures et une gourde. Le reste est prêté par le club.</div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>La galerie</h2>
+      <div id="filtres">
+        <button class="filtre actif" data-categorie="tout">Tout voir</button>
+        <button class="filtre" data-categorie="mer">🌊 Mer</button>
+        <button class="filtre" data-categorie="foret">🌲 Forêt</button>
+        <button class="filtre" data-categorie="animaux">🦅 Animaux</button>
+      </div>
+      <div id="galerie"></div>
+    </section>
+  </main>
+
+  <!-- Le JavaScript se charge à la fin, quand toute la page existe -->
+  <script src="exemple.js"></script>
+</body>
+</html>

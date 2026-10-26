@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 01 · Penser comme un programmeur — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · Penser comme un programmeur</span>
+    <h1><span>Séance 01</span> · Penser comme un programmeur</h1>
+    <p>Avant d'écrire du JavaScript, on apprend à <strong>penser</strong> comme un programmeur : découper un problème en petites étapes très précises. C'est ça, un algorithme. Aujourd'hui, presque pas d'ordinateur : on joue !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant (jamais codé)</li>
+      <li>🧰 Outils : Papier, crayon, Blockly Games, CodeCombat</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer ce qu'est un <strong>algorithme</strong> et un <strong>programme</strong>.</li><li>Écrire une suite d'instructions précises pour guider un robot.</li><li>Reconnaître une <strong>répétition</strong> (boucle) et un <strong>choix</strong> (condition) dans un algorithme.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Avec HTML et CSS, tu sais construire et décorer une page. Mais elle ne réagit pas : un clic ne fait rien. JavaScript va donner des <strong>ordres</strong> à la page. Et pour donner des ordres à un ordinateur, il faut d'abord apprendre à être très précis.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>C'est quoi un algorithme ?</h3>
+<p>Un <strong>algorithme</strong>, c'est une <strong>suite d'étapes</strong> pour arriver à un résultat. Tu en utilises tous les jours sans le savoir : une recette de cuisine, l'itinéraire pour aller à l'école, les règles d'un jeu.</p>
+<p>Un <strong>programme</strong>, c'est un algorithme écrit dans un langage que l'ordinateur comprend, comme <strong>JavaScript</strong>.</p>
+<p class="astuce">💡 <strong>Astuce :</strong> L'ordinateur est très rapide, mais il ne devine rien. Si tu oublies une étape, il ne la fera pas. Il faut tout lui dire !</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Exemple : préparer un thé</h3>
+<p>Voici un algorithme écrit en français. On l'appelle aussi du <strong>pseudo-code</strong> :</p>
+<div class="code-demo solo"><div><span class="label">Pseudo-code</span><pre><code>1. Remplir la théière d'eau
+2. Mettre la théière sur le feu
+3. ATTENDRE jusqu'à ce que l'eau bouille
+4. Mettre le thé et le sucre
+5. SI quelqu'un aime la menthe ALORS ajouter de la menthe
+6. RÉPÉTER 3 fois : verser un verre et le remettre dans la théière
+7. Servir</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Repère les mots en majuscules : <strong>SI</strong> (un choix), <strong>RÉPÉTER</strong> (une répétition), <strong>ATTENDRE</strong> (on attend un événement). On les retrouvera en JavaScript !</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les 3 briques de tous les programmes</h3>
+<ul><li><strong>La séquence</strong> : les instructions s'exécutent <strong>dans l'ordre</strong>, une après l'autre.</li><li><strong>La condition</strong> : <strong>SI</strong> quelque chose est vrai <strong>ALORS</strong> je fais ceci, <strong>SINON</strong> je fais cela.</li><li><strong>La boucle</strong> : <strong>RÉPÉTER</strong> une action plusieurs fois.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Avec ces 3 briques, on peut construire n'importe quel programme, du jeu vidéo à l'application de ton téléphone.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Le jeu du robot</h3>
+<p>Le robot 🤖 doit aller jusqu'au trésor 💎 sans toucher les murs. Il ne connaît que 3 ordres : <strong>AVANCER</strong>, <strong>TOURNER À GAUCHE</strong>, <strong>TOURNER À DROITE</strong>. Au départ, il regarde vers la droite.</p>
+<div class="code-demo solo"><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le jeu du robot" sandbox="" style="height:190px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.g{display:grid;grid-template-columns:repeat(5,44px);gap:3px}.g div{width:44px;height:44px;border:2px solid #dde3ea;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px}.m{background:#22303c}&lt;/style&gt;
+&lt;div class=&quot;g&quot;&gt;&lt;div&gt;🤖&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;m&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;m&quot;&gt;&lt;/div&gt;&lt;div class=&quot;m&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;m&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;💎&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Une solution : AVANCER, AVANCER, TOURNER À DROITE, AVANCER, AVANCER, TOURNER À GAUCHE, AVANCER, AVANCER. Il en existe d'autres ! Peux-tu la raccourcir avec RÉPÉTER ?</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Un bug, c'est normal !</h3>
+<p>Un <strong>bug</strong> est une erreur dans un programme. Tous les développeurs en font, tous les jours. Le travail, c'est de les <strong>trouver</strong> et de les <strong>corriger</strong> : on appelle ça <strong>déboguer</strong>.</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Quand ton robot se cogne, ne recommence pas tout : cherche <strong>à quelle étape</strong> il s'est trompé.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Présentation de la formation JavaScript. Question : « Sur un site, qu'est-ce qui bouge ou réagit quand tu cliques ? » (menus, likes, jeux…). C'est du JavaScript !</span></li>
+<li><span class="temps">0:15 – 0:35</span><span>Algorithmes de la vie : en binômes, écrire l'algorithme pour se brosser les dents ou faire un sandwich. Le formateur « exécute » à la lettre et montre les oublis (rires garantis).</span></li>
+<li><span class="temps">0:35 – 1:00</span><span>Le jeu du robot <strong>débranché</strong> : une grille au sol (scotch ou papier), un élève joue le robot, un autre donne les ordres écrits. Introduction de RÉPÉTER et SI.</span></li>
+<li><span class="temps">1:00 – 1:40</span><span><strong>Blockly Games</strong> (Labyrinthe, niveaux 1 à 10) puis <strong>CodeCombat</strong> (premiers niveaux) sur ordinateur.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Exercice 3 sur papier et défi.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : « Qu'est-ce qu'un algorithme ? Un bug ? » Checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · L'algorithme du quotidien<span class="niveau facile">facile</span></h3><ol>
+<li>Écris sur une feuille l'algorithme pour faire un sandwich, en 8 étapes minimum.</li>
+<li>Donne ta feuille à ton voisin : il doit faire <strong>exactement</strong> ce qui est écrit (en mimant). Quelles étapes manquaient ?</li>
+<li>Corrige ton algorithme.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Blockly Games : le labyrinthe<span class="niveau facile">facile</span></h3><ol>
+<li>Va sur <strong>blockly.games</strong> et choisis <strong>Labyrinthe</strong>.</li>
+<li>Termine les niveaux 1 à 6 avec le moins de blocs possible.</li>
+<li>Aux niveaux 7 à 10, utilise le bloc <strong>répéter</strong> et le bloc <strong>si</strong>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Mon propre labyrinthe<span class="niveau moyen">moyen</span></h3><ol>
+<li>Dessine une grille de 5 × 5 cases avec des murs, un robot et un trésor.</li>
+<li>Écris la solution avec AVANCER, TOURNER À GAUCHE, TOURNER À DROITE.</li>
+<li>Réécris la solution en utilisant au moins une fois RÉPÉTER.</li>
+<li>Échange avec ton voisin : chacun résout le labyrinthe de l'autre.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : CodeCombat</h2>
+<p>Crée un compte sur <strong>CodeCombat</strong> (avec l'accord de tes parents) et choisis le langage <strong>JavaScript</strong>. Termine les 5 premiers niveaux : tu écris déjà du vrai code !</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Mes instructions sont floues : « va vers le trésor »</div><div class="ok">Chaque instruction est simple et précise : « AVANCER », « TOURNER À DROITE »</div></div>
+<div class="erreur"><div class="ko">J'oublie une étape évidente (ouvrir le pain…)</div><div class="ok">L'ordinateur ne devine rien : j'écris <strong>tout</strong></div></div>
+<div class="erreur"><div class="ko">Je recopie 10 fois la même instruction</div><div class="ok">J'utilise <strong>RÉPÉTER 10 fois</strong></div></div>
+<div class="erreur"><div class="ko">Quand ça ne marche pas, je recommence tout</div><div class="ok">Je cherche l'étape qui pose problème : je <strong>débogue</strong></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Algorithme</dt><dd>Une suite d'étapes précises pour arriver à un résultat.</dd></div>
+<div><dt>Programme</dt><dd>Un algorithme écrit dans un langage informatique.</dd></div>
+<div><dt>Instruction</dt><dd>Un ordre donné à l'ordinateur.</dd></div>
+<div><dt>Condition</dt><dd>Un choix : SI… ALORS… SINON…</dd></div>
+<div><dt>Boucle</dt><dd>Une répétition : RÉPÉTER…</dd></div>
+<div><dt>Bug</dt><dd>Une erreur dans un programme. Déboguer = la corriger.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://blockly.games/?lang=fr" target="_blank"><span class="tag jeu">Jeu</span><br><strong>Blockly Games</strong> : des jeux de logique avec des blocs, puis du JavaScript</a></li>
+<li><a href="https://codecombat.com/" target="_blank"><span class="tag jeu">Jeu</span><br><strong>CodeCombat</strong> : un jeu d'aventure où l'on avance en écrivant du vrai code</a></li>
+<li><a href="https://fr.javascript.info/intro" target="_blank"><span class="tag">Cours</span><br>Introduction au JavaScript (javascript.info, en français)</a></li>
+<li><a href="https://www.w3schools.com/js/js_intro.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au JavaScript</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/What_is_JavaScript" target="_blank"><span class="tag">MDN</span><br>Qu'est-ce que JavaScript ? (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais expliquer ce qu'est un algorithme avec un exemple de la vie.</li>
+<li>Je connais les 3 briques : séquence, condition, boucle.</li>
+<li>J'ai écrit un algorithme précis pour guider un robot.</li>
+<li>J'ai terminé au moins 6 niveaux du Labyrinthe de Blockly Games.</li>
+<li>Je sais ce qu'est un bug et que c'est normal d'en faire.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../../groupe_js.html">← Sommaire</a>
+<a href="../seance02/index.html">Séance 02 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

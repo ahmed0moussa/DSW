@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation JavaScript - Ahmed Moussa</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #22303c; margin: 0; }
+        header { background-color: #1d3557; color: white; display: flex; align-items: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
+        header .nom { font-size: 20px; font-weight: bold; padding: 6px 16px; border: 2px solid white; border-radius: 30px; white-space: nowrap; }
+        header h1 { margin: 0; font-size: 24px; }
+        header h1 span { color: #f7df1e; }
+        .back-link { display: inline-block; margin: 20px; color: #1d3557; text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; }
+        main { max-width: 1150px; margin: 0 auto; padding: 0 16px 50px; }
+        .intro { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); line-height: 1.6; border-left: 8px solid #f7df1e; }
+        .intro h2 { margin-top: 0; color: #1d3557; }
+        .chiffres { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; }
+        .chiffres li { background: #fff9d6; color: #6b5a00; font-weight: bold; padding: 6px 14px; border-radius: 20px; }
+        .module { margin-top: 40px; }
+        .module h2 { color: var(--couleur); border-left: 8px solid var(--couleur); padding-left: 12px; margin-bottom: 4px; }
+        .module .desc { margin-top: 0; color: #555; }
+        .grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+        .seance { display: flex; flex-direction: column; background: #fff; padding: 18px; border-radius: 10px; border-top: 5px solid var(--couleur);
+                   box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; text-decoration: none; color: inherit; }
+        .seance:hover { transform: scale(1.03); }
+        .seance .num { font-size: 13px; font-weight: bold; color: var(--couleur); text-transform: uppercase; letter-spacing: 1px; }
+        .seance h3 { margin: 6px 0 8px; font-size: 18px; }
+        .seance p { margin: 0 0 10px; font-size: 14px; color: #555; line-height: 1.5; }
+        .seance .duree { margin-top: auto; font-size: 13px; color: #777; }
+        .section-titre { margin-top: 50px; color: #1d3557; }
+        .outils { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; padding: 0; list-style: none; }
+        .outils a { display: block; height: 100%; background: white; padding: 12px 14px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+                     color: inherit; text-decoration: none; font-size: 14px; line-height: 1.5; }
+        .outils a:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .outils .tag { display: block; font-size: 12px; font-weight: bold; color: #288B8B; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="nom">Ahmed Moussa</span>
+        <h1>Formation <span>JavaScript</span></h1>
+    </header>
+
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+
+    <main>
+        <section class="intro">
+            <h2>Bienvenue dans la formation JavaScript !</h2>
+            <p>Après HTML et CSS, tu apprends à <strong>programmer</strong> : faire réagir ta page aux clics, vérifier un formulaire,
+               créer une to-do list, un quiz… Pas besoin d'avoir déjà codé : on commence par apprendre à penser comme un programmeur.
+               À la fin, ton site HTML/CSS devient <strong>interactif</strong> et tu le publies en ligne.</p>
+            <ul class="chiffres">
+                <li>📚 20 séances</li>
+                <li>⏱️ 2 h par séance</li>
+                <li>🧩 4 modules</li>
+                <li>🎮 3 mini-projets</li>
+                <li>🚀 1 site interactif en ligne</li>
+            </ul>
+        </section>
+
+    <section class="module" style="--couleur: #b8860b;">
+      <h2>Module 1 · Penser comme un programmeur</h2>
+      <p class="desc">Algorithmes, variables, conditions, boucles, fonctions : les bases de la programmation.</p>
+      <div class="grille">
+        <a href="formation-js/seance01/index.html" class="seance">
+          <span class="num">Séance 01</span>
+          <h3>Penser comme un programmeur</h3>
+          <p>🎯 Expliquer ce qu'est un algorithme et un programme.</p>
+          <span class="duree">⏱️ 2 h · Débutant (jamais codé)</span>
+        </a>
+        <a href="formation-js/seance02/index.html" class="seance">
+          <span class="num">Séance 02</span>
+          <h3>Mon premier JavaScript</h3>
+          <p>🎯 Ajouter du JavaScript à une page avec la balise &lt;script&gt; et un fichier .js.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance03/index.html" class="seance">
+          <span class="num">Séance 03</span>
+          <h3>Les variables</h3>
+          <p>🎯 Créer une variable avec let ou const et changer sa valeur.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance04/index.html" class="seance">
+          <span class="num">Séance 04</span>
+          <h3>Les conditions : si… sinon…</h3>
+          <p>🎯 Comparer deux valeurs avec ===, !==, &lt;, &gt;, &lt;=, &gt;=.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance05/index.html" class="seance">
+          <span class="num">Séance 05</span>
+          <h3>Les boucles : répéter</h3>
+          <p>🎯 Répéter une action un nombre précis de fois avec une boucle for.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance06/index.html" class="seance">
+          <span class="num">Séance 06</span>
+          <h3>Les fonctions + mini-projet « Devine le nombre »</h3>
+          <p>🎯 Créer une fonction et l'appeler.</p>
+          <span class="duree">⏱️ 2 h · Débutant · Mini-projet</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #288b8b;">
+      <h2>Module 2 · JavaScript et la page (DOM)</h2>
+      <p class="desc">Trouver et changer les éléments de la page, réagir aux clics et aux formulaires.</p>
+      <div class="grille">
+        <a href="formation-js/seance07/index.html" class="seance">
+          <span class="num">Séance 07</span>
+          <h3>Trouver et changer un élément de la page</h3>
+          <p>🎯 Expliquer ce qu'est le DOM : la page vue par JavaScript.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance08/index.html" class="seance">
+          <span class="num">Séance 08</span>
+          <h3>Changer le style avec JavaScript</h3>
+          <p>🎯 Changer un style directement avec la propriété style.</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance09/index.html" class="seance">
+          <span class="num">Séance 09</span>
+          <h3>Les événements : réagir aux clics</h3>
+          <p>🎯 Exécuter une fonction quand on clique avec addEventListener("click", …).</p>
+          <span class="duree">⏱️ 2 h · Débutant</span>
+        </a>
+        <a href="formation-js/seance10/index.html" class="seance">
+          <span class="num">Séance 10</span>
+          <h3>Les formulaires : lire ce que tape le visiteur</h3>
+          <p>🎯 Lire la valeur d'un champ avec .value.</p>
+          <span class="duree">⏱️ 2 h · Débutant → Intermédiaire</span>
+        </a>
+        <a href="formation-js/seance11/index.html" class="seance">
+          <span class="num">Séance 11</span>
+          <h3>Créer et supprimer des éléments</h3>
+          <p>🎯 Créer un nouvel élément avec document.createElement().</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-js/seance12/index.html" class="seance">
+          <span class="num">Séance 12</span>
+          <h3>Mini-projet : ma to-do list</h3>
+          <p>🎯 Construire une application complète en assemblant DOM, événements, formulaires et création d'éléments.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire · Mini-projet</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #8e44ad;">
+      <h2>Module 3 · Les données et le temps</h2>
+      <p class="desc">Tableaux, objets, minuteurs et mémoire du navigateur pour de vraies petites applications.</p>
+      <div class="grille">
+        <a href="formation-js/seance13/index.html" class="seance">
+          <span class="num">Séance 13</span>
+          <h3>Les tableaux : des listes de données</h3>
+          <p>🎯 Créer un tableau, lire un élément avec son indice et connaître sa taille avec length.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-js/seance14/index.html" class="seance">
+          <span class="num">Séance 14</span>
+          <h3>Les objets : des fiches de données</h3>
+          <p>🎯 Créer un objet avec des propriétés et lire une propriété avec le point (produit.prix).</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-js/seance15/index.html" class="seance">
+          <span class="num">Séance 15</span>
+          <h3>Le temps et la mémoire</h3>
+          <p>🎯 Lancer une action après un délai avec setTimeout.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire</span>
+        </a>
+        <a href="formation-js/seance16/index.html" class="seance">
+          <span class="num">Séance 16</span>
+          <h3>Mini-projet : le quiz</h3>
+          <p>🎯 Organiser les données d'une application dans un tableau d'objets.</p>
+          <span class="duree">⏱️ 2 h · Intermédiaire · Mini-projet</span>
+        </a>
+      </div>
+    </section>
+    <section class="module" style="--couleur: #c0392b;">
+      <h2>Module 4 · Projet : mon site interactif</h2>
+      <p class="desc">Rendre ton site HTML/CSS interactif, le publier et le présenter.</p>
+      <div class="grille">
+        <a href="formation-js/seance17/index.html" class="seance">
+          <span class="num">Séance 17</span>
+          <h3>Projet 1/4 : choisir mes interactions</h3>
+          <p>🎯 Choisir 3 ou 4 interactions utiles pour mon site.</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+        <a href="formation-js/seance18/index.html" class="seance">
+          <span class="num">Séance 18</span>
+          <h3>Projet 2/4 : menu, thème et bouton haut de page</h3>
+          <p>🎯 Coder un menu burger qui s'ouvre et se ferme sur téléphone.</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+        <a href="formation-js/seance19/index.html" class="seance">
+          <span class="num">Séance 19</span>
+          <h3>Projet 3/4 : diaporama, accordéon et galerie</h3>
+          <p>🎯 Coder un diaporama avec boutons et défilement automatique.</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+        <a href="formation-js/seance20/index.html" class="seance">
+          <span class="num">Séance 20</span>
+          <h3>Projet 4/4 : publier et présenter</h3>
+          <p>🎯 Terminer et vérifier mes interactions (checklist qualité, 0 erreur dans la console).</p>
+          <span class="duree">⏱️ 2 h · Projet</span>
+        </a>
+      </div>
+    </section>
+
+        <h2 class="section-titre">🧰 La boîte à outils</h2>
+        <ul class="outils">
+        <li><a href="https://www.w3schools.com/js/" target="_blank"><span class="tag">W3Schools</span><strong>W3Schools JavaScript</strong> : le cours et les exemples de référence</a></li>
+        <li><a href="https://fr.javascript.info/" target="_blank"><span class="tag">Cours</span><strong>javascript.info</strong> : le cours complet en français</a></li>
+        <li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript" target="_blank"><span class="tag">MDN</span><strong>MDN</strong> : la documentation officielle du web, en français</a></li>
+        <li><a href="https://www.w3schools.com/howto/" target="_blank"><span class="tag">W3Schools</span><strong>W3Schools How To</strong> : menus, diaporamas, accordéons prêts à adapter</a></li>
+        <li><a href="https://codecombat.com/" target="_blank"><span class="tag">Jeu</span><strong>CodeCombat</strong> : un jeu d'aventure où l'on avance en écrivant du vrai code</a></li>
+        <li><a href="https://blockly.games/?lang=fr" target="_blank"><span class="tag">Jeu</span><strong>Blockly Games</strong> : des jeux de logique avec des blocs, puis du JavaScript</a></li>
+        <li><a href="https://codepen.io/pen/" target="_blank"><span class="tag">Outil</span><strong>CodePen</strong> : tester HTML, CSS et JavaScript en ligne</a></li>
+        <li><a href="https://developer.chrome.com/docs/devtools/console" target="_blank"><span class="tag">Guide</span><strong>Chrome DevTools</strong> : utiliser la console (en anglais)</a></li>
+        </ul>
+    </main>
+</body>
+</html>

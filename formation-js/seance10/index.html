@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 10 · Les formulaires : lire ce que tape le visiteur — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 10</span> · Les formulaires : lire ce que tape le visiteur</h1>
+    <p>Les formulaires HTML que tu connais vont enfin <strong>servir à quelque chose</strong> ! JavaScript peut lire ce que le visiteur écrit, vérifier que c'est correct et lui répondre directement sur la page.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant → Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Lire la valeur d'un champ avec <code>.value</code>.</li><li>Réagir à l'envoi d'un formulaire avec l'événement <code>submit</code> et <code>preventDefault()</code>.</li><li>Vérifier les réponses et afficher un message d'erreur ou de succès sur la page.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p><code>addEventListener("click", function () { … })</code> lance une fonction au clic. <code>textContent</code> change un texte, <code>classList</code> change le style. Le formulaire HTML : <code>&lt;form&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;button&gt;</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Lire un champ : .value</h3>
+<p>La propriété <code>.value</code> d'un <code>&lt;input&gt;</code> contient ce que le visiteur a tapé (toujours sous forme de <strong>texte</strong>).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;input id="prenom" placeholder="Ton prénom"&gt;
+&lt;button id="ok"&gt;OK&lt;/button&gt;
+&lt;p id="reponse"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#ok").addEventListener("click", function () {
+  const prenom = document.querySelector("#prenom").value;
+  document.querySelector("#reponse").textContent = "Salut " + prenom + " ! 👋";
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Lire un champ : .value" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;input id=&quot;prenom&quot; placeholder=&quot;Ton prénom&quot;&gt;
+&lt;button id=&quot;ok&quot;&gt;OK&lt;/button&gt;
+&lt;p id=&quot;reponse&quot;&gt;&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#ok&quot;).addEventListener(&quot;click&quot;, function () {
+  const prenom = document.querySelector(&quot;#prenom&quot;).value;
+  document.querySelector(&quot;#reponse&quot;).textContent = &quot;Salut &quot; + prenom + &quot; ! 👋&quot;;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>L'événement submit et preventDefault</h3>
+<p>Quand on envoie un formulaire, le navigateur <strong>recharge la page</strong> par défaut. <code>e.preventDefault()</code> l'en empêche : c'est JavaScript qui s'occupe de tout.</p>
+<p>Avantage de <code>submit</code> : ça marche avec le bouton <strong>et</strong> avec la touche <strong>Entrée</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;form id="formulaire"&gt;
+  &lt;input id="ville" placeholder="Ta ville"&gt;
+  &lt;button&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="msg"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#formulaire").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const ville = document.querySelector("#ville").value;
+  document.querySelector("#msg").textContent = "Tu habites à " + ville;
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : L&#x27;événement submit et preventDefault" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;form id=&quot;formulaire&quot;&gt;
+  &lt;input id=&quot;ville&quot; placeholder=&quot;Ta ville&quot;&gt;
+  &lt;button&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id=&quot;msg&quot;&gt;&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#formulaire&quot;).addEventListener(&quot;submit&quot;, function (e) {
+  e.preventDefault();
+  const ville = document.querySelector(&quot;#ville&quot;).value;
+  document.querySelector(&quot;#msg&quot;).textContent = &quot;Tu habites à &quot; + ville;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Vérifier les réponses</h3>
+<p>On vérifie avec des conditions. <code>.trim()</code> enlève les espaces au début et à la fin. <code>.length</code> donne le nombre de caractères.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;form id="f"&gt;
+  &lt;input id="pseudo" placeholder="Pseudo (3 lettres min.)"&gt;
+  &lt;button&gt;Valider&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="info"&gt;&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.erreur { color: #c0392b; } .succes { color: #2e8b57; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#f").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const pseudo = document.querySelector("#pseudo").value.trim();
+  const info = document.querySelector("#info");
+  if (pseudo.length &lt; 3) {
+    info.textContent = "❌ Ton pseudo doit avoir au moins 3 lettres.";
+    info.className = "erreur";
+  } else {
+    info.textContent = "✅ Bienvenue " + pseudo + " !";
+    info.className = "succes";
+  }
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Vérifier les réponses" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.erreur { color: #c0392b; } .succes { color: #2e8b57; }&lt;/style&gt;&lt;form id=&quot;f&quot;&gt;
+  &lt;input id=&quot;pseudo&quot; placeholder=&quot;Pseudo (3 lettres min.)&quot;&gt;
+  &lt;button&gt;Valider&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id=&quot;info&quot;&gt;&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#f&quot;).addEventListener(&quot;submit&quot;, function (e) {
+  e.preventDefault();
+  const pseudo = document.querySelector(&quot;#pseudo&quot;).value.trim();
+  const info = document.querySelector(&quot;#info&quot;);
+  if (pseudo.length &lt; 3) {
+    info.textContent = &quot;❌ Ton pseudo doit avoir au moins 3 lettres.&quot;;
+    info.className = &quot;erreur&quot;;
+  } else {
+    info.textContent = &quot;✅ Bienvenue &quot; + pseudo + &quot; !&quot;;
+    info.className = &quot;succes&quot;;
+  }
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Les nombres, les cases à cocher et les listes</h3>
+<ul><li>Un nombre : <code>Number(champ.value)</code> (comme pour <code>prompt</code>).</li><li>Une case à cocher : <code>case.checked</code> vaut <code>true</code> ou <code>false</code>.</li><li>Une liste <code>&lt;select&gt;</code> : <code>.value</code> donne la valeur de l'option choisie.</li><li>L'événement <code>"input"</code> se déclenche <strong>à chaque lettre tapée</strong> : parfait pour un aperçu en direct.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;input id="texte" placeholder="Écris ici…"&gt;
+&lt;p&gt;Aperçu : &lt;strong id="apercu"&gt;&lt;/strong&gt; (&lt;span id="nb"&gt;0&lt;/span&gt; caractères)&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const champ = document.querySelector("#texte");
+champ.addEventListener("input", function () {
+  document.querySelector("#apercu").textContent = champ.value;
+  document.querySelector("#nb").textContent = champ.value.length;
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les nombres, les cases à cocher et les listes" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;input id=&quot;texte&quot; placeholder=&quot;Écris ici…&quot;&gt;
+&lt;p&gt;Aperçu : &lt;strong id=&quot;apercu&quot;&gt;&lt;/strong&gt; (&lt;span id=&quot;nb&quot;&gt;0&lt;/span&gt; caractères)&lt;/p&gt;&lt;script&gt;const champ = document.querySelector(&quot;#texte&quot;);
+champ.addEventListener(&quot;input&quot;, function () {
+  document.querySelector(&quot;#apercu&quot;).textContent = champ.value;
+  document.querySelector(&quot;#nb&quot;).textContent = champ.value.length;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel des événements. On ressort le formulaire d'inscription de la formation HTML : « Que se passait-il quand on cliquait sur Envoyer ? » (rien d'utile !)</span></li>
+<li><span class="temps">0:10 – 0:30</span><span><code>.value</code>, l'événement <code>submit</code>, <code>preventDefault()</code>.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span>Vérifier les réponses : <code>trim</code>, <code>length</code>, <code>Number</code>, <code>checked</code>, messages d'erreur. L'événement <code>input</code>.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : le calculateur de moyenne.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le message personnalisé<span class="niveau facile">facile</span></h3><ol>
+<li>Crée un formulaire avec un champ « Prénom » et un champ « Plat préféré ».</li>
+<li>À l'envoi (<code>submit</code> + <code>preventDefault</code>), affiche sous le formulaire : « Salut Nour, toi aussi tu aimes le couscous ? 😋 ».</li>
+<li>Vérifie que ça marche aussi avec la touche Entrée.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · L'inscription vérifiée<span class="niveau moyen">moyen</span></h3><ol>
+<li>Formulaire : pseudo, âge, email, case « J'accepte le règlement ».</li>
+<li>Vérifie : pseudo d'au moins 3 lettres, âge entre 10 et 18, email qui contient <code>@</code> (<code>email.includes("@")</code>), case cochée.</li>
+<li>Affiche la <strong>première</strong> erreur trouvée en rouge, ou un message de succès en vert.</li>
+<li>Bonus : la bordure du champ en erreur devient rouge (une classe CSS).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · L'aperçu en direct<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un <code>&lt;textarea&gt;</code> « Ton message » limité à 100 caractères.</li>
+<li>Avec l'événement <code>input</code>, affiche « 37 / 100 » en dessous pendant que le visiteur écrit.</li>
+<li>Quand on dépasse 90 caractères, le compteur devient orange ; à 100, rouge.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le calculateur de moyenne</h2>
+<p>Crée 4 champs de notes et 4 champs de coefficients. Au clic, calcule la moyenne pondérée (comme dans le bulletin de la formation HTML !), affiche-la avec 2 chiffres après la virgule (<code>moyenne.toFixed(2)</code>) et la mention.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">La page se recharge et mon message disparaît</div><div class="ok">J'ajoute <code>e.preventDefault();</code> au début de la fonction <code>submit</code></div></div>
+<div class="erreur"><div class="ko"><code>value</code> est vide alors que j'ai écrit dans le champ</div><div class="ok">Je lis <code>.value</code> <strong>dans</strong> la fonction (au moment du clic), pas avant</div></div>
+<div class="erreur"><div class="ko"><code>"12" + "5"</code> donne <code>"125"</code></div><div class="ok"><code>Number(champ.value)</code> avant de calculer</div></div>
+<div class="erreur"><div class="ko">J'écoute <code>submit</code> sur le bouton</div><div class="ok"><code>submit</code> s'écoute sur le <code>&lt;form&gt;</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>value</dt><dd>Le contenu d'un champ de formulaire.</dd></div>
+<div><dt>submit</dt><dd>L'événement d'envoi d'un formulaire.</dd></div>
+<div><dt>preventDefault()</dt><dd>Empêche le comportement normal du navigateur (ici, recharger la page).</dd></div>
+<div><dt>trim()</dt><dd>Enlève les espaces au début et à la fin d'un texte.</dd></div>
+<div><dt>checked</dt><dd><code>true</code> si une case est cochée.</dd></div>
+<div><dt>Validation</dt><dd>Vérifier que les réponses sont correctes.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_validation.asp" target="_blank"><span class="tag">W3Schools</span><br>Valider un formulaire</a></li>
+<li><a href="https://www.w3schools.com/js/js_string_methods.asp" target="_blank"><span class="tag">W3Schools</span><br>Les méthodes de texte (trim, includes, length…)</a></li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_events.asp" target="_blank"><span class="tag">W3Schools</span><br>Les événements du DOM</a></li>
+<li><a href="https://fr.javascript.info/forms-submit" target="_blank"><span class="tag">Cours</span><br>L'événement submit (javascript.info, en français)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Forms/Form_validation" target="_blank"><span class="tag">MDN</span><br>Valider un formulaire (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais lire un champ avec <code>.value</code>.</li>
+<li>Je sais utiliser <code>submit</code> et <code>preventDefault()</code>.</li>
+<li>Je sais vérifier une réponse et afficher un message d'erreur.</li>
+<li>Je sais transformer une valeur en nombre.</li>
+<li>Je sais faire un aperçu en direct avec l'événement <code>input</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance09/index.html">← Séance 09</a>
+<a href="../seance11/index.html">Séance 11 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

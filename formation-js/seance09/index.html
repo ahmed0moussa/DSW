@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 09 · Les événements : réagir aux clics — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · JavaScript et la page (DOM)</span>
+    <h1><span>Séance 09</span> · Les événements : réagir aux clics</h1>
+    <p>C'est LA séance magique : ta page va <strong>réagir</strong> quand on clique ! Un bouton like qui compte, un mode sombre, une image qui change… Tout ça grâce aux <strong>événements</strong>.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, F12</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Exécuter une fonction quand on clique avec <code>addEventListener("click", …)</code>.</li><li>Créer un compteur qui se met à jour à chaque clic.</li><li>Utiliser d'autres événements : <code>mouseover</code>, <code>mouseout</code>, <code>keydown</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p><code>classList.toggle("nom")</code> ajoute ou enlève une classe. Les fonctions : <code>function nom() { … }</code>. Une variable <code>let</code> peut changer de valeur.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Écouter un clic</h3>
+<p>Un <strong>événement</strong>, c'est quelque chose qui arrive sur la page : un clic, une touche, la souris qui passe…</p>
+<p><code>element.addEventListener("click", maFonction)</code> veut dire : « <strong>quand</strong> on clique sur l'élément, <strong>lance</strong> maFonction ».</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button id="bouton"&gt;Clique-moi&lt;/button&gt;
+&lt;p id="texte"&gt;…&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const bouton = document.querySelector("#bouton");
+const texte = document.querySelector("#texte");
+
+function quandOnClique() {
+  texte.textContent = "Bravo, tu as cliqué ! 🎉";
+}
+
+bouton.addEventListener("click", quandOnClique);</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Écouter un clic" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button id=&quot;bouton&quot;&gt;Clique-moi&lt;/button&gt;
+&lt;p id=&quot;texte&quot;&gt;…&lt;/p&gt;&lt;script&gt;const bouton = document.querySelector(&quot;#bouton&quot;);
+const texte = document.querySelector(&quot;#texte&quot;);
+
+function quandOnClique() {
+  texte.textContent = &quot;Bravo, tu as cliqué ! 🎉&quot;;
+}
+
+bouton.addEventListener(&quot;click&quot;, quandOnClique);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> On écrit <code>quandOnClique</code> <strong>sans</strong> parenthèses : on donne la fonction au navigateur, c'est lui qui l'appellera au moment du clic.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le compteur de likes</h3>
+<p>Une variable garde le nombre de clics. À chaque clic, on ajoute 1 et on met à jour l'affichage.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button id="like"&gt;❤️ J'aime&lt;/button&gt;
+&lt;span id="total"&gt;0&lt;/span&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>let likes = 0;
+const total = document.querySelector("#total");
+
+document.querySelector("#like").addEventListener("click", function () {
+  likes++;
+  total.textContent = likes;
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le compteur de likes" sandbox="allow-scripts allow-modals" style="height:60px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button id=&quot;like&quot;&gt;❤️ J&#x27;aime&lt;/button&gt;
+&lt;span id=&quot;total&quot;&gt;0&lt;/span&gt;&lt;script&gt;let likes = 0;
+const total = document.querySelector(&quot;#total&quot;);
+
+document.querySelector(&quot;#like&quot;).addEventListener(&quot;click&quot;, function () {
+  likes++;
+  total.textContent = likes;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Ici la fonction est écrite <strong>directement</strong> dans <code>addEventListener</code> (une fonction sans nom, dite <strong>anonyme</strong>). C'est très courant.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Le mode sombre en 3 lignes</h3>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;button id="theme"&gt;🌙 Mode sombre&lt;/button&gt;
+&lt;p&gt;Clique sur le bouton plusieurs fois.&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>body.sombre { background: #1f2933; color: white; }</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.querySelector("#theme").addEventListener("click", function () {
+  document.body.classList.toggle("sombre");
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Le mode sombre en 3 lignes" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;body.sombre { background: #1f2933; color: white; }&lt;/style&gt;&lt;button id=&quot;theme&quot;&gt;🌙 Mode sombre&lt;/button&gt;
+&lt;p&gt;Clique sur le bouton plusieurs fois.&lt;/p&gt;&lt;script&gt;document.querySelector(&quot;#theme&quot;).addEventListener(&quot;click&quot;, function () {
+  document.body.classList.toggle(&quot;sombre&quot;);
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>D'autres événements</h3>
+<ul><li><code>"click"</code> : un clic.</li><li><code>"mouseover"</code> / <code>"mouseout"</code> : la souris arrive sur l'élément / le quitte.</li><li><code>"keydown"</code> : une touche du clavier est enfoncée (on l'écoute souvent sur <code>document</code>).</li><li><code>"input"</code> : le texte d'un champ change (séance 10).</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div id="zone" style="padding:20px;background:#e3f3f3;border-radius:8px"&gt;Passe la souris ici&lt;/div&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>const zone = document.querySelector("#zone");
+zone.addEventListener("mouseover", function () {
+  zone.textContent = "Coucou ! 👋";
+});
+zone.addEventListener("mouseout", function () {
+  zone.textContent = "Reviens !";
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : D&#x27;autres événements" sandbox="allow-scripts allow-modals" style="height:90px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;zone&quot; style=&quot;padding:20px;background:#e3f3f3;border-radius:8px&quot;&gt;Passe la souris ici&lt;/div&gt;&lt;script&gt;const zone = document.querySelector(&quot;#zone&quot;);
+zone.addEventListener(&quot;mouseover&quot;, function () {
+  zone.textContent = &quot;Coucou ! 👋&quot;;
+});
+zone.addEventListener(&quot;mouseout&quot;, function () {
+  zone.textContent = &quot;Reviens !&quot;;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Savoir quelle touche : l'objet event</h3>
+<p>La fonction reçoit automatiquement un paramètre <code>event</code> (souvent écrit <code>e</code>) avec des informations sur l'événement.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;Clique dans ce cadre puis appuie sur une touche :&lt;/p&gt;
+&lt;p id="touche" style="font-size:24px"&gt;…&lt;/p&gt;</code></pre></div><div><span class="label">JavaScript</span><pre><code>document.addEventListener("keydown", function (e) {
+  document.querySelector("#touche").textContent = "Touche : " + e.key;
+});</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Savoir quelle touche : l&#x27;objet event" sandbox="allow-scripts allow-modals" style="height:100px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Clique dans ce cadre puis appuie sur une touche :&lt;/p&gt;
+&lt;p id=&quot;touche&quot; style=&quot;font-size:24px&quot;&gt;…&lt;/p&gt;&lt;script&gt;document.addEventListener(&quot;keydown&quot;, function (e) {
+  document.querySelector(&quot;#touche&quot;).textContent = &quot;Touche : &quot; + e.key;
+});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel : <code>classList</code>. Question : « Sur Instagram, que se passe-t-il quand tu appuies sur le cœur ? »</span></li>
+<li><span class="temps">0:10 – 0:35</span><span><code>addEventListener</code>, le premier bouton, le compteur de likes. On écrit d'abord en français : QUAND on clique ALORS…</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Le mode sombre avec <code>toggle</code>, <code>mouseover</code>, <code>keydown</code>, l'objet <code>event</code>.</span></li>
+<li><span class="temps">0:55 – 1:40</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:40 – 1:55</span><span>Défi : la galerie avec boutons précédent / suivant.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Bilan : chacun montre son meilleur bouton.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le compteur<span class="niveau facile">facile</span></h3><ol>
+<li>Crée une page avec un nombre affiché (<code>&lt;span id="compteur"&gt;0&lt;/span&gt;</code>) et 3 boutons : « + 1 », « − 1 », « Remise à zéro ».</li>
+<li>Crée <code>let valeur = 0;</code> et une fonction <code>afficher()</code> qui écrit <code>valeur</code> dans le span.</li>
+<li>Pour chaque bouton, <code>addEventListener("click", …)</code> change <code>valeur</code> puis appelle <code>afficher()</code>.</li>
+<li>Bonus : le nombre devient rouge quand il est négatif (classe + condition).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le mode sombre<span class="niveau facile">facile</span></h3><ol>
+<li>Dans le CSS, crée <code>body.sombre { … }</code> avec un fond foncé et un texte clair.</li>
+<li>Ajoute un bouton 🌙 qui fait <code>document.body.classList.toggle("sombre")</code>.</li>
+<li>Bonus : le texte du bouton change entre « 🌙 Mode sombre » et « ☀️ Mode clair » (indice : <code>classList.contains</code>).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La carte qui réagit<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée une carte avec une image et un texte caché (classe <code>.cache</code>).</li>
+<li>Au clic sur un bouton « Voir plus », le texte apparaît, et le bouton devient « Voir moins ».</li>
+<li>Au <code>mouseover</code> sur l'image, elle grandit (une classe CSS avec <code>transform: scale(1.1)</code>), au <code>mouseout</code> elle revient.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : La galerie précédent / suivant</h2>
+<p>Crée une image et deux boutons « ◀ » et « ▶ ». Range 4 adresses d'images dans des variables (ou dans un tableau si tu veux prendre de l'avance sur la séance 13). Chaque clic affiche l'image suivante ou précédente.</p>
+<p>Bonus : les touches flèche gauche et flèche droite du clavier marchent aussi (<code>e.key === "ArrowRight"</code>).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>addEventListener("click", maFonction())</code> : la fonction se lance tout de suite</div><div class="ok">Sans parenthèses : <code>addEventListener("click", maFonction)</code></div></div>
+<div class="erreur"><div class="ko"><code>addEventListener("onclick", …)</code></div><div class="ok">Le nom de l'événement est <code>"click"</code> (sans « on »)</div></div>
+<div class="erreur"><div class="ko">Mon compteur revient toujours à 1</div><div class="ok">La variable <code>let likes = 0;</code> doit être créée <strong>en dehors</strong> de la fonction</div></div>
+<div class="erreur"><div class="ko">Erreur « Cannot read properties of null (reading 'addEventListener') »</div><div class="ok">Le bouton n'a pas été trouvé : je vérifie l'<code>id</code> et le sélecteur <code>#</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Événement</dt><dd>Une action qui arrive sur la page : clic, touche, souris…</dd></div>
+<div><dt>addEventListener</dt><dd>Demande au navigateur de lancer une fonction quand un événement arrive.</dd></div>
+<div><dt>Écouteur (listener)</dt><dd>La fonction qui attend l'événement.</dd></div>
+<div><dt>Fonction anonyme</dt><dd>Une fonction sans nom, écrite directement dans <code>addEventListener</code>.</dd></div>
+<div><dt>event (e)</dt><dd>L'objet qui contient les infos de l'événement (ex. <code>e.key</code>).</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/js/js_events.asp" target="_blank"><span class="tag">W3Schools</span><br>Les événements</a></li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_eventlistener.asp" target="_blank"><span class="tag">W3Schools</span><br>addEventListener</a></li>
+<li><a href="https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp" target="_blank"><span class="tag">W3Schools</span><br>Le mode sombre</a></li>
+<li><a href="https://fr.javascript.info/introduction-browser-events" target="_blank"><span class="tag">Cours</span><br>Introduction aux événements (javascript.info, en français)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events" target="_blank"><span class="tag">MDN</span><br>Les événements (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais lancer une fonction au clic avec <code>addEventListener</code>.</li>
+<li>Je sais créer un compteur qui augmente à chaque clic.</li>
+<li>Je sais faire un mode sombre avec <code>classList.toggle</code>.</li>
+<li>Je connais au moins 3 événements (<code>click</code>, <code>mouseover</code>, <code>keydown</code>).</li>
+<li>Je sais utiliser <code>e.key</code> pour savoir quelle touche est appuyée.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance08/index.html">← Séance 08</a>
+<a href="../seance10/index.html">Séance 10 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

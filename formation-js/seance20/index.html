@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 20 · Projet 4/4 : publier et présenter — Formation JavaScript</title>
+  <link rel="stylesheet" href="../../formation-13-18/assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation JavaScript</span>
+  </div>
+  <a href="../../groupe_js.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Projet : mon site interactif</span>
+    <h1><span>Séance 20</span> · Projet 4/4 : publier et présenter</h1>
+    <p>Dernière séance ! Tu termines tes interactions, tu vérifies tout, tu mets ton site interactif <strong>en ligne</strong>… et tu le présentes à la classe. 🎉</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : VS Code, F12, Netlify Drop ou GitHub Pages</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Terminer et vérifier mes interactions (checklist qualité, 0 erreur dans la console).</li><li>Publier mon site interactif en ligne.</li><li>Présenter mon site et expliquer une partie de mon code JavaScript.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Séances 17 à 19 : plan d'interactions, menu burger, mode sombre, retour en haut, diaporama, accordéon, galerie filtrée, tests en binôme.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>La checklist qualité JavaScript</h3>
+<ul><li>Aucune erreur rouge dans la console, sur <strong>toutes</strong> les pages.</li><li>Chaque interaction marche sur ordinateur <strong>et</strong> en mode téléphone.</li><li>Le site reste utilisable si une interaction ne se lance pas (le contenu important est visible).</li><li>Le code est rangé : des fonctions avec des noms clairs, des commentaires pour chaque partie.</li><li>Pas de code inutile ni de <code>console.log</code> de test oublié.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Mettre en ligne</h3>
+<p>Comme pour la formation HTML/CSS : <strong>Netlify Drop</strong> (glisser le dossier) ou <strong>GitHub Pages</strong>. Le dossier <code>js/</code> doit être envoyé avec le reste !</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Après la mise en ligne, ouvre ton site <strong>en ligne</strong> avec la console : vérifie qu'il n'y a pas d'erreur (un chemin <code>js/script.js</code> mal écrit, une majuscule…).</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Présenter (3 minutes)</h3>
+<ul><li>1. Mon site et son public, en une phrase.</li><li>2. La démonstration de chaque interaction.</li><li>3. <strong>Le code d'une interaction</strong> : j'explique l'algorithme QUAND / ALORS et les lignes importantes.</li><li>4. Un bug difficile et comment je l'ai résolu.</li><li>5. Ce que j'aimerais apprendre ensuite.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Et après ?</h3>
+<p>Tu sais maintenant créer un site complet et interactif. Pour aller plus loin :</p>
+<ul><li><strong>Les API</strong> : récupérer des données d'Internet (météo, films…) avec <code>fetch</code>.</li><li><strong>Les jeux</strong> : dessiner et animer avec <code>&lt;canvas&gt;</code>.</li><li><strong>Les frameworks</strong> : React, Vue… utilisés par les grandes entreprises.</li><li><strong>Le back-end</strong> : Node.js, pour coder aussi le côté serveur.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Continue sur <strong>fr.javascript.info</strong>, <strong>W3Schools</strong> et <strong>CodeCombat</strong>. Et surtout : construis des projets qui te plaisent !</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="grille-evaluation.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Rappel de la checklist qualité et de la grille d'évaluation.</span></li>
+<li><span class="temps">0:10 – 0:55</span><span>Finitions et checklist qualité (exercices 1 et 2).</span></li>
+<li><span class="temps">0:55 – 1:10</span><span>Mise en ligne et vérification du site en ligne (exercice 3).</span></li>
+<li><span class="temps">1:10 – 1:55</span><span>Présentations orales (3 min). Les autres donnent un compliment et un conseil.</span></li>
+<li><span class="temps">1:55 – 2:00</span><span>Clôture de la formation, remise des attestations. 🎓</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Les finitions<span class="niveau moyen">moyen</span></h3><ol>
+<li>Termine les interactions de ton plan.</li>
+<li>Range ton <code>script.js</code> : une partie par interaction, avec un commentaire de titre.</li>
+<li>Enlève les <code>console.log</code> de test.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · La checklist qualité<span class="niveau moyen">moyen</span></h3><ol>
+<li>Passe la checklist (notion 1) page par page.</li>
+<li>Teste en mode téléphone et sur un vrai téléphone si possible.</li>
+<li>Fais tester une dernière fois par ton voisin.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Publier<span class="niveau facile">facile</span></h3><ol>
+<li>Publie ton site sur Netlify Drop ou GitHub Pages.</li>
+<li>Ouvre le site <strong>en ligne</strong> avec la console : 0 erreur ?</li>
+<li>Envoie l'adresse au formateur et prépare ta présentation.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Une API</h2>
+<p>Ajoute à ton site une information venue d'Internet grâce à <code>fetch</code> : une citation au hasard, la météo de ta ville… (cherche « fetch API » sur W3Schools). Attention : certaines API demandent une clé, choisis-en une gratuite et sans inscription.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le site en ligne n'a pas de JavaScript</div><div class="ok">Le dossier <code>js/</code> doit être envoyé et le chemin respecter les majuscules</div></div>
+<div class="erreur"><div class="ko">Une interaction casse toutes les autres</div><div class="ok">Une erreur arrête le script : je lis la console et je corrige la première erreur</div></div>
+<div class="erreur"><div class="ko">Je lis mon code ligne par ligne pendant la présentation</div><div class="ok">J'explique l'algorithme avec mes mots, puis je montre 3 ou 4 lignes importantes</div></div>
+<div class="erreur"><div class="ko">J'ajoute une nouvelle interaction le dernier jour</div><div class="ok">Aujourd'hui, on finit et on vérifie ; les nouveautés, ce sera pour après !</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Publier</dt><dd>Mettre son site en ligne.</dd></div>
+<div><dt>API</dt><dd>Un service qui donne des données à d'autres programmes.</dd></div>
+<div><dt>fetch</dt><dd>La fonction JavaScript pour demander des données à une API.</dd></div>
+<div><dt>Framework</dt><dd>Une boîte à outils pour construire de grosses applications (React, Vue…).</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://app.netlify.com/drop" target="_blank"><span class="tag outil">Outil</span><br><strong>Netlify Drop</strong> : glisser son dossier pour publier son site</a></li>
+<li><a href="https://pages.github.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>GitHub Pages</strong> : mettre son site en ligne gratuitement</a></li>
+<li><a href="https://www.w3schools.com/js/js_api_fetch.asp" target="_blank"><span class="tag">W3Schools</span><br>L'API fetch</a></li>
+<li><a href="https://fr.javascript.info/fetch" target="_blank"><span class="tag">Cours</span><br>fetch (javascript.info, en français)</a></li>
+<li><a href="https://fr.javascript.info/" target="_blank"><span class="tag">Cours</span><br><strong>fr.javascript.info</strong> : le cours complet pour continuer</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript" target="_blank"><span class="tag">MDN</span><br>Apprendre JavaScript (en français)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mes 3 ou 4 interactions marchent parfaitement.</li>
+<li>0 erreur dans la console, sur toutes les pages, même en ligne.</li>
+<li>Mon code est rangé et commenté.</li>
+<li>Mon site est en ligne.</li>
+<li>J'ai présenté mon site et expliqué une partie de mon code.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance19/index.html">← Séance 19</a>
+<a href="../../groupe_js.html">Sommaire →</a>
+</nav>
+
+</main>
+
+</body>
+</html>
