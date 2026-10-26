@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #22303c;
+}
+
+/* ---------- La mise en page de toute la page ---------- */
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr 220px;
+  grid-template-areas:
+    "haut   haut     haut"
+    "menu   contenu  cote"
+    "bas    bas      bas";
+  gap: 15px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+header { grid-area: haut; }
+nav    { grid-area: menu; }
+main   { grid-area: contenu; }
+aside  { grid-area: cote; }
+footer { grid-area: bas; }
+
+header, nav, main, aside, footer {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+header {
+  background-color: #288b8b;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  background-color: #22303c;
+  color: white;
+  text-align: center;
+}
+
+nav ul {
+  padding-left: 18px;
+}
+
+.chiffre {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e67e22;
+  margin: 0;
+}
+
+/* ---------- La galerie : colonnes automatiques ---------- */
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-rows: 130px;
+  gap: 10px;
+}
+
+.galerie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.galerie .grande {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Sur petit écran : tout dans une seule colonne (on verra ça à la séance 17) */
+@media (max-width: 800px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "haut"
+      "menu"
+      "contenu"
+      "cote"
+      "bas";
+  }
+}

@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #2c3e50;
+}
+
+/* Image de fond + voile sombre pour lire le texte */
+.banniere {
+  height: 340px;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)),
+    url("https://picsum.photos/seed/festival-scene/1200/600");
+  background-size: cover;
+  background-position: center;
+}
+
+.banniere h1 {
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+}
+
+/* Un bouton avec un dégradé */
+.bouton {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, #e67e22, #e74c3c);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+figure {
+  display: inline-block;
+  margin: 10px;
+}
+
+/* Même taille pour toutes les photos, sans déformation */
+.photos img {
+  width: 240px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.sepia {
+  filter: sepia(80%);
+}
+
+.termine {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #288b8b, #1d6b6b);
+}

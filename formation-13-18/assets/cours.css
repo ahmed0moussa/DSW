@@ -1,0 +1,549 @@
+/* =========================================================
+   Formation Web 13-18 ans — style commun des fiches séances
+   ========================================================= */
+
+:root {
+  --teal: #288b8b;
+  --teal-dark: #1d6b6b;
+  --teal-light: #e3f3f3;
+  --orange: #e67e22;
+  --orange-light: #fdf0e3;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #22303c;
+  --muted: #5b6b78;
+  --border: #dde3ea;
+  --code-bg: #1f2933;
+  --code-text: #e6edf3;
+  --ok: #2e8b57;
+  --ok-light: #e7f6ee;
+  --ko: #c0392b;
+  --ko-light: #fbeaea;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--teal-dark);
+}
+
+p,
+li,
+dd {
+  overflow-wrap: anywhere;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- Barre du haut ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  background: var(--orange);
+  color: white;
+}
+
+.topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+}
+
+.topbar .nom {
+  font-size: 18px;
+  padding: 4px 14px;
+  border: 2px solid white;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.topbar a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.topbar a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Contenu ---------- */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.hero {
+  background: var(--card);
+  border-radius: var(--radius);
+  border-top: 8px solid var(--teal);
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.hero .module {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.hero h1 {
+  margin: 12px 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.toc a {
+  font-size: 14px;
+  text-decoration: none;
+  background: var(--orange-light);
+  color: #8a4a12;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.toc a:hover {
+  background: var(--orange);
+  color: white;
+}
+
+/* ---------- Sections ---------- */
+section.bloc {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-top: 22px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+section.bloc > h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  color: var(--teal-dark);
+}
+
+.objectif {
+  background: var(--teal-light);
+  border-left: 6px solid var(--teal);
+}
+
+.objectif ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.objectif li {
+  margin: 6px 0;
+  font-weight: 600;
+}
+
+.rappel {
+  border-left: 6px solid var(--orange);
+}
+
+/* ---------- Notions ---------- */
+.notion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin: 18px 0;
+}
+
+.notion h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.notion h3 .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  font-size: 16px;
+}
+
+.code-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.code-demo.solo {
+  grid-template-columns: 1fr;
+}
+
+/* Un enfant de grille peut rétrécir : le code long défile dans son cadre */
+.code-demo > div,
+.timeline li > span,
+.erreur > div {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+pre {
+  margin: 0;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+p code,
+li code,
+td code,
+dd code {
+  background: #eef1f4;
+  color: #b3401a;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.92em;
+}
+
+iframe.rendu {
+  width: 100%;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  background: white;
+}
+
+.astuce {
+  margin-top: 12px;
+  background: #fff8e1;
+  border-left: 5px solid #f9a825;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+/* ---------- Déroulé ---------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.timeline li:last-child {
+  border-bottom: none;
+}
+
+.timeline .temps {
+  font-weight: bold;
+  color: var(--orange);
+}
+
+/* ---------- Exercices ---------- */
+.exercice {
+  border-left: 5px solid var(--teal);
+  background: #fafcfd;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 14px 0;
+}
+
+.exercice h3 {
+  margin: 0 0 8px;
+}
+
+.exercice ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.exercice li {
+  margin: 6px 0;
+}
+
+.niveau {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.niveau.facile { background: var(--ok-light); color: var(--ok); }
+.niveau.moyen { background: #fff3cd; color: #8a6d00; }
+.niveau.difficile { background: var(--ko-light); color: var(--ko); }
+
+.defi {
+  background: linear-gradient(135deg, #fff4e6, #fde3cc);
+  border-left: 6px solid var(--orange);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--teal);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: var(--teal-dark);
+}
+
+/* ---------- Erreurs fréquentes ---------- */
+.erreurs {
+  display: grid;
+  gap: 10px;
+}
+
+.erreur {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.erreur div {
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.erreur .ko { background: var(--ko-light); }
+.erreur .ko::before { content: "❌ "; }
+.erreur .ok { background: var(--ok-light); }
+.erreur .ok::before { content: "✅ "; }
+
+/* ---------- Vocabulaire ---------- */
+.vocab {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.vocab div {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.vocab dt {
+  font-weight: bold;
+  color: var(--teal-dark);
+}
+
+.vocab dd {
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+/* ---------- Ressources ---------- */
+.ressources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ressources a {
+  display: block;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ressources a:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.ressources .tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  margin-bottom: 4px;
+}
+
+.ressources .tag.jeu { background: #ede7f6; color: #5e35b1; }
+.ressources .tag.outil { background: var(--orange-light); color: #8a4a12; }
+
+/* ---------- Checklist ---------- */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  padding: 8px 0 8px 34px;
+  position: relative;
+  border-bottom: 1px dashed var(--border);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 11px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+}
+
+/* ---------- Navigation bas de page ---------- */
+.nav-seances {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.nav-seances a {
+  background: var(--card);
+  border: 2px solid var(--teal);
+  color: var(--teal-dark);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-seances a:hover {
+  background: var(--teal);
+  color: white;
+}
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  section.bloc {
+    padding: 18px 16px;
+  }
+
+  .code-demo,
+  .erreur {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+/* ---------- Impression (le formateur peut imprimer la fiche) ---------- */
+@media print {
+  .topbar,
+  .toc,
+  .nav-seances,
+  iframe.rendu {
+    display: none;
+  }
+
+  body {
+    background: white;
+    font-size: 12pt;
+  }
+
+  section.bloc,
+  .hero {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}

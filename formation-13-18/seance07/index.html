@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 07 · Mini-projet HTML : ma page « Mon univers » — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 07</span> · Mini-projet HTML : ma page « Mon univers »</h1>
+    <p>Fin du module HTML ! Aujourd'hui tu réunis tout ce que tu as appris dans une seule page complète sur ta passion. Pas de nouvelle balise : tu t'entraînes à construire seul(e). À la séance 13, tu habilleras cette même page avec du CSS.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, Validateur W3C, Unsplash</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Construire seul(e) une page HTML complète et bien structurée sur un sujet que j'aime.</li><li>Utiliser ensemble toutes les balises du module : titres, textes, liens, images, listes, tableau, formulaire, médias, structure sémantique.</li><li>Vérifier mon code : indentation propre, validateur W3C, liens et images qui marchent.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 1 : squelette HTML, <code>&lt;h1&gt;</code>…<code>&lt;h6&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img alt&gt;</code>, <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;form&gt;</code>, <code>&lt;header&gt;</code>/<code>&lt;nav&gt;</code>/<code>&lt;main&gt;</code>/<code>&lt;section&gt;</code>/<code>&lt;footer&gt;</code>, <code>&lt;iframe&gt;</code> YouTube.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Le sujet : mon univers</h3>
+<p>Choisis un sujet <strong>que tu connais bien</strong> et que tu aimes : un sport, un jeu, un animal, un pays, un artiste, un loisir (dessin, cuisine, robots…). Tu seras l'expert(e) !</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Garde bien ce fichier : à la séance 13, on lui ajoutera du CSS pour le rendre beau. Le travail d'aujourd'hui sert donc deux fois.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le cahier des charges : ce que ta page doit contenir</h3>
+<ul><li>Un <code>&lt;header&gt;</code> avec un <code>&lt;h1&gt;</code>, une phrase de présentation et un <code>&lt;nav&gt;</code> de liens vers les parties de la page (<code>href="#id"</code>).</li><li>Un <code>&lt;main&gt;</code> avec au moins 4 <code>&lt;section&gt;</code>, chacune avec un <code>&lt;h2&gt;</code> et un <code>id</code>.</li><li>Au moins 2 images avec <code>alt</code> (rangées dans <code>images/</code>).</li><li>Du texte mis en valeur avec <code>&lt;strong&gt;</code> et <code>&lt;em&gt;</code>, et au moins 1 lien vers un autre site.</li><li>Une liste <code>&lt;ul&gt;</code> <strong>et</strong> une liste <code>&lt;ol&gt;</code>.</li><li>Un tableau avec <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> et un <code>colspan</code>.</li><li>Une vidéo YouTube intégrée <strong>ou</strong> une carte Google Maps.</li><li>Un <code>&lt;aside&gt;</code> « Le savais-tu ? » et un formulaire de contact (3 champs + bouton).</li><li>Un <code>&lt;footer&gt;</code> avec <code>&amp;copy;</code> et ton prénom.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les liens vers une partie de la page</h3>
+<p>On peut faire un lien vers une <strong>partie</strong> de la même page : on donne un <code>id</code> à la section, et le lien utilise <code>#</code> + cet id. C'est le principe des menus « une seule page ».</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;nav&gt;
+  &lt;a href="#regles"&gt;Les règles&lt;/a&gt;
+&lt;/nav&gt;
+…
+&lt;section id="regles"&gt;
+  &lt;h2&gt;Les règles&lt;/h2&gt;
+&lt;/section&gt;</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>La méthode en 4 étapes</h3>
+<ul><li>1. <strong>Plan</strong> (10 min) : sur papier, écris le titre de chaque section et ce qu'elle contiendra.</li><li>2. <strong>Structure</strong> : écris toutes les balises vides (header, nav, main, sections, footer) avec des commentaires <code>&lt;!-- --&gt;</code>.</li><li>3. <strong>Contenu</strong> : remplis section par section avec tes vrais textes et images. Enregistre et regarde le résultat souvent.</li><li>4. <strong>Vérification</strong> : <strong>Alt + Shift + F</strong> pour ranger le code, puis le validateur W3C, puis clique sur tous les liens.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Un code bien <strong>indenté</strong> (décalé vers la droite quand une balise est dans une autre) est beaucoup plus facile à lire et à corriger.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Quiz du module 1 (10 questions, à l'oral ou sur Kahoot) à partir du vocabulaire des séances 2 à 6.</span></li>
+<li><span class="temps">0:15 – 0:25</span><span>Présentation du mini-projet et du cahier des charges. On regarde l'exemple « basket ».</span></li>
+<li><span class="temps">0:25 – 0:40</span><span>Exercice 1 : choix du sujet et plan sur papier.</span></li>
+<li><span class="temps">0:40 – 1:35</span><span>Exercice 2 : construction de la page. Le formateur passe voir chaque élève.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Exercice 3 : vérification (indentation, validateur, liens). Défi pour les rapides.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Échange en binôme : chacun teste la page du voisin avec la checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le plan sur papier<span class="niveau facile">facile</span></h3><ol>
+<li>Choisis ton sujet et donne un titre à ta page.</li>
+<li>Écris les 4 (ou plus) sections : leur titre <code>&lt;h2&gt;</code> et ce qu'il y aura dedans (texte, liste, tableau, vidéo…).</li>
+<li>Cherche 2 ou 3 images sur Unsplash et range-les dans <code>seance07/images/</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Je construis ma page<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée <code>seance07/index.html</code> et écris le squelette avec <code>!</code> + Entrée. Change la <code>&lt;title&gt;</code> et vérifie <code>lang="fr"</code>.</li>
+<li>Écris la structure vide : <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> avec tes <code>&lt;section id="…"&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+<li>Remplis chaque partie en suivant le cahier des charges (notion 2).</li>
+<li>Relie chaque lien du menu à sa section avec <code>href="#id"</code> et teste.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Je vérifie comme un pro<span class="niveau moyen">moyen</span></h3><ol>
+<li>Range ton code avec <strong>Alt + Shift + F</strong>.</li>
+<li>Copie tout ton code dans le <strong>validateur W3C</strong> (onglet *Validate by Direct Input*) et corrige les erreurs.</li>
+<li>Vérifie que chaque image a un <code>alt</code> et que chaque <code>&lt;label for&gt;</code> correspond à un <code>id</code>.</li>
+<li>Coche le cahier des charges point par point.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Une deuxième page</h2>
+<p>Ajoute une page <code>galerie.html</code> avec 6 images de ton univers dans des <code>&lt;figure&gt;</code> avec <code>&lt;figcaption&gt;</code>, et relie les deux pages entre elles (un lien dans chaque <code>&lt;nav&gt;</code>).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Le lien <code>href="#regles"</code> ne fait rien</div><div class="ok">La section doit avoir exactement <code>id="regles"</code> (sans <code>#</code> dans l'id)</div></div>
+<div class="erreur"><div class="ko">Je mets du style avec <code>style="…"</code> partout</div><div class="ok">Aujourd'hui, HTML seulement : le style viendra en CSS à la séance 13</div></div>
+<div class="erreur"><div class="ko">Mon code est tout collé à gauche, illisible</div><div class="ok"><strong>Alt + Shift + F</strong> pour indenter automatiquement</div></div>
+<div class="erreur"><div class="ko">J'ai plusieurs <code>&lt;h1&gt;</code></div><div class="ok">Un seul <code>&lt;h1&gt;</code> (le titre de la page), puis des <code>&lt;h2&gt;</code> pour les sections</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Cahier des charges</dt><dd>La liste de ce que le travail doit contenir.</dd></div>
+<div><dt>Ancre</dt><dd>Un lien vers une partie de la page (<code>href="#id"</code>).</dd></div>
+<div><dt>Indentation</dt><dd>Le décalage du code vers la droite qui montre ce qui est dans quoi.</dd></div>
+<div><dt>Validateur</dt><dd>Un outil qui trouve les erreurs dans le code HTML.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/html/html_links_bookmarks.asp" target="_blank"><span class="tag">W3Schools</span><br>Les liens vers une partie de la page</a></li>
+<li><a href="https://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank"><span class="tag">W3Schools</span><br>Les balises sémantiques (révision)</a></li>
+<li><a href="https://www.w3schools.com/html/html_cheatsheet.asp" target="_blank"><span class="tag">W3Schools</span><br>La fiche résumé de toutes les balises HTML</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+<li><a href="https://unsplash.com/fr" target="_blank"><span class="tag outil">Outil</span><br><strong>Unsplash</strong> : photos gratuites et libres de droits</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Ma page respecte tout le cahier des charges.</li>
+<li>Les liens du menu emmènent à la bonne section.</li>
+<li>Mon code est bien indenté.</li>
+<li>Le validateur W3C ne trouve pas d'erreur grave.</li>
+<li>Je sais utiliser chaque balise du module 1 sans regarder la fiche.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance06/index.html">← Séance 06</a>
+<a href="../seance08/index.html">Séance 08 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

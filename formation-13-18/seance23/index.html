@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 23 · Projet final 2/3 : construire — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 4 · Interactivité et projet</span>
+    <h1><span>Séance 23</span> · Projet final 2/3 : construire</h1>
+    <p>Ta maquette est prête et ton dossier aussi. Aujourd'hui tu construis : tout le HTML de tes pages, puis le CSS de base qui donne déjà son identité à ton site.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12, Validateur W3C</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Écrire le HTML complet et sémantique de toutes les pages de mon site.</li><li>Écrire le CSS de base : réglages généraux, header, menu, footer, avec mes variables.</li><li>Construire la page d'accueil en suivant ma maquette.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Séance 22 : cahier des charges validé, maquette, dossier du projet avec les pages, le même header et footer, et les variables <code>:root</code> dans <code>css/style.css</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>D'abord tout le HTML</h3>
+<p>On écrit le contenu de <strong>toutes</strong> les pages avant de passer au style. Comme ça, on voit tout de suite s'il manque quelque chose.</p>
+<ul><li>Balises sémantiques : <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>.</li><li>Un seul <code>&lt;h1&gt;</code> par page, des <code>&lt;h2&gt;</code> pour les parties.</li><li>Les vrais textes (pas de Lorem ipsum) et toutes les images avec un <code>alt</code>.</li><li>Des <code>class</code> bien nommées pour le CSS : <code>.banniere</code>, <code>.cartes</code>, <code>.carte</code>, <code>.galerie</code>…</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Une page HTML sans CSS doit déjà être compréhensible et bien rangée. Si c'est le cas, ton HTML est bon !</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Puis le CSS de base</h3>
+<p>Ensuite on style ce qui est <strong>commun à toutes les pages</strong> : c'est là qu'on gagne le plus de temps.</p>
+<ul><li>1. Les variables <code>:root</code> (déjà prêtes) et les réglages de base : <code>*</code>, <code>body</code>, <code>img</code>, liens, titres.</li><li>2. Le header et la navbar en Flexbox, le lien <code>actif</code>.</li><li>3. Le footer.</li><li>4. La page d'accueil : bannière, cartes ou sections.</li></ul>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* 1. Variables */
+:root { --principale: #288b8b; --accent: #e67e22; }
+
+/* 2. Base */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--police); }
+img { max-width: 100%; }
+
+/* 3. Header et menu */
+header { display: flex; justify-content: space-between; align-items: center; }
+nav a.actif { border-bottom: 3px solid var(--accent); }</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Avancer sans se perdre</h3>
+<ul><li>Enregistre et regarde le résultat <strong>après chaque règle</strong> CSS.</li><li>Garde ta maquette sous les yeux.</li><li>Quand quelque chose ne marche pas : <strong>F12 → Inspecter</strong> avant d'appeler le formateur.</li><li>Note dans un commentaire <code>/* À FAIRE : … */</code> ce que tu n'as pas fini.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Le projet est noté avec la grille de la séance 24. Ouvre-la pour savoir ce qui compte le plus !</p>
+</div>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Point de départ : chacun relit son cahier des charges et sa maquette. Rappel de la grille d'évaluation.</span></li>
+<li><span class="temps">0:10 – 1:00</span><span>Exercice 1 : le HTML de toutes les pages. Le formateur passe voir chaque élève.</span></li>
+<li><span class="temps">1:00 – 1:50</span><span>Exercices 2 et 3 : le CSS de base, puis la page d'accueil.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Point d'étape : chacun montre sa page d'accueil et note ce qu'il reste pour la séance 24.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le HTML de toutes les pages<span class="niveau moyen">moyen</span></h3><ol>
+<li>Remplis le <code>&lt;main&gt;</code> de chaque page avec tes vrais textes et images, en suivant ta maquette.</li>
+<li>Ajoute les <code>class</code> dont tu auras besoin pour le CSS.</li>
+<li>Passe chaque page dans le validateur W3C et corrige les erreurs.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Le CSS commun<span class="niveau moyen">moyen</span></h3><ol>
+<li>Écris les réglages de base avec tes variables : <code>box-sizing</code>, <code>body</code>, <code>img</code>, titres, liens.</li>
+<li>Style le header et le menu en Flexbox, avec un style pour le lien <code>actif</code>.</li>
+<li>Style le footer. Vérifie que le header et le footer sont identiques sur toutes les pages.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La page d'accueil<span class="niveau difficile">difficile</span></h3><ol>
+<li>Construis la bannière (image de fond ou dégradé, titre, bouton).</li>
+<li>Construis les cartes ou les sections de l'accueil en Flexbox ou Grid.</li>
+<li>Compare avec ta maquette et ajuste les espacements avec F12.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Prendre de l'avance</h2>
+<p>Commence le CSS des autres pages et teste déjà ton site en mode téléphone (F12 → Ctrl + Shift + M).</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je passe 1 heure sur la bannière</div><div class="ok">Je fais d'abord tout simplement, je peaufine à la séance 24</div></div>
+<div class="erreur"><div class="ko">Le header est différent sur chaque page</div><div class="ok">Je copie exactement le même <code>&lt;header&gt;</code> et j'utilise un seul fichier CSS</div></div>
+<div class="erreur"><div class="ko">Le style marche sur l'accueil mais pas sur les autres pages</div><div class="ok">Chaque page doit avoir le <code>&lt;link&gt;</code> vers <code>css/style.css</code></div></div>
+<div class="erreur"><div class="ko">Je mets les couleurs en dur partout</div><div class="ok">J'utilise mes variables : <code>var(--principale)</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Composant commun</dt><dd>Une partie présente sur toutes les pages (header, menu, footer).</dd></div>
+<div><dt>Lien actif</dt><dd>Le lien du menu de la page où l'on se trouve.</dd></div>
+<div><dt>Itération</dt><dd>Avancer par petites étapes en vérifiant à chaque fois.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_website_layout.asp" target="_blank"><span class="tag">W3Schools</span><br>Les mises en page classiques d'un site</a></li>
+<li><a href="https://www.w3schools.com/css/css3_variables.asp" target="_blank"><span class="tag">W3Schools</span><br>Les variables CSS (révision)</a></li>
+<li><a href="https://www.w3schools.com/howto/default.asp" target="_blank"><span class="tag">W3Schools</span><br>W3Schools How To : des dizaines de composants</a></li>
+<li><a href="https://validator.w3.org/#validate_by_input" target="_blank"><span class="tag outil">Outil</span><br><strong>Validateur W3C</strong> : vérifier qu'il n'y a pas d'erreur dans mon HTML</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Toutes mes pages ont leur contenu HTML complet.</li>
+<li>Mes pages passent le validateur W3C.</li>
+<li>Le header, le menu et le footer sont stylés et identiques partout.</li>
+<li>Ma page d'accueil ressemble à ma maquette.</li>
+<li>Je sais ce qu'il me reste à faire pour la séance 24.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance22/index.html">← Séance 22</a>
+<a href="../seance24/index.html">Séance 24 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

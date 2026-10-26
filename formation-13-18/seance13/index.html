@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 13 · Mini-projet CSS : j&#x27;habille ma page — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 13</span> · Mini-projet CSS : j&#x27;habille ma page</h1>
+    <p>Tu reprends ta page « Mon univers » de la séance 7 et tu la transformes avec tout le CSS du module 2 : couleurs, polices, boîtes, fonds, positions. Le HTML ne change presque pas, seul le style change !</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant → Intermédiaire · Mini-projet</li>
+      <li>🧰 Outils : VS Code, Live Server, F12, Coolors, Google Fonts, HTML Color Codes</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Relier un fichier CSS à ma page et organiser ce fichier avec des commentaires.</li><li>Utiliser ensemble couleurs, polices, box model, fonds et positions sur une vraie page.</li><li>Trouver et corriger mes erreurs de CSS avec les outils de développement (F12).</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Module 2 : sélecteurs (<code>p</code>, <code>.classe</code>, <code>#id</code>), couleurs HEX, Google Fonts, <code>rem</code>, box model (<code>padding</code>, <code>border</code>, <code>margin</code>, <code>box-sizing</code>), <code>background-image</code>, dégradés, <code>object-fit</code>, <code>display</code>, <code>position</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Même HTML, nouveau style</h3>
+<p>Le HTML, c'est le <strong>contenu</strong>. Le CSS, c'est l'<strong>apparence</strong>. On peut complètement changer l'apparence d'une page <strong>sans toucher au contenu</strong> : c'est la grande force du CSS.</p>
+<p>Compare l'exemple de la séance 7 et celui d'aujourd'hui : c'est le même HTML, avec une seule ligne en plus dans le <code>&lt;head&gt;</code> !</p>
+<div class="code-demo solo"><div><span class="label">HTML</span><pre><code>&lt;head&gt;
+  …
+  &lt;link href="https://fonts.googleapis.com/css2?family=…" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Le cahier des charges du style</h3>
+<ul><li>Une <strong>palette</strong> de 4-5 couleurs choisie sur Coolors, écrite en HEX.</li><li>2 polices Google Fonts (titres / texte), tailles en <code>rem</code>, <code>line-height</code> confortable.</li><li><code>* { box-sizing: border-box; }</code> et un contenu centré avec <code>max-width</code> + <code>margin: 0 auto</code>.</li><li>Un <code>&lt;header&gt;</code> avec une <strong>image de fond</strong> + voile sombre (dégradé) pour lire le texte.</li><li>Un menu avec des liens en <code>inline-block</code> (comme des boutons) et <code>position: sticky</code>.</li><li>Les sections comme des <strong>cartes</strong> : fond blanc, <code>padding</code>, <code>border-radius</code>, <code>box-shadow</code>.</li><li>Images arrondies avec <code>object-fit</code>, un tableau stylé, un formulaire lisible.</li><li>Un badge ou une étiquette en <code>position: absolute</code>.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>L'ordre pour écrire le CSS</h3>
+<p>Écris ton CSS <strong>du plus général au plus précis</strong>, et sépare les parties avec des commentaires :</p>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>/* 1. Base : toute la page */
+* { box-sizing: border-box; }
+body { … }
+
+/* 2. Texte : titres, paragraphes, liens */
+h1, h2 { … }
+
+/* 3. Les grandes zones */
+header { … }
+nav a { … }
+main section { … }
+
+/* 4. Les détails */
+table { … }
+.badge { … }</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Les commentaires CSS s'écrivent <code>/* … */</code> (pas <code>&lt;!-- --&gt;</code> comme en HTML).</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Déboguer avec F12</h3>
+<ul><li>Clic droit sur l'élément qui ne va pas → <strong>Inspecter</strong>.</li><li>Dans <strong>Styles</strong> : une propriété <strong>barrée</strong> = elle est remplacée par une autre règle plus précise ou écrite plus bas.</li><li>Un petit <strong>triangle jaune ⚠</strong> = la propriété ou la valeur est mal écrite.</li><li>Dans <strong>Computed</strong>, le schéma de la boîte montre les vraies valeurs de margin, border, padding.</li><li>Teste une valeur en direct dans F12, puis <strong>recopie-la</strong> dans ton fichier <code>style.css</code> (F12 ne l'enregistre pas).</li></ul>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Quiz du module 2 (10 questions) à partir du vocabulaire des séances 8 à 12.</span></li>
+<li><span class="temps">0:15 – 0:25</span><span>Présentation : on ouvre l'exemple de la séance 7 et celui de la séance 13 côte à côte. Même HTML, style différent !</span></li>
+<li><span class="temps">0:25 – 0:40</span><span>Exercice 1 : palette, polices, fichier CSS relié et organisé.</span></li>
+<li><span class="temps">0:40 – 1:35</span><span>Exercice 2 : on habille la page en suivant l'ordre de travail. Démonstration F12 quand un problème revient chez plusieurs élèves.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Exercice 3 : chasse aux erreurs avec F12. Défi pour les rapides.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Galerie : 3 ou 4 élèves montrent l'avant / après de leur page.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Je prépare mon style<span class="niveau facile">facile</span></h3><ol>
+<li>Copie ton dossier <code>seance07</code> (page + images) et renomme la copie <code>seance13</code>.</li>
+<li>Choisis une palette sur Coolors et 2 polices sur Google Fonts. Note les codes.</li>
+<li>Crée <code>style.css</code>, relie-le, ajoute le <code>&lt;link&gt;</code> Google Fonts <strong>avant</strong> ton CSS.</li>
+<li>Écris les 4 commentaires de l'ordre de travail (base, texte, zones, détails).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · J'habille ma page<span class="niveau moyen">moyen</span></h3><ol>
+<li>Base : <code>box-sizing</code>, police et couleurs du <code>body</code>, <code>main</code> centré avec <code>max-width</code>.</li>
+<li>Texte : titres avec ta police de titre, liens avec leurs états (LoVe HAte).</li>
+<li>Header : image de fond <code>cover</code> + voile sombre, texte blanc centré.</li>
+<li>Menu : liens en <code>inline-block</code> avec <code>padding</code> et coins arrondis, menu en <code>position: sticky</code>.</li>
+<li>Sections en cartes : fond, <code>padding</code>, <code>border-radius</code>, <code>box-shadow</code>, <code>margin</code> entre elles.</li>
+<li>Détails : images arrondies, tableau (bordures, <code>padding</code>, en-tête coloré), formulaire, badge en <code>absolute</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · La chasse aux erreurs<span class="niveau moyen">moyen</span></h3><ol>
+<li>Avec F12, trouve une propriété barrée dans ta page et explique pourquoi elle est barrée.</li>
+<li>Change en direct dans F12 le <code>padding</code> de tes cartes jusqu'à ce qu'il te plaise, puis recopie la valeur dans <code>style.css</code>.</li>
+<li>Vérifie que ton menu reste en haut quand tu fais défiler la page.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Deux thèmes, un seul HTML</h2>
+<p>Crée un deuxième fichier <code>style-nuit.css</code> avec un thème sombre (fond foncé, texte clair). Change juste le nom du fichier dans le <code>&lt;link&gt;</code> : toute ta page change d'ambiance !</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Mon CSS ne s'applique pas du tout</div><div class="ok">Vérifier le <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> et le nom exact du fichier</div></div>
+<div class="erreur"><div class="ko">Une propriété est barrée dans F12</div><div class="ok">Une autre règle plus précise (ou écrite plus bas) la remplace</div></div>
+<div class="erreur"><div class="ko">Le texte est illisible sur l'image du header</div><div class="ok">Ajouter un voile : <code>linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(…)</code></div></div>
+<div class="erreur"><div class="ko">Je modifie dans F12 et je perds tout en rechargeant</div><div class="ok">F12 sert à tester : je recopie la bonne valeur dans <code>style.css</code></div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Feuille de style</dt><dd>Le fichier <code>.css</code> qui contient le style du site.</dd></div>
+<div><dt>Palette</dt><dd>Les quelques couleurs choisies pour un site.</dd></div>
+<div><dt>Déboguer</dt><dd>Chercher et corriger les erreurs.</dd></div>
+<div><dt>Propriété barrée</dt><dd>Dans F12, une règle qui est remplacée par une autre.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_howto.asp" target="_blank"><span class="tag">W3Schools</span><br>Relier un fichier CSS (révision)</a></li>
+<li><a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank"><span class="tag">W3Schools</span><br>La spécificité : quelle règle gagne ?</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/css" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : inspecter et modifier le CSS (en anglais)</a></li>
+<li><a href="https://coolors.co/" target="_blank"><span class="tag outil">Outil</span><br><strong>Coolors</strong> : générer une palette de 5 couleurs qui vont bien ensemble</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Mon CSS est dans un fichier séparé, organisé avec des commentaires.</li>
+<li>J'utilise une palette de couleurs cohérente et 2 polices maximum.</li>
+<li>Mon header a une image de fond lisible et mon menu reste en haut.</li>
+<li>Mes sections ressemblent à des cartes (padding, arrondi, ombre).</li>
+<li>Je sais trouver pourquoi une propriété est barrée dans F12.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance12/index.html">← Séance 12</a>
+<a href="../seance14/index.html">Séance 14 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

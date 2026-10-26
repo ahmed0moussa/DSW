@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 09 · Le texte, les polices et les unités — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 09</span> · Le texte, les polices et les unités</h1>
+    <p>Un texte bien choisi rend une page belle et facile à lire. Aujourd'hui tu utilises Google Fonts, tu règles la taille du texte et tu donnes du style aux liens et aux listes.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server, Google Fonts</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Changer la police avec <code>font-family</code> et ajouter une police de <strong>Google Fonts</strong>.</li><li>Régler la taille, la graisse, l'alignement et l'espacement du texte, avec les unités <code>px</code>, <code>rem</code> et <code>%</code>.</li><li>Styler les liens selon leur état (<code>:hover</code>…) et changer les puces des listes.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Une règle CSS = <code>sélecteur { propriété: valeur; }</code>. On vise par balise <code>p</code>, par classe <code>.nom</code>, par id <code>#nom</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Les propriétés du texte</h3>
+<ul><li><code>font-size</code> : la taille (ex. <code>18px</code>).</li><li><code>font-weight</code> : la graisse (<code>normal</code>, <code>bold</code>, ou <code>100</code> à <code>900</code>).</li><li><code>font-style: italic</code> : l'italique.</li><li><code>text-align</code> : l'alignement (<code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code>).</li><li><code>text-transform: uppercase</code> : TOUT EN MAJUSCULES.</li><li><code>line-height</code> : l'espace entre les lignes (ex. <code>1.6</code>).</li><li><code>letter-spacing</code> : l'espace entre les lettres.</li><li><code>text-decoration: none</code> : enlève le soulignement.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h2&gt;Le match de samedi&lt;/h2&gt;
+&lt;p&gt;L'équipe a gagné 3 à 1 après un match très serré. Les supporters ont chanté jusqu'à la fin.&lt;/p&gt;
+&lt;p class="petit"&gt;Photo : club junior&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+p { font-size: 15px; line-height: 1.8; }
+.petit { font-size: 12px; font-style: italic; color: gray; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les propriétés du texte" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+p { font-size: 15px; line-height: 1.8; }
+.petit { font-size: 12px; font-style: italic; color: gray; }&lt;/style&gt;&lt;h2&gt;Le match de samedi&lt;/h2&gt;
+&lt;p&gt;L&#x27;équipe a gagné 3 à 1 après un match très serré. Les supporters ont chanté jusqu&#x27;à la fin.&lt;/p&gt;
+&lt;p class=&quot;petit&quot;&gt;Photo : club junior&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>Les polices et Google Fonts</h3>
+<p><code>font-family</code> choisit la police. On donne toujours une police <strong>de secours</strong> à la fin : <code>serif</code>, <code>sans-serif</code> ou <code>monospace</code>.</p>
+<p>Sur <strong>fonts.google.com</strong> : choisis une police → <strong>Get font</strong> → <strong>Get embed code</strong> → copie le <code>&lt;link&gt;</code> dans ton <code>&lt;head&gt;</code> et la ligne <code>font-family</code> dans ton CSS.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;head&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>body {
+  font-family: 'Poppins', sans-serif;
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Pas plus de <strong>2 polices</strong> par site : une pour les titres, une pour le texte. Sinon ça devient illisible.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les unités : px, rem, %</h3>
+<ul><li><code>px</code> : une taille <strong>fixe</strong> en pixels. Simple pour commencer.</li><li><code>rem</code> : relatif à la taille du texte de la page (16px par défaut). <code>2rem</code> = 32px. Pratique pour que tout s'agrandisse ensemble.</li><li><code>%</code> : un pourcentage de l'élément parent. <code>width: 50%</code> = la moitié du parent.</li><li><code>vw</code> / <code>vh</code> : un pourcentage de la largeur / hauteur de l'<strong>écran</strong>.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p class="a"&gt;16px&lt;/p&gt;
+&lt;p class="b"&gt;1.5rem = 24px&lt;/p&gt;
+&lt;p class="c"&gt;2rem = 32px&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.a { font-size: 16px; }
+.b { font-size: 1.5rem; }
+.c { font-size: 2rem; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les unités : px, rem, %" sandbox="" style="height:170px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.a { font-size: 16px; }
+.b { font-size: 1.5rem; }
+.c { font-size: 2rem; }&lt;/style&gt;&lt;p class=&quot;a&quot;&gt;16px&lt;/p&gt;
+&lt;p class=&quot;b&quot;&gt;1.5rem = 24px&lt;/p&gt;
+&lt;p class=&quot;c&quot;&gt;2rem = 32px&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Les liens et leurs états</h3>
+<p>Un lien a plusieurs <strong>états</strong> : <code>:link</code> (pas encore visité), <code>:visited</code> (déjà visité), <code>:hover</code> (la souris est dessus), <code>:active</code> (on clique).</p>
+<p>L'ordre est important ! Retiens <strong>LoVe HAte</strong> : <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:active</code>. Sinon le <code>:hover</code> ne marche pas sur les liens visités.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;p&gt;&lt;a href="#"&gt;Passe la souris sur moi&lt;/a&gt;&lt;/p&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>a:link { color: #288b8b; }
+a:visited { color: #8e44ad; }
+a:hover { color: #e67e22; text-decoration: none; }
+a:active { color: red; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les liens et leurs états" sandbox="" style="height:70px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;a:link { color: #288b8b; }
+a:visited { color: #8e44ad; }
+a:hover { color: #e67e22; text-decoration: none; }
+a:active { color: red; }&lt;/style&gt;&lt;p&gt;&lt;a href=&quot;#&quot;&gt;Passe la souris sur moi&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>Styler les listes</h3>
+<p><code>list-style-type</code> change les puces : <code>disc</code>, <code>circle</code>, <code>square</code>, <code>decimal</code>, <code>upper-roman</code>, <code>none</code>…</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;ul class="carre"&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class="romain"&gt;&lt;li&gt;Un&lt;/li&gt;&lt;li&gt;Deux&lt;/li&gt;&lt;/ol&gt;
+&lt;ul class="aucun"&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;/ul&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.carre { list-style-type: square; color: #288b8b; }
+.romain { list-style-type: upper-roman; }
+.aucun { list-style-type: none; padding-left: 0; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Styler les listes" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.carre { list-style-type: square; color: #288b8b; }
+.romain { list-style-type: upper-roman; }
+.aucun { list-style-type: none; padding-left: 0; }&lt;/style&gt;&lt;ul class=&quot;carre&quot;&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;li&gt;Carré&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class=&quot;romain&quot;&gt;&lt;li&gt;Un&lt;/li&gt;&lt;li&gt;Deux&lt;/li&gt;&lt;/ol&gt;
+&lt;ul class=&quot;aucun&quot;&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;li&gt;✅ Sans puce&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>list-style-type: none</code> est très utilisé pour faire des menus de navigation.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : CSS Diner niveaux 7 à 10, ou correction du défi Coolors.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : propriétés du texte, puis Google Fonts en direct au vidéoprojecteur.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Les unités <code>px</code> / <code>rem</code> / <code>%</code>, les états des liens (LoVe HAte), les listes.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : l'article de magazine.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : la page « affiche de concert ».</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Mon article<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance09/index.html</code> et <code>style.css</code> : un article sur un événement (match, concert, sortie scolaire) avec un titre, un chapeau (<code>class="chapeau"</code>), 3 paragraphes et une liste.</li>
+<li>Règle le <code>body</code> : taille <code>17px</code>, <code>line-height: 1.6</code>.</li>
+<li>Centre le <code>&lt;h1&gt;</code> et mets-le en majuscules avec un espacement de lettres.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Google Fonts<span class="niveau moyen">moyen</span></h3><ol>
+<li>Choisis 2 polices sur Google Fonts : une originale pour les titres, une simple pour le texte.</li>
+<li>Ajoute le <code>&lt;link&gt;</code> dans le <code>&lt;head&gt;</code> (AVANT ton <code>style.css</code>).</li>
+<li>Applique la police des titres à <code>h1, h2</code> et l'autre au <code>body</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Liens et listes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute 3 liens dans ton article. Style les 4 états dans l'ordre LoVe HAte.</li>
+<li>Enlève le soulignement des liens, et remets-le seulement au <code>:hover</code>.</li>
+<li>Change les puces de ta liste (essaie <code>square</code>, puis <code>none</code> avec un emoji au début de chaque <code>&lt;li&gt;</code>).</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : L'affiche de concert</h2>
+<p>Crée une affiche de concert en HTML/CSS : nom de l'artiste énorme (<code>5rem</code>), date, lieu, prix, liste des titres chantés.</p>
+<p>Utilise uniquement des propriétés de texte (pas d'image) : polices Google, tailles, majuscules, espacements, couleurs. Fais-la la plus belle possible !</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko"><code>font-family: Poppins</code> mais la police ne change pas</div><div class="ok">J'ai oublié le <code>&lt;link&gt;</code> de Google Fonts dans le <code>&lt;head&gt;</code></div></div>
+<div class="erreur"><div class="ko"><code>font-size: 20</code> sans unité</div><div class="ok">Toujours une unité : <code>20px</code> ou <code>1.25rem</code></div></div>
+<div class="erreur"><div class="ko">Mon <code>:hover</code> ne marche pas sur les liens visités</div><div class="ok">Je respecte l'ordre LoVe HAte : link, visited, hover, active</div></div>
+<div class="erreur"><div class="ko">J'utilise 5 polices différentes</div><div class="ok">2 polices maximum par site</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Police (font)</dt><dd>Le dessin des lettres.</dd></div>
+<div><dt>Graisse</dt><dd>L'épaisseur du texte (<code>font-weight</code>).</dd></div>
+<div><dt>Interligne</dt><dd>L'espace entre les lignes (<code>line-height</code>).</dd></div>
+<div><dt>px</dt><dd>Pixel : un petit point de l'écran. Unité fixe.</dd></div>
+<div><dt>rem</dt><dd>Unité relative à la taille du texte de base (16px).</dd></div>
+<div><dt>Pseudo-classe</dt><dd>Un état d'un élément, comme <code>:hover</code> (survolé).</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_text.asp" target="_blank"><span class="tag">W3Schools</span><br>Le texte en CSS</a></li>
+<li><a href="https://www.w3schools.com/css/css_font.asp" target="_blank"><span class="tag">W3Schools</span><br>Les polices</a></li>
+<li><a href="https://www.w3schools.com/css/css_font_google.asp" target="_blank"><span class="tag">W3Schools</span><br>Utiliser Google Fonts</a></li>
+<li><a href="https://www.w3schools.com/css/css_units.asp" target="_blank"><span class="tag">W3Schools</span><br>Les unités CSS</a></li>
+<li><a href="https://www.w3schools.com/css/css_link.asp" target="_blank"><span class="tag">W3Schools</span><br>Styler les liens</a></li>
+<li><a href="https://www.w3schools.com/css/css_list.asp" target="_blank"><span class="tag">W3Schools</span><br>Styler les listes</a></li>
+<li><a href="https://fonts.google.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>Google Fonts</strong> : des centaines de polices gratuites</a></li>
+<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais ajouter une police Google Fonts.</li>
+<li>J'utilise au maximum 2 polices.</li>
+<li>Je connais la différence entre <code>px</code> et <code>rem</code>.</li>
+<li>Je sais l'ordre des états des liens (LoVe HAte).</li>
+<li>Je sais enlever ou changer les puces d'une liste.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance08/index.html">← Séance 08</a>
+<a href="../seance10/index.html">Séance 10 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

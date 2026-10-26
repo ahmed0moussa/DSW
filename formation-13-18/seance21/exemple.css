@@ -1,0 +1,153 @@
+:root {
+  --principale: #6c5ce7;
+  --accent: #fd79a8;
+  --fond: #f5f3ff;
+  --texte: #2d3436;
+  --arrondi: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', Arial, sans-serif;
+  background-color: var(--fond);
+  color: var(--texte);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+/* ---------- Carte profil ---------- */
+.profil {
+  max-width: 340px;
+  margin: 0 auto;
+  padding-bottom: 25px;
+  overflow: hidden;
+  border-radius: var(--arrondi);
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2);
+  transition: transform 0.3s;
+}
+
+.profil:hover {
+  transform: translateY(-8px);
+}
+
+.profil-haut {
+  height: 110px;
+  background: linear-gradient(135deg, var(--principale), var(--accent));
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;          /* l'avatar chevauche le bandeau */
+  border: 5px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profil h1 {
+  margin: 5px 0 0;
+}
+
+.profil p {
+  padding: 0 20px;
+}
+
+.metier {
+  margin-top: 0;
+  color: var(--principale);
+  font-weight: 800;
+}
+
+.competences {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  list-style: none;
+}
+
+.competences li {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: var(--fond);
+  color: var(--principale);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.bouton {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background-color: var(--principale);
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.bouton:hover {
+  background-color: var(--accent);
+}
+
+/* ---------- Galerie ---------- */
+h2 {
+  margin-top: 50px;
+  text-align: center;
+  color: var(--principale);
+}
+
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+figure {
+  position: relative;          /* pour la légende en absolute */
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--arrondi);
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(45, 52, 54, 0.75);
+  color: white;
+  font-weight: 800;
+  opacity: 0;                  /* cachée */
+  transform: translateY(100%);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+figure:hover img {
+  transform: scale(1.08);
+}
+
+figure:hover figcaption {
+  opacity: 1;                  /* apparaît en glissant */
+  transform: translateY(0);
+}

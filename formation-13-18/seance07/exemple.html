@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon univers : le basket</title>
+</head>
+<body>
+
+  <!-- ===== En-tête ===== -->
+  <header>
+    <h1>🏀 Mon univers : le basket</h1>
+    <p>Par Yasmine, 14 ans, joueuse au club de Sousse</p>
+    <nav>
+      <a href="#histoire">Histoire</a>
+      <a href="#joueurs">Joueurs</a>
+      <a href="#video">Vidéo</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== Contenu principal ===== -->
+  <main>
+    <section id="histoire">
+      <span class="badge">Mon sport</span>
+      <h2>Pourquoi j'aime le basket</h2>
+      <img class="photo" src="https://picsum.photos/seed/basket-panier/400/260" alt="Un ballon de basket près d'un panier" width="400">
+      <p>J'ai commencé le basket à <strong>9 ans</strong>. C'est un sport <em>rapide</em> où il faut
+         réfléchir vite et jouer en équipe.</p>
+      <p>Le basket a été inventé en <strong>1891</strong> par James Naismith, un professeur de sport.
+         <a href="https://fr.wikipedia.org/wiki/Basket-ball" target="_blank">En savoir plus sur Wikipédia</a>.</p>
+    </section>
+
+    <section id="regles">
+      <h2>Les règles de base</h2>
+      <ol>
+        <li>Deux équipes de 5 joueurs.</li>
+        <li>On marque 2 points, ou 3 points de loin.</li>
+        <li>On ne marche pas avec le ballon : on dribble.</li>
+      </ol>
+      <h3>Ce qu'il faut pour jouer</h3>
+      <ul>
+        <li>Un ballon</li>
+        <li>Des baskets montantes</li>
+        <li>Une gourde d'eau</li>
+      </ul>
+    </section>
+
+    <section id="joueurs">
+      <h2>Mon équipe</h2>
+      <table>
+        <thead>
+          <tr><th>Joueuse</th><th>Poste</th><th>Points cette saison</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Yasmine</td><td>Meneuse</td><td>124</td></tr>
+          <tr><td>Lina</td><td>Ailière</td><td>98</td></tr>
+          <tr><td>Nour</td><td>Pivot</td><td>143</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Total</td><td>365</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section id="video">
+      <h2>Une vidéo pour apprendre</h2>
+      <iframe width="360" height="203" src="https://www.youtube.com/embed/UB1O30fR-EE"
+              title="Vidéo YouTube" allowfullscreen></iframe>
+    </section>
+
+    <aside>
+      <h3>Le savais-tu ?</h3>
+      <p>Le panier est à <span class="chiffre">3,05 mètres</span> du sol.</p>
+    </aside>
+
+    <section id="contact">
+      <h2>Écris-moi</h2>
+      <form>
+        <label for="prenom">Ton prénom :</label><br>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+        <label for="sport">Ton sport préféré :</label><br>
+        <select id="sport" name="sport">
+          <option>Basket</option>
+          <option>Football</option>
+          <option>Handball</option>
+        </select><br><br>
+        <label for="message">Ton message :</label><br>
+        <textarea id="message" name="message" rows="4" cols="30" required></textarea><br><br>
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== Pied de page ===== -->
+  <footer>
+    <p>&copy; 2026 Yasmine · Site créé pendant la formation web</p>
+  </footer>
+
+</body>
+</html>

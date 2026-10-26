@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 10 · Le modèle de boîte (box model) — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 2 · Bases du CSS</span>
+    <h1><span>Séance 10</span> · Le modèle de boîte (box model)</h1>
+    <p>En CSS, chaque élément est une boîte ! Comprendre la boîte, c'est la clé pour placer et espacer correctement tous les éléments d'une page.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant → Intermédiaire</li>
+      <li>🧰 Outils : VS Code, Live Server, les outils de développement du navigateur (F12)</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer les 4 couches d'une boîte : contenu, <code>padding</code>, <code>border</code>, <code>margin</code>.</li><li>Régler la taille avec <code>width</code>, <code>height</code>, <code>max-width</code> et utiliser <code>box-sizing: border-box</code>.</li><li>Arrondir et ombrer une boîte avec <code>border-radius</code> et <code>box-shadow</code>, et inspecter les boîtes avec <strong>F12</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>On sait styler le texte : <code>font-family</code>, <code>font-size</code>, <code>text-align</code>, <code>line-height</code>. Les unités : <code>px</code>, <code>rem</code>, <code>%</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Les 4 couches de la boîte</h3>
+<p>Imagine un tableau accroché au mur :</p>
+<ul><li><strong>content</strong> (le contenu) = le dessin.</li><li><strong>padding</strong> (marge intérieure) = l'espace blanc entre le dessin et le cadre.</li><li><strong>border</strong> (bordure) = le cadre.</li><li><strong>margin</strong> (marge extérieure) = l'espace entre ce tableau et les autres tableaux.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="boite"&gt;Je suis le contenu.&lt;/div&gt;
+&lt;div class="boite"&gt;Une autre boîte.&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.boite {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #e67e22;
+  margin: 20px;
+  background-color: #fdf0e3;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les 4 couches de la boîte" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.boite {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #e67e22;
+  margin: 20px;
+  background-color: #fdf0e3;
+}&lt;/style&gt;&lt;div class=&quot;boite&quot;&gt;Je suis le contenu.&lt;/div&gt;
+&lt;div class=&quot;boite&quot;&gt;Une autre boîte.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>padding et margin : 1, 2 ou 4 valeurs</h3>
+<ul><li><code>padding: 20px;</code> → 20px des 4 côtés.</li><li><code>padding: 10px 30px;</code> → 10px en haut et en bas, 30px à gauche et à droite.</li><li><code>padding: 5px 10px 15px 20px;</code> → haut, droite, bas, gauche (le sens des aiguilles d'une montre 🕐).</li><li><code>padding-top</code>, <code>margin-left</code>… → un seul côté.</li><li><code>margin: 0 auto;</code> → centre une boîte qui a une largeur.</li></ul>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="carte"&gt;Je suis centrée avec margin: 0 auto&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.carte {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px 30px;
+  background: #e3f3f3;
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : padding et margin : 1, 2 ou 4 valeurs" sandbox="" style="height:80px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.carte {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px 30px;
+  background: #e3f3f3;
+}&lt;/style&gt;&lt;div class=&quot;carte&quot;&gt;Je suis centrée avec margin: 0 auto&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Les bordures</h3>
+<p><code>border: épaisseur style couleur;</code>. Les styles : <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code>.</p>
+<p><code>border-radius</code> arrondit les coins. <code>border-radius: 50%</code> sur un carré = un <strong>cercle</strong> !</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="a"&gt;&lt;/div&gt;&lt;div class="b"&gt;&lt;/div&gt;&lt;div class="c"&gt;&lt;/div&gt;&lt;div class="d"&gt;&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>div { width: 80px; height: 80px; display: inline-block; margin: 6px; }
+.a { border: 3px solid #288b8b; }
+.b { border: 3px dashed #e67e22; border-radius: 12px; }
+.c { border: 3px dotted #8e44ad; border-radius: 50%; }
+.d { border-bottom: 6px solid crimson; }</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Les bordures" sandbox="" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;div { width: 80px; height: 80px; display: inline-block; margin: 6px; }
+.a { border: 3px solid #288b8b; }
+.b { border: 3px dashed #e67e22; border-radius: 12px; }
+.c { border: 3px dotted #8e44ad; border-radius: 50%; }
+.d { border-bottom: 6px solid crimson; }&lt;/style&gt;&lt;div class=&quot;a&quot;&gt;&lt;/div&gt;&lt;div class=&quot;b&quot;&gt;&lt;/div&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;div class=&quot;d&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>box-sizing : le réglage magique</h3>
+<p>Par défaut, <code>width: 200px</code> + <code>padding: 20px</code> + <code>border: 5px</code> = une boîte de <strong>250px</strong> de large ! Pas pratique.</p>
+<p>Avec <code>box-sizing: border-box</code>, la boîte fait <strong>exactement 200px</strong> : le padding et la bordure sont comptés dedans. On le met au début de tous nos CSS :</p>
+<div class="code-demo solo"><div><span class="label">CSS</span><pre><code>* {
+  box-sizing: border-box;
+}</code></pre></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>*</code> est le sélecteur <strong>universel</strong> : il vise tous les éléments de la page.</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>L'ombre : box-shadow</h3>
+<p><code>box-shadow: décalage-x décalage-y flou couleur;</code>. Une ombre légère donne un effet « carte » moderne.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;div class="ombre"&gt;Une carte avec une ombre douce&lt;/div&gt;</code></pre></div><div><span class="label">CSS</span><pre><code>.ombre {
+  width: 220px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : L&#x27;ombre : box-shadow" sandbox="" style="height:110px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.ombre {
+  width: 220px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}&lt;/style&gt;&lt;div class=&quot;ombre&quot;&gt;Une carte avec une ombre douce&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">6</span>Inspecter avec F12</h3>
+<p>Fais clic droit sur un élément → <strong>Inspecter</strong>. Dans l'onglet <strong>Elements → Computed</strong>, tu vois le schéma de la boîte avec le margin (orange), la bordure (jaune), le padding (vert) et le contenu (bleu).</p>
+<p>Tu peux même <strong>modifier le CSS en direct</strong> pour tester, sans casser ton fichier !</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Les outils de développement sont l'outil n°1 des développeurs web. Utilise-les à chaque fois que quelque chose ne se place pas comme tu veux.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : on prend un cadre photo (ou on le dessine) et on nomme les 4 couches.</span></li>
+<li><span class="temps">0:10 – 0:35</span><span>Découverte : content, padding, border, margin. Démonstration avec F12 sur un vrai site.</span></li>
+<li><span class="temps">0:35 – 0:55</span><span>Raccourcis à 1, 2 ou 4 valeurs, <code>margin: 0 auto</code>, <code>box-sizing</code>, <code>border-radius</code>, <code>box-shadow</code>.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3 : les cartes de profil.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : le badge rond.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : jeu « devine la valeur » (on montre une boîte, les élèves devinent le padding et la margin).</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Ma première boîte<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance10/index.html</code> avec une <code>&lt;div class="carte"&gt;</code> qui contient un titre et un paragraphe.</li>
+<li>Dans le CSS, commence par <code>* { box-sizing: border-box; }</code>.</li>
+<li>Donne à <code>.carte</code> : une largeur de <code>300px</code>, un <code>padding</code> de <code>20px</code>, une bordure de <code>3px solid</code> et une couleur de fond.</li>
+<li>Ouvre F12 → Inspecter la carte → regarde le schéma de la boîte. Retrouve tes valeurs !</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Trois cartes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée 3 cartes de présentation (3 amis, 3 animaux, 3 jeux…) avec une image chacune.</li>
+<li>Centre les cartes avec <code>margin: 20px auto;</code>.</li>
+<li>Arrondis les coins (<code>border-radius: 12px</code>) et ajoute une ombre douce.</li>
+<li>Fais une image ronde : <code>width</code> et <code>height</code> identiques + <code>border-radius: 50%</code>.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Des boîtes différentes<span class="niveau moyen">moyen</span></h3><ol>
+<li>Ajoute la classe <code>.speciale</code> sur une carte : bordure <code>dashed</code> de couleur différente et <code>padding</code> plus grand.</li>
+<li>Mets une bordure seulement en bas des titres (<code>border-bottom</code>).</li>
+<li>Remplace <code>width: 300px</code> par <code>max-width: 300px</code>. Réduis la fenêtre : que remarques-tu ?</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Le badge rond</h2>
+<p>Crée un badge rond de 150px qui contient un emoji et un texte (ex. « 🏆 Champion »), avec une double bordure (<code>border: 6px double …</code>) et une ombre.</p>
+<p>Bonus : avec F12, change en direct le <code>padding</code> et le <code>border-radius</code> d'un élément sur un vrai site (ex. Wikipédia) et fais une capture d'écran du résultat.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Ma boîte est plus large que prévu</div><div class="ok">J'ajoute <code>* { box-sizing: border-box; }</code> au début du CSS</div></div>
+<div class="erreur"><div class="ko"><code>margin: 0 auto</code> ne centre pas ma boîte</div><div class="ok">La boîte doit avoir une largeur (<code>width</code> ou <code>max-width</code>)</div></div>
+<div class="erreur"><div class="ko"><code>border: 3px</code> mais pas de bordure visible</div><div class="ok">Il faut aussi le style : <code>border: 3px solid black;</code></div></div>
+<div class="erreur"><div class="ko">Je confonds <code>padding</code> et <code>margin</code></div><div class="ok">padding = <strong>dedans</strong> (le fond est coloré), margin = <strong>dehors</strong> (transparent)</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Box model</dt><dd>Le modèle de boîte : chaque élément est une boîte à 4 couches.</dd></div>
+<div><dt>padding</dt><dd>Marge intérieure, entre le contenu et la bordure.</dd></div>
+<div><dt>border</dt><dd>La bordure, le cadre de la boîte.</dd></div>
+<div><dt>margin</dt><dd>Marge extérieure, l'espace autour de la boîte.</dd></div>
+<div><dt>box-sizing</dt><dd>Indique si le padding et la bordure sont comptés dans la largeur.</dd></div>
+<div><dt>DevTools</dt><dd>Les outils de développement du navigateur (F12).</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/css/css_boxmodel.asp" target="_blank"><span class="tag">W3Schools</span><br>Le modèle de boîte</a></li>
+<li><a href="https://www.w3schools.com/css/css_padding.asp" target="_blank"><span class="tag">W3Schools</span><br>Le padding</a></li>
+<li><a href="https://www.w3schools.com/css/css_margin.asp" target="_blank"><span class="tag">W3Schools</span><br>La margin</a></li>
+<li><a href="https://www.w3schools.com/css/css_border.asp" target="_blank"><span class="tag">W3Schools</span><br>Les bordures</a></li>
+<li><a href="https://www.w3schools.com/css/css3_box-sizing.asp" target="_blank"><span class="tag">W3Schools</span><br>box-sizing</a></li>
+<li><a href="https://www.w3schools.com/css/css3_shadows_box.asp" target="_blank"><span class="tag">W3Schools</span><br>box-shadow</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/css" target="_blank"><span class="tag">Guide</span><br><strong>Chrome DevTools</strong> : inspecter et modifier le CSS (en anglais)</a></li>
+<li><a href="https://htmlcolorcodes.com/fr/" target="_blank"><span class="tag outil">Outil</span><br><strong>HTML Color Codes</strong> : choisir une couleur et copier son code HEX</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais nommer les 4 couches de la boîte dans l'ordre.</li>
+<li>Je mets <code>* { box-sizing: border-box; }</code> au début de mon CSS.</li>
+<li>Je sais centrer une boîte avec <code>margin: 0 auto</code>.</li>
+<li>Je sais faire une image ronde.</li>
+<li>Je sais inspecter un élément avec F12.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance09/index.html">← Séance 09</a>
+<a href="../seance11/index.html">Séance 11 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 01 · Le web, les sites et VS Code — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 01</span> · Le web, les sites et VS Code</h1>
+    <p>Avant d'écrire du code, on comprend ce qu'on va fabriquer : c'est quoi un site web, à quoi ça sert, comment il arrive sur ton écran et de quoi il est fait. Puis tu installes ton outil de travail : VS Code.</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant (aucune connaissance)</li>
+      <li>🧰 Outils : Navigateur Chrome, VS Code, extension Live Server, papier et crayon</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Expliquer avec mes mots ce qu'est Internet, le web, un site web, un serveur et une adresse (URL).</li><li>Dire de quoi est fait un site : HTML, CSS, JavaScript et des fichiers (images, vidéos).</li><li>Expliquer à quoi sert VS Code, l'installer et ouvrir mon premier fichier avec Live Server.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>C'est la toute première séance ! Tu n'as besoin d'aucune connaissance. Il faut juste savoir utiliser une souris, un clavier et un navigateur pour aller sur un site.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>Internet et le web : ce n'est pas pareil !</h3>
+<p><strong>Internet</strong> est un immense <strong>réseau</strong> : des millions d'ordinateurs, de téléphones et de serveurs reliés entre eux par des câbles (même sous la mer !), des antennes et le Wi-Fi.</p>
+<p>Le <strong>web</strong> (en entier : *World Wide Web*, la « toile d'araignée mondiale ») est <strong>une des choses</strong> qu'on fait sur Internet : visiter des sites. Mais on utilise aussi Internet pour les e-mails, les jeux en ligne, les appels vidéo…</p>
+<p class="astuce">💡 <strong>Astuce :</strong> Imagine une ville : <strong>Internet = les routes</strong>, le <strong>web = les magasins et les maisons</strong> au bord des routes. Les routes servent à aller voir les magasins, mais aussi à autre chose.</p>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>C'est quoi un site web ? À quoi ça sert ?</h3>
+<p>Un <strong>site web</strong> est un ensemble de <strong>pages</strong> reliées entre elles par des <strong>liens</strong>. Chaque page est un <strong>fichier</strong>. Exemples : Wikipédia, YouTube, le site de ton école ou d'un club.</p>
+<p>Un site sert à :</p>
+<ul><li><strong>S'informer</strong> : actualités, météo, horaires de bus.</li><li><strong>Apprendre</strong> : Wikipédia, W3Schools, cours en ligne.</li><li><strong>Acheter et vendre</strong> : boutiques en ligne.</li><li><strong>Se divertir et partager</strong> : vidéos, musique, réseaux sociaux.</li><li><strong>Présenter quelqu'un ou quelque chose</strong> : le site d'un artiste, d'un restaurant, d'une entreprise… ou TON site à la fin de cette formation !</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Une <strong>page web</strong> = un seul écran (une seule adresse). Un <strong>site web</strong> = toutes les pages ensemble.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Comment une page arrive sur mon écran ?</h3>
+<p>Les fichiers d'un site sont rangés sur un <strong>serveur</strong> : un ordinateur allumé jour et nuit, branché à Internet. Ton <strong>navigateur</strong> (Chrome, Firefox, Edge, Safari) est le programme qui va les chercher et les affiche.</p>
+<p>C'est comme au <strong>restaurant</strong> : tu (le navigateur) passes une commande, le serveur va en cuisine chercher le plat (les fichiers) et te l'apporte à table (ton écran).</p>
+<div class="code-demo solo"><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Comment une page arrive sur mon écran ?" sandbox="" style="height:230px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;
+.voyage{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;font:14px Arial}
+.etape{background:#e3f3f3;border:2px solid #288b8b;border-radius:10px;padding:10px;text-align:center;width:150px}
+.etape b{display:block;font-size:26px}
+.fleche{font-size:22px;color:#e67e22;font-weight:bold}
+&lt;/style&gt;
+&lt;div class=&quot;voyage&quot;&gt;
+  &lt;div class=&quot;etape&quot;&gt;&lt;b&gt;🧑‍💻&lt;/b&gt;1. Je tape l&#x27;adresse dans le &lt;strong&gt;navigateur&lt;/strong&gt;&lt;/div&gt;
+  &lt;span class=&quot;fleche&quot;&gt;→&lt;/span&gt;
+  &lt;div class=&quot;etape&quot;&gt;&lt;b&gt;📨&lt;/b&gt;2. Le navigateur envoie une &lt;strong&gt;demande&lt;/strong&gt; par Internet&lt;/div&gt;
+  &lt;span class=&quot;fleche&quot;&gt;→&lt;/span&gt;
+  &lt;div class=&quot;etape&quot;&gt;&lt;b&gt;🗄️&lt;/b&gt;3. Le &lt;strong&gt;serveur&lt;/strong&gt; trouve les fichiers et les renvoie&lt;/div&gt;
+  &lt;span class=&quot;fleche&quot;&gt;→&lt;/span&gt;
+  &lt;div class=&quot;etape&quot;&gt;&lt;b&gt;🖥️&lt;/b&gt;4. Le navigateur lit le HTML et le CSS et &lt;strong&gt;affiche&lt;/strong&gt; la page&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Tout ça se passe en moins d'une seconde ! Le serveur peut être dans un autre pays.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>L'adresse d'une page : l'URL</h3>
+<p>Chaque page a une adresse unique, l'<strong>URL</strong>, comme l'adresse d'une maison. Décortiquons <code>https://fr.wikipedia.org/wiki/Tunisie</code> :</p>
+<ul><li><code>https://</code> → le <strong>protocole</strong> : la façon de communiquer. Le <strong>s</strong> veut dire <strong>sécurisé</strong> (cadenas 🔒).</li><li><code>fr.wikipedia.org</code> → le <strong>nom de domaine</strong> : le nom du site. La fin (<code>.org</code>, <code>.com</code>, <code>.tn</code> pour la Tunisie, <code>.fr</code> pour la France) s'appelle l'<strong>extension</strong>.</li><li><code>/wiki/Tunisie</code> → le <strong>chemin</strong> : quelle page précise on veut dans le site.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Pour avoir son site en ligne, il faut un <strong>hébergement</strong> (une place sur un serveur) et, si on veut, un <strong>nom de domaine</strong> à soi. À la dernière séance, on mettra ton site en ligne gratuitement !</p>
+</div>
+<div class="notion">
+<h3><span class="num">5</span>De quoi est fait un site web ?</h3>
+<p>Un site est fabriqué avec <strong>3 langages</strong> et des <strong>fichiers</strong>, comme une maison :</p>
+<ul><li><strong>HTML</strong> = les murs et les pièces : la <strong>structure</strong> et le contenu (titres, textes, images, liens). Fichiers <code>.html</code>.</li><li><strong>CSS</strong> = la peinture et la décoration : les <strong>couleurs</strong>, les tailles, la place des éléments. Fichiers <code>.css</code>.</li><li><strong>JavaScript</strong> = l'électricité : ce qui <strong>réagit</strong> et bouge (un menu qui s'ouvre, un jeu). Fichiers <code>.js</code>. On le verra après cette formation.</li><li><strong>Les médias</strong> : images (<code>.jpg</code>, <code>.png</code>), vidéos (<code>.mp4</code>), sons (<code>.mp3</code>), polices…</li></ul>
+<div class="code-demo solo"><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : De quoi est fait un site web ?" sandbox="" style="height:190px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;
+.cote{display:flex;gap:10px;flex-wrap:wrap}
+.cote &gt; div{flex:1 1 200px;border:2px dashed #ccc;padding:8px;border-radius:8px}
+.joli{font-family:Arial;background:#fdf6ec;text-align:center}
+.joli h2{color:white;background:#288b8b;padding:8px;border-radius:8px;margin:0 0 8px}
+.joli a{display:inline-block;background:#e67e22;color:white;padding:6px 14px;border-radius:20px;text-decoration:none}
+&lt;/style&gt;
+&lt;div class=&quot;cote&quot;&gt;
+  &lt;div&gt;&lt;small&gt;HTML seul&lt;/small&gt;&lt;h2&gt;Club de foot&lt;/h2&gt;&lt;p&gt;Entraînement le samedi.&lt;/p&gt;&lt;a href=&quot;#&quot;&gt;S&#x27;inscrire&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;joli&quot;&gt;&lt;small&gt;HTML + CSS&lt;/small&gt;&lt;h2&gt;Club de foot&lt;/h2&gt;&lt;p&gt;Entraînement le samedi.&lt;/p&gt;&lt;a href=&quot;#&quot;&gt;S&#x27;inscrire&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> À gauche : la même page avec seulement du HTML. À droite : avec du CSS. Le contenu est le même, seul le style change !</p>
+</div>
+<div class="notion">
+<h3><span class="num">6</span>Regarder le code d'un vrai site</h3>
+<p>Tous les sites que tu visites sont écrits en HTML et CSS. Tu peux voir leur code :</p>
+<ul><li><strong>Ctrl + U</strong> : affiche le code source HTML de la page.</li><li><strong>F12</strong> (ou clic droit → <strong>Inspecter</strong>) : ouvre les <strong>outils de développement</strong>. Tu vois le HTML à gauche et le CSS à droite, et tu peux même les <strong>modifier en direct</strong> !</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Pas de panique : ce que tu modifies avec F12 change seulement sur <strong>ton</strong> écran, pendant quelques minutes. Tu ne casses pas le vrai site. Recharge la page (F5) et tout revient.</p>
+</div>
+<div class="notion">
+<h3><span class="num">7</span>Qui fabrique les sites ?</h3>
+<ul><li>Le <strong>développeur front-end</strong> : il code ce qu'on <strong>voit</strong> (HTML, CSS, JavaScript). C'est ce que tu vas apprendre !</li><li>Le <strong>développeur back-end</strong> : il code ce qui se passe <strong>sur le serveur</strong> (comptes, mots de passe, bases de données).</li><li>Le <strong>web designer (UX/UI)</strong> : il dessine les maquettes, choisit les couleurs et rend le site facile à utiliser.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> Ces métiers recrutent beaucoup, en Tunisie comme à l'étranger, et on peut souvent les faire à distance.</p>
+</div>
+<div class="notion">
+<h3><span class="num">8</span>VS Code : c'est quoi et pourquoi l'utiliser ?</h3>
+<p>Pour écrire du code, il faut un <strong>éditeur de code</strong>. On utilise <strong>Visual Studio Code</strong> (VS Code) : il est <strong>gratuit</strong>, créé par Microsoft, et c'est l'éditeur le plus utilisé par les développeurs dans le monde.</p>
+<p>Pourquoi pas Word ? Word ajoute de la mise en forme cachée et enregistre en <code>.docx</code> : le navigateur ne peut pas le lire. Et le Bloc-notes marche, mais il ne t'aide pas du tout.</p>
+<p>VS Code, lui, t'aide beaucoup :</p>
+<ul><li>Il <strong>colore</strong> le code : on repère vite les balises et les erreurs.</li><li>Il <strong>complète</strong> ce que tu écris (autocomplétion) et ferme les balises tout seul.</li><li>Avec <code>!</code> + <strong>Entrée</strong>, il écrit tout le squelette d'une page HTML (c'est <strong>Emmet</strong>).</li><li>On peut ajouter des <strong>extensions</strong>, comme <strong>Live Server</strong> qui affiche ta page et la recharge à chaque enregistrement.</li><li>Il range tous les fichiers d'un projet dans l'<strong>explorateur</strong> à gauche.</li></ul>
+</div>
+<div class="notion">
+<h3><span class="num">9</span>L'écran de VS Code et les raccourcis</h3>
+<ul><li><strong>Ctrl + S</strong> : enregistrer (le rond ● sur l'onglet veut dire « pas enregistré »).</li><li><strong>Ctrl + Z</strong> : annuler. <strong>Ctrl + Y</strong> : refaire.</li><li><strong>Ctrl + /</strong> : mettre une ligne en commentaire.</li><li><strong>Alt + Shift + F</strong> : ranger (indenter) le code proprement.</li><li><strong>Ctrl + B</strong> : cacher ou afficher l'explorateur.</li></ul>
+<div class="code-demo solo"><div><span class="label">Schéma</span><pre><code>┌──────────────┬───────────────────────────────────┐
+│ EXPLORATEUR  │  index.html ×   style.css ×        │ ← les onglets
+│              ├───────────────────────────────────┤
+│ formation-web│  1  &lt;!DOCTYPE html&gt;                │
+│  └ seance01  │  2  &lt;html lang="fr"&gt;               │
+│     bonjour  │  3    &lt;head&gt;                       │ ← la zone où
+│     .html    │  4    ...                          │   j'écris
+│              │                                   │
+├──────────────┴───────────────────────────────────┤
+│ Go Live ●   ← le bouton de Live Server (en bas)   │
+└──────────────────────────────────────────────────┘</code></pre></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">10</span>Installer VS Code et Live Server</h3>
+<ul><li>1. Télécharge VS Code sur <strong>code.visualstudio.com</strong> et installe-le (bouton « Suivant » partout).</li><li>2. Dans VS Code, clique sur l'icône <strong>Extensions</strong> (les 4 carrés à gauche), cherche <strong>Live Server</strong> (de Ritwick Dey) et clique sur <strong>Install</strong>.</li><li>3. Active l'enregistrement automatique : menu <strong>Fichier → Enregistrement automatique</strong> (*Auto Save*).</li><li>4. Dans Windows, affiche les extensions des fichiers : Explorateur de fichiers → <strong>Affichage</strong> → coche <strong>Extensions de noms de fichiers</strong>. Comme ça tu vois <code>.html</code> à la fin du nom.</li></ul>
+<p class="astuce">💡 <strong>Astuce :</strong> VS Code peut être en français : extension <strong>French Language Pack</strong>. Mais les mots du code (balises, propriétés) restent toujours en anglais.</p>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:15</span><span>Accueil et présentation de la formation (24 séances, un site à toi en ligne à la fin). Tour de table : « Quels sites ou applications tu utilises chaque jour ? À quoi ils te servent ? » On les note au tableau.</span></li>
+<li><span class="temps">0:15 – 0:40</span><span>Internet / web, site / page, serveur, navigateur, URL. <strong>Jeu de rôle</strong> : un élève est le navigateur, un autre le serveur, des papiers sont les fichiers HTML, CSS et images. On « joue » le voyage d'une page.</span></li>
+<li><span class="temps">0:40 – 1:00</span><span>De quoi est fait un site : HTML, CSS, JS. Démonstration de <strong>Ctrl + U</strong> et <strong>F12</strong> sur Wikipédia. Exercices 1 et 2.</span></li>
+<li><span class="temps">1:00 – 1:30</span><span>VS Code : à quoi il sert, pourquoi pas Word. Installation de VS Code et de Live Server, visite de l'écran, raccourcis.</span></li>
+<li><span class="temps">1:30 – 1:50</span><span>Exercice 3 : le dossier <code>formation-web</code> et le premier fichier <code>bonjour.html</code> ouvert avec Live Server. Défi pour les rapides.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan : chacun explique en une phrase « c'est quoi un site web ». Checklist « Je vérifie ».</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Le détective du web<span class="niveau facile">facile</span></h3><ol>
+<li>Ouvre 3 sites que tu connais (ex. Wikipédia, un site de sport, le site de ton école).</li>
+<li>Pour chacun, note sur une feuille : le <strong>nom de domaine</strong>, l'<strong>extension</strong> (<code>.com</code>, <code>.tn</code>…) et si l'adresse commence par <code>https</code> (cadenas 🔒).</li>
+<li>Sur un des sites, appuie sur <strong>Ctrl + U</strong>. Cherche avec <strong>Ctrl + F</strong> le mot <code>&lt;img</code> : tu viens de trouver une image dans le code HTML !</li>
+<li>Cherche aussi le mot <code>.css</code> : quel est le nom d'un fichier CSS du site ?</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Je transforme Wikipédia (sans rien casser)<span class="niveau facile">facile</span></h3><ol>
+<li>Va sur la page Wikipédia de ta ville.</li>
+<li>Fais clic droit sur le grand titre → <strong>Inspecter</strong>. La ligne du titre est surlignée dans le code.</li>
+<li>Double-clique sur le texte du titre dans le code et remplace-le par ton prénom. Appuie sur <strong>Entrée</strong> : le titre change sur la page !</li>
+<li>Dans la partie <strong>Styles</strong> à droite, change une couleur. Puis appuie sur <strong>F5</strong> : tout revient comme avant. Tu as compris : le site est fait de HTML et de CSS !</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · J'installe et je découvre VS Code<span class="niveau moyen">moyen</span></h3><ol>
+<li>Installe VS Code et l'extension Live Server (voir la notion 10). Active l'enregistrement automatique.</li>
+<li>Crée sur le bureau un dossier <code>formation-web</code> (tout en minuscules, sans espace), et dedans un dossier <code>seance01</code>.</li>
+<li>Dans VS Code : <strong>Fichier → Ouvrir le dossier</strong> → choisis <code>formation-web</code>. Dans l'explorateur, crée le fichier <code>seance01/bonjour.html</code>.</li>
+<li>Écris dedans : <code>&lt;h1&gt;Bonjour, je m'appelle …&lt;/h1&gt;</code> (avec ton prénom).</li>
+<li>Clic droit dans le fichier → <strong>Open with Live Server</strong> (ou le bouton <strong>Go Live</strong> en bas). Ta première page s'affiche dans le navigateur. Bravo, tu viens de créer une page web ! 🎉</li>
+<li>Change le texte et regarde la page se mettre à jour toute seule.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : Explique le web à quelqu'un</h2>
+<p>Dessine sur une feuille le voyage d'une page : toi, ton navigateur, Internet, le serveur, les fichiers HTML/CSS/images. Utilise des flèches et des couleurs, puis explique ton dessin à ton voisin.</p>
+<p>Bonus : trouve 5 extensions de noms de domaine de pays (comme <code>.tn</code> pour la Tunisie) et les pays qui vont avec.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je crois qu'Internet et le web, c'est la même chose</div><div class="ok">Internet = le réseau ; le web = les sites qu'on visite sur ce réseau</div></div>
+<div class="erreur"><div class="ko">J'écris mon code dans Word</div><div class="ok">J'écris dans un éditeur de code : <strong>VS Code</strong></div></div>
+<div class="erreur"><div class="ko">Mon fichier s'appelle <code>bonjour.html.txt</code></div><div class="ok">J'affiche les extensions dans Windows et je renomme en <code>bonjour.html</code></div></div>
+<div class="erreur"><div class="ko">« Open with Live Server » n'apparaît pas</div><div class="ok">J'ouvre le <strong>dossier</strong> dans VS Code (Fichier → Ouvrir le dossier), pas seulement le fichier</div></div>
+<div class="erreur"><div class="ko">J'ai peur d'avoir cassé Wikipédia avec F12</div><div class="ok">Non ! Le changement est seulement sur mon écran. <strong>F5</strong> et tout revient</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>Internet</dt><dd>Le réseau mondial qui relie les ordinateurs.</dd></div>
+<div><dt>Web</dt><dd>L'ensemble des sites qu'on visite sur Internet.</dd></div>
+<div><dt>Site web</dt><dd>Un ensemble de pages reliées par des liens.</dd></div>
+<div><dt>Serveur</dt><dd>Un ordinateur toujours allumé qui garde les fichiers des sites et les envoie.</dd></div>
+<div><dt>Navigateur</dt><dd>Le programme qui va chercher les pages et les affiche (Chrome, Firefox…).</dd></div>
+<div><dt>URL</dt><dd>L'adresse d'une page, ex. <code>https://fr.wikipedia.org/wiki/Tunisie</code>.</dd></div>
+<div><dt>Nom de domaine</dt><dd>Le nom du site dans l'adresse, ex. <code>wikipedia.org</code>.</dd></div>
+<div><dt>Hébergement</dt><dd>La place louée (ou gratuite) sur un serveur pour mettre son site.</dd></div>
+<div><dt>Éditeur de code</dt><dd>Le programme où on écrit le code : VS Code.</dd></div>
+<div><dt>Extension</dt><dd>1) la fin d'un nom de fichier (<code>.html</code>) ; 2) un petit module ajouté à VS Code (Live Server).</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/How_the_Web_works" target="_blank"><span class="tag">MDN</span><br>Comment fonctionne le Web (en français)</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/Installing_basic_software" target="_blank"><span class="tag">MDN</span><br>Installer les outils de base (en français)</a></li>
+<li><a href="https://www.w3schools.com/html/html_intro.asp" target="_blank"><span class="tag">W3Schools</span><br>Introduction au HTML</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank"><span class="tag outil">Outil</span><br><strong>VS Code</strong> : l'éditeur de code qu'on utilise</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank"><span class="tag outil">Outil</span><br><strong>Live Server</strong> : l'extension VS Code qui affiche ta page et la recharge toute seule</a></li>
+<li><a href="https://code.visualstudio.com/docs/getstarted/introvideos" target="_blank"><span class="tag">Guide</span><br><strong>VS Code</strong> : les vidéos de découverte officielles (en anglais, sous-titres possibles)</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais expliquer la différence entre Internet et le web.</li>
+<li>Je sais dire ce qu'est un serveur et un navigateur.</li>
+<li>Je sais découper une URL : protocole, nom de domaine, chemin.</li>
+<li>Je sais à quoi servent HTML, CSS et JavaScript.</li>
+<li>J'ai installé VS Code et Live Server, et ma page <code>bonjour.html</code> s'affiche.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../../groupe_13_17.html">← Sommaire</a>
+<a href="../seance02/index.html">Séance 02 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>

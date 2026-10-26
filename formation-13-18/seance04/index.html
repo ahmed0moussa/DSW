@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séance 04 · Listes et tableaux — Formation Web 13-18</title>
+  <link rel="stylesheet" href="../assets/cours.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="nom">Ahmed Moussa</span>
+    <span>Formation Web · 13-18 ans</span>
+  </div>
+  <a href="../../groupe_13_17.html">☰ Sommaire des séances</a>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <span class="module">Module 1 · HTML</span>
+    <h1><span>Séance 04</span> · Listes et tableaux</h1>
+    <p>Pour ranger des informations, on utilise des listes (une à la suite de l'autre) et des tableaux (en lignes et colonnes).</p>
+    <ul class="chips">
+      <li>⏱️ Durée : 2 h</li>
+      <li>📶 Niveau : Débutant</li>
+      <li>🧰 Outils : VS Code, Live Server</li>
+    </ul>
+    <nav class="toc" aria-label="Sommaire de la fiche">
+      <a href="#objectif">🎯 Objectif</a><a href="#note">📒 La note</a><a href="#deroule">⏱️ Déroulé</a><a href="#exercices">🛠️ Exercices</a><a href="#defi">🏆 Défi</a><a href="#erreurs">⚠️ Erreurs</a><a href="#vocabulaire">📚 Vocabulaire</a><a href="#ressources">🔗 Ressources</a><a href="#verifie">✅ Je vérifie</a>
+    </nav>
+  </div>
+
+  <section class="bloc objectif" id="objectif">
+    <h2>🎯 Objectif : à la fin de la séance, je saurai…</h2>
+    <ul>
+      <li>Créer une liste à puces <code>&lt;ul&gt;</code> et une liste numérotée <code>&lt;ol&gt;</code>.</li><li>Construire un tableau avec <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> et <code>&lt;td&gt;</code>.</li><li>Fusionner des cases avec <code>colspan</code> et organiser un tableau avec <code>&lt;thead&gt;</code> et <code>&lt;tbody&gt;</code>.</li>
+    </ul>
+  </section>
+
+  <section class="bloc rappel">
+    <h2>🔁 Rappel</h2>
+    <p>Les liens se font avec <code>&lt;a href="…"&gt;</code>, les images avec <code>&lt;img src="…" alt="…"&gt;</code>. Les images sont rangées dans le dossier <code>images/</code>.</p>
+  </section>
+
+  <section class="bloc" id="note">
+    <h2>📒 La note : ce qu'il faut comprendre</h2>
+<div class="notion">
+<h3><span class="num">1</span>La liste à puces &lt;ul&gt;</h3>
+<p><code>&lt;ul&gt;</code> (unordered list) = liste <strong>sans ordre</strong>. Chaque élément est dans un <code>&lt;li&gt;</code> (list item).</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h3&gt;Dans mon sac&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Un cahier&lt;/li&gt;
+  &lt;li&gt;Une trousse&lt;/li&gt;
+  &lt;li&gt;Une gourde&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La liste à puces &lt;ul&gt;" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h3&gt;Dans mon sac&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Un cahier&lt;/li&gt;
+  &lt;li&gt;Une trousse&lt;/li&gt;
+  &lt;li&gt;Une gourde&lt;/li&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<div class="notion">
+<h3><span class="num">2</span>La liste numérotée &lt;ol&gt;</h3>
+<p><code>&lt;ol&gt;</code> (ordered list) = liste <strong>dans l'ordre</strong> : un classement, des étapes…</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;h3&gt;Mon top 3 des sports&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Football&lt;/li&gt;
+  &lt;li&gt;Handball&lt;/li&gt;
+  &lt;li&gt;Natation&lt;/li&gt;
+&lt;/ol&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : La liste numérotée &lt;ol&gt;" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h3&gt;Mon top 3 des sports&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Football&lt;/li&gt;
+  &lt;li&gt;Handball&lt;/li&gt;
+  &lt;li&gt;Natation&lt;/li&gt;
+&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> Une liste peut contenir une autre liste : mets un <code>&lt;ul&gt;</code> à l'intérieur d'un <code>&lt;li&gt;</code>.</p>
+</div>
+<div class="notion">
+<h3><span class="num">3</span>Un tableau simple</h3>
+<p><code>&lt;table&gt;</code> = le tableau. <code>&lt;tr&gt;</code> (table row) = une <strong>ligne</strong>. <code>&lt;th&gt;</code> = une case de <strong>titre</strong>. <code>&lt;td&gt;</code> = une case normale.</p>
+<p>On construit un tableau <strong>ligne par ligne</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Joueur&lt;/th&gt;
+    &lt;th&gt;Poste&lt;/th&gt;
+    &lt;th&gt;Buts&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Amine&lt;/td&gt;
+    &lt;td&gt;Attaquant&lt;/td&gt;
+    &lt;td&gt;12&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Rania&lt;/td&gt;
+    &lt;td&gt;Milieu&lt;/td&gt;
+    &lt;td&gt;7&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Un tableau simple" sandbox="" style="height:140px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;table border=&quot;1&quot;&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Joueur&lt;/th&gt;
+    &lt;th&gt;Poste&lt;/th&gt;
+    &lt;th&gt;Buts&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Amine&lt;/td&gt;
+    &lt;td&gt;Attaquant&lt;/td&gt;
+    &lt;td&gt;12&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Rania&lt;/td&gt;
+    &lt;td&gt;Milieu&lt;/td&gt;
+    &lt;td&gt;7&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+<p class="astuce">💡 <strong>Astuce :</strong> <code>border="1"</code> sert juste à voir les cases. Dès la séance 8, on fera les bordures en CSS.</p>
+</div>
+<div class="notion">
+<h3><span class="num">4</span>Organiser un tableau : thead, tbody, colspan</h3>
+<p><code>&lt;thead&gt;</code> regroupe la ligne des titres, <code>&lt;tbody&gt;</code> le contenu, <code>&lt;tfoot&gt;</code> le bas (total…).</p>
+<p><code>colspan="2"</code> : une case prend la place de <strong>2 colonnes</strong>. <code>rowspan="2"</code> : une case prend <strong>2 lignes</strong>.</p>
+<div class="code-demo"><div><span class="label">HTML</span><pre><code>&lt;table border="1"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Matière&lt;/th&gt;&lt;th&gt;Note&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Maths&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Anglais&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td colspan="2"&gt;Moyenne : 16&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre></div><div><span class="label">Résultat</span><iframe class="rendu" title="Résultat : Organiser un tableau : thead, tbody, colspan" sandbox="" style="height:150px" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&#x27;fr&#x27;&gt;&lt;head&gt;&lt;meta charset=&#x27;UTF-8&#x27;&gt;&lt;style&gt;body{font-family:Arial,sans-serif;margin:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;table border=&quot;1&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Matière&lt;/th&gt;&lt;th&gt;Note&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Maths&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Anglais&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;Moyenne : 16&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div>
+</div>
+<p>👉 Ouvre l'exemple complet de la séance, puis fais clic droit → <strong>Inspecter</strong> pour voir son code.</p><a class="btn" href="exemple.html" target="_blank">Voir l'exemple de la séance</a>
+</section>
+<section class="bloc" id="deroule">
+<h2>⏱️ Déroulé de la séance (2 h)</h2>
+<ol class="timeline">
+<li><span class="temps">0:00 – 0:10</span><span>Échauffement : quiz oral « Quelle balise pour… ? » (lien, image, titre, gras).</span></li>
+<li><span class="temps">0:10 – 0:30</span><span>Découverte des listes <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, listes imbriquées.</span></li>
+<li><span class="temps">0:30 – 0:55</span><span>Découverte des tableaux : on dessine d'abord le tableau au tableau blanc, puis on le code ligne par ligne.</span></li>
+<li><span class="temps">0:55 – 1:35</span><span>Exercices 1 à 3.</span></li>
+<li><span class="temps">1:35 – 1:50</span><span>Défi : l'emploi du temps de la classe.</span></li>
+<li><span class="temps">1:50 – 2:00</span><span>Bilan et checklist.</span></li>
+</ol>
+</section>
+<section class="bloc" id="exercices">
+<h2>🛠️ Exercices pas à pas</h2>
+<div class="exercice"><h3>Exercice 1 · Mes listes<span class="niveau facile">facile</span></h3><ol>
+<li>Crée <code>seance04/index.html</code>.</li>
+<li>Fais une liste à puces de 5 choses que tu aimes manger.</li>
+<li>Fais une liste numérotée de ton top 5 des chansons ou des films.</li>
+<li>Ajoute un lien sur au moins un élément de la liste (vers YouTube ou Wikipédia).</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 2 · Une liste dans une liste<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée une liste <code>&lt;ul&gt;</code> « Mes matières » avec 3 matières.</li>
+<li>Dans chaque <code>&lt;li&gt;</code>, ajoute une sous-liste <code>&lt;ul&gt;</code> avec 2 chapitres étudiés.</li>
+<li>Observe : les puces changent de forme pour la sous-liste.</li>
+</ol></div>
+<div class="exercice"><h3>Exercice 3 · Le tableau de mon équipe<span class="niveau moyen">moyen</span></h3><ol>
+<li>Crée un tableau avec 3 colonnes : Prénom, Sport, Âge.</li>
+<li>Utilise <code>&lt;thead&gt;</code> pour la ligne de titres (<code>&lt;th&gt;</code>) et <code>&lt;tbody&gt;</code> pour 4 lignes de données.</li>
+<li>Ajoute une 4e colonne « Photo » avec une petite image (<code>width="60"</code>) dans chaque ligne.</li>
+</ol></div>
+</section>
+<section class="bloc defi" id="defi">
+<h2>🏆 Défi bonus : L'emploi du temps</h2>
+<p>Reproduis l'emploi du temps de ta classe pour 3 jours (lignes = jours, colonnes = heures).</p>
+<p>Ajoute une ligne « Pause déjeuner » qui prend toute la largeur grâce à <code>colspan</code>. Bonus : utilise <code>rowspan</code> pour un cours de 2 heures.</p>
+</section>
+<section class="bloc" id="erreurs">
+<h2>⚠️ Erreurs fréquentes</h2>
+<div class="erreurs">
+<div class="erreur"><div class="ko">Je mets du texte directement dans <code>&lt;ul&gt;</code> sans <code>&lt;li&gt;</code></div><div class="ok">Chaque élément de la liste est dans un <code>&lt;li&gt;</code></div></div>
+<div class="erreur"><div class="ko">Je mélange l'ordre : <code>&lt;td&gt;</code> en dehors d'un <code>&lt;tr&gt;</code></div><div class="ok">Toujours <code>&lt;table&gt;</code> → <code>&lt;tr&gt;</code> → <code>&lt;td&gt;</code></div></div>
+<div class="erreur"><div class="ko">Une ligne a 4 cases et une autre en a 3</div><div class="ok">Chaque ligne doit avoir le même nombre de cases (ou utiliser <code>colspan</code>)</div></div>
+<div class="erreur"><div class="ko">J'utilise un tableau pour placer toute ma page</div><div class="ok">Les tableaux servent aux <strong>données</strong> ; la mise en page se fera en CSS</div></div>
+</div>
+</section>
+<section class="bloc" id="vocabulaire">
+<h2>📚 Vocabulaire</h2>
+<dl class="vocab">
+<div><dt>ul</dt><dd>Unordered list : liste à puces.</dd></div>
+<div><dt>ol</dt><dd>Ordered list : liste numérotée.</dd></div>
+<div><dt>li</dt><dd>List item : un élément de la liste.</dd></div>
+<div><dt>tr</dt><dd>Table row : une ligne du tableau.</dd></div>
+<div><dt>th / td</dt><dd>Case de titre / case de donnée.</dd></div>
+<div><dt>colspan / rowspan</dt><dd>Fusionner des colonnes / des lignes.</dd></div>
+</dl>
+</section>
+<section class="bloc" id="ressources">
+<h2>🔗 Ressources</h2>
+<ul class="ressources">
+<li><a href="https://www.w3schools.com/html/html_lists.asp" target="_blank"><span class="tag">W3Schools</span><br>Les listes</a></li>
+<li><a href="https://www.w3schools.com/html/html_tables.asp" target="_blank"><span class="tag">W3Schools</span><br>Les tableaux</a></li>
+<li><a href="https://www.w3schools.com/html/html_table_colspan_rowspan.asp" target="_blank"><span class="tag">W3Schools</span><br>colspan et rowspan</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/HTML/Tables/Basics" target="_blank"><span class="tag">MDN</span><br>Les bases des tableaux (en français)</a></li>
+<li><a href="https://codepen.io/pen/" target="_blank"><span class="tag outil">Outil</span><br><strong>CodePen</strong> : tester du HTML/CSS en ligne sans rien installer</a></li>
+</ul>
+</section>
+<section class="bloc" id="verifie">
+<h2>✅ Je vérifie que j'ai compris</h2>
+<ul class="checklist">
+<li>Je sais quand utiliser <code>&lt;ul&gt;</code> ou <code>&lt;ol&gt;</code>.</li>
+<li>Chaque élément de mes listes est dans un <code>&lt;li&gt;</code>.</li>
+<li>Je sais construire un tableau ligne par ligne.</li>
+<li>J'utilise <code>&lt;th&gt;</code> pour les titres de colonnes.</li>
+<li>Je sais fusionner deux cases avec <code>colspan</code>.</li>
+</ul>
+</section>
+<nav class="nav-seances" aria-label="Séances">
+<a href="../seance03/index.html">← Séance 03</a>
+<a href="../seance05/index.html">Séance 05 →</a>
+</nav>
+
+</main>
+
+</body>
+</html>
