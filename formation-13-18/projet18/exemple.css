@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #22303c;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #288b8b;
+}
+
+/* ---------- Navbar + menu déroulant ---------- */
+nav {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+  background-color: #22303c;
+}
+
+nav a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: #288b8b;
+}
+
+.menu {
+  position: relative;
+}
+
+.sous-menu {
+  display: none;              /* caché */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.menu:hover .sous-menu,
+.menu:focus-within .sous-menu {
+  display: block;             /* visible au survol */
+}
+
+.sous-menu a {
+  color: #22303c;
+}
+
+.sous-menu a:hover {
+  background-color: #e3f3f3;
+}
+
+/* ---------- Les boutons ---------- */
+.btn {
+  margin: 5px;
+  padding: 12px 24px;
+  border: 2px solid #288b8b;
+  border-radius: 8px;
+  background-color: #288b8b;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;       /* sur l'élément normal */
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.couleur:hover { background-color: #e67e22; border-color: #e67e22; }
+.arrondi:hover { border-radius: 30px; }
+.ombre:hover { box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3); transform: translateY(-3px); }
+.contour:hover { background-color: white; color: #288b8b; }
+
+/* ---------- Les cartes ---------- */
+.cartes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.carte {
+  flex: 1 1 220px;
+  overflow: hidden;           /* l'image zoomée ne déborde pas */
+  border-radius: 12px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carte:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.carte img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.carte:hover img {
+  transform: scale(1.1);
+}
+
+/* ---------- Le tableau ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #288b8b;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #e3f3f3;  /* une ligne sur deux */
+}
+
+tr:hover td {
+  background-color: #fdf0e3;
+}
+
+/* ---------- Le champ ---------- */
+input {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
+  border: 2px solid #dde3ea;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #288b8b;
+  box-shadow: 0 0 0 4px rgba(40, 139, 139, 0.2);
+}

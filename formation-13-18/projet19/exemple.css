@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #22303c;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  color: #288b8b;
+}
+
+/* ---------- Bannière : fond qui change + apparition ---------- */
+.banniere {
+  padding: 50px 20px;
+  text-align: center;
+  color: white;
+  animation: couleurs 6s infinite alternate;
+}
+
+.banniere h1 {
+  margin: 0;
+  animation: apparition 1s ease-out;
+}
+
+.banniere p {
+  opacity: 0;
+  animation: apparition 1s ease-out 0.5s forwards;   /* 0.5s après le titre */
+}
+
+@keyframes couleurs {
+  0%   { background-color: #288b8b; }
+  50%  { background-color: #8e44ad; }
+  100% { background-color: #e67e22; }
+}
+
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Balle ---------- */
+.sol {
+  height: 140px;
+  padding-top: 70px;
+  border-bottom: 4px solid #22303c;
+}
+
+.balle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #e67e22;
+  animation: rebond 0.8s ease-in infinite alternate;
+}
+
+@keyframes rebond {
+  from { transform: translateY(-60px); }
+  to   { transform: translateY(10px); }
+}
+
+/* ---------- Chargement 3 points ---------- */
+.points {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 0 10px;
+}
+
+.point {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #288b8b;
+  animation: saut 0.6s infinite alternate;
+}
+
+.point:nth-child(2) { animation-delay: 0.2s; }
+.point:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes saut {
+  to { transform: translateY(-20px); }
+}
+
+/* ---------- Cercle qui tourne ---------- */
+.cercle {
+  width: 50px;
+  height: 50px;
+  margin: 20px auto;
+  border: 6px solid #dde3ea;
+  border-top-color: #e67e22;
+  border-radius: 50%;
+  animation: tourne 1s linear infinite;
+}
+
+@keyframes tourne {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- La scène ---------- */
+.scene {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(#87ceeb, #e0f6ff 70%, #7cba5a 70%);
+}
+
+.soleil {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 50px;
+  animation: tourne 10s linear infinite;
+}
+
+.nuage {
+  position: absolute;
+  top: 30px;
+  font-size: 50px;
+  animation: traverse 12s linear infinite;
+}
+
+.velo {
+  position: absolute;
+  bottom: 40px;
+  font-size: 50px;
+  animation: traverse 6s linear infinite;
+}
+
+@keyframes traverse {
+  from { left: -80px; }
+  to   { left: 100%; }
+}

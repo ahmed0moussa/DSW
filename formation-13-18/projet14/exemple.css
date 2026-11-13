@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f6f9;
+}
+
+h2 {
+  color: #288b8b;
+  font-size: 1.2rem;
+}
+
+.conteneur {
+  display: flex;               /* sur le PARENT */
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e3f3f3;
+}
+
+.entre {
+  justify-content: space-between;
+}
+
+.colonne {
+  flex-direction: column;
+}
+
+.case {
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #288b8b;
+  color: white;
+  font-weight: bold;
+}
+
+/* Centrer au milieu d'une boîte */
+.ecran {
+  display: flex;
+  justify-content: center;     /* horizontal */
+  align-items: center;         /* vertical */
+  height: 220px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #288b8b, #1d6b6b);
+}
+
+.bouton {
+  padding: 14px 28px;
+  border-radius: 30px;
+  background-color: #e67e22;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Passer à la ligne automatiquement */
+.vignettes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.vignette {
+  width: 150px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.barre-app {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  border-radius: 20px;
+  background-color: #22303c;
+}
+
+.barre-app a {
+  font-size: 1.8rem;
+  text-decoration: none;
+}
