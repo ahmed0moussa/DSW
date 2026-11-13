@@ -2,8 +2,8 @@
 
 Point d'entrée : `index.html`.
 
-- **Groupe 13-18 ans** : `groupe_13_17.html` → formation Web HTML & CSS en **24 séances de 2 h** (`formation-13-18/`) + 4 projets modèles.
-- **Formation JavaScript** : `groupe_js.html` → **20 séances de 2 h** pour débutants (`formation-js/`), après HTML & CSS.
+- **Groupe 13-18 ans** : `groupe_13_17.html` → formation Web HTML & CSS en **24 projets** (`formation-13-18/`) + 4 projets modèles.
+- **Formation JavaScript** : `groupe_js.html` → **20 projets** pour débutants (`formation-js/`), après HTML & CSS.
 
 Documents pour le formateur :
 
